@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1280,720">
+  <displayList>
+    <graph id="n6_rg0p" name="n6" xy="0,0" size="1280,720" type="rect" fillColor="#ff000000">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <component id="n1_lvs1" name="LoginBtn" src="lvs12" fileName="Button.xml" xy="510,354" size="192,37">
+      <relation target="n6_rg0p" sidePair="center-center,middle-middle"/>
+      <Button title="登录"/>
+    </component>
+    <component id="n7_w4q2" name="AccountInput" src="w4q24" fileName="Input.xml" xy="511,278" size="192,42">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+  </displayList>
+</component>

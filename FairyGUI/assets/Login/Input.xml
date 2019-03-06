@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="200,50" extention="Label">
+  <displayList>
+    <graph id="n1_w4q2" name="n1" xy="0,0" size="200,50" type="rect">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <text id="n2_w4q2" name="Input" xy="0,0" size="200,50" input="true" prompt="请输入帐号" fontSize="12" vAlign="middle" autoSize="none" autoClearText="true" text="test">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+</component>

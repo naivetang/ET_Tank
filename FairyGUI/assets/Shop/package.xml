@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="85w272l7" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="rg0p1" name="frame.xml" path="/" exported="true"/>
+    <component id="rg0p2" name="closeButton.xml" path="/" exported="true"/>
+    <component id="rg0p3" name="Shop.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="Shop"/>
+</packageDescription>

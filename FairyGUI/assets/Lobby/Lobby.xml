@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1280,720">
+  <displayList>
+    <graph id="n1_rg0p" name="n1" xy="0,0" size="1280,720" type="rect" fillColor="#ff000000">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <component id="n0_rg0p" name="EnterMapBtn" src="rg0p1" fileName="Button.xml" xy="557,214" size="134,41">
+      <Button title="进入地图"/>
+    </component>
+    <component id="n4_rg0p" name="ShopBtn" src="rg0p1" fileName="Button.xml" xy="256,326" size="134,41">
+      <relation target="" sidePair="width-width,height-height"/>
+      <Button title="商店"/>
+    </component>
+    <component id="n5_rg0p" name="RankBtn" src="rg0p1" fileName="Button.xml" xy="856,320" size="134,41">
+      <Button title="排行榜"/>
+    </component>
+  </displayList>
+</component>
