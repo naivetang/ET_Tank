@@ -18,6 +18,8 @@ namespace ETModel
 		
 		public void AddPackage(string type)
 		{
+		    if (this.packages.ContainsKey(type))
+		        return;
 #if UNITY_EDITOR
 			UIPackage uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}");
 #else
@@ -33,8 +35,10 @@ namespace ETModel
         
 		public async ETTask AddPackageAsync(string type)
 		{
+		    if (this.packages.ContainsKey(type))
+		        return;
 #if UNITY_EDITOR
-			await ETTask.CompletedTask;
+            await ETTask.CompletedTask;
             
 			UIPackage uiPackage = UIPackage.AddPackage($"{FUI_PACKAGE_DIR}/{type}");
 #else

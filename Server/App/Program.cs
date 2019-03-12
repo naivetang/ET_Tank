@@ -90,8 +90,10 @@ namespace App
 						// 发送location actor消息
 						Game.Scene.AddComponent<ActorLocationSenderComponent>();
 						
-						//Game.Scene.AddComponent<DBComponent>();
-						//Game.Scene.AddComponent<DBProxyComponent>();
+                        // 数据库管理组件（管理数据库连接地址，数据库名称等）
+						Game.Scene.AddComponent<DBComponent>();
+                        // 数据库调用组件（调用DB数据库的组件  添加、查询、修改、删除等操作）
+						Game.Scene.AddComponent<DBProxyComponent>();
 						
 						// location server需要的组件
 						Game.Scene.AddComponent<LocationComponent>();

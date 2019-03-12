@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 using ETModel;
 
 namespace ETHotfix
@@ -24,6 +26,15 @@ namespace ETHotfix
 				//	return;
 				//}
 
+			    var ret = await CheckAccount(message, response);
+
+			    if (!ret)
+			    {
+			        reply(response);
+
+			        return;
+			    }
+
 				// 随机分配一个Gate
 				StartConfig config = Game.Scene.GetComponent<RealmGateAddressComponent>().GetAddress();
 				//Log.Debug($"gate address: {MongoHelper.ToJson(config)}");
@@ -44,5 +55,41 @@ namespace ETHotfix
 				ReplyError(response, e, reply);
 			}
 		}
+
+	    private async Task<bool> CheckAccount(C2R_Login message,R2C_Login response)
+	    {
+	        DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
+
+	        List<ComponentWithId> accounts = await db.Query<Account>(account => account.UserName == message.Account);
+	        //var accounts = await db.Query<Account>($"{{\'UserName\':\'{message.Account}\'}}");
+
+            Console.WriteLine("此账户数" +  accounts.Count);
+
+	        if (accounts.Count == 0)
+	        {
+	            response.Error = ErrorCode.ERR_RpcFail;
+
+	            response.Message = "不存在此账号";
+
+	            return false;
+	        }
+            else
+	        {
+	            Account a = accounts[0] as Account;
+	            if (a.Password == message.Password)
+	            {
+	                return true;
+	            }
+	            else
+	            {
+	                response.Error = ErrorCode.ERR_RpcFail;
+
+	                response.Message = "密码错误";
+
+	                return false;
+                }
+	        }
+	    }
+
 	}
 }

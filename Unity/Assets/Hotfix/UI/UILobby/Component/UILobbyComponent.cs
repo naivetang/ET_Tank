@@ -59,7 +59,10 @@ namespace ETHotfix
 			catch (Exception e)
 			{
 				Log.Error(e);
-			}	
+			}
+
+		    //FUI uilogin = Game.Scene.GetComponent<FUIComponent>().Get(UIType.UILogin);
+            
 		}
 	}
 }

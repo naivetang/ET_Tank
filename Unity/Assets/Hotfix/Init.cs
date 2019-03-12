@@ -22,6 +22,7 @@ namespace ETHotfix
 
 				// 加载热更配置
 				ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundle("config.unity3d");
+                // 加载表格数据
 				Game.Scene.AddComponent<ConfigComponent>();
 				ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle("config.unity3d");
 

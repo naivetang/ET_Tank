@@ -20,7 +20,9 @@ namespace ETModel
 			self.Load();
 		}
 	}
-
+    /// <summary>
+    /// 协议类型
+    /// </summary>
 	public class OpcodeTypeComponent : Component
 	{
 		private readonly DoubleMap<ushort, Type> opcodeTypes = new DoubleMap<ushort, Type>();

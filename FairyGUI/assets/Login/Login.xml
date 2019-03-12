@@ -4,13 +4,19 @@
     <graph id="n6_rg0p" name="n6" xy="0,0" size="1280,720" type="rect" fillColor="#ff000000">
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
-    <component id="n1_lvs1" name="LoginBtn" src="lvs12" fileName="Button.xml" xy="510,354" size="192,37">
-      <relation target="n6_rg0p" sidePair="center-center,middle-middle"/>
-      <Button title="登录"/>
-    </component>
-    <component id="n7_w4q2" name="AccountInput" src="w4q24" fileName="Input.xml" xy="511,278" size="192,42">
+    <component id="n8_n3ew" name="AccountInput" src="w4q24" fileName="Account.xml" xy="508,214" size="192,42">
       <relation target="" sidePair="center-center,middle-middle"/>
       <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n10_ifcc" name="PasswordInput" src="ifcc5" fileName="Password.xml" xy="508,286" size="192,42"/>
+    <text id="n11_ifcc" name="ErrorPrompt" xy="563,339" size="53,19" fontSize="12" color="#ff0000" align="center" vAlign="middle" autoClearText="true" text="密码错误"/>
+    <component id="n1_lvs1" name="RegistBtn" src="lvs12" fileName="Button.xml" xy="508,372" size="192,37">
+      <relation target="n6_rg0p" sidePair="center-center,middle-middle"/>
+      <Button title="注册"/>
+    </component>
+    <component id="n9_n3ew" name="LoginBtn" src="lvs12" fileName="Button.xml" xy="508,433" size="192,37">
+      <relation target="n6_rg0p" sidePair="center-center,middle-middle"/>
+      <Button title="登录"/>
     </component>
   </displayList>
 </component>

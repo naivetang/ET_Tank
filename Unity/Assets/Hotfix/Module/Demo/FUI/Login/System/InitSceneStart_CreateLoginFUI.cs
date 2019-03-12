@@ -16,6 +16,6 @@ namespace ETHotfix
 			// 使用工厂创建一个Login UI
 			FUI ui = await FUILoginFactory.Create();
 			fuiComponent.Add(ui);
-		}
+        }
 	}
 }
