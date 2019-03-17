@@ -6,5 +6,7 @@
 	    public const string Login = "Login";
 	    public const string Lobby = "Lobby";
 	    public const string Shop = "Shop";
+	    public const string GM = "GM";
+	    public const string Common = "Common";
     }
 }

@@ -61,8 +61,10 @@ namespace ETModel
 #if ILRuntime
 			Log.Debug($"当前使用的是ILRuntime模式");
 			this.appDomain = new ILRuntime.Runtime.Enviorment.AppDomain();
-			
-			byte[] assBytes = code.Get<TextAsset>("Hotfix.dll").bytes;
+
+		    appDomain.DebugService.StartDebugService(56000);
+
+            byte[] assBytes = code.Get<TextAsset>("Hotfix.dll").bytes;
 			byte[] pdbBytes = code.Get<TextAsset>("Hotfix.pdb").bytes;
 
 			using (MemoryStream fs = new MemoryStream(assBytes))

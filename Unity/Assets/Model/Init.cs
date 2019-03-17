@@ -34,6 +34,8 @@ namespace ETModel
 
 				Game.Scene.AddComponent<UnitComponent>();
 
+			    Game.Scene.AddComponent<TankComponent>();
+
                 // FGUI包管理
 				Game.Scene.AddComponent<FUIPackageComponent>();
 

@@ -44,7 +44,8 @@ namespace ETModel
 				ETTaskCompletionSource tcs = this.moveTcs;
 				this.moveTcs = null;
 				tcs.SetResult();
-				return;
+
+                return;
 			}
 
 			float amount = (timeNow - this.StartTime) * 1f / this.needTime;

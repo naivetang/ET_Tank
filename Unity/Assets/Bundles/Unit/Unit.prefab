@@ -47,3 +47,6 @@ MonoBehaviour:
   - key: Skeleton
     gameObject: {fileID: 1248987324363926, guid: 9e27b0bdab1ad7242a009899d15c0e67,
       type: 3}
+  - key: Tank
+    gameObject: {fileID: 7515181037379724419, guid: ddbbf1f8423972248827566484740d2c,
+      type: 3}

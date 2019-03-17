@@ -51,6 +51,8 @@ namespace ETHotfix
 			base.Dispose();
 			
 			// 从父亲中删除自己
+
+		    //this.GObject.parent.RemoveChild(this.GObject);
 			this.GetParent<FUI>().Remove(this.Name);
 
 			// 删除所有的孩子
@@ -125,9 +127,15 @@ namespace ETHotfix
 			{
 				throw new Exception($"this ui is not GComponent, so has not child, {this.Name}");
 			}
-
 			GObject gObject = gComponent.GetChild(name);
+
+		    if (gObject == null)
+		    {
+		        return null;
+		    }
+
 			child = ComponentFactory.Create<FUI, GObject>(gObject);
+
 			this.Add(child);
 			
 			return child;

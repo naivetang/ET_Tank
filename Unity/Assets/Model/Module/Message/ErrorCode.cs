@@ -22,6 +22,7 @@ namespace ETModel
 		public const int ERR_SessionActorError = 200103;
 		public const int ERR_NotFoundUnit = 200104;
 		public const int ERR_ConnectGateKeyError = 200105;
+	    public const int ERR_PasswordError = 200106;            //密码错误
 
 		public const int ERR_RpcFail = 202001;
 		public const int ERR_SocketDisconnected = 202002;

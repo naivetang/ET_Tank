@@ -10,7 +10,7 @@ namespace ETModel
 		{
 			if (self.loadMapOperation.isDone)
 			{
-				self.tcs.SetResult();
+                self.tcs.SetResult();
 			}
 		}
 	}
@@ -24,7 +24,7 @@ namespace ETModel
 
 		public ETTask ChangeSceneAsync(string sceneName)
 		{
-			this.tcs = new ETTaskCompletionSource();
+            this.tcs = new ETTaskCompletionSource();
 			// 加载map
 			this.loadMapOperation = SceneManager.LoadSceneAsync(sceneName);
 			return this.tcs.Task;

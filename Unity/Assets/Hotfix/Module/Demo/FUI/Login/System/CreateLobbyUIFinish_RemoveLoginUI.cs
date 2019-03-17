@@ -2,8 +2,8 @@
 
 namespace ETHotfix
 {
-	[Event(EventIdType.CreateLobbyUIFinish)]
-	public class CreateLobbyUIFinish_RemoveLoginUI: AEvent
+    [Event(EventIdType.CreateLobbyUIFinish), Event(EventIdType.GMEnterBattle)]
+    public class CreateLobbyUIFinish_RemoveLoginUI: AEvent
 	{
 		public override void Run()
 		{

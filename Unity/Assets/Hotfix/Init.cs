@@ -1,5 +1,6 @@
 ﻿using System;
 using ETModel;
+using UnityEngine;
 
 namespace ETHotfix
 {
@@ -42,6 +43,11 @@ namespace ETHotfix
 			try
 			{
 				Game.EventSystem.Update();
+
+			    if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+			    {
+			        Game.EventSystem.Run(EventIdType.ClickEnter);
+			    }
 			}
 			catch (Exception e)
 			{

@@ -4,7 +4,17 @@ using UnityEngine;
 
 namespace ETModel
 {
-	[ObjectSystem]
+    // 移动到目的地之后速度应该为0
+    [Event(ETModel.EventIdType.MoveFinish)]
+    public class MoveFinishEvent_SpeedZero : AEvent<Unit>
+    {
+        public override void Run(Unit unit)
+        {
+            unit.GetComponent<AnimatorComponent>().SetFloatValue("Speed", 0.0f);
+        }
+    }
+
+    [ObjectSystem]
 	public class AnimatorComponentAwakeSystem : AwakeSystem<AnimatorComponent>
 	{
 		public override void Awake(AnimatorComponent self)

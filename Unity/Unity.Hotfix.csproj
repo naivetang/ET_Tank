@@ -87,6 +87,8 @@
     <Compile Include="Assets\Hotfix\Entity\Config\UnitConfig.cs" />
     <Compile Include="Assets\Hotfix\Entity\Game.cs" />
     <Compile Include="Assets\Hotfix\Entity\Scene.cs" />
+    <Compile Include="Assets\Hotfix\Event\GM_CreateTank.cs" />
+    <Compile Include="Assets\Hotfix\Event\GM_EnterBattle.cs" />
     <Compile Include="Assets\Hotfix\Init.cs" />
     <Compile Include="Assets\Hotfix\Module\Actor\IActorMessage.cs" />
     <Compile Include="Assets\Hotfix\Module\ActorLocation\IActorLocationMessage.cs" />
@@ -136,6 +138,9 @@
     <Compile Include="Assets\Hotfix\Module\UI\UIComponent.cs" />
     <Compile Include="Assets\Hotfix\Module\UI\UIType.cs" />
     <Compile Include="Assets\Hotfix\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\Hotfix\UI\GM\ClickEnter_OpenGM.cs" />
+    <Compile Include="Assets\Hotfix\UI\GM\FUIGMComponent.cs" />
+    <Compile Include="Assets\Hotfix\UI\GM\FUIGMFactory.cs" />
     <Compile Include="Assets\Hotfix\UI\UILobby\Component\UILobbyComponent.cs" />
     <Compile Include="Assets\Hotfix\UI\UILobby\Factory\UILobbyFactory.cs" />
     <Compile Include="Assets\Hotfix\UI\UILogin\Component\UILoginComponent.cs" />

@@ -2,7 +2,7 @@
 
 namespace ETHotfix
 {
-	public class FUILoginComponent: Component
+    public class FUILoginComponent: Component
 	{
 		// 缓存只需要缓存FUI类型即可
 		public FUI AccountInput;
@@ -15,6 +15,7 @@ namespace ETHotfix
 
         // 错误提示
 	    public FUI ErrorPrompt;
+
 	}
 
 
