@@ -165,7 +165,14 @@ namespace ILRuntime.Runtime
                 return (int)(ushort)obj;
             if (obj is sbyte)
                 return (int)(sbyte)obj;
-            throw new InvalidCastException();
+            try
+            {
+                return Convert.ToInt32(obj);
+            }
+            catch (Exception)
+            {
+                throw new InvalidCastException(); ;
+            }
         }
         public static long ToInt64(this object obj)
         {
@@ -187,7 +194,16 @@ namespace ILRuntime.Runtime
                 return (long)(ushort)obj;
             if (obj is sbyte)
                 return (long)(sbyte)obj;
-            throw new InvalidCastException();
+            try
+            {
+                return Convert.ToInt64(obj);
+            }
+            catch (Exception)
+            {
+                throw new InvalidCastException(); ;
+            }
+            
+            
         }
         public static short ToInt16(this object obj)
         {
@@ -209,7 +225,14 @@ namespace ILRuntime.Runtime
                 return (short)(ushort)obj;
             if (obj is sbyte)
                 return (short)(sbyte)obj;
-            throw new InvalidCastException();
+            try
+            {
+                return Convert.ToInt16(obj);
+            }
+            catch (Exception)
+            {
+                throw new InvalidCastException(); ;
+            }
         }
         public static float ToFloat(this object obj)
         {
@@ -231,7 +254,14 @@ namespace ILRuntime.Runtime
                 return (float)(ushort)obj;
             if (obj is sbyte)
                 return (float)(sbyte)obj;
-            throw new InvalidCastException();
+            try
+            {
+                return Convert.ToSingle(obj);
+            }
+            catch (Exception)
+            {
+                throw new InvalidCastException(); ;
+            }
         }
 
         public static double ToDouble(this object obj)
@@ -254,7 +284,14 @@ namespace ILRuntime.Runtime
                 return (double)(ushort)obj;
             if (obj is sbyte)
                 return (double)(sbyte)obj;
-            throw new InvalidCastException();
+            try
+            {
+                return Convert.ToDouble(obj);
+            }
+            catch (Exception)
+            {
+                throw new InvalidCastException(); ;
+            }
         }
 
         public static Type GetActualType(this object value)
