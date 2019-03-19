@@ -19,13 +19,6 @@ namespace ETHotfix
 			R2C_Login response = new R2C_Login();
 			try
 			{
-				//if (message.Account != "abcdef" || message.Password != "111111")
-				//{
-				//	response.Error = ErrorCode.ERR_AccountOrPasswordError;
-				//	reply(response);
-				//	return;
-				//}
-
 			    var ret = await CheckAccount(message, response);
 
 			    if (!ret)
@@ -37,12 +30,11 @@ namespace ETHotfix
 
 				// 随机分配一个Gate
 				StartConfig config = Game.Scene.GetComponent<RealmGateAddressComponent>().GetAddress();
-				//Log.Debug($"gate address: {MongoHelper.ToJson(config)}");
+				Log.Debug($"gate address: {MongoHelper.ToJson(config)}");
 				IPEndPoint innerAddress = config.GetComponent<InnerConfig>().IPEndPoint;
 				Session gateSession = Game.Scene.GetComponent<NetInnerComponent>().Get(innerAddress);
-
-				// 向gate请求一个key,客户端可以拿着这个key连接gate
-				G2R_GetLoginKey g2RGetLoginKey = (G2R_GetLoginKey)await gateSession.Call(new R2G_GetLoginKey() {Account = message.Account});
+                // 向gate请求一个key,客户端可以拿着这个key连接gate
+                G2R_GetLoginKey g2RGetLoginKey = (G2R_GetLoginKey)await gateSession.Call(new R2G_GetLoginKey() {Account = message.Account});
 
 				string outerAddress = config.GetComponent<OuterConfig>().Address2;
 
@@ -63,8 +55,6 @@ namespace ETHotfix
 	        List<ComponentWithId> accounts = await db.Query<Account>(account => account.UserName == message.Account);
 	        //var accounts = await db.Query<Account>($"{{\'UserName\':\'{message.Account}\'}}");
 
-            Console.WriteLine("此账户数" +  accounts.Count);
-
 	        if (accounts.Count == 0)
 	        {
 	            response.Error = ErrorCode.ERR_RpcFail;
@@ -82,7 +72,7 @@ namespace ETHotfix
 	            }
 	            else
 	            {
-	                response.Error = ErrorCode.ERR_RpcFail;
+	                response.Error = ErrorCode.ERR_PasswordError;
 
 	                response.Message = "密码错误";
 
