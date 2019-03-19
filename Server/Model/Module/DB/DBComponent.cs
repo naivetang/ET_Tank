@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MongoDB.Driver;
 
 namespace ETModel
@@ -21,7 +22,8 @@ namespace ETModel
 		public IMongoDatabase database;
 		
 		public const int taskCount = 32;
-		public List<DBTaskQueue> tasks = new List<DBTaskQueue>(taskCount);
+
+        public List<DBTaskQueue> tasks = new List<DBTaskQueue>(taskCount);
 
 		public void Awake()
 		{
@@ -29,12 +31,12 @@ namespace ETModel
 			string connectionString = config.ConnectionString;
 			mongoClient = new MongoClient(connectionString);
 			this.database = this.mongoClient.GetDatabase(config.DBName);
-			
-			for (int i = 0; i < taskCount; ++i)
+            for (int i = 0; i < taskCount; ++i)
 			{
 				DBTaskQueue taskQueue = ComponentFactory.Create<DBTaskQueue>();
 				this.tasks.Add(taskQueue);
 			}
+
 		}
 		
 		public IMongoCollection<ComponentWithId> GetCollection(string name)
