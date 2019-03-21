@@ -53,7 +53,7 @@ namespace ETModel
         private float minDistance = 5f;
 
         //距离变化的速度
-        private float zoomSpeed = 0.2f;
+        private float zoomSpeed = 1f;
 
         
 
@@ -120,6 +120,8 @@ namespace ETModel
 
             this.rot -= x;
 
+            return;
+
             float y = Input.GetAxis("Mouse Y") * this.rotSpeed;
 
             this.roll -= y;
@@ -136,7 +138,8 @@ namespace ETModel
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             if (Math.Abs(scroll) > 0.01f)
             {
-                this.distance += this.zoomSpeed * PF.Mathf.Sign(scroll);
+                this.distance -= this.zoomSpeed * PF.Mathf.Sign(scroll);
+                this.distance = PF.Mathf.Clamp(this.distance, this.minDistance, this.maxDistance);
             }
         }
     }

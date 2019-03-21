@@ -44,6 +44,13 @@ namespace ETModel
             }
         }
 
+        public Transform Transform
+        {
+            get
+            {
+                return this.GameObject.transform;
+            }
+        }
         public override void Dispose()
         {
             if (this.IsDisposed)

@@ -24,7 +24,7 @@ namespace ETModel
 
             tank.AddComponent<TankMoveComponent>();
             tank.AddComponent<CameraComponent>();
-
+            tank.AddComponent<TurretComponent>();
 
             tankComponent.Add(tank);
             return tank;
