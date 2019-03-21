@@ -50,3 +50,6 @@ MonoBehaviour:
   - key: Tank
     gameObject: {fileID: 7515181037379724419, guid: ddbbf1f8423972248827566484740d2c,
       type: 3}
+  - key: Terrain
+    gameObject: {fileID: 4355176091545172000, guid: c11100a2117c115498cf39a96cf3dd9d,
+      type: 3}

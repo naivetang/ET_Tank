@@ -23,6 +23,7 @@ namespace ETModel
             tank.GameObject.transform.SetParent(parent.transform, false);
 
             tank.AddComponent<TankMoveComponent>();
+            tank.AddComponent<CameraComponent>();
 
 
             tankComponent.Add(tank);

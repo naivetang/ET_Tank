@@ -1,4 +1,5 @@
 ﻿using System;
+using NPOI.OpenXmlFormats.Wordprocessing;
 using PF;
 using UnityEngine;
 using Mathf = UnityEngine.Mathf;
@@ -54,6 +55,8 @@ namespace ETModel
         //距离变化的速度
         private float zoomSpeed = 0.2f;
 
+        
+
 
 
 		public Camera MainCamera
@@ -98,6 +101,8 @@ namespace ETModel
 
             Rotate();
 
+            Zoom();
+
             return;
 
 			//Vector3 cameraPos = this.mainCamera.transform.position;
@@ -123,5 +128,16 @@ namespace ETModel
 
             //Log.Info($"roll = {roll}" );
         }
-	}
+
+
+        // 缩放
+        private void Zoom()
+        {
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            if (Math.Abs(scroll) > 0.01f)
+            {
+                this.distance += this.zoomSpeed * PF.Mathf.Sign(scroll);
+            }
+        }
+    }
 }
