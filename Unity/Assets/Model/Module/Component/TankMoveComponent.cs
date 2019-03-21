@@ -27,11 +27,28 @@ namespace ETModel
 
         public ETTaskCompletionSource moveTcs;
 
+        private float steer = 20;
+
+        private float speed = 1;
+
         public void Update()
         {
-            float speed = 1;
 
             Transform transform = this.GetParent<Tank>().GameObject.transform;
+
+            //旋转
+            float x = Input.GetAxis("Horizontal");
+
+            transform.Rotate(0,x*this.steer*Time.deltaTime,0);
+
+            //前进和后退
+            float y = Input.GetAxis("Vertical");
+
+            Vector3 s = y * transform.forward * speed * Time.deltaTime;
+
+            transform.position += s;
+
+            return;
 
             // 上
             if (Input.GetKey(KeyCode.UpArrow))
