@@ -27,7 +27,6 @@ namespace ETModel
 
 	public class CameraComponent : Component
 	{
-		// 战斗摄像机
 		public Camera mainCamera;
 
 		public Tank tank;
@@ -55,10 +54,6 @@ namespace ETModel
         //距离变化的速度
         private float zoomSpeed = 1f;
 
-        
-
-
-
 		public Camera MainCamera
 		{
 			get
@@ -77,8 +72,15 @@ namespace ETModel
 		{
 			// 摄像机每帧更新位置
 			UpdatePosition();
-		}
 
+            Rotate();
+
+            Zoom();
+        }
+
+        /// <summary>
+        /// 更新相机位置
+        /// </summary>
 		private void UpdatePosition()
         {
             Vector3 targetPos = this.tank.Position;
@@ -97,12 +99,7 @@ namespace ETModel
 
             this.MainCamera.transform.position = cameraPos;
 
-            this.MainCamera.transform.LookAt(this.tank.GameObject.transform);
-
-            Rotate();
-
-            Zoom();
-
+            this.MainCamera.transform.LookAt(this.tank.Point);
             return;
 
 			//Vector3 cameraPos = this.mainCamera.transform.position;
@@ -113,14 +110,16 @@ namespace ETModel
             
         }
 
-        // 鼠标控制相机旋转
+        /// <summary>
+        /// 鼠标控制相机旋转
+        /// </summary>
         private void Rotate()
         {
             float x = Input.GetAxis("Mouse X") * this.rotSpeed;
 
             this.rot -= x;
 
-            return;
+
 
             float y = Input.GetAxis("Mouse Y") * this.rotSpeed;
 
@@ -132,7 +131,9 @@ namespace ETModel
         }
 
 
-        // 缩放
+        /// <summary>
+        /// 缩放
+        /// </summary>
         private void Zoom()
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");

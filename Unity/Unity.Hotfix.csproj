@@ -89,6 +89,7 @@
     <Compile Include="Assets\Hotfix\Entity\Scene.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_CreateTank.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_EnterBattle.cs" />
+    <Compile Include="Assets\Hotfix\Event\GM_EnterBattleAndCreateTank.cs" />
     <Compile Include="Assets\Hotfix\Init.cs" />
     <Compile Include="Assets\Hotfix\Module\Actor\IActorMessage.cs" />
     <Compile Include="Assets\Hotfix\Module\ActorLocation\IActorLocationMessage.cs" />

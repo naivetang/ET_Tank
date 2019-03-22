@@ -52,3 +52,5 @@ MonoBehaviour:
   - key: Terrain
     gameObject: {fileID: 4355176091545172000, guid: c11100a2117c115498cf39a96cf3dd9d,
       type: 3}
+  - key: motor
+    gameObject: {fileID: 8300000, guid: af4de87eea945ba4ca628ed8a33ac6f0, type: 3}

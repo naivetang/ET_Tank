@@ -2,7 +2,7 @@
 
 namespace ETHotfix
 {
-    [Event(EventIdType.CreateLobbyUIFinish), Event(EventIdType.GMEnterBattle)]
+    [Event(EventIdType.CreateLobbyUIFinish), Event(EventIdType.GMEnterBattle),Event(EventIdType.GMEnterBattleAndCreateTank)]
     public class CreateLobbyUIFinish_RemoveLoginUI: AEvent
 	{
 		public override void Run()

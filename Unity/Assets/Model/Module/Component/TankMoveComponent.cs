@@ -1,9 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
 namespace ETModel
 {
+
+    [ObjectSystem]
+    public class TankMoveComponentStartSystem: AwakeSystem<TankMoveComponent>
+    {
+        public override void Awake(TankMoveComponent self)
+        {
+            self.Awake();
+        }
+    }
+
     [ObjectSystem]
     public class TankMoveComponentUpdateSystem : UpdateSystem<TankMoveComponent>
     {
@@ -15,120 +26,187 @@ namespace ETModel
 
     public class TankMoveComponent : Component
     {
-        public Vector3 Target;
+        private class AxleInfo
+        {
+            //左轮
+            public WheelCollider leftWheel;
+            //右轮
+            public WheelCollider rightWheel;
+            //马力
+            public bool montor;
+            //转向
+            public bool steering;
+        }
 
-        // 开启移动协程的时间
-        public long StartTime;
+        //轮轴
+        private List<AxleInfo> axleInfos;
+        //马力
+        private float motor = 0;
+        private readonly float maxMotor = 120f;
+        //制动
+        private float breakTorque = 0;
+        private readonly float maxBreakTorque = 150f;
+        //转向角
+        private float steering = 0;
+        private readonly float maxSteering = 40;
 
-        // 开启移动协程的Unit的位置
-        public Vector3 StartPos;
+        //轮子
+        private Transform wheels;
 
-        public long needTime;
+        //履带
+        private Transform tracks;
 
-        public ETTaskCompletionSource moveTcs;
+        //音效
+        private AudioSource motorAudioSource;
+        private AudioClip motorClip;
 
-        private float steer = 20;
+        public void Awake()
+        {
+            Tank tank = this.GetParent<Tank>();
+            wheels = tank.GameObject.FindComponentInChildren<Transform>("wheels");
 
-        private float speed = 1;
+            tracks = tank.GameObject.FindComponentInChildren<Transform>("tracks");
+
+            motorAudioSource = tank.GameObject.AddComponent<AudioSource>();
+            motorAudioSource.spatialBlend = 1;
+
+            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+
+            Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
+            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset("Unit.unity3d", "Unit");
+            Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
+            motorClip = bundleGameObject.Get<AudioClip>("motor");
+
+            axleInfos = new List<AxleInfo>(2);
+            
+            // 前轮
+            AxleInfo axleInfo = new AxleInfo();
+            axleInfo.leftWheel = tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelL1");
+            axleInfo.rightWheel = tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelR1");
+            axleInfo.montor = false;
+            axleInfo.steering = true;
+            this.axleInfos.Add(axleInfo);
+            axleInfo = new AxleInfo();
+            axleInfo.leftWheel = tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelL2");
+            axleInfo.rightWheel = tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelR2");
+            axleInfo.montor = true;
+            axleInfo.steering = false;
+            this.axleInfos.Add(axleInfo);
+        }
 
         public void Update()
         {
 
-            Transform transform = this.GetParent<Tank>().GameObject.transform;
+            this.PlayerCtrl();
 
-            //旋转
-            float x = Input.GetAxis("Horizontal");
+            this.Move();
 
-            transform.Rotate(0,x*this.steer*Time.deltaTime,0);
+            this.WheelsRolling();
 
-            //前进和后退
-            float y = Input.GetAxis("Vertical");
+            this.TrackRolling();
 
-            Vector3 s = y * transform.forward * speed * Time.deltaTime;
-
-            transform.position += s;
-
-            return;
-
-            // 上
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                transform.position += transform.forward * speed;
-            }
-            //下
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                transform.eulerAngles = new Vector3(0,180,0);
-                transform.position += transform.forward * speed;
-            }
-            //左
-            else if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                transform.eulerAngles = new Vector3(0, 270, 0);
-                transform.position += transform.forward * speed;
-            }
-            //右
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                transform.eulerAngles = new Vector3(0, 90, 0);
-                transform.position += transform.forward * speed;
-            }
-
-
-
-            return;
-            if (this.moveTcs == null)
-            {
-                return;
-            }
-
-            Unit unit = this.GetParent<Unit>();
-            long timeNow = TimeHelper.Now();
-
-            if (timeNow - this.StartTime >= this.needTime)
-            {
-                unit.Position = this.Target;
-                ETTaskCompletionSource tcs = this.moveTcs;
-                this.moveTcs = null;
-                tcs.SetResult();
-
-                return;
-            }
-
-            float amount = (timeNow - this.StartTime) * 1f / this.needTime;
-            unit.Position = Vector3.Lerp(this.StartPos, this.Target, amount);
+            this.Audio();
         }
 
-        public ETTask MoveToAsync(Vector3 target, float speedValue, CancellationToken cancellationToken)
+        /// <summary>
+        /// 玩家操作
+        /// </summary>
+        private void PlayerCtrl()
         {
-            Unit unit = this.GetParent<Unit>();
+            //马力和转向
+            this.motor = this.maxMotor * Input.GetAxis("Vertical");
+            this.steering = this.maxSteering * Input.GetAxis("Horizontal");
 
-            if ((target - this.Target).magnitude < 0.1f)
+            this.breakTorque = 0;
+            foreach (AxleInfo axleInfo in this.axleInfos)
             {
-                return ETTask.CompletedTask;
+                if (axleInfo.leftWheel.rpm > 5 && this.motor < 0)
+                    this.breakTorque = this.maxBreakTorque;
+                else if (axleInfo.leftWheel.rpm < -5 && this.motor > 0)
+                    this.breakTorque = this.maxBreakTorque;
             }
-
-            this.Target = target;
-
-
-            this.StartPos = unit.Position;
-            this.StartTime = TimeHelper.Now();
-            float distance = (this.Target - this.StartPos).magnitude;
-            if (Math.Abs(distance) < 0.1f)
-            {
-                return ETTask.CompletedTask;
-            }
-
-            this.needTime = (long)(distance / speedValue * 1000);
-
-            this.moveTcs = new ETTaskCompletionSource();
-
-            cancellationToken.Register(() =>
-            {
-                this.moveTcs = null;
-            });
-            return this.moveTcs.Task;
         }
+
+        /// <summary>
+        /// 坦克移动
+        /// </summary>
+        private void Move()
+        {
+            foreach (AxleInfo axleInfo in this.axleInfos)
+            {
+                if (axleInfo.steering)
+                {
+                    axleInfo.leftWheel.steerAngle = axleInfo.rightWheel.steerAngle = this.steering;
+                }
+
+                if (axleInfo.montor)
+                {
+                    axleInfo.leftWheel.motorTorque = axleInfo.rightWheel.motorTorque = this.motor;
+                }
+
+                if (true)
+                {
+                    axleInfo.leftWheel.brakeTorque = axleInfo.rightWheel.brakeTorque = this.breakTorque;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 轮子旋转
+        /// </summary>
+        private void WheelsRolling()
+        {
+            axleInfos[1].leftWheel.GetWorldPose(out Vector3 _,out Quaternion rotation);
+            foreach (Transform wheel in this.wheels)
+            {
+                wheel.rotation = rotation;
+            }
+        }
+
+        /// <summary>
+        /// 履带滚动
+        /// </summary>
+        private void TrackRolling()
+        {
+            float offset = 0;
+
+            if (this.wheels.GetChild(0) != null)
+                offset = this.wheels.GetChild(0).localEulerAngles.x;
+
+            //Log.Info($"offset = {offset}");
+
+
+            offset = offset / 90f;
+
+            foreach (Transform track in this.tracks)
+            {
+                MeshRenderer mr = track.gameObject.GetComponent<MeshRenderer>();
+
+                if(mr == null)
+                    continue;
+
+                Material mtl = mr.material;
+                
+                mtl.mainTextureOffset = new Vector2(0,offset);
+            }
+        }
+
+        /// <summary>
+        /// 音效播放
+        /// </summary>
+        private void Audio()
+        {
+            if (PF.Mathf.Abs(this.motor) > 0.1f && !this.motorAudioSource.isPlaying)
+            {
+                this.motorAudioSource.loop = true;
+                this.motorAudioSource.clip = this.motorClip;
+                this.motorAudioSource.Play();
+            }
+            else if (PF.Mathf.Abs(this.motor) <= 0.1f)
+            {
+                this.motorAudioSource.Pause();
+            }
+        }
+
     }
 }

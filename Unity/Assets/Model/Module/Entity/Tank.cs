@@ -51,6 +51,15 @@ namespace ETModel
                 return this.GameObject.transform;
             }
         }
+
+        public Vector3 Point
+        {
+            get
+            {
+                GameObject cameraPoint = this.GameObject.FindChildObject("cameraPoint");
+                return cameraPoint != null? cameraPoint.transform.position : this.Position;
+            }
+        }
         public override void Dispose()
         {
             if (this.IsDisposed)

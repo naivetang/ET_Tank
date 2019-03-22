@@ -90,5 +90,6 @@ namespace ETModel
 			Game.Hotfix.OnApplicationQuit?.Invoke();
 			Game.Close();
 		}
-	}
+
+    }
 }

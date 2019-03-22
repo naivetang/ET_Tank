@@ -10,6 +10,7 @@
 	    public const string ClickEnter = "ClickEnter";
 	    public const string GMCreateTank = "GMCreateTank";
 	    public const string GMEnterBattle = "GMEnterBattle";
+	    public const string GMEnterBattleAndCreateTank = "1";
         
 	}
 }
