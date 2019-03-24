@@ -170,15 +170,17 @@ namespace ETModel
 				this.loaders.Enqueue(component.InstanceId);
 			}
 
-			if (this.updateSystems.ContainsKey(type))
+            if (this.startSystems.ContainsKey(type))
+            {
+                this.starts.Enqueue(component.InstanceId);
+            }
+
+            if (this.updateSystems.ContainsKey(type))
 			{
 				this.updates.Enqueue(component.InstanceId);
 			}
 
-			if (this.startSystems.ContainsKey(type))
-			{
-				this.starts.Enqueue(component.InstanceId);
-			}
+			
 
 			if (this.lateUpdateSystems.ContainsKey(type))
 			{

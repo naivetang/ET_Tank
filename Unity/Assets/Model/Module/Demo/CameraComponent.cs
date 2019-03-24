@@ -27,9 +27,9 @@ namespace ETModel
 
 	public class CameraComponent : Component
 	{
-		public Camera mainCamera;
+		private Camera mainCamera;
 
-		public Tank tank;
+		private Tank tank;
 
         //距离
         private float distance = 10f;

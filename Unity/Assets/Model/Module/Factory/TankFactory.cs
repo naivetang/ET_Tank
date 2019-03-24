@@ -23,8 +23,16 @@ namespace ETModel
             tank.GameObject.transform.SetParent(parent.transform, false);
 
             tank.AddComponent<TankMoveComponent>();
+
             tank.AddComponent<CameraComponent>();
+
             tank.AddComponent<TurretComponent>();
+
+            // 发射子弹的组件
+            tank.AddComponent<BulletComponent>();
+
+            tank.AddComponent<TankShootComponent>();
+
 
             tankComponent.Add(tank);
             return tank;

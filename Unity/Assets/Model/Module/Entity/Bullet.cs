@@ -1,46 +1,49 @@
-﻿using System.Runtime.CompilerServices;
-using PF;
+﻿using PF;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 namespace ETModel
 {
-    public enum TankType
+    [ObjectSystem]
+    public class BulletAwake: AwakeSystem<Bullet,Tank>
     {
-        None,
-        Owener,
-        Enemy
+        public override void Awake(Bullet self, Tank _tank)
+        {
+            self.Awake(_tank);
+        }
     }
 
-    public sealed class Tank : Entity
+    public sealed class Bullet : Entity
     {
         private GameObject m_gameObject;
 
-        private GameObject m_gun;
-
-        private GameObject m_turret;
-
+        private Tank m_tank;
 
         public GameObject GameObject
         {
             set
             {
                 this.m_gameObject = value;
-                this.m_gun = this.m_gameObject.FindChildObjectByPath("turret/gun");
-
-                this.m_turret = this.m_gameObject.FindChildObjectByPath("turret");
             }
             get
             {
-                return this.m_gameObject;
+                return m_gameObject;
             }
         }
 
-        public GameObject Gun => this.m_gun;
+        public Tank Tank
+        {
+            get
+            {
+                return this.m_tank;
+            }
+        }
 
-        public GameObject Turret => this.m_turret;
-        
+        public void Awake(Tank _tank)
+        {
+            this.m_tank = _tank;
+        }
 
         public Vector3 Position
         {
@@ -66,28 +69,16 @@ namespace ETModel
             }
         }
 
-        public Transform Transform
-        {
-            get
-            {
-                return this.GameObject.transform;
-            }
-        }
-
-        public Vector3 Point
-        {
-            get
-            {
-                GameObject cameraPoint = this.GameObject.FindChildObject("cameraPoint");
-                return cameraPoint != null? cameraPoint.transform.position : this.Position;
-            }
-        }
         public override void Dispose()
         {
             if (this.IsDisposed)
             {
                 return;
             }
+
+            UnityEngine.Object.Destroy(this.m_gameObject);
+
+            this.m_tank.GetComponent<BulletComponent>().RemoveNoDispose(this.InstanceId);
 
             base.Dispose();
         }

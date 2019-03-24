@@ -20,6 +20,7 @@ namespace ETModel
 
         private readonly Dictionary<long, Tank> idTanks = new Dictionary<long, Tank>();
 
+
         public void Awake()
         {
             Instance = this;
@@ -38,7 +39,10 @@ namespace ETModel
                 Tank.Dispose();
             }
 
+       
+
             this.idTanks.Clear();
+
 
             Instance = null;
         }

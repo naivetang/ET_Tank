@@ -54,3 +54,7 @@ MonoBehaviour:
       type: 3}
   - key: motor
     gameObject: {fileID: 8300000, guid: af4de87eea945ba4ca628ed8a33ac6f0, type: 3}
+  - key: explode
+    gameObject: {fileID: 8300000, guid: 53ba6765587259544b6820ba7ced21a9, type: 3}
+  - key: Bullet
+    gameObject: {fileID: 195106, guid: b23597a8e86a14d4492cacaa01396033, type: 3}
