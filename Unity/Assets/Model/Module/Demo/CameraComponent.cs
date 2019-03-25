@@ -38,8 +38,8 @@ namespace ETModel
         private float rot = 0;
 
         // 纵向角度范围
-        private  float maxRoll = 60f * Mathf.PI * 2 / 360;
-        private float minRoll = 10f * Mathf.PI * 2 / 360;
+        private float maxRoll = PF.Mathf.Deg2Rad(30f);  //60f * Mathf.PI * 2 / 360;
+        private float minRoll = PF.Mathf.Deg2Rad(0f);//10f * Mathf.PI * 2 / 360;
 
         //纵向角度
         private float roll = 30f * Mathf.PI * 2 / 360;
@@ -83,7 +83,7 @@ namespace ETModel
         /// </summary>
 		private void UpdatePosition()
         {
-            Vector3 targetPos = this.tank.Position;
+            Vector3 targetPos = this.tank.Point;
 
             Vector3 cameraPos;
 
@@ -100,6 +100,8 @@ namespace ETModel
             this.MainCamera.transform.position = cameraPos;
 
             this.MainCamera.transform.LookAt(this.tank.Point);
+
+
             return;
 
 			//Vector3 cameraPos = this.mainCamera.transform.position;
@@ -127,7 +129,7 @@ namespace ETModel
 
             this.roll = PF.Mathf.Clamp(this.roll, this.minRoll, this.maxRoll);
 
-            //Log.Info($"roll = {roll}" );
+            //Log.Info($"相机纵向角度 = {PF.Mathf.Rad2Deg(roll)}" );
         }
 
 

@@ -78,6 +78,7 @@ namespace ETModel
 
             UnityEngine.Object.Destroy(this.m_gameObject);
 
+            // 从子弹所属坦克的子弹系统中移除这颗子弹，但是不Dispose，因为现在就在子弹的Dispose过程中。
             this.m_tank.GetComponent<BulletComponent>().RemoveNoDispose(this.InstanceId);
 
             base.Dispose();

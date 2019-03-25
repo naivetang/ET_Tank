@@ -66,14 +66,6 @@ namespace ETModel
             }
         }
 
-        public Transform Transform
-        {
-            get
-            {
-                return this.GameObject.transform;
-            }
-        }
-
         public Vector3 Point
         {
             get

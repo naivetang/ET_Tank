@@ -570,11 +570,21 @@ namespace PF
             return (long) BitConverter.ToUInt64(buffer, 0) & long.MaxValue;
         }
         
+        /// <summary>
+        /// 弧度转角度
+        /// </summary>
+        /// <param name="radians"></param>
+        /// <returns></returns>
         public static float Rad2Deg(float radians)
         {
             return (float)(radians * 180 / System.Math.PI);
         }
         
+        /// <summary>
+        /// 角度转弧度
+        /// </summary>
+        /// <param name="degrees"></param>
+        /// <returns></returns>
         public static float Deg2Rad(float degrees)
         {
             return (float)(degrees * System.Math.PI / 180);

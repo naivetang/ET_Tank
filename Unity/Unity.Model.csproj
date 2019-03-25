@@ -526,6 +526,9 @@
     <Compile Include="Assets\Model\Module\UI\UIComponent.cs" />
     <Compile Include="Assets\Model\Module\UI\UIFactoryAttribute.cs" />
     <Compile Include="Assets\Model\Module\UI\UIType.cs" />
+    <Compile Include="Assets\Model\MonoScript\BulletCollision.cs" />
+    <Compile Include="Assets\Model\MonoScript\ExplosionPhysicsForce.cs" />
+    <Compile Include="Assets\Model\MonoScript\ParticleSystemMultiplier.cs" />
     <Compile Include="Assets\Model\Other\AppType.cs" />
     <Compile Include="Assets\Model\Other\Define.cs" />
     <Compile Include="Assets\Model\Other\ECSView.cs" />

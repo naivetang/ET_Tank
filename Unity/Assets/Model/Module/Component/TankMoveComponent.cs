@@ -42,7 +42,7 @@ namespace ETModel
         private List<AxleInfo> axleInfos;
         //马力
         private float motor = 0;
-        private readonly float maxMotor = 120f;
+        private readonly float maxMotor = 320f;
         //制动
         private float breakTorque = 0;
         private readonly float maxBreakTorque = 150f;

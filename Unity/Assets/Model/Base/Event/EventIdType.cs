@@ -24,5 +24,7 @@
 		public const string MaxModelEvent = "MaxModelEvent";
 
 	    public const string MoveFinish = "MoveFinish";
-	}
+
+        public const string BulletCollision = "BulletCollision";
+    }
 }

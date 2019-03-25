@@ -49,7 +49,7 @@ namespace ETModel
 
         public void Awake()
         {
-            this.turretTransform = this.GetParent<Tank>().Transform.Find("turret");
+            this.turretTransform = this.GetParent<Tank>().GameObject.FindChildObjectByPath("turret").transform;
             this.gunTransform = this.GetParent<Tank>().GameObject.FindChildObjectByPath("turret/gun").transform;
         }
 
@@ -82,7 +82,7 @@ namespace ETModel
         private void GunRotate()
         {
             this.rollTarget = Camera.main.transform.eulerAngles.x;
-            rollTarget -= 40;
+            this.rollTarget= this.rollTarget * 2f / 3f - 10f;
 
             //Log.Info($"rollTarget = {this.rollTarget}");
 
@@ -98,7 +98,7 @@ namespace ETModel
             if (euler.x > 180)
                 euler.x -= 360;
 
-            euler.x = PF.Mathf.Clamp(euler.x, this.minRoll, this.maxRoll);
+            //euler.x = PF.Mathf.Clamp(euler.x, this.minRoll, this.maxRoll);
 
             this.gunTransform.localEulerAngles = new Vector3(euler.x,localEuler.y,localEuler.z);
 
