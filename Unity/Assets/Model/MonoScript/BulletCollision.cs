@@ -21,5 +21,7 @@ namespace ETModel
         {
             this.m_bulletFly.OnCollisionEnter(collision);
         }
+
+        
     }
 }

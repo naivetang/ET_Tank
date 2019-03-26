@@ -18,7 +18,9 @@ namespace ETModel
 
         public Tank MyTank;
 
-        private readonly Dictionary<long, Tank> idTanks = new Dictionary<long, Tank>();
+        private readonly Dictionary<long,long> m_instaceid2ID = new Dictionary<long, long>();
+
+        private readonly Dictionary<long, Tank> m_idTanks = new Dictionary<long, Tank>();
 
 
         public void Awake()
@@ -34,14 +36,14 @@ namespace ETModel
             }
             base.Dispose();
 
-            foreach (Tank Tank in this.idTanks.Values)
+            foreach (Tank Tank in this.m_idTanks.Values)
             {
                 Tank.Dispose();
             }
 
        
 
-            this.idTanks.Clear();
+            this.m_idTanks.Clear();
 
 
             Instance = null;
@@ -49,40 +51,70 @@ namespace ETModel
 
         public void Add(Tank Tank)
         {
-            this.idTanks.Add(Tank.Id, Tank);
+            
+            this.m_instaceid2ID.Add(Tank.GameObject.GetInstanceID(),Tank.Id);
+            this.m_idTanks.Add(Tank.Id, Tank);
         }
+
 
         public Tank Get(long id)
         {
-            Tank Tank;
-            this.idTanks.TryGetValue(id, out Tank);
+
+            if (this.m_instaceid2ID.TryGetValue(id, out long tankId))
+            {
+                if (this.m_idTanks.TryGetValue(tankId, out Tank tank))
+                {
+                    return tank;
+                }
+            }
+
+            this.m_idTanks.TryGetValue(id, out Tank Tank);
             return Tank;
         }
 
         public void Remove(long id)
         {
-            Tank Tank;
-            this.idTanks.TryGetValue(id, out Tank);
-            this.idTanks.Remove(id);
-            Tank?.Dispose();
+            if (this.m_instaceid2ID.TryGetValue(id, out long tankId))
+            {
+                this.m_instaceid2ID.Remove(id);
+                if (this.m_idTanks.TryGetValue(tankId, out Tank tank))
+                {
+                    this.m_idTanks.Remove(tankId);
+                    tank?.Dispose();
+                    return;
+                }
+            }
+
+            // Tank Tank;
+            // this.m_idTanks.TryGetValue(id, out Tank);
+            // this.m_idTanks.Remove(id);
+            // Tank?.Dispose();
         }
 
         public void RemoveNoDispose(long id)
         {
-            this.idTanks.Remove(id);
+            if (this.m_instaceid2ID.TryGetValue(id, out long tankId))
+            {
+                this.m_instaceid2ID.Remove(id);
+                if (this.m_idTanks.TryGetValue(tankId, out Tank tank))
+                {
+                    this.m_idTanks.Remove(tankId);
+                }
+            }
+
         }
 
         public int Count
         {
             get
             {
-                return this.idTanks.Count;
+                return this.m_idTanks.Count;
             }
         }
 
         public Tank[] GetAll()
         {
-            return this.idTanks.Values.ToArray();
+            return this.m_idTanks.Values.ToArray();
         }
     }
 }

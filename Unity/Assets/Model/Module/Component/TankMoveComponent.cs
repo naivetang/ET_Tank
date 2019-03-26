@@ -26,6 +26,8 @@ namespace ETModel
 
     public class TankMoveComponent : Component
     {
+        private Tank m_tank;
+
         private class AxleInfo
         {
             //左轮
@@ -58,16 +60,17 @@ namespace ETModel
 
         //音效
         private AudioSource motorAudioSource;
+
         private AudioClip motorClip;
 
         public void Awake()
         {
-            Tank tank = this.GetParent<Tank>();
-            wheels = tank.GameObject.FindComponentInChildren<Transform>("wheels");
+            m_tank = this.GetParent<Tank>();
+            wheels = m_tank.GameObject.FindComponentInChildren<Transform>("wheels");
 
-            tracks = tank.GameObject.FindComponentInChildren<Transform>("tracks");
+            tracks = m_tank.GameObject.FindComponentInChildren<Transform>("tracks");
 
-            motorAudioSource = tank.GameObject.AddComponent<AudioSource>();
+            motorAudioSource = m_tank.GameObject.AddComponent<AudioSource>();
             motorAudioSource.spatialBlend = 1;
 
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
@@ -81,14 +84,14 @@ namespace ETModel
             
             // 前轮
             AxleInfo axleInfo = new AxleInfo();
-            axleInfo.leftWheel = tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelL1");
-            axleInfo.rightWheel = tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelR1");
+            axleInfo.leftWheel = m_tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelL1");
+            axleInfo.rightWheel = m_tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelR1");
             axleInfo.montor = false;
             axleInfo.steering = true;
             this.axleInfos.Add(axleInfo);
             axleInfo = new AxleInfo();
-            axleInfo.leftWheel = tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelL2");
-            axleInfo.rightWheel = tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelR2");
+            axleInfo.leftWheel = m_tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelL2");
+            axleInfo.rightWheel = m_tank.GameObject.FindComponentInChildren<WheelCollider>("PhysicalBody/wheelR2");
             axleInfo.montor = true;
             axleInfo.steering = false;
             this.axleInfos.Add(axleInfo);
@@ -96,6 +99,9 @@ namespace ETModel
 
         public void Update()
         {
+
+            if (this.m_tank.m_tankType != TankType.Owener)
+                return;
 
             this.PlayerCtrl();
 

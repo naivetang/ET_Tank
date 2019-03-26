@@ -10,6 +10,15 @@ using UnityEditor;
 
 namespace ETModel
 {
+
+    public enum PrefabType
+    {
+        Tank,                   //坦克
+        Bullet,                 //炮弹
+        Explosion,              //子弹爆炸特效
+        TankBoom,
+    }
+
 	public class ABInfo : Component
 	{
 		private int refCount;
@@ -181,6 +190,20 @@ namespace ETModel
 		private readonly Dictionary<string, Dictionary<string, UnityEngine.Object>> resourceCache = new Dictionary<string, Dictionary<string, UnityEngine.Object>>();
 
 		private readonly Dictionary<string, ABInfo> bundles = new Dictionary<string, ABInfo>();
+
+        private readonly Dictionary<PrefabType, Queue<GameObject>> m_prefabs = new Dictionary<PrefabType, Queue<GameObject>>();
+
+        private GameObject m_poolRoot;
+
+        private GameObject PoolRoot
+        {
+            get
+            {
+                if(this.m_poolRoot == null)
+                    this.m_poolRoot = GameObject.Find("ObjPool");
+                return this.m_poolRoot;
+            }
+        }
 
 		public override void Dispose()
 		{
@@ -444,5 +467,46 @@ namespace ETModel
 			}
 			return sb.ToString();
 		}
+
+        public GameObject NewObj(PrefabType type, GameObject prefab)
+        {
+            if (!this.m_prefabs.TryGetValue(type, out Queue<GameObject> gameObjects))
+            {
+                this.m_prefabs.Add(type, new Queue<GameObject>());
+            }
+
+            if (this.m_prefabs[type].Count == 0)
+            {
+                return UnityEngine.Object.Instantiate(prefab);
+            }
+
+            GameObject old = this.m_prefabs[type].Dequeue();
+
+            old.SetActive(true);
+
+            return old;
+        }
+
+        public void RecycleObj(PrefabType type, GameObject prefab, Action<GameObject> callBack = null)
+        {
+            if (!this.m_prefabs.TryGetValue(type, out Queue<GameObject> gameObjects))
+            {
+                this.m_prefabs.Add(type,new Queue<GameObject>());
+            }
+
+            // 如果需要移除一些组件
+            if (callBack != null)
+            {
+                callBack(prefab);
+            }
+
+            prefab.transform.SetParent(this.PoolRoot.transform);
+
+            prefab.SetActive(false);
+
+            this.m_prefabs[type].Enqueue(prefab);
+
+
+        }
 	}
 }

@@ -18,7 +18,9 @@ namespace ETModel
 
             Bullet bullet = ComponentFactory.CreateWithId<Bullet, Tank>(IdGenerater.GenerateId(), tank);
 
-            bullet.GameObject = UnityEngine.Object.Instantiate(prefab);
+
+
+            bullet.GameObject = resourcesComponent.NewObj(PrefabType.Bullet, prefab);
 
             GameObject parent = tank.GameObject.FindChildObjectByPath("bullets");
 

@@ -8,6 +8,7 @@ namespace ETHotfix
         public override void Run(long id)
         {
             Tank tank = TankFactory.Create(id);
+
         }
     }
 }

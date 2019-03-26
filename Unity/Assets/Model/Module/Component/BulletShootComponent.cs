@@ -54,7 +54,7 @@ namespace ETModel
             if (Time.time - this.lastShootTime < this.shootInterval)
                 return;
 
-            Vector3 pos = this.m_tank.Gun.transform.position + this.m_tank.Gun.transform.forward * 5;
+            Vector3 pos = this.m_tank.Gun.transform.position + this.m_tank.Gun.transform.forward * 2;
 
             //
             Bullet bullet = BulletFactory.Create(this.m_tank);
@@ -62,6 +62,9 @@ namespace ETModel
             bullet.GameObject.transform.position = pos;
 
             bullet.GameObject.transform.rotation = this.m_tank.Gun.transform.rotation;
+
+            //UnityEditor.EditorApplication.isPaused = true;
+
 
             //UnityEditor.EditorApplication.isPaused = true;
 

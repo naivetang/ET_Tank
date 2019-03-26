@@ -76,7 +76,14 @@ namespace ETModel
                 return;
             }
 
-            UnityEngine.Object.Destroy(this.m_gameObject);
+            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+
+            // 回收GameObject
+            resourcesComponent.RecycleObj(PrefabType.Bullet,this.m_gameObject, (obj) =>
+            {
+                // 移除碰撞组件
+                UnityEngine.Object.Destroy(obj.GetComponent<BulletCollision>());
+            });
 
             // 从子弹所属坦克的子弹系统中移除这颗子弹，但是不Dispose，因为现在就在子弹的Dispose过程中。
             this.m_tank.GetComponent<BulletComponent>().RemoveNoDispose(this.InstanceId);

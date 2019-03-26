@@ -15,6 +15,12 @@ namespace ETModel
 
     public sealed class Tank : Entity
     {
+        public TankType m_tankType = TankType.None;
+
+        private float m_maxHp = 100f;
+
+        private float m_hp = 100f;
+
         private GameObject m_gameObject;
 
         private GameObject m_gun;
@@ -40,6 +46,32 @@ namespace ETModel
         public GameObject Gun => this.m_gun;
 
         public GameObject Turret => this.m_turret;
+
+        public void BeAttacked(float att)
+        {
+            if (m_hp <= 0)
+                return;
+
+            if (this.m_hp > 0)
+                this.m_hp -= att;
+
+            if (this.m_hp <= 0)
+            {
+                ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+
+                resourcesComponent.LoadBundle(AssetBundleName.Unit);
+
+                GameObject unit =  (GameObject)resourcesComponent.GetAsset(AssetBundleName.Unit, PrefabName.Unit);
+
+                resourcesComponent.UnloadBundle(AssetBundleName.Unit);
+
+                GameObject boomPrefab = unit.Get<GameObject>(PrefabName.TankBoomEffect);
+
+                UnityEngine.GameObject boomEffect = resourcesComponent.NewObj(PrefabType.TankBoom, boomPrefab);
+
+                boomEffect.transform.position = this.Point;
+            }
+        }
         
 
         public Vector3 Position
@@ -80,6 +112,18 @@ namespace ETModel
             {
                 return;
             }
+
+            //TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
+
+            // 从坦克管理器里面删除此坦克
+            //tankComponent.RemoveNoDispose(this.m_gameObject.GetInstanceID());
+
+            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+
+            // 回收GameObject
+            resourcesComponent.RecycleObj(PrefabType.Tank, this.m_gameObject);
+
+            //Log.Info("删除坦克");
 
             base.Dispose();
         }

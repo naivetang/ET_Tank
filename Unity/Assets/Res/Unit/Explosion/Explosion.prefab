@@ -23331,10 +23331,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ac1691131a8c844dafe8b6ace6a172a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f6bcc6b3f63b764f9b21a5fdfc4dac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 20
+  explosionForce: 10
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23344,7 +23344,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039587c051912eb4ead9e58344c5f3ce, type: 3}
+  m_Script: {fileID: 11500000, guid: fc9a5e3e774ccc54096abd92e98732c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1

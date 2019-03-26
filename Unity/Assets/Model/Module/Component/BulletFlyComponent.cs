@@ -30,7 +30,7 @@ namespace ETModel
         }
     }
 
-    public class BulletFlyComponent : Component 
+    public class BulletFlyComponent : Component
     {
         private Bullet m_bullet;
 
@@ -60,8 +60,8 @@ namespace ETModel
         {
             this.m_bullet.GameObject.transform.position += this.m_bullet.GameObject.transform.forward * this.speed * Time.deltaTime;
 
-             if(Time.time - this.instantiateTime > this.maxLiftTime)
-                 this.m_bullet.Dispose();
+            if (Time.time - this.instantiateTime > this.maxLiftTime)
+                this.m_bullet.Dispose();
         }
 
         public void OnCollisionEnter(Collision collision)
@@ -72,41 +72,25 @@ namespace ETModel
 
             // 创建爆炸效果
 
+            ExplosionEffectFactory.Create(this.m_bullet.Position);
+
+
+            /*if (collision.rigidbody.tag == Tag.Tank)
+            {
+                Log.Info("撞到坦克");
+            }*/
+
+            if (collision.rigidbody != null && collision.rigidbody.tag == Tag.Tank)
+            {
+                // 给坦克造成伤害
+
+                TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
+
+                tankComponent.Remove(collision.rigidbody.gameObject.GetInstanceID());
+
+            }
 
             this.m_bullet.Dispose();
-
         }
-
-        // private void OnCollision()
-        // {
-        //     Ray ray = new Ray();
-        //
-        //     ray.origin = this.m_collider.gameObject.transform.position;
-        //
-        //     ray.direction = this.m_collider.gameObject.transform.forward;
-        //     
-        //
-        //     if (this.m_collider.Raycast(ray, out RaycastHit hit, this.m_collider.radius))
-        //     {
-        //         Log.Info($"方向前 子弹碰撞物体 = {hit.transform.gameObject.name}");
-        //         return;
-        //     }
-        //     
-        //     ray.direction = -this.m_collider.gameObject.transform.up;
-        //
-        //     if (this.m_collider.Raycast(ray, out hit, this.m_collider.radius))
-        //     {
-        //         Log.Info($"方向下 子弹碰撞物体 = {hit.transform.gameObject.name}");
-        //         return;
-        //     }
-        //
-        //     ray.direction = this.m_collider.gameObject.transform.up;
-        //
-        //     if (this.m_collider.Raycast(ray, out hit, this.m_collider.radius))
-        //     {
-        //         Log.Info($"方向上 子弹碰撞物体 = {hit.transform.gameObject.name}");
-        //         return;
-        //     }
-        // }
     }
 }

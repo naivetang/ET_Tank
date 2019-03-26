@@ -18,20 +18,27 @@ namespace ETModel
             TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
 
             Tank tank = ComponentFactory.CreateWithId<Tank>(id);
-            tank.GameObject = UnityEngine.Object.Instantiate(prefab);
+            tank.GameObject = resourcesComponent.NewObj(PrefabType.Tank, prefab);
             GameObject parent = GameObject.Find($"/Global/Unit");
             tank.GameObject.transform.SetParent(parent.transform, false);
 
-            tank.AddComponent<TankMoveComponent>();
+            if (id == 10000)
+            {
+                tank.m_tankType = TankType.Owener;
 
-            tank.AddComponent<CameraComponent>();
 
-            tank.AddComponent<TurretComponent>();
+                tank.AddComponent<TankMoveComponent>();
 
-            // 发射子弹的组件
-            tank.AddComponent<BulletComponent>();
+                tank.AddComponent<CameraComponent>();
 
-            tank.AddComponent<TankShootComponent>();
+                tank.AddComponent<TurretComponent>();
+
+                // 发射子弹的组件
+                tank.AddComponent<BulletComponent>();
+
+                tank.AddComponent<TankShootComponent>();
+            }
+
 
 
             tankComponent.Add(tank);

@@ -318,6 +318,7 @@
     <Compile Include="Assets\Model\Module\Component\BulletComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\BulletFlyComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\BulletShootComponent.cs" />
+    <Compile Include="Assets\Model\Module\Component\ExplosionEffectComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TankComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TankMoveComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TurretComponent.cs" />
@@ -327,6 +328,7 @@
     <Compile Include="Assets\Model\Module\Config\ConfigComponent.cs" />
     <Compile Include="Assets\Model\Module\Config\ConfigHelper.cs" />
     <Compile Include="Assets\Model\Module\Config\IConfig.cs" />
+    <Compile Include="Assets\Model\Module\Config\StaticConfig.cs" />
     <Compile Include="Assets\Model\Module\Demo\AnimatorComponent.cs" />
     <Compile Include="Assets\Model\Module\Demo\CameraComponent.cs" />
     <Compile Include="Assets\Model\Module\Demo\MoveComponent.cs" />
@@ -342,6 +344,7 @@
     <Compile Include="Assets\Model\Module\Entity\Bullet.cs" />
     <Compile Include="Assets\Model\Module\Entity\Tank.cs" />
     <Compile Include="Assets\Model\Module\Factory\BulletFactory.cs" />
+    <Compile Include="Assets\Model\Module\Factory\ExplosionEffectFactory.cs" />
     <Compile Include="Assets\Model\Module\Factory\TankFactory.cs" />
     <Compile Include="Assets\Model\Module\FairyGUI\FUI.cs" />
     <Compile Include="Assets\Model\Module\FairyGUI\FUIComponent.cs" />
