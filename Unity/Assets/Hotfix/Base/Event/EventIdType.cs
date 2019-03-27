@@ -11,6 +11,10 @@
 	    public const string GMCreateTank = "GMCreateTank";
 	    public const string GMEnterBattle = "GMEnterBattle";
 	    public const string GMEnterBattleAndCreateTank = "1";
-        
-	}
+
+        public const string EnterSceneFinish = "EnterSceneFinish";
+
+        public const string EnterBattlefieldFinish = "EnterBattlefieldFinish";
+
+    }
 }

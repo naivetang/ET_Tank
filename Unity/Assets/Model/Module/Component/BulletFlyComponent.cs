@@ -34,7 +34,7 @@ namespace ETModel
     {
         private Bullet m_bullet;
 
-        private float speed = 100f;
+        private float speed = 40f;
 
         private float maxLiftTime = 2f;
 
@@ -66,8 +66,39 @@ namespace ETModel
 
         public void OnCollisionEnter(Collision collision)
         {
-            //Log.Info($"撞到了{collision.collider.transform.gameObject.name}");
-            //Log.Info($"销毁子弹");
+            Log.Info("进入OnCollisionEnter");
+            // 创建爆炸效果
+
+            ExplosionEffectFactory.Create(this.m_bullet.Position);
+
+
+            if (collision.rigidbody != null && collision.rigidbody.tag == Tag.Tank)
+            {
+                // 给坦克造成伤害
+
+
+
+                TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
+
+                long objInstanceId = collision.rigidbody.gameObject.GetInstanceID();
+
+                Tank beAttackTank = tankComponent.Get(objInstanceId);
+
+                beAttackTank.BeAttacked(this.m_bullet.AttackPower);
+
+            }
+
+            this.m_bullet.Dispose();
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            Log.Info("OnTriggerEnter");
+
+            if (other.gameObject != null && other.gameObject.layer == 9)
+            {
+                return;
+            }
 
 
             // 创建爆炸效果
@@ -75,22 +106,23 @@ namespace ETModel
             ExplosionEffectFactory.Create(this.m_bullet.Position);
 
 
-            /*if (collision.rigidbody.tag == Tag.Tank)
-            {
-                Log.Info("撞到坦克");
-            }*/
-
-            if (collision.rigidbody != null && collision.rigidbody.tag == Tag.Tank)
+            if (other.gameObject != null && other.gameObject.tag == Tag.Tank)
             {
                 // 给坦克造成伤害
 
                 TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
 
-                tankComponent.Remove(collision.rigidbody.gameObject.GetInstanceID());
+                long objInstanceId = other.gameObject.GetInstanceID();
+
+                Tank beAttackTank = tankComponent.Get(objInstanceId);
+
+                beAttackTank.BeAttacked(this.m_bullet.AttackPower);
 
             }
 
             this.m_bullet.Dispose();
         }
+
+        
     }
 }

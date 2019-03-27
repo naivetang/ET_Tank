@@ -57,19 +57,9 @@ namespace ETModel
 
             if (this.m_hp <= 0)
             {
-                ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 
-                resourcesComponent.LoadBundle(AssetBundleName.Unit);
+                TankFactory.CreateTankBoomEffect(this);
 
-                GameObject unit =  (GameObject)resourcesComponent.GetAsset(AssetBundleName.Unit, PrefabName.Unit);
-
-                resourcesComponent.UnloadBundle(AssetBundleName.Unit);
-
-                GameObject boomPrefab = unit.Get<GameObject>(PrefabName.TankBoomEffect);
-
-                UnityEngine.GameObject boomEffect = resourcesComponent.NewObj(PrefabType.TankBoom, boomPrefab);
-
-                boomEffect.transform.position = this.Point;
             }
         }
         
@@ -102,7 +92,7 @@ namespace ETModel
         {
             get
             {
-                GameObject cameraPoint = this.GameObject.FindChildObject("cameraPoint");
+                GameObject cameraPoint = this.GameObject.FindChildObjectByPath("cameraPoint");
                 return cameraPoint != null? cameraPoint.transform.position : this.Position;
             }
         }
@@ -118,10 +108,12 @@ namespace ETModel
             // 从坦克管理器里面删除此坦克
             //tankComponent.RemoveNoDispose(this.m_gameObject.GetInstanceID());
 
-            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+
+
+            //ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 
             // 回收GameObject
-            resourcesComponent.RecycleObj(PrefabType.Tank, this.m_gameObject);
+            //resourcesComponent.RecycleObj(PrefabType.Tank, this.m_gameObject);
 
             //Log.Info("删除坦克");
 

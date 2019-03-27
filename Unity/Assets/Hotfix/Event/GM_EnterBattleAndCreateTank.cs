@@ -24,6 +24,8 @@ namespace ETHotfix
                 using (SceneChangeComponent sceneChangeComponent = ETModel.Game.Scene.AddComponent<SceneChangeComponent>())
                 {
                     await sceneChangeComponent.ChangeSceneAsync(SceneType.Battlefield);
+
+                    Game.EventSystem.Run(EventIdType.EnterBattlefieldFinish);
                 }
 
                 Game.EventSystem.Run(EventIdType.GMCreateTank,10000);

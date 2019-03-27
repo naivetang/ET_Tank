@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1280,720">
+<component size="1920,1080">
   <displayList>
-    <graph id="n1_rg0p" name="n1" xy="0,0" size="1280,720" type="rect" fillColor="#ff000000">
+    <graph id="n1_rg0p" name="n1" xy="0,0" size="1920,1080" type="rect" fillColor="#ff000000">
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
-    <component id="n0_rg0p" name="EnterMapBtn" src="rg0p1" fileName="Button.xml" xy="557,214" size="134,41">
+    <component id="n0_rg0p" name="EnterMapBtn" src="rg0p1" fileName="Button.xml" xy="984,308" size="134,41">
       <Button title="进入地图"/>
     </component>
-    <component id="n4_rg0p" name="ShopBtn" src="rg0p1" fileName="Button.xml" xy="256,326" size="134,41">
+    <component id="n4_rg0p" name="ShopBtn" src="rg0p1" fileName="Button.xml" xy="722,423" size="131,51">
       <relation target="" sidePair="width-width,height-height"/>
       <Button title="商店"/>
     </component>
-    <component id="n5_rg0p" name="RankBtn" src="rg0p1" fileName="Button.xml" xy="856,320" size="134,41">
+    <component id="n5_rg0p" name="RankBtn" src="rg0p1" fileName="Button.xml" xy="1213,448" size="134,41">
       <Button title="排行榜"/>
     </component>
   </displayList>

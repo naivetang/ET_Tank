@@ -62,6 +62,7 @@ namespace ETModel
 			Log.Debug($"当前使用的是ILRuntime模式");
 			this.appDomain = new ILRuntime.Runtime.Enviorment.AppDomain();
 
+            // 开启调试端口
 		    appDomain.DebugService.StartDebugService(56000);
 
             byte[] assBytes = code.Get<TextAsset>("Hotfix.dll").bytes;

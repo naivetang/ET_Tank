@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" adaptationTest="FitSize">
+  <displayList>
+    <image id="n0_mqb6" name="point" src="mqb60" fileName="sight1.png" xy="960,540" pivot="0.5,0.5" anchor="true" size="237,237" aspect="true">
+      <relation target="" sidePair="middle-middle,center-center"/>
+    </image>
+    <image id="n1_mqb6" name="BoomPoint" src="mqb62" fileName="sight2.png" xy="961,539" pivot="0.5,0.5" anchor="true"/>
+  </displayList>
+</component>

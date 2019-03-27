@@ -23,7 +23,7 @@ namespace ETModel
 
             GameObject explosion = bundleGameObject.Get<GameObject>("Explosion");
 
-            GameObject explosionGameObject = resourcesComponent.NewObj(PrefabType.Explosion, explosion);
+            GameObject explosionGameObject = resourcesComponent.NewObj(PrefabType.BulletBoom, explosion);
 
             explosionGameObject.SetActive(false);
 
@@ -33,7 +33,7 @@ namespace ETModel
 
             FairyGUI.Timers.inst.Add(7f, 1, (_) =>
             {
-                resourcesComponent.RecycleObj(PrefabType.Explosion, explosionGameObject);
+                resourcesComponent.RecycleObj(PrefabType.BulletBoom, explosionGameObject);
             });
 
             return explosionGameObject;

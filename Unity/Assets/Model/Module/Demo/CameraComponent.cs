@@ -38,8 +38,8 @@ namespace ETModel
         private float rot = 0;
 
         // 纵向角度范围
-        private float maxRoll = PF.Mathf.Deg2Rad(30f);  //60f * Mathf.PI * 2 / 360;
-        private float minRoll = PF.Mathf.Deg2Rad(0f);//10f * Mathf.PI * 2 / 360;
+        private float maxRoll = PF.Mathf.Deg2Rad(30);  //60f * Mathf.PI * 2 / 360;
+        private float minRoll = PF.Mathf.Deg2Rad(-10);//10f * Mathf.PI * 2 / 360;
 
         //纵向角度
         private float roll = 30f * Mathf.PI * 2 / 360;

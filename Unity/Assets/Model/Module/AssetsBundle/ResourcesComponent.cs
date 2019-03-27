@@ -15,8 +15,8 @@ namespace ETModel
     {
         Tank,                   //坦克
         Bullet,                 //炮弹
-        Explosion,              //子弹爆炸特效
-        TankBoom,
+        BulletBoom,             //子弹爆炸特效
+        TankBoom,               //坦克焚烧
     }
 
 	public class ABInfo : Component

@@ -37,6 +37,8 @@ namespace ETModel
                 tank.AddComponent<BulletComponent>();
 
                 tank.AddComponent<TankShootComponent>();
+
+                tank.GameObject.layer = 9;
             }
 
 
@@ -44,5 +46,30 @@ namespace ETModel
             tankComponent.Add(tank);
             return tank;
         }
+
+        public static GameObject CreateTankBoomEffect(Tank tank)
+        {
+            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+
+            resourcesComponent.LoadBundle(AssetBundleName.Unit);
+
+            GameObject unit = (GameObject)resourcesComponent.GetAsset(AssetBundleName.Unit, PrefabName.Unit);
+
+            resourcesComponent.UnloadBundle(AssetBundleName.Unit);
+
+            GameObject boomPrefab = unit.Get<GameObject>(PrefabName.TankBoomEffect);
+
+            UnityEngine.GameObject boomEffect = resourcesComponent.NewObj(PrefabType.TankBoom, boomPrefab);
+
+            boomEffect.transform.SetParent(tank.GameObject.FindComponentInChildren<Transform>("BoomEffect"), false);
+
+            boomEffect.transform.localPosition = Vector3.zero;
+
+            boomEffect.transform.localScale = Vector3.one * 10;
+
+            return boomEffect;
+        }
     }
+
+    
 }

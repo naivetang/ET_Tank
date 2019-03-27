@@ -20,6 +20,23 @@ namespace ETModel
 
         private Tank m_tank;
 
+        private float m_attackPower = 90f;
+
+        private float m_instanceTime = 0f;
+
+        public float AttackPower
+        {
+            get
+            {
+                // 飞行时间越长，炮弹威力越小
+
+                float realAtt = m_attackPower - (Time.time - this.m_instanceTime) * 30;
+
+                return realAtt;
+            }
+            set => this.m_attackPower = value;
+        }
+
         public GameObject GameObject
         {
             set
@@ -43,6 +60,7 @@ namespace ETModel
         public void Awake(Tank _tank)
         {
             this.m_tank = _tank;
+            this.m_instanceTime = Time.time;
         }
 
         public Vector3 Position

@@ -22,6 +22,10 @@ namespace ETModel
             this.m_bulletFly.OnCollisionEnter(collision);
         }
 
-        
+        private void OnTriggerEnter(Collider other)
+        {
+            this.m_bulletFly.OnTriggerEnter(other);
+        }
+
     }
 }

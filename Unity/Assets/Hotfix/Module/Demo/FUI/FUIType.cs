@@ -8,5 +8,6 @@
 	    public const string Shop = "Shop";
 	    public const string GM = "GM";
 	    public const string Common = "Common";
+	    public const string MainInterface = "MainInterface";
     }
 }

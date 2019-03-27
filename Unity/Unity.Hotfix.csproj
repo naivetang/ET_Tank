@@ -109,6 +109,8 @@
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\System\FUILoginComponentSystem.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\System\FUILoginFactory.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\System\InitSceneStart_CreateLoginFUI.cs" />
+    <Compile Include="Assets\Hotfix\Module\Demo\FUI\MainInterface\CreateMainIntView.cs" />
+    <Compile Include="Assets\Hotfix\Module\Demo\FUI\MainInterface\FUIMainItfComponent.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Shop\Component\FUIShopComponent.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Shop\System\FUIShopComponentSystem.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Shop\System\FUIShopFactory.cs" />

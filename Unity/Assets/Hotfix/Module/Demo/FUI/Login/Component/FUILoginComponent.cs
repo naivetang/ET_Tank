@@ -41,15 +41,14 @@ namespace ETHotfix
 
             self.RegistBtn.GObject.asButton.onClick.Set(()=>{RigistBtnOnClick(self);});
 
-            
             //login.Get("LoginBtn").GObject.asButton.onClick.Add(() => LoginBtnOnClick(self));
         }
 
         public static void LoginBtnOnClick(FUILoginComponent self)
         {
-            string account = self.AccountInput.Get("Input").GObject.asTextInput.text;  
+            string account = self.AccountInput.Get("title").GObject.asTextInput.text;  
             
-            string password = self.PasswordInput.Get("Input").GObject.asTextInput.text;
+            string password = self.PasswordInput.Get("title").GObject.asTextInput.text;
 
             SetErrorPrompt(self, "");
 

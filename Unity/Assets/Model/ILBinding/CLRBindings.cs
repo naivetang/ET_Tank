@@ -59,8 +59,13 @@ namespace ILRuntime.Runtime.Generated
             ETModel_Component_Binding.Register(app);
             ETModel_Scene_Binding.Register(app);
             ETModel_TankFactory_Binding.Register(app);
+            ETModel_ETVoid_Binding.Register(app);
+            ETModel_AsyncETVoidMethodBuilder_Binding.Register(app);
             ETModel_Entity_Binding.Register(app);
             ETModel_ResourcesComponent_Binding.Register(app);
+            ETModel_ETTask_Binding.Register(app);
+            ETModel_ETTask_Binding_Awaiter_Binding.Register(app);
+            ETModel_SceneChangeComponent_Binding.Register(app);
             UnityEngine_Input_Binding.Register(app);
             ETModel_ConfigAttribute_Binding.Register(app);
             ETModel_AppTypeHelper_Binding.Register(app);
@@ -70,11 +75,6 @@ namespace ILRuntime.Runtime.Generated
             ETModel_FUIPackageComponent_Binding.Register(app);
             FairyGUI_GObject_Binding.Register(app);
             FairyGUI_EventListener_Binding.Register(app);
-            ETModel_ETVoid_Binding.Register(app);
-            ETModel_AsyncETVoidMethodBuilder_Binding.Register(app);
-            ETModel_ETTask_Binding.Register(app);
-            ETModel_ETTask_Binding_Awaiter_Binding.Register(app);
-            ETModel_SceneChangeComponent_Binding.Register(app);
             ETModel_SessionComponent_Binding.Register(app);
             ETModel_C2G_EnterMap_Binding.Register(app);
             ETModel_Session_Binding.Register(app);
@@ -93,6 +93,7 @@ namespace ILRuntime.Runtime.Generated
             ETModel_ETTask_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.Register(app);
             ETModel_ETTask_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding_Awaiter_Binding.Register(app);
             ETModel_ComponentFactory_Binding.Register(app);
+            ETModel_TurretComponent_Binding.Register(app);
             FairyGUI_Window_Binding.Register(app);
             ETModel_M2C_CreateUnits_Binding.Register(app);
             Google_Protobuf_Collections_RepeatedField_1_UnitInfo_Binding.Register(app);
@@ -156,6 +157,7 @@ namespace ILRuntime.Runtime.Generated
             ETModel_UIFactoryAttribute_Binding.Register(app);
             ETModel_CanvasConfig_Binding.Register(app);
             System_Collections_Generic_List_1_String_Binding.Register(app);
+            System_Char_Binding.Register(app);
             ReferenceCollector_Binding.Register(app);
             UnityEngine_UI_Button_Binding.Register(app);
             ETModel_ActionHelper_Binding.Register(app);

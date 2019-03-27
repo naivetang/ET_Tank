@@ -17,7 +17,13 @@ namespace ETModel
 			}
 		}
 
-        public static GameObject FindChildObject(this GameObject fromGameObject, string withName)
+        /// <summary>
+        /// 弃用
+        /// </summary>
+        /// <param name="fromGameObject"></param>
+        /// <param name="withName"></param>
+        /// <returns></returns>
+        private static GameObject FindChildObject(this GameObject fromGameObject, string withName)
         {
             Transform[] ts = fromGameObject.transform.GetComponentsInChildren<Transform>(true);
             for (int i = 0; i < ts.Length; ++i)
