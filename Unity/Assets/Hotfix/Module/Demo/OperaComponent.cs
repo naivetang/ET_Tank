@@ -22,6 +22,9 @@ namespace ETHotfix
 		}
 	}
 
+    /// <summary>
+    /// 点击地板通知服务器移动组件
+    /// </summary>
 	public class OperaComponent: Component
     {
         public Vector3 ClickPoint;

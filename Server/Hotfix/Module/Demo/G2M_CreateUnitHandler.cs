@@ -17,11 +17,13 @@ namespace ETHotfix
 			M2G_CreateUnit response = new M2G_CreateUnit();
 			try
 			{
+
 				Unit unit = ComponentFactory.CreateWithId<Unit>(IdGenerater.GenerateId());
 				unit.AddComponent<MoveComponent>();
 				unit.AddComponent<UnitPathComponent>();
 				unit.Position = new Vector3(-10, 0, -10);
 				
+                //unit的id是key，instanceId是Value，两个值都是进入map时随机创建的
 				await unit.AddComponent<MailBoxComponent>().AddLocation();
 				unit.AddComponent<UnitGateComponent, long>(message.GateSessionId);
 				Game.Scene.GetComponent<UnitComponent>().Add(unit);
@@ -40,6 +42,7 @@ namespace ETHotfix
 					unitInfo.UnitId = u.Id;
 					createUnits.Units.Add(unitInfo);
 				}
+
 				MessageHelper.Broadcast(createUnits);
 				
 				

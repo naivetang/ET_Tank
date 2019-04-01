@@ -20,11 +20,15 @@ namespace ETHotfix
 					return;
 				}
 				Player player = ComponentFactory.Create<Player, string>(account);
+
 				Game.Scene.GetComponent<PlayerComponent>().Add(player);
+
 				session.AddComponent<SessionPlayerComponent>().Player = player;
+
 				session.AddComponent<MailBoxComponent, string>(MailboxType.GateSession);
 
 				response.PlayerId = player.Id;
+
 				reply(response);
 
 				session.Send(new G2C_TestHotfixMessage() { Info = "recv hotfix message success" });

@@ -53,6 +53,22 @@ message G2C_EnterMap // IResponse
 	repeated UnitInfo Units = 2;
 }
 
+message C2G_EnterBattle // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_EnterBattle // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	// 自己的Tank id
+	int64 TankId = 1;
+	// 所有的Tank
+	repeated TankInfo Tanks = 2;
+}
+
 message UnitInfo
 {
 	int64 UnitId  = 1;
@@ -62,12 +78,39 @@ message UnitInfo
 	float Z = 4;
 }
 
+
+message TankInfo
+{
+	int64 TankId = 1;
+
+	// 位置
+	float PX = 2;
+	float PY = 3;
+	float PZ = 4;
+
+	// 朝向
+	float RX = 5;
+	float RY = 6;
+	float RZ = 7;
+
+	float TurretRY = 8;
+	float GunRX = 9;
+}
+
 message M2C_CreateUnits // IActorMessage
 {
 	int32 RpcId = 90;
 	int64 ActorId = 93;
 	// 所有的unit
     repeated UnitInfo Units = 1;
+}
+
+message B2C_CreateTanks // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	// 所有的unit
+    repeated TankInfo Tanks = 1;
 }
 
 message Frame_ClickMap // IActorLocationMessage

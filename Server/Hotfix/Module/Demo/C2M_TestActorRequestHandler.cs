@@ -9,6 +9,7 @@ namespace ETHotfix
 		protected override async ETTask Run(Unit unit, C2M_TestActorRequest message, Action<M2C_TestActorResponse> reply)
 		{
 			reply(new M2C_TestActorResponse(){Info = "actor rpc response"});
+
 			await ETTask.CompletedTask;
 		}
 	}

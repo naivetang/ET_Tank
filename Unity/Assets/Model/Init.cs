@@ -89,7 +89,8 @@ namespace ETModel
 		{
 			Game.Hotfix.OnApplicationQuit?.Invoke();
 			Game.Close();
-		}
+            Log.Info("退出游戏");
+        }
 
     }
 }

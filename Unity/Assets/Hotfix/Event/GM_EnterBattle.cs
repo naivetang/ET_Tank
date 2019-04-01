@@ -23,7 +23,7 @@ namespace ETHotfix
                 // 切换到Battle场景
                 using (SceneChangeComponent sceneChangeComponent = ETModel.Game.Scene.AddComponent<SceneChangeComponent>())
                 {
-                    await sceneChangeComponent.ChangeSceneAsync(SceneType.Battlefield);
+                    await sceneChangeComponent.ChangeSceneAsync(SceneType.Battle);
                 }
 
                 // G2C_EnterMap g2CEnterMap = await ETModel.SessionComponent.Instance.Session.Call(new C2G_EnterMap()) as G2C_EnterMap;

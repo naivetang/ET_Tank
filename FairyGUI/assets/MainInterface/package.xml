@@ -4,6 +4,9 @@
     <image id="mqb60" name="sight1.png" path="/" exported="true"/>
     <component id="mqb61" name="MainInterface.xml" path="/" exported="true"/>
     <image id="mqb62" name="sight2.png" path="/" exported="true"/>
+    <image id="fh443" name="hp.png" path="/" exported="true"/>
+    <image id="fh444" name="hp2.png" path="/" exported="true"/>
+    <component id="fh445" name="HP.xml" path="/" exported="true"/>
   </resources>
   <publish name="MainInterface"/>
 </packageDescription>

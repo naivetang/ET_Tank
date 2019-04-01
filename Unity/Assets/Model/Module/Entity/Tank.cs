@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using PF;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
@@ -15,6 +16,9 @@ namespace ETModel
 
     public sealed class Tank : Entity
     {
+        // 最大血量，当前血量，上一次扣掉/增加的血量
+        public static Action<float, float, float> m_hpChange;
+
         public TankType m_tankType = TankType.None;
 
         private float m_maxHp = 100f;
@@ -47,13 +51,27 @@ namespace ETModel
 
         public GameObject Turret => this.m_turret;
 
-        public void BeAttacked(float att)
+        public void BeAttacked(Tank attacker, float att)
         {
             if (m_hp <= 0)
                 return;
 
             if (this.m_hp > 0)
+            {
                 this.m_hp -= att;
+
+                if (this.m_tankType == TankType.Owener)
+                {
+                    // 通知血量变化
+
+                    m_hpChange?.Invoke(this.m_maxHp, this.m_hp, -att);
+                }
+
+
+
+                //Game.EventSystem.Run(Game.Hotfix.);
+
+            }
 
             if (this.m_hp <= 0)
             {

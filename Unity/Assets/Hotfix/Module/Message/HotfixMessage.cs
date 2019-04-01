@@ -300,7 +300,7 @@ namespace ETHotfix {
 
     private string address_ = "";
     /// <summary>
-    /// 网关地址
+    /// 网关地址 因为网关服务器跟游戏服务器在同一台服务器，所以地址一样
     /// </summary>
     public string Address {
       get { return address_; }
@@ -415,7 +415,7 @@ namespace ETHotfix {
 
     private long key_;
     /// <summary>
-    /// 帐号
+    /// R2C_Login中的网关验证key
     /// </summary>
     public long Key {
       get { return key_; }
@@ -498,6 +498,9 @@ namespace ETHotfix {
     }
 
     private long playerId_;
+    /// <summary>
+    /// 服务器ComponentFactory.Create的Player的Id
+    /// </summary>
     public long PlayerId {
       get { return playerId_; }
       set {

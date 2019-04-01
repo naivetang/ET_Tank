@@ -13,14 +13,16 @@ namespace ETHotfix
 	[Message(HotfixOpcode.R2C_Login)]
 	public partial class R2C_Login : IResponse {}
 
-// 网关地址
+// 网关地址 因为网关服务器跟游戏服务器在同一台服务器，所以地址一样
 // 网关验证
 	[Message(HotfixOpcode.C2G_LoginGate)]
 	public partial class C2G_LoginGate : IRequest {}
 
+// R2C_Login中的网关验证key
 	[Message(HotfixOpcode.G2C_LoginGate)]
 	public partial class G2C_LoginGate : IResponse {}
 
+// 服务器ComponentFactory.Create的Player的Id
 	[Message(HotfixOpcode.G2C_TestHotfixMessage)]
 	public partial class G2C_TestHotfixMessage : IMessage {}
 

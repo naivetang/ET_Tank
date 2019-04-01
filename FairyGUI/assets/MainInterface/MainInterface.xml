@@ -5,5 +5,8 @@
       <relation target="" sidePair="middle-middle,center-center"/>
     </image>
     <image id="n1_mqb6" name="BoomPoint" src="mqb62" fileName="sight2.png" xy="961,539" pivot="0.5,0.5" anchor="true"/>
+    <component id="n5_fh44" name="hp" src="fh445" fileName="HP.xml" xy="23,999">
+      <ProgressBar value="100" max="100"/>
+    </component>
   </displayList>
 </component>

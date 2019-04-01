@@ -17,6 +17,8 @@ namespace ETModel
         public static readonly string Unit = "Unit";
         public static readonly string TankBoomEffect = "Fire_01";
         public static readonly string BulletBoomEffect = "Explosion";
+        public static readonly string BulletBoomAudio = "BulletBoom";
+
     }
 
     public static class Tag
@@ -29,6 +31,6 @@ namespace ETModel
     {
         public static readonly string Init = "Init";
 
-        public static readonly string Battlefield = "Battlefield";
+        public static readonly string Battlefield = "Battle";
     }
 }

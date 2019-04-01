@@ -1,5 +1,4 @@
 ﻿using System;
-using NPOI.OpenXmlFormats.Wordprocessing;
 using PF;
 using UnityEngine;
 using Mathf = UnityEngine.Mathf;
@@ -118,7 +117,7 @@ namespace ETModel
 
             this.rollTarget = angle.eulerAngles.x;
 
-            Log.Info($"rotTarget = {this.rotTarget},rollTarget = {this.rollTarget}");
+            //Log.Info($"rotTarget = {this.rotTarget},rollTarget = {this.rollTarget}");
 
             //GameObject.Find("TargetCube").transform.position = hitPoint;
         }

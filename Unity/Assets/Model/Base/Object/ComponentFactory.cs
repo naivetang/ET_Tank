@@ -117,6 +117,12 @@ namespace ETModel
 			return component;
 		}
 
+        /// <summary>
+        /// 此方法创建的Entity的id值不等于InstanceId值（id>InstanceId）
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <returns></returns>
 		public static T CreateWithId<T>(long id) where T : ComponentWithId
 		{
 			T component = Game.ObjectPool.Fetch<T>();

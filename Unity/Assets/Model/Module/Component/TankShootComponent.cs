@@ -23,7 +23,7 @@ namespace ETModel
     }
 
     /// <summary>
-    /// 子弹发射、碰撞组件，绑定到Bullet上
+    /// 子弹发射、碰撞组件，绑定到Tank上
     /// </summary>
     public class TankShootComponent: Component
     {
@@ -53,6 +53,8 @@ namespace ETModel
         {
             if (Time.time - this.lastShootTime < this.shootInterval)
                 return;
+
+            // this.m_tank.BeAttacked(30f);
 
             Vector3 pos = this.m_tank.Gun.transform.position + this.m_tank.Gun.transform.forward * 2;
 

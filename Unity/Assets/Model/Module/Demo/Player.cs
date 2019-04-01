@@ -3,6 +3,8 @@
 	public sealed class Player : Entity
 	{
 		public long UnitId { get; set; }
+
+        public long TankId { get; set; }
 		
 		public override void Dispose()
 		{

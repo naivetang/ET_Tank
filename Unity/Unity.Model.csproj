@@ -165,7 +165,9 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_AnimatorComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_AppTypeHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_AsyncETVoidMethodBuilder_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_B2C_CreateTanks_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ByteHelper_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_C2G_EnterBattle_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_C2G_EnterMap_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_CanvasConfig_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Component_Binding.cs" />
@@ -190,6 +192,7 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_EventSystem_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Frame_ClickMap_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_FUIPackageComponent_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_G2C_EnterBattle_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_G2C_EnterMap_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Game_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_GameObjectHelper_Binding.cs" />
@@ -219,7 +222,10 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_Session_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_SessionCallbackComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_SessionComponent_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_Tank_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_TankComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_TankFactory_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_TankInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_TurretComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_UIFactoryAttribute_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Unit_Binding.cs" />
@@ -231,6 +237,7 @@
     <Compile Include="Assets\Model\ILBinding\FairyGUI_EventListener_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GObject_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\FairyGUI_GProgressBar_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GRoot_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_UIPackage_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_Window_Binding.cs" />
@@ -242,6 +249,7 @@
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Int64_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Single_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_String_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_TankInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_UnitInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_FieldCodec_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_MessageParser_1_Google_Protobuf_Adapt_IMessage_Binding_Adapto_t.cs" />
@@ -268,6 +276,7 @@
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_UInt16_Object_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_HashSet_1_ILTypeInstance_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_HashSet_1_ILTypeInstance_Binding_Enumerator_Bindin_t.cs" />
+    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_TankInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_UnitInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_ILTypeInstance_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_ILTypeInstance_Binding_Enumerator_Binding.cs" />
@@ -319,10 +328,10 @@
     <Compile Include="Assets\Model\Module\AssetsBundle\VersionConfig.cs" />
     <Compile Include="Assets\Model\Module\Component\BulletComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\BulletFlyComponent.cs" />
-    <Compile Include="Assets\Model\Module\Component\BulletShootComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\ExplosionEffectComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TankComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TankMoveComponent.cs" />
+    <Compile Include="Assets\Model\Module\Component\TankShootComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TurretComponent.cs" />
     <Compile Include="Assets\Model\Module\Config\ACategory.cs" />
     <Compile Include="Assets\Model\Module\Config\AConfigComponent.cs" />

@@ -5,14 +5,14 @@
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
     <component id="n0_rg0p" name="EnterMapBtn" src="rg0p1" fileName="Button.xml" xy="984,308" size="134,41">
-      <Button title="进入地图"/>
+      <Button title="进入地图" titleFontSize="30"/>
     </component>
-    <component id="n4_rg0p" name="ShopBtn" src="rg0p1" fileName="Button.xml" xy="722,423" size="131,51">
+    <component id="n4_rg0p" name="ShopBtn" src="rg0p1" fileName="Button.xml" xy="415,445" size="131,51">
       <relation target="" sidePair="width-width,height-height"/>
-      <Button title="商店"/>
+      <Button title="商店" titleFontSize="30"/>
     </component>
     <component id="n5_rg0p" name="RankBtn" src="rg0p1" fileName="Button.xml" xy="1213,448" size="134,41">
-      <Button title="排行榜"/>
+      <Button title="排行榜" titleFontSize="30"/>
     </component>
   </displayList>
 </component>

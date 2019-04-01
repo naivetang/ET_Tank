@@ -17,10 +17,10 @@ namespace ETModel
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            this.m_bulletFly.OnCollisionEnter(collision);
-        }
+        // private void OnCollisionEnter(Collision collision)
+        // {
+        //     this.m_bulletFly.OnCollisionEnter(collision);
+        // }
 
         private void OnTriggerEnter(Collider other)
         {

@@ -369,6 +369,40 @@ namespace ETModel
 
 	}
 
+	[Message(InnerOpcode.G2B_CreateTank)]
+	public partial class G2B_CreateTank: IRequest
+	{
+		public int RpcId { get; set; }
+
+// 玩家登陆的时候服务器分配的id
+// 玩家登陆的时候服务器分配的id
+		public long PlayerId { get; set; }
+
+// Gate服务器与Map服务器通信时创建的SessionId
+// Gate服务器与Map服务器通信时创建的SessionId
+		public long GateSessionId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.B2G_CreateTank)]
+	public partial class B2G_CreateTank: IResponse
+	{
+		public int RpcId { get; set; }
+
+		public int Error { get; set; }
+
+		public string Message { get; set; }
+
+// 自己的tank id
+// 自己的tank id
+		public long TankId { get; set; }
+
+// 所有的tank
+// 所有的tank
+		public List<TankInfo> Tanks = new List<TankInfo>();
+
+	}
+
 	[Message(InnerOpcode.G2M_SessionDisconnect)]
 	public partial class G2M_SessionDisconnect: IActorLocationMessage
 	{

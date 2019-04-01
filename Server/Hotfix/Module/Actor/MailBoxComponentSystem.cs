@@ -37,7 +37,12 @@ namespace ETHotfix
 	/// </summary>
 	public static class MailBoxComponentHelper
 	{
-		public static async ETTask AddLocation(this MailBoxComponent self)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="self">id是key</param>
+        /// <returns></returns>
+        public static async ETTask AddLocation(this MailBoxComponent self)
 		{
 			await Game.Scene.GetComponent<LocationProxyComponent>().Add(self.Entity.Id, self.Entity.InstanceId);
 		}

@@ -10,10 +10,22 @@ namespace ETHotfix
 
         public FUI m_BoomPoint;
 
+        public FUI m_HP;
+
         public void UpdateBoomPoint( float x,float y)
         {
             m_BoomPoint.GObject.SetXY(x, y);
         }
+
+        public void HpChange(float max,float current, float changeVal)
+        {
+            GProgressBar pb = this.m_HP.GObject.asProgress;
+
+            pb.max = max;
+
+            pb.value = current;
+        }
+
     }
 
     
@@ -29,7 +41,11 @@ namespace ETHotfix
 
             self.m_BoomPoint = FGUICompunt.Get("BoomPoint");
 
+            self.m_HP = FGUICompunt.Get("hp");
+
             TurretComponent.UpdatePos += self.UpdateBoomPoint;
+
+            Tank.m_hpChange += self.HpChange;
         }
         
     }

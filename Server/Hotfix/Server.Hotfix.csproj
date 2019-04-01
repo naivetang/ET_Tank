@@ -28,6 +28,10 @@
     <ProjectReference Include="..\Model\Server.Model.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Module\Event\" />
     <Folder Include="Module\Http\" />
+    <Folder Include="Module\Entity\" />
+    <Folder Include="Module\Component\" />
+    <Folder Include="Module\Handler\" />
   </ItemGroup>
 </Project>

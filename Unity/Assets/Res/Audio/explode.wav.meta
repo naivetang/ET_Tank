@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 53ba6765587259544b6820ba7ced21a9
+timeCreated: 1460601760
+licenseType: Pro
 AudioImporter:
-  externalObjects: {}
   serializedVersion: 6
   defaultSettings:
     loadType: 0
@@ -15,8 +16,7 @@ AudioImporter:
   normalize: 1
   preloadAudioData: 1
   loadInBackground: 0
-  ambisonic: 0
   3D: 1
   userData: 
-  assetBundleName: unit.unity3d
+  assetBundleName: 
   assetBundleVariant: 

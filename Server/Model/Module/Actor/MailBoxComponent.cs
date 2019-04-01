@@ -18,8 +18,8 @@ namespace ETModel
 
 		// 队列处理消息
 		public Queue<ActorMessageInfo> Queue = new Queue<ActorMessageInfo>();
-
-		public ETTaskCompletionSource<ActorMessageInfo> Tcs;
+        
+        public ETTaskCompletionSource<ActorMessageInfo> Tcs;
 
 		public override void Dispose()
 		{

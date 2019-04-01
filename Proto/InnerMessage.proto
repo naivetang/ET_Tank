@@ -228,6 +228,7 @@ message G2R_GetLoginKey // IResponse
 message G2M_CreateUnit // IRequest
 {
     int32 RpcId = 90;
+    
     int64 PlayerId = 1;
     int64 GateSessionId = 2;
 }
@@ -242,6 +243,29 @@ message M2G_CreateUnit // IResponse
     int64 UnitId = 1;
     // 所有的unit
     repeated UnitInfo Units = 2;
+}
+
+
+message G2B_CreateTank // IRequest
+{
+    int32 RpcId = 90;
+
+    // 玩家登陆的时候服务器分配的id
+    int64 PlayerId = 1;
+    // Gate服务器与Map服务器通信时创建的SessionId
+    int64 GateSessionId = 2;
+}
+
+message B2G_CreateTank // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    // 自己的tank id
+    int64 TankId = 1;
+    // 所有的tank
+    repeated TankInfo Tanks = 2;
 }
 
 message G2M_SessionDisconnect // IActorLocationMessage

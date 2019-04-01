@@ -4,6 +4,10 @@ namespace ETHotfix
 {
 	public static class MessageHelper
 	{
+        /// <summary>
+        /// 广播
+        /// </summary>
+        /// <param name="message"></param>
 		public static void Broadcast(IActorMessage message)
 		{
 			Unit[] units = Game.Scene.GetComponent<UnitComponent>().GetAll();
@@ -20,5 +24,22 @@ namespace ETHotfix
 				actorMessageSender.Send(message);
 			}
 		}
-	}
+
+        public static void BroadcastTank(IActorMessage message)
+        {
+            Tank[] tanks = Game.Scene.GetComponent<TankComponent>().GetAll();
+            ActorMessageSenderComponent actorLocationSenderComponent = Game.Scene.GetComponent<ActorMessageSenderComponent>();
+            foreach (Tank tank in tanks)
+            {
+                TankGateComponent tankGateComponent = tank.GetComponent<TankGateComponent>();
+                if (tankGateComponent.IsDisconnect)
+                {
+                    continue;
+                }
+
+                ActorMessageSender actorMessageSender = actorLocationSenderComponent.Get(tankGateComponent.GateSessionActorId);
+                actorMessageSender.Send(message);
+            }
+        }
+    }
 }

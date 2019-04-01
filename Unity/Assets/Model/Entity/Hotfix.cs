@@ -22,9 +22,10 @@ namespace ETModel
 		public Action OnApplicationQuit;
 
 		public Hotfix()
-		{
+        {
+            OnApplicationQuit += () => { appDomain.DebugService.StopDebugService(); };
 
-		}
+        }
 
 		public void GotoHotfix()
 		{
@@ -63,7 +64,9 @@ namespace ETModel
 			this.appDomain = new ILRuntime.Runtime.Enviorment.AppDomain();
 
             // 开启调试端口
-		    appDomain.DebugService.StartDebugService(56000);
+		    appDomain.DebugService.StartDebugService(57000);
+
+            
 
             byte[] assBytes = code.Get<TextAsset>("Hotfix.dll").bytes;
 			byte[] pdbBytes = code.Get<TextAsset>("Hotfix.pdb").bytes;

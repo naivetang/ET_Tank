@@ -16,5 +16,9 @@
 
         public const string EnterBattlefieldFinish = "EnterBattlefieldFinish";
 
+        public const string UnderAttack = "UnderAttack";
+
+        public const string EnterBattleFinish = "EnterBattleFinish";
+
     }
 }

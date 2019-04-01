@@ -22,7 +22,9 @@ namespace ETModel
             GameObject parent = GameObject.Find($"/Global/Unit");
             tank.GameObject.transform.SetParent(parent.transform, false);
 
-            if (id == 10000)
+            
+
+            if (id == 10000 || PlayerComponent.Instance.MyPlayer.TankId == id)
             {
                 tank.m_tankType = TankType.Owener;
 
@@ -33,9 +35,10 @@ namespace ETModel
 
                 tank.AddComponent<TurretComponent>();
 
-                // 发射子弹的组件
+                // 子弹管理组件
                 tank.AddComponent<BulletComponent>();
 
+                // 发射子弹的组件
                 tank.AddComponent<TankShootComponent>();
 
                 tank.GameObject.layer = 9;

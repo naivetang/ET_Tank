@@ -98,6 +98,21 @@ namespace ETModel
                                 Console.WriteLine(e);
                             }
                             break;
+                        case "tankCount":
+                            try
+                            {
+                                Log.Info($"坦克数量 = {Game.Scene.GetComponent<TankComponent>().Count}");
+                                if (Game.Scene.GetComponent<TankComponent>().Count >= 1)
+                                {
+                                    long tankId =  Game.Scene.GetComponent<TankComponent>().GetAll()[0].Id;
+                                    Log.Info($"第一辆坦克id = {tankId}");
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e);
+                            }
+                            break;
                         default:
                             Console.WriteLine($"no such command: {line}");
                             break;

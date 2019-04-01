@@ -56,6 +56,8 @@ namespace ETModel
 
         }
 
+        private Tank Tank => this.m_bullet.Tank;
+
         public void Update()
         {
             this.m_bullet.GameObject.transform.position += this.m_bullet.GameObject.transform.forward * this.speed * Time.deltaTime;
@@ -64,36 +66,34 @@ namespace ETModel
                 this.m_bullet.Dispose();
         }
 
-        public void OnCollisionEnter(Collision collision)
-        {
-            Log.Info("进入OnCollisionEnter");
-            // 创建爆炸效果
-
-            ExplosionEffectFactory.Create(this.m_bullet.Position);
-
-
-            if (collision.rigidbody != null && collision.rigidbody.tag == Tag.Tank)
-            {
-                // 给坦克造成伤害
-
-
-
-                TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
-
-                long objInstanceId = collision.rigidbody.gameObject.GetInstanceID();
-
-                Tank beAttackTank = tankComponent.Get(objInstanceId);
-
-                beAttackTank.BeAttacked(this.m_bullet.AttackPower);
-
-            }
-
-            this.m_bullet.Dispose();
-        }
+        // public void OnCollisionEnter(Collision collision)
+        // {
+        //     Log.Info("进入OnCollisionEnter");
+        //     // 创建爆炸效果
+        //
+        //     ExplosionEffectFactory.Create(this.m_bullet.Position);
+        //
+        //
+        //     if (collision.rigidbody != null && collision.rigidbody.tag == Tag.Tank)
+        //     {
+        //         // 给坦克造成伤害
+        //
+        //         TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
+        //
+        //         long objInstanceId = collision.rigidbody.gameObject.GetInstanceID();
+        //
+        //         Tank beAttackTank = tankComponent.Get(objInstanceId);
+        //
+        //         beAttackTank.BeAttacked(this.m_bullet.AttackPower);
+        //
+        //     }
+        //
+        //     this.m_bullet.Dispose();
+        // }
 
         public void OnTriggerEnter(Collider other)
         {
-            Log.Info("OnTriggerEnter");
+            // Log.Info("OnTriggerEnter");
 
             if (other.gameObject != null && other.gameObject.layer == 9)
             {
@@ -116,7 +116,7 @@ namespace ETModel
 
                 Tank beAttackTank = tankComponent.Get(objInstanceId);
 
-                beAttackTank.BeAttacked(this.m_bullet.AttackPower);
+                beAttackTank.BeAttacked(this.Tank,this.m_bullet.AttackPower);
 
             }
 

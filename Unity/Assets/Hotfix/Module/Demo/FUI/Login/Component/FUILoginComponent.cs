@@ -88,6 +88,8 @@ namespace ETHotfix
             // 创建一个ETHotfix层的Session, 并且保存到ETHotfix.SessionComponent中
             Game.Scene.AddComponent<SessionComponent>().Session = ComponentFactory.Create<Session, ETModel.Session>(gateSession);
 
+            
+
             G2C_LoginGate g2CLoginGate = (G2C_LoginGate) await SessionComponent.Instance.Session.Call(new C2G_LoginGate() { Key = r2CLogin.Key });
 
             Log.Info("登陆gate成功!");
@@ -96,7 +98,9 @@ namespace ETHotfix
 
             // 创建Player
             Player player = ETModel.ComponentFactory.CreateWithId<Player>(g2CLoginGate.PlayerId);
+
             PlayerComponent playerComponent = ETModel.Game.Scene.GetComponent<PlayerComponent>();
+
             playerComponent.MyPlayer = player;
 
             // 测试消息有成员是class类型
@@ -110,9 +114,9 @@ namespace ETHotfix
 
         public static void RigistBtnOnClick(FUILoginComponent self)
         {
-            string account = self.AccountInput.Get("Input").GObject.asTextInput.text;
+            string account = self.AccountInput.Get("title").GObject.asTextInput.text;
 
-            string password = self.PasswordInput.Get("Input").GObject.asTextInput.text;
+            string password = self.PasswordInput.Get("title").GObject.asTextInput.text;
 
 
             SetErrorPrompt(self, "");

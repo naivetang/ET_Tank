@@ -31,7 +31,7 @@ namespace ETHotfix
     }
 
 
-    [Event(EventIdType.EnterBattlefieldFinish)]
+    [Event(EventIdType.EnterBattlefieldFinish),Event(EventIdType.EnterBattleFinish)]
     public class CreateMainIntView : AEvent
     {
         public override void Run()

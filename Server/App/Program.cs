@@ -7,7 +7,16 @@ namespace App
 {
 	internal static class Program
 	{
-		private static void Main(string[] args)
+        //--appId=1 --appType=AllServer --config=../Config/StartConfig/LocalAllServer.txt
+
+        /*{ "_t" : "StartConfig", "_id" : NumberLong("98547768819754"),
+         "C" : [{ "_t" : "OuterConfig", "Address" : "127.0.0.1:10002", "Address2" : "127.0.0.1:10002" }, 
+         { "_t" : "InnerConfig", "Address" : "127.0.0.1:20000" }, 
+         { "_t" : "HttpConfig", "Url" : "http://*:8080/", "AppId" : 0, "AppKey" : "", "ManagerSystemUrl" : "" }, 
+         { "_t" : "DBConfig", "ConnectionString" : "mongodb://localhost:27017", "DBName" : "ET" }],
+         "AppId" : 1, "AppType" : "AllServer", "ServerIP" : "*" }
+        */
+        private static void Main(string[] args)
 		{
 			// 异步方法全部会回掉到主线程
 			SynchronizationContext.SetSynchronizationContext(OneThreadSynchronizationContext.Instance);
@@ -124,6 +133,7 @@ namespace App
 						
 						Game.Scene.AddComponent<PlayerComponent>();
 						Game.Scene.AddComponent<UnitComponent>();
+                        Game.Scene.AddComponent<TankComponent>();
 
 						Game.Scene.AddComponent<ConsoleComponent>();
 						// Game.Scene.AddComponent<HttpComponent>();
