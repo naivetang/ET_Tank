@@ -1427,6 +1427,175 @@ namespace ETModel {
 
   }
 
+  public partial class C2B_TankInfo : pb::IMessage {
+    private static readonly pb::MessageParser<C2B_TankInfo> _parser = new pb::MessageParser<C2B_TankInfo>(() => (C2B_TankInfo)MessagePool.Instance.Fetch(typeof(C2B_TankInfo)));
+    public static pb::MessageParser<C2B_TankInfo> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private global::ETModel.TankInfo tankInfo_;
+    public global::ETModel.TankInfo TankInfo {
+      get { return tankInfo_; }
+      set {
+        tankInfo_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (tankInfo_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(TankInfo);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (tankInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TankInfo);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      if (tankInfo_ != null) MessagePool.Instance.Recycle(tankInfo_); tankInfo_ = null;
+      rpcId_ = 0;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            if (tankInfo_ == null) {
+              tankInfo_ = new global::ETModel.TankInfo();
+            }
+            input.ReadMessage(tankInfo_);
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class B2C_TankInfos : pb::IMessage {
+    private static readonly pb::MessageParser<B2C_TankInfos> _parser = new pb::MessageParser<B2C_TankInfos>(() => (B2C_TankInfos)MessagePool.Instance.Fetch(typeof(B2C_TankInfos)));
+    public static pb::MessageParser<B2C_TankInfos> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private static readonly pb::FieldCodec<global::ETModel.TankInfo> _repeated_tankInfos_codec
+        = pb::FieldCodec.ForMessage(10, global::ETModel.TankInfo.Parser);
+    private pbc::RepeatedField<global::ETModel.TankInfo> tankInfos_ = new pbc::RepeatedField<global::ETModel.TankInfo>();
+    public pbc::RepeatedField<global::ETModel.TankInfo> TankInfos {
+      get { return tankInfos_; }
+      set { tankInfos_ = value; }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      tankInfos_.WriteTo(output, _repeated_tankInfos_codec);
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      size += tankInfos_.CalculateSize(_repeated_tankInfos_codec);
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      for (int i = 0; i < tankInfos_.Count; i++) { MessagePool.Instance.Recycle(tankInfos_[i]); }
+      tankInfos_.Clear();
+      rpcId_ = 0;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            tankInfos_.AddEntriesFrom(input, _repeated_tankInfos_codec);
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public partial class M2C_PathfindingResult : pb::IMessage {
     private static readonly pb::MessageParser<M2C_PathfindingResult> _parser = new pb::MessageParser<M2C_PathfindingResult>(() => (M2C_PathfindingResult)MessagePool.Instance.Fetch(typeof(M2C_PathfindingResult)));
     public static pb::MessageParser<M2C_PathfindingResult> Parser { get { return _parser; } }

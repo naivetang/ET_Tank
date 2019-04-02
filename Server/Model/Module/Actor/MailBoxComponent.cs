@@ -13,11 +13,15 @@ namespace ETModel
 	/// </summary>
 	public class MailBoxComponent: Component
 	{
-		// Mailbox的类型
-		public string MailboxType;
+        /// <summary>
+        /// Mailbox的类型 
+        /// </summary>
+        public string MailboxType;
 
-		// 队列处理消息
-		public Queue<ActorMessageInfo> Queue = new Queue<ActorMessageInfo>();
+        /// <summary>
+        /// 队列处理消息 
+        /// </summary>
+        public Queue<ActorMessageInfo> Queue = new Queue<ActorMessageInfo>();
         
         public ETTaskCompletionSource<ActorMessageInfo> Tcs;
 

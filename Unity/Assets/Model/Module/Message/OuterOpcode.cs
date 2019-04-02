@@ -51,6 +51,12 @@ namespace ETModel
 	[Message(OuterOpcode.Frame_ClickMap)]
 	public partial class Frame_ClickMap : IActorLocationMessage {}
 
+	[Message(OuterOpcode.C2B_TankInfo)]
+	public partial class C2B_TankInfo : IActorLocationMessage {}
+
+	[Message(OuterOpcode.B2C_TankInfos)]
+	public partial class B2C_TankInfos : IActorMessage {}
+
 	[Message(OuterOpcode.M2C_PathfindingResult)]
 	public partial class M2C_PathfindingResult : IActorMessage {}
 
@@ -88,11 +94,13 @@ namespace ETModel
 		 public const ushort M2C_CreateUnits = 112;
 		 public const ushort B2C_CreateTanks = 113;
 		 public const ushort Frame_ClickMap = 114;
-		 public const ushort M2C_PathfindingResult = 115;
-		 public const ushort C2R_Ping = 116;
-		 public const ushort R2C_Ping = 117;
-		 public const ushort G2C_Test = 118;
-		 public const ushort C2M_Reload = 119;
-		 public const ushort M2C_Reload = 120;
+		 public const ushort C2B_TankInfo = 115;
+		 public const ushort B2C_TankInfos = 116;
+		 public const ushort M2C_PathfindingResult = 117;
+		 public const ushort C2R_Ping = 118;
+		 public const ushort R2C_Ping = 119;
+		 public const ushort G2C_Test = 120;
+		 public const ushort C2M_Reload = 121;
+		 public const ushort M2C_Reload = 122;
 	}
 }

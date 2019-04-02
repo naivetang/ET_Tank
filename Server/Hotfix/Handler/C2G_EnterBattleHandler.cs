@@ -50,6 +50,9 @@ namespace ETHotfix
 
                 Log.Info("广播坦克");
                 MessageHelper.BroadcastTank(createTanks);
+
+                if(Game.Scene.GetComponent<BattleComponent>()==null)
+                    Game.Scene.AddComponent<BattleComponent>();
             }
             catch (Exception e)
             {

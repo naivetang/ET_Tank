@@ -23,12 +23,18 @@ namespace ILRuntime.Runtime.Generated
             Type[] args;
             Type type = typeof(PF.Vector3);
             MethodInfo[] methods = type.GetMethods(flag).Where(t => !t.IsGenericMethod).ToArray();
+            args = new Type[]{typeof(PF.Vector3)};
+            method = methods.Where(t => t.Name.Equals("op_Implicit") && t.ReturnType == typeof(UnityEngine.Vector3) && t.CheckMethodParams(args)).Single();
+            app.RegisterCLRMethodRedirection(method, op_Implicit_0);
             args = new Type[]{typeof(UnityEngine.Vector3)};
             method = methods.Where(t => t.Name.Equals("op_Implicit") && t.ReturnType == typeof(PF.Vector3) && t.CheckMethodParams(args)).Single();
-            app.RegisterCLRMethodRedirection(method, op_Implicit_0);
+            app.RegisterCLRMethodRedirection(method, op_Implicit_1);
 
             app.RegisterCLRCreateDefaultInstance(type, () => new PF.Vector3());
 
+            args = new Type[]{typeof(System.Single), typeof(System.Single), typeof(System.Single)};
+            method = type.GetConstructor(flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, Ctor_0);
 
         }
 
@@ -85,6 +91,22 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            PF.Vector3 @v3 = (PF.Vector3)typeof(PF.Vector3).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+
+            var result_of_this_method = (UnityEngine.Vector3)v3;
+
+            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+        }
+
+        static StackObject* op_Implicit_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
             UnityEngine.Vector3 @v3 = (UnityEngine.Vector3)typeof(UnityEngine.Vector3).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
@@ -94,6 +116,33 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
+
+        static StackObject* Ctor_0(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 3);
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Single @z = *(float*)&ptr_of_this_method->Value;
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            System.Single @y = *(float*)&ptr_of_this_method->Value;
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
+            System.Single @x = *(float*)&ptr_of_this_method->Value;
+
+
+            var result_of_this_method = new PF.Vector3(@x, @y, @z);
+
+            if(!isNewObj)
+            {
+                __ret--;
+                WriteBackInstance(__domain, __ret, __mStack, ref result_of_this_method);
+                return __ret;
+            }
+
+            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+        }
 
 
     }

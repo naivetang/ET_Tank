@@ -10,8 +10,8 @@ namespace ETModel
     public enum TankType
     {
         None,
-        Owener,
-        Enemy
+        Local,
+        Remote
     }
 
     public sealed class Tank : Entity
@@ -60,7 +60,7 @@ namespace ETModel
             {
                 this.m_hp -= att;
 
-                if (this.m_tankType == TankType.Owener)
+                if (this.m_tankType == TankType.Local)
                 {
                     // 通知血量变化
 

@@ -103,6 +103,10 @@ namespace ILRuntime.Runtime.Generated
             ETModel_TankComponent_Binding.Register(app);
             UnityEngine_Vector3_Binding.Register(app);
             ETModel_Tank_Binding.Register(app);
+            ETModel_B2C_TankInfos_Binding.Register(app);
+            ETModel_ComponentWithId_Binding.Register(app);
+            PF_Vector3_Binding.Register(app);
+            ETModel_RemoteTankComponent_Binding.Register(app);
             UnityEngine_Input_Binding.Register(app);
             ETModel_ConfigAttribute_Binding.Register(app);
             ETModel_AppTypeHelper_Binding.Register(app);
@@ -126,7 +130,6 @@ namespace ILRuntime.Runtime.Generated
             ETModel_UnitPathComponent_Binding.Register(app);
             ETModel_GizmosDebug_Binding.Register(app);
             System_Collections_Generic_List_1_Vector3_Binding.Register(app);
-            PF_Vector3_Binding.Register(app);
             Google_Protobuf_Collections_RepeatedField_1_Single_Binding.Register(app);
             UnityEngine_Camera_Binding.Register(app);
             UnityEngine_Physics_Binding.Register(app);

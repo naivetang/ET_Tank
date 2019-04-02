@@ -5,8 +5,9 @@ using UnityEngine;
 namespace ETModel
 {
 	public class Init : MonoBehaviour
-	{
-		private void Start()
+    {
+
+        private void Start()
 		{
 			this.StartAsync().NoAwait();
 		}

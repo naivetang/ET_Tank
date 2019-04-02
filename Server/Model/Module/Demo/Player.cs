@@ -12,10 +12,10 @@
 	public sealed class Player : Entity
 	{
 		public string Account { get; private set; }
-		
-        public long TankId { get; set; }
 
-		public long UnitId { get; set; }
+        public long TankId { get; set; } = 0L;
+
+        public long UnitId { get; set; } = 0L;
 
 		public void Awake(string account)
 		{

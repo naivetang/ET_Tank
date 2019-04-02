@@ -166,12 +166,14 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_AppTypeHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_AsyncETVoidMethodBuilder_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_CreateTanks_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_B2C_TankInfos_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ByteHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_C2G_EnterBattle_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_C2G_EnterMap_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_CanvasConfig_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Component_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ComponentFactory_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_ComponentWithId_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ConfigAttribute_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_DoubleMap_2_UInt16_Type_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Entity_Binding.cs" />
@@ -215,6 +217,7 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_OpcodeTypeComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Player_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_PlayerComponent_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_RemoteTankComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ResourcesComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_RpcException_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Scene_Binding.cs" />
@@ -326,9 +329,11 @@
     <Compile Include="Assets\Model\Module\AssetsBundle\BundleDownloaderComponent.cs" />
     <Compile Include="Assets\Model\Module\AssetsBundle\ResourcesComponent.cs" />
     <Compile Include="Assets\Model\Module\AssetsBundle\VersionConfig.cs" />
+    <Compile Include="Assets\Model\Module\Component\BattleComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\BulletComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\BulletFlyComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\ExplosionEffectComponent.cs" />
+    <Compile Include="Assets\Model\Module\Component\RemoteTankMoveComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TankComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TankMoveComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TankShootComponent.cs" />

@@ -7,9 +7,7 @@ namespace ETModel
         public static Tank Create(long id)
         {
 
-
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-            
             Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
             GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset("Unit.unity3d", "Unit");
             Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
@@ -26,8 +24,7 @@ namespace ETModel
 
             if (id == 10000 || PlayerComponent.Instance.MyPlayer.TankId == id)
             {
-                tank.m_tankType = TankType.Owener;
-
+                tank.m_tankType = TankType.Local;
 
                 tank.AddComponent<TankMoveComponent>();
 
@@ -41,7 +38,15 @@ namespace ETModel
                 // 发射子弹的组件
                 tank.AddComponent<TankShootComponent>();
 
+                tankComponent.MyTank = tank;
+
                 tank.GameObject.layer = 9;
+            }
+            else
+            {
+                tank.m_tankType = TankType.Remote;
+
+                tank.AddComponent<RemoteTankComponent>();
             }
 
 

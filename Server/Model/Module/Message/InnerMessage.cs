@@ -412,4 +412,13 @@ namespace ETModel
 
 	}
 
+	[Message(InnerOpcode.G2B_SessionDisconnect)]
+	public partial class G2B_SessionDisconnect: IActorLocationMessage
+	{
+		public int RpcId { get; set; }
+
+		public long ActorId { get; set; }
+
+	}
+
 }

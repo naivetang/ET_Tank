@@ -100,7 +100,7 @@ namespace ETModel
         public void Update()
         {
 
-            if (this.m_tank.m_tankType != TankType.Owener)
+            if (this.m_tank.m_tankType != TankType.Local)
                 return;
 
             this.PlayerCtrl();

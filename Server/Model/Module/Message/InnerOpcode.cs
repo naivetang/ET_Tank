@@ -37,5 +37,6 @@ namespace ETModel
 		 public const ushort G2B_CreateTank = 1033;
 		 public const ushort B2G_CreateTank = 1034;
 		 public const ushort G2M_SessionDisconnect = 1035;
+		 public const ushort G2B_SessionDisconnect = 1036;
 	}
 }

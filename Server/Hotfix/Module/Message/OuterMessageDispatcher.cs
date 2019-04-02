@@ -17,22 +17,32 @@ namespace ETHotfix
 				switch (message)
 				{
 					case IActorLocationRequest actorLocationRequest: // gate session收到actor rpc消息，先向actor 发送rpc请求，再将请求结果返回客户端
-					{
-						long unitId = session.GetComponent<SessionPlayerComponent>().Player.UnitId;
-						ActorLocationSender actorLocationSender = Game.Scene.GetComponent<ActorLocationSenderComponent>().Get(unitId);
+                    {
+                        Player player = session.GetComponent<SessionPlayerComponent>().Player;
+
+                        long id = player.UnitId == 0L? player.TankId : player.UnitId;
+
+						ActorLocationSender actorLocationSender = Game.Scene.GetComponent<ActorLocationSenderComponent>().Get(id);
 
 						int rpcId = actorLocationRequest.RpcId; // 这里要保存客户端的rpcId
+
 						IResponse response = await actorLocationSender.Call(actorLocationRequest);
+
 						response.RpcId = rpcId;
 
-						session.Reply(response);
+                        session.Reply(response);
 						return;
 					}
 					case IActorLocationMessage actorLocationMessage:
 					{
-						long unitId = session.GetComponent<SessionPlayerComponent>().Player.UnitId;
-						ActorLocationSender actorLocationSender = Game.Scene.GetComponent<ActorLocationSenderComponent>().Get(unitId);
+                        Player player = session.GetComponent<SessionPlayerComponent>().Player;
+
+                        long id = player.UnitId == 0L? player.TankId : player.UnitId;
+
+                        ActorLocationSender actorLocationSender = Game.Scene.GetComponent<ActorLocationSenderComponent>().Get(id);
+
 						actorLocationSender.Send(actorLocationMessage);
+
 						return;
 					}
 				}

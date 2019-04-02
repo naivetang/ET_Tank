@@ -12,6 +12,7 @@ message C2M_TestRequest // IActorLocationRequest
 {
 	int32 RpcId = 90;
 	int64 ActorId = 93;
+
 	string request = 1;
 }
 
@@ -20,6 +21,7 @@ message M2C_TestResponse // IActorLocationResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
+
 	string response = 1;
 }
 
@@ -27,6 +29,7 @@ message Actor_TransferRequest // IActorLocationRequest
 {
 	int32 RpcId = 90;
 	int64 ActorId = 93;
+
 	int32 MapIndex = 1;
 }
 
@@ -35,6 +38,7 @@ message Actor_TransferResponse // IActorLocationResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
+
 }
 
 message C2G_EnterMap // IRequest
@@ -119,9 +123,26 @@ message Frame_ClickMap // IActorLocationMessage
 	int64 ActorId = 93;
 	int64 Id = 94;
 	
+	
 	float X = 1;
 	float Y = 2;
 	float Z = 3;
+}
+
+message C2B_TankInfo // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	TankInfo TankInfo = 1;
+}
+
+message B2C_TankInfos // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	repeated TankInfo TankInfos = 1;
 }
 
 message M2C_PathfindingResult // IActorMessage
@@ -160,6 +181,7 @@ message C2M_Reload // IRequest
 {
 	int32 RpcId = 90;
 	string Account = 1;
+
 	string Password = 2;
 }
 
