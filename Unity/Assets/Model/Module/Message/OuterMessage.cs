@@ -915,70 +915,70 @@ namespace ETModel {
       }
     }
 
-    private float pX_;
+    private int pX_;
     /// <summary>
     /// 位置
     /// </summary>
-    public float PX {
+    public int PX {
       get { return pX_; }
       set {
         pX_ = value;
       }
     }
 
-    private float pY_;
-    public float PY {
+    private int pY_;
+    public int PY {
       get { return pY_; }
       set {
         pY_ = value;
       }
     }
 
-    private float pZ_;
-    public float PZ {
+    private int pZ_;
+    public int PZ {
       get { return pZ_; }
       set {
         pZ_ = value;
       }
     }
 
-    private float rX_;
+    private int rX_;
     /// <summary>
     /// 朝向
     /// </summary>
-    public float RX {
+    public int RX {
       get { return rX_; }
       set {
         rX_ = value;
       }
     }
 
-    private float rY_;
-    public float RY {
+    private int rY_;
+    public int RY {
       get { return rY_; }
       set {
         rY_ = value;
       }
     }
 
-    private float rZ_;
-    public float RZ {
+    private int rZ_;
+    public int RZ {
       get { return rZ_; }
       set {
         rZ_ = value;
       }
     }
 
-    private float turretRY_;
-    public float TurretRY {
+    private int turretRY_;
+    public int TurretRY {
       get { return turretRY_; }
       set {
         turretRY_ = value;
       }
     }
 
-    private float gunRX_;
-    public float GunRX {
+    private int gunRX_;
+    public int GunRX {
       get { return gunRX_; }
       set {
         gunRX_ = value;
@@ -990,37 +990,37 @@ namespace ETModel {
         output.WriteRawTag(8);
         output.WriteInt64(TankId);
       }
-      if (PX != 0F) {
-        output.WriteRawTag(21);
-        output.WriteFloat(PX);
+      if (PX != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PX);
       }
-      if (PY != 0F) {
-        output.WriteRawTag(29);
-        output.WriteFloat(PY);
+      if (PY != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PY);
       }
-      if (PZ != 0F) {
-        output.WriteRawTag(37);
-        output.WriteFloat(PZ);
+      if (PZ != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(PZ);
       }
-      if (RX != 0F) {
-        output.WriteRawTag(45);
-        output.WriteFloat(RX);
+      if (RX != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(RX);
       }
-      if (RY != 0F) {
-        output.WriteRawTag(53);
-        output.WriteFloat(RY);
+      if (RY != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(RY);
       }
-      if (RZ != 0F) {
-        output.WriteRawTag(61);
-        output.WriteFloat(RZ);
+      if (RZ != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(RZ);
       }
-      if (TurretRY != 0F) {
-        output.WriteRawTag(69);
-        output.WriteFloat(TurretRY);
+      if (TurretRY != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(TurretRY);
       }
-      if (GunRX != 0F) {
-        output.WriteRawTag(77);
-        output.WriteFloat(GunRX);
+      if (GunRX != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(GunRX);
       }
     }
 
@@ -1029,43 +1029,43 @@ namespace ETModel {
       if (TankId != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(TankId);
       }
-      if (PX != 0F) {
-        size += 1 + 4;
+      if (PX != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PX);
       }
-      if (PY != 0F) {
-        size += 1 + 4;
+      if (PY != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PY);
       }
-      if (PZ != 0F) {
-        size += 1 + 4;
+      if (PZ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PZ);
       }
-      if (RX != 0F) {
-        size += 1 + 4;
+      if (RX != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RX);
       }
-      if (RY != 0F) {
-        size += 1 + 4;
+      if (RY != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RY);
       }
-      if (RZ != 0F) {
-        size += 1 + 4;
+      if (RZ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RZ);
       }
-      if (TurretRY != 0F) {
-        size += 1 + 4;
+      if (TurretRY != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TurretRY);
       }
-      if (GunRX != 0F) {
-        size += 1 + 4;
+      if (GunRX != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(GunRX);
       }
       return size;
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
       tankId_ = 0;
-      pX_ = 0f;
-      pY_ = 0f;
-      pZ_ = 0f;
-      rX_ = 0f;
-      rY_ = 0f;
-      rZ_ = 0f;
-      turretRY_ = 0f;
-      gunRX_ = 0f;
+      pX_ = 0;
+      pY_ = 0;
+      pZ_ = 0;
+      rX_ = 0;
+      rY_ = 0;
+      rZ_ = 0;
+      turretRY_ = 0;
+      gunRX_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1076,36 +1076,36 @@ namespace ETModel {
             TankId = input.ReadInt64();
             break;
           }
-          case 21: {
-            PX = input.ReadFloat();
+          case 16: {
+            PX = input.ReadInt32();
             break;
           }
-          case 29: {
-            PY = input.ReadFloat();
+          case 24: {
+            PY = input.ReadInt32();
             break;
           }
-          case 37: {
-            PZ = input.ReadFloat();
+          case 32: {
+            PZ = input.ReadInt32();
             break;
           }
-          case 45: {
-            RX = input.ReadFloat();
+          case 40: {
+            RX = input.ReadInt32();
             break;
           }
-          case 53: {
-            RY = input.ReadFloat();
+          case 48: {
+            RY = input.ReadInt32();
             break;
           }
-          case 61: {
-            RZ = input.ReadFloat();
+          case 56: {
+            RZ = input.ReadInt32();
             break;
           }
-          case 69: {
-            TurretRY = input.ReadFloat();
+          case 64: {
+            TurretRY = input.ReadInt32();
             break;
           }
-          case 77: {
-            GunRX = input.ReadFloat();
+          case 72: {
+            GunRX = input.ReadInt32();
             break;
           }
         }

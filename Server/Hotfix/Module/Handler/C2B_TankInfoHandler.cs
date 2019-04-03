@@ -11,8 +11,14 @@ namespace ETHotfix
         {
 
             TankInfo tankInfo = message.TankInfo;
-            tank.Position = new Vector3(tankInfo.PX,tankInfo.PY,tankInfo.PZ);
-            tank.Rotation = new Vector3(tankInfo.RX,tankInfo.RY,tankInfo.RZ);
+            //tank.Position = new Vector3(tankInfo.PX,tankInfo.PY,tankInfo.PZ);
+            //tank.Rotation = new Vector3(tankInfo.RX,tankInfo.RY,tankInfo.RZ);
+            tank.PX = tankInfo.PX;
+            tank.PY = tankInfo.PY;
+            tank.PZ = tankInfo.PZ;
+            tank.RX = tankInfo.RX;
+            tank.RY = tankInfo.RY;
+            tank.RZ = tankInfo.RZ;
             tank.GunRX = tankInfo.GunRX;
             tank.TurretRY = tankInfo.TurretRY;
 

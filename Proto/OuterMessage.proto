@@ -88,17 +88,17 @@ message TankInfo
 	int64 TankId = 1;
 
 	// 位置
-	float PX = 2;
-	float PY = 3;
-	float PZ = 4;
+	int32 PX = 2;
+	int32 PY = 3;
+	int32 PZ = 4;
 
 	// 朝向
-	float RX = 5;
-	float RY = 6;
-	float RZ = 7;
+	int32 RX = 5;
+	int32 RY = 6;
+	int32 RZ = 7;
 
-	float TurretRY = 8;
-	float GunRX = 9;
+	int32 TurretRY = 8;
+	int32 GunRX = 9;
 }
 
 message M2C_CreateUnits // IActorMessage

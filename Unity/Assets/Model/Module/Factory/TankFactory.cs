@@ -38,6 +38,8 @@ namespace ETModel
                 // 发射子弹的组件
                 tank.AddComponent<TankShootComponent>();
 
+                tank.AddComponent<LocalTankComponent>();
+
                 tankComponent.MyTank = tank;
 
                 tank.GameObject.layer = 9;
@@ -47,6 +49,8 @@ namespace ETModel
                 tank.m_tankType = TankType.Remote;
 
                 tank.AddComponent<RemoteTankComponent>();
+
+                tank.AddComponent<TurretComponent>();
             }
 
 

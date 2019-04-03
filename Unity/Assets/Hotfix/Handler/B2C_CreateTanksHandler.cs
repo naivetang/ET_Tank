@@ -11,6 +11,8 @@ namespace ETHotfix
         {
             Log.Warning("收到消息 B2C_CreateTanks");
 
+            Log.Warning("进入战场，坦克数量=" + message.Tanks.Count);
+
             TankComponent tankComponent = ETModel.Game.Scene.GetComponent<TankComponent>();
 
             foreach (TankInfo tankInfo in message.Tanks)
@@ -22,7 +24,8 @@ namespace ETHotfix
 
                 Tank tank = TankFactory.Create(tankInfo.TankId);
 
-                tank.Position = new Vector3(tankInfo.PX,tankInfo.PY,tankInfo.PZ);
+                tank.Position = new Vector3(tankInfo.PX * 1f / LocalTankComponent.m_coefficient, tankInfo.PY * 1f / LocalTankComponent.m_coefficient,
+                        tankInfo.PZ * 1f / LocalTankComponent.m_coefficient);
 
                 //Unit unit = UnitFactory.Create(tankInfo.TankId);
                 //unit.Position = new Vector3(tankInfo.X, tankInfo.Y, tankInfo.Z);

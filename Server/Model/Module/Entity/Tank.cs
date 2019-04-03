@@ -20,12 +20,19 @@ namespace ETModel
     {
         public TankType TankType { get; private set; }
 
+        public int PX { get; set; } = 0;
+        public int PY { get; set; } = 0;
+        public int PZ { get; set; } = 0;
+        public int RX { get; set; } = 0;
+        public int RY { get; set; } = 0;
+        public int RZ { get; set; } = 0;
+
         public Vector3 Position { get; set; } = Vector3.zero;
 
         public Vector3 Rotation { get; set; } = Vector3.zero;
 
-        public float TurretRY { get; set; } = 0f;
-        public float GunRX { get; set; } = 0f;
+        public int TurretRY { get; set; } = 0;
+        public int GunRX { get; set; } = 0;
 
         public void Awake(TankType tankType)
         {

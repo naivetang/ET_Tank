@@ -19,11 +19,11 @@ namespace ETModel
     }
 
     [ObjectSystem]
-    public class RemoteTankUpdateSystem : UpdateSystem<RemoteTankComponent>
+    public class RemoteTankUpdateSystem : LateUpdateSystem<RemoteTankComponent>
     {
-        public override void Update(RemoteTankComponent self)
+        public override void LateUpdate(RemoteTankComponent self)
         {
-            self.Update();
+            self.LateUpdate();
         }
     }
 
@@ -60,23 +60,9 @@ namespace ETModel
             //rg.constraints = RigidbodyConstraints.FreezeAll;
         }
 
-        public void Update()
+        public void LateUpdate()
         {
-            try
-            {
-                Vector3 pos = this.m_tank.transform.position;
-                Vector3 rot = this.m_tank.transform.eulerAngles;
-
-                if (this.m_delta > 0)
-                {
-                    this.m_tank.transform.position = Vector3.Lerp(pos, this.m_fPos, this.m_delta);
-                    this.m_tank.transform.rotation = Quaternion.Lerp(Quaternion.Euler(rot), Quaternion.Euler(this.m_fRot), this.m_delta);
-                }
-            }
-            catch (Exception e)
-            {
-                Log.Error("Update" + e);
-            }
+            
             
         }
 
@@ -91,14 +77,16 @@ namespace ETModel
                 this.m_fPos = this.m_lPos + (this.m_nPos - this.m_lPos) * 2;
                 this.m_fRot = this.m_lRot + (this.m_nRot - this.m_lRot) * 2;
 
-                if (TimeHelper.Now() - this.m_lastRecvInfoTime > 0.3f)
+                if (TimeHelper.Now() - this.m_lastRecvInfoTime > 300f)
                 {
                     this.m_fPos = this.m_nPos;
                     this.m_fRot = this.m_nRot;
                 }
 
                 // 时间间隔
-                this.m_delta = TimeHelper.Now() - this.m_lastRecvInfoTime;
+                this.m_delta = (TimeHelper.Now() - this.m_lastRecvInfoTime) / 1000f;
+
+                //Log.Info($"{this.m_delta}");
 
                 // 更新
                 this.m_lPos = this.m_nPos;
@@ -109,7 +97,36 @@ namespace ETModel
             {
                 Log.Error("NetForecastInfo" + e);
             }
-            
+
+            UpdatePos();
+        }
+
+        private void UpdatePos()
+        {
+            try
+            {
+                Vector3 pos = this.m_tank.transform.position;
+                Vector3 rot = this.m_tank.transform.eulerAngles;
+                float distance = (pos - this.m_nPos).magnitude;
+
+                if (Mathf.Abs(distance) < 0.1f)
+                    return;
+
+                if (this.m_delta > 0)
+                {
+                    this.m_tank.transform.position = Vector3.Lerp(pos, this.m_fPos, this.m_delta);
+                    this.m_tank.transform.rotation = Quaternion.Lerp(Quaternion.Euler(rot), Quaternion.Euler(this.m_fRot), this.m_delta);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error("Update" + e);
+            }
+        }
+
+        private void UpdateEu()
+        {
+
         }
     }
 }

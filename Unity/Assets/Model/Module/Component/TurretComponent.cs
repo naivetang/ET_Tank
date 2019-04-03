@@ -27,11 +27,6 @@ namespace ETModel
     }
 
 
-    public static class StaticClass
-    {
-        public static int a;
-    }
-
     /// <summary>
     /// 炮塔旋转组件
     /// </summary>
@@ -63,9 +58,15 @@ namespace ETModel
 
         public void LateUpdate()
         {
+            if (this.GetParent<Tank>().m_tankType != TankType.Local)
+                return;
+
             this.TargetSignPos();
+
             this.TurretRotate();
+
             this.GunRotate();
+
             this.UpdateBoomIconPos();
         }
 
@@ -81,7 +82,7 @@ namespace ETModel
 
             hitPoint = Physics.Raycast(ray, out raycastHit, 100f)? raycastHit.point : ray.GetPoint(100f);
 
-            Debug.DrawLine(ray.origin, hitPoint,Color.red);//划出射线，在scene视图中能看到由摄像机发射出的射线
+            //Debug.DrawLine(ray.origin, hitPoint,Color.red);//划出射线，在scene视图中能看到由摄像机发射出的射线
 
             Vector3 screenPoint = Camera.main.WorldToScreenPoint(hitPoint);
 
@@ -170,6 +171,15 @@ namespace ETModel
             this.gunTransform.localEulerAngles = new Vector3(euler.x,localEuler.y,localEuler.z);
 
             //Log.Info($"localEulerAngles = {this.gunTransform.localEulerAngles}");
+        }
+
+        public void NetUpdate(float RX, float RY)
+        {
+            this.rotTarget = RY;
+            this.rollTarget = RX;
+
+            this.TurretRotate();
+            this.GunRotate();
         }
 
     }

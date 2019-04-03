@@ -45,13 +45,13 @@ namespace ETHotfix
                     TankInfo tankInfo = new TankInfo();
                     tankInfo.TankId = tank.Id;
 
-                    tankInfo.PX = tank.Position.x;
-                    tankInfo.PY = tank.Position.y;
-                    tankInfo.PZ = tank.Position.z;
+                    tankInfo.PX = tank.PX;
+                    tankInfo.PY = tank.PY;
+                    tankInfo.PZ = tank.PZ;
 
-                    tankInfo.RX = tank.Rotation.x;
-                    tankInfo.RY = tank.Rotation.y;
-                    tankInfo.RZ = tank.Rotation.z;
+                    tankInfo.RX = tank.RX;
+                    tankInfo.RY = tank.RY;
+                    tankInfo.RZ = tank.RZ;
 
                     tankInfo.TurretRY = tank.TurretRY;
                     tankInfo.GunRX = tank.GunRX;

@@ -11,7 +11,7 @@ namespace ETHotfix
         {
             TankInfo[] tankInfo = message.TankInfos.array;
 
-            Log.Warning($"坦克数量={message.TankInfos.Count}");
+            //Log.Warning($"坦克数量={message.TankInfos.Count}");
 
             foreach (TankInfo info in message.TankInfos)
             {
@@ -24,9 +24,14 @@ namespace ETHotfix
                     continue;
                 }
 
-                tank.GetComponent<RemoteTankComponent>().NetForecastInfo(new PF.Vector3(info.PX,info.PY,info.PZ),new PF.Vector3(info.RX
-                ,info.RY,info.RZ) );
+                int coefficient = LocalTankComponent.m_coefficient;
 
+
+                tank.GetComponent<RemoteTankComponent>().NetForecastInfo(
+                        new PF.Vector3((info.PX * 1f) / coefficient, (info.PY * 1f) / coefficient, (info.PZ * 1f) / coefficient),
+                        new PF.Vector3((info.RX * 1f) / coefficient, (info.RY * 1f) / coefficient, (info.RZ * 1f) / coefficient));
+
+                tank.GetComponent<TurretComponent>().NetUpdate(info.GunRX * 1f / coefficient, info.TurretRY * 1f / coefficient);
                 //tank.Position = new Vector3(info.PX,info.PY,info.PZ);
             }
         }
