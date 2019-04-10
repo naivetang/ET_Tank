@@ -5,6 +5,7 @@ using Mathf = UnityEngine.Mathf;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 using ETHotfix;
+using FairyGUI;
 
 namespace ETModel
 {
@@ -82,10 +83,17 @@ namespace ETModel
 
             hitPoint = Physics.Raycast(ray, out raycastHit, 100f)? raycastHit.point : ray.GetPoint(100f);
 
-            //Debug.DrawLine(ray.origin, hitPoint,Color.red);//划出射线，在scene视图中能看到由摄像机发射出的射线
+            Debug.DrawLine(ray.origin, hitPoint,Color.red);//划出射线，在scene视图中能看到由摄像机发射出的射线
 
             Vector3 screenPoint = Camera.main.WorldToScreenPoint(hitPoint);
 
+            UIContentScaler scaler = Stage.inst.gameObject.GetComponent<UIContentScaler>();
+
+            
+
+            screenPoint.x = (scaler.designResolutionX*1.0f) / Screen.width * screenPoint.x;
+
+            screenPoint.y = (scaler.designResolutionY*1.0f) / Screen.height * screenPoint.y;
 
             UpdatePos?.Invoke(screenPoint.x, screenPoint.y);
         }
@@ -98,9 +106,10 @@ namespace ETModel
         {
             Vector3 hitPoint = Vector3.zero;
             RaycastHit raycastHit;
+            
             Vector3 centerVec = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
             Ray ray = Camera.main.ScreenPointToRay(centerVec);
-
+            
             LayerMask layerMask = ~(1 << 9);
 
 
