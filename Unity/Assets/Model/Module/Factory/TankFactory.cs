@@ -51,6 +51,10 @@ namespace ETModel
                 tank.AddComponent<RemoteTankComponent>();
 
                 tank.AddComponent<TurretComponent>();
+
+                tank.AddComponent<TankShootComponent>();
+
+                tank.AddComponent<BulletComponent>();
             }
 
 

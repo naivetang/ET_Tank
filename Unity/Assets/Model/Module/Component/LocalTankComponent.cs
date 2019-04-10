@@ -16,9 +16,6 @@ namespace ETModel
 
     public class LocalTankComponent : Component
     {
-
-        public static int m_coefficient = 1000000;
-
         private Tank m_tank;
 
         public void Awake()
@@ -42,6 +39,8 @@ namespace ETModel
 
                 tankInfo.TankInfo.TankId = m_tank.Id;
 
+                int m_coefficient = Tank.m_coefficient;
+
                 tankInfo.TankInfo.PX = Convert.ToInt32(m_tank.Position.x * m_coefficient);
                 tankInfo.TankInfo.PY = Convert.ToInt32(this.m_tank.Position.y* m_coefficient);
                 tankInfo.TankInfo.PZ = Convert.ToInt32(m_tank.Position.z* m_coefficient);
@@ -50,8 +49,11 @@ namespace ETModel
                 tankInfo.TankInfo.RY = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.y* m_coefficient);
                 tankInfo.TankInfo.RZ = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.z* m_coefficient);
 
-                tankInfo.TankInfo.TurretRY = Convert.ToInt32(m_tank.Turret.transform.eulerAngles.y* m_coefficient);
-                tankInfo.TankInfo.GunRX = Convert.ToInt32(m_tank.Gun.transform.eulerAngles.x* m_coefficient);
+                TurretComponent turretComponent = this.GetParent<Tank>().GetComponent<TurretComponent>();
+                
+
+                tankInfo.TankInfo.TurretRY = Convert.ToInt32(turretComponent.RotTarget* m_coefficient);
+                tankInfo.TankInfo.GunRX = Convert.ToInt32(turretComponent .RollTarget* m_coefficient);
 
                 //Log.Warning("发送成功");
 

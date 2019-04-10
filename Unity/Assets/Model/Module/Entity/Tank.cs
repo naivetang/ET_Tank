@@ -16,6 +16,9 @@ namespace ETModel
 
     public sealed class Tank : Entity
     {
+
+        public static int m_coefficient = 1000000;
+
         // 最大血量，当前血量，上一次扣掉/增加的血量
         public static Action<float, float, float> m_hpChange;
 

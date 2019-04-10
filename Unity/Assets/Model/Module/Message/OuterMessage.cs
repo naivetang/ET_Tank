@@ -2094,6 +2094,396 @@ namespace ETModel {
 
   }
 
+  public partial class C2B_Shoot : pb::IMessage {
+    private static readonly pb::MessageParser<C2B_Shoot> _parser = new pb::MessageParser<C2B_Shoot>(() => (C2B_Shoot)MessagePool.Instance.Fetch(typeof(C2B_Shoot)));
+    public static pb::MessageParser<C2B_Shoot> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private int pX_;
+    public int PX {
+      get { return pX_; }
+      set {
+        pX_ = value;
+      }
+    }
+
+    private int pY_;
+    public int PY {
+      get { return pY_; }
+      set {
+        pY_ = value;
+      }
+    }
+
+    private int pZ_;
+    public int PZ {
+      get { return pZ_; }
+      set {
+        pZ_ = value;
+      }
+    }
+
+    private int rX_;
+    public int RX {
+      get { return rX_; }
+      set {
+        rX_ = value;
+      }
+    }
+
+    private int rY_;
+    public int RY {
+      get { return rY_; }
+      set {
+        rY_ = value;
+      }
+    }
+
+    private int rZ_;
+    public int RZ {
+      get { return rZ_; }
+      set {
+        rZ_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PX != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(PX);
+      }
+      if (PY != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PY);
+      }
+      if (PZ != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PZ);
+      }
+      if (RX != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(RX);
+      }
+      if (RY != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(RY);
+      }
+      if (RZ != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(RZ);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (PX != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PX);
+      }
+      if (PY != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PY);
+      }
+      if (PZ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PZ);
+      }
+      if (RX != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RX);
+      }
+      if (RY != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RY);
+      }
+      if (RZ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RZ);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      pX_ = 0;
+      pY_ = 0;
+      pZ_ = 0;
+      rX_ = 0;
+      rY_ = 0;
+      rZ_ = 0;
+      rpcId_ = 0;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            PX = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            PY = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            PZ = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            RX = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            RY = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            RZ = input.ReadInt32();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class B2C_Shoot : pb::IMessage {
+    private static readonly pb::MessageParser<B2C_Shoot> _parser = new pb::MessageParser<B2C_Shoot>(() => (B2C_Shoot)MessagePool.Instance.Fetch(typeof(B2C_Shoot)));
+    public static pb::MessageParser<B2C_Shoot> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long tankId_;
+    public long TankId {
+      get { return tankId_; }
+      set {
+        tankId_ = value;
+      }
+    }
+
+    private int pX_;
+    public int PX {
+      get { return pX_; }
+      set {
+        pX_ = value;
+      }
+    }
+
+    private int pY_;
+    public int PY {
+      get { return pY_; }
+      set {
+        pY_ = value;
+      }
+    }
+
+    private int pZ_;
+    public int PZ {
+      get { return pZ_; }
+      set {
+        pZ_ = value;
+      }
+    }
+
+    private int rX_;
+    public int RX {
+      get { return rX_; }
+      set {
+        rX_ = value;
+      }
+    }
+
+    private int rY_;
+    public int RY {
+      get { return rY_; }
+      set {
+        rY_ = value;
+      }
+    }
+
+    private int rZ_;
+    public int RZ {
+      get { return rZ_; }
+      set {
+        rZ_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (TankId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(TankId);
+      }
+      if (PX != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PX);
+      }
+      if (PY != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PY);
+      }
+      if (PZ != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(PZ);
+      }
+      if (RX != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(RX);
+      }
+      if (RY != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(RY);
+      }
+      if (RZ != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(RZ);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (TankId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(TankId);
+      }
+      if (PX != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PX);
+      }
+      if (PY != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PY);
+      }
+      if (PZ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PZ);
+      }
+      if (RX != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RX);
+      }
+      if (RY != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RY);
+      }
+      if (RZ != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RZ);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      tankId_ = 0;
+      pX_ = 0;
+      pY_ = 0;
+      pZ_ = 0;
+      rX_ = 0;
+      rY_ = 0;
+      rZ_ = 0;
+      rpcId_ = 0;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            TankId = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            PX = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            PY = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            PZ = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            RX = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            RY = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            RZ = input.ReadInt32();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   #endregion
 
 }

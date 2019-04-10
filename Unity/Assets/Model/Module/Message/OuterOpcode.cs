@@ -75,6 +75,12 @@ namespace ETModel
 	[Message(OuterOpcode.M2C_Reload)]
 	public partial class M2C_Reload : IResponse {}
 
+	[Message(OuterOpcode.C2B_Shoot)]
+	public partial class C2B_Shoot : IActorLocationMessage {}
+
+	[Message(OuterOpcode.B2C_Shoot)]
+	public partial class B2C_Shoot : IActorMessage {}
+
 }
 namespace ETModel
 {
@@ -102,5 +108,7 @@ namespace ETModel
 		 public const ushort G2C_Test = 120;
 		 public const ushort C2M_Reload = 121;
 		 public const ushort M2C_Reload = 122;
+		 public const ushort C2B_Shoot = 123;
+		 public const ushort B2C_Shoot = 124;
 	}
 }

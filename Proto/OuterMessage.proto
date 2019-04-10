@@ -191,3 +191,33 @@ message M2C_Reload // IResponse
 	int32 Error = 91;
 	string Message = 92;
 }
+
+message C2B_Shoot // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int32 PX = 1;
+	int32 PY = 2;
+	int32 PZ = 3;
+
+	int32 RX = 4;
+	int32 RY = 5;
+	int32 RZ = 6;
+}
+
+message B2C_Shoot // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int64 TankId = 1;
+
+	int32 PX = 2;
+	int32 PY = 3;
+	int32 PZ = 4;
+
+	int32 RX = 5;
+	int32 RY = 6;
+	int32 RZ = 7;
+}

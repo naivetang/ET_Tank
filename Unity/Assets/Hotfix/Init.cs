@@ -1,5 +1,6 @@
 ﻿using System;
 using ETModel;
+using NPOI.Util;
 using UnityEngine;
 
 namespace ETHotfix
@@ -13,9 +14,10 @@ namespace ETHotfix
 				Game.Scene.ModelScene = ETModel.Game.Scene;
 
 				// 注册热更层回调
-				ETModel.Game.Hotfix.Update = () => { Update(); };
-				ETModel.Game.Hotfix.LateUpdate = () => { LateUpdate(); };
-				ETModel.Game.Hotfix.OnApplicationQuit = () => { OnApplicationQuit(); };
+				ETModel.Game.Hotfix.Update = Update;
+				ETModel.Game.Hotfix.LateUpdate = LateUpdate;
+				ETModel.Game.Hotfix.FixedUpdate = FixedUpdate;
+				ETModel.Game.Hotfix.OnApplicationQuit = OnApplicationQuit;
 				
 				Game.Scene.AddComponent<FUIComponent>();
 				Game.Scene.AddComponent<OpcodeTypeComponent>();
@@ -66,6 +68,18 @@ namespace ETHotfix
 				Log.Error(e);
 			}
 		}
+
+        public static void FixedUpdate()
+        {
+            try
+            {
+                Game.EventSystem.FixedUpdate();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+            }
+        }
 
 		public static void OnApplicationQuit()
 		{

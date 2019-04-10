@@ -136,6 +136,7 @@
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\EventProxy.cs" Link="Base\Base\EventProxy.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\EventSystem.cs" Link="Base\Base\EventSystem.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\IAwakeSystem.cs" Link="Base\Base\IAwakeSystem.cs" />
+    <Compile Include="..\..\Unity\Assets\Model\Base\Object\IFixedUpdateSystem.cs" Link="Base\Base\IFixedUpdateSystem.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\IChangeSystem.cs" Link="Base\Base\IChangeSystem.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\IDestroySystem.cs" Link="Base\Base\IDestroySystem.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\ILateUpdateSystem.cs" Link="Base\Base\ILateUpdateSystem.cs" />
@@ -344,7 +345,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Base\RecyclableMemoryStream\" />
-    <Folder Include="Base\Base\" />
     <Folder Include="Component\Config\" />
     <Folder Include="Module\Message\Network\KCP\" />
     <Folder Include="Module\Message\Network\TCP\" />

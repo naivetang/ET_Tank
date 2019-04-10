@@ -13,6 +13,20 @@ namespace ETModel
 
 	public sealed class EventSystem
 	{
+        private static float fixedUpdateTimeDelta = 1f / 60;
+
+        public static float FixedUpdateTime
+        {
+            get
+            {
+#if !SERVER
+                return fixedUpdateTimeDelta;
+#else
+                return fixedUpdateTimeDelta;
+#endif
+            }
+        }
+
 		private readonly Dictionary<long, Component> allComponents = new Dictionary<long, Component>();
 
 		private readonly Dictionary<DLLType, Assembly> assemblies = new Dictionary<DLLType, Assembly>();
@@ -29,8 +43,9 @@ namespace ETModel
 		private readonly UnOrderMultiMap<Type, ILoadSystem> loadSystems = new UnOrderMultiMap<Type, ILoadSystem>();
 
 		private readonly UnOrderMultiMap<Type, IUpdateSystem> updateSystems = new UnOrderMultiMap<Type, IUpdateSystem>();
+        private readonly UnOrderMultiMap<Type, IFixedUpdateSystem> fixedUpdateSystems = new UnOrderMultiMap<Type, IFixedUpdateSystem>();
 
-		private readonly UnOrderMultiMap<Type, ILateUpdateSystem> lateUpdateSystems = new UnOrderMultiMap<Type, ILateUpdateSystem>();
+        private readonly UnOrderMultiMap<Type, ILateUpdateSystem> lateUpdateSystems = new UnOrderMultiMap<Type, ILateUpdateSystem>();
 
 		private readonly UnOrderMultiMap<Type, IChangeSystem> changeSystems = new UnOrderMultiMap<Type, IChangeSystem>();
 		
@@ -44,7 +59,10 @@ namespace ETModel
 		private Queue<long> loaders = new Queue<long>();
 		private Queue<long> loaders2 = new Queue<long>();
 
-		private Queue<long> lateUpdates = new Queue<long>();
+        private Queue<long> fixedUpdates = new Queue<long>();
+        private Queue<long> fixedUpdates2 = new Queue<long>();
+
+        private Queue<long> lateUpdates = new Queue<long>();
 		private Queue<long> lateUpdates2 = new Queue<long>();
 
 		public void Add(DLLType dllType, Assembly assembly)
@@ -74,6 +92,7 @@ namespace ETModel
 			this.changeSystems.Clear();
 			this.destroySystems.Clear();
 			this.deserializeSystems.Clear();
+            this.fixedUpdateSystems.Clear();
 
 			foreach (Type type in types[typeof(ObjectSystemAttribute)])
 			{
@@ -112,6 +131,9 @@ namespace ETModel
 					case IDeserializeSystem deserializeSystem:
 						this.deserializeSystems.Add(deserializeSystem.Type(), deserializeSystem);
 						break;
+                    case IFixedUpdateSystem fixedUpdateSystem:
+                        this.fixedUpdateSystems.Add(fixedUpdateSystem.Type(), fixedUpdateSystem);
+                        break;
 				}
 			}
 
@@ -170,23 +192,26 @@ namespace ETModel
 				this.loaders.Enqueue(component.InstanceId);
 			}
 
-            if (this.startSystems.ContainsKey(type))
-            {
-                this.starts.Enqueue(component.InstanceId);
-            }
-
-            if (this.updateSystems.ContainsKey(type))
+			if (this.updateSystems.ContainsKey(type))
 			{
 				this.updates.Enqueue(component.InstanceId);
 			}
 
-			
+			if (this.startSystems.ContainsKey(type))
+			{
+				this.starts.Enqueue(component.InstanceId);
+			}
 
 			if (this.lateUpdateSystems.ContainsKey(type))
 			{
 				this.lateUpdates.Enqueue(component.InstanceId);
 			}
-		}
+
+            if (this.fixedUpdateSystems.ContainsKey(type))
+            {
+                this.fixedUpdates.Enqueue(component.InstanceId);
+            }
+        }
 
 		public void Remove(long instanceId)
 		{
@@ -516,6 +541,45 @@ namespace ETModel
 
 			ObjectHelper.Swap(ref this.updates, ref this.updates2);
 		}
+
+        public void FixedUpdate()
+        {
+            while (this.fixedUpdates.Count > 0)
+            {
+                long instanceId = this.fixedUpdates.Dequeue();
+                Component component;
+                if (!this.allComponents.TryGetValue(instanceId, out component))
+                {
+                    continue;
+                }
+                if (component.IsDisposed)
+                {
+                    continue;
+                }
+
+                List<IFixedUpdateSystem> iFixedUpdateSystems = this.fixedUpdateSystems[component.GetType()];
+                if (iFixedUpdateSystems == null)
+                {
+                    continue;
+                }
+
+                this.fixedUpdates2.Enqueue(instanceId);
+
+                foreach (IFixedUpdateSystem ifixedUpdateSystem in iFixedUpdateSystems)
+                {
+                    try
+                    {
+                        ifixedUpdateSystem.Run(component);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e);
+                    }
+                }
+            }
+
+            ObjectHelper.Swap(ref this.fixedUpdates, ref this.fixedUpdates2);
+        }
 
 		public void LateUpdate()
 		{

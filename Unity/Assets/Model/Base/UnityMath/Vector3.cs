@@ -4,6 +4,27 @@ using System.Globalization;
 namespace PF
 {
     [Serializable]
+    public struct IntVector3: IEquatable<IntVector3>
+    {
+        public int x;
+        public int y;
+        public int z;
+
+        public IntVector3(int x, int y, int z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
+
+        public bool Equals(IntVector3 other)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    [Serializable]
     public struct Vector3: IEquatable<Vector3>
     {
         private const float k1OverSqrt2 = 0.7071068f;

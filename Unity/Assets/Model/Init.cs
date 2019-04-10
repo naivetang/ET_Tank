@@ -9,7 +9,8 @@ namespace ETModel
 
         private void Start()
 		{
-			this.StartAsync().NoAwait();
+            Time.fixedDeltaTime = 1f / 60;
+            this.StartAsync().NoAwait();
 		}
 		
 		private async ETVoid StartAsync()
@@ -86,7 +87,13 @@ namespace ETModel
 			Game.EventSystem.LateUpdate();
 		}
 
-		private void OnApplicationQuit()
+        private void FixedUpdate()
+        {
+            Game.Hotfix.FixedUpdate?.Invoke();
+            Game.EventSystem.FixedUpdate();
+        }
+
+        private void OnApplicationQuit()
 		{
 			Game.Hotfix.OnApplicationQuit?.Invoke();
 			Game.Close();

@@ -24,8 +24,8 @@ namespace ETHotfix
 
                 Tank tank = TankFactory.Create(tankInfo.TankId);
 
-                tank.Position = new Vector3(tankInfo.PX * 1f / LocalTankComponent.m_coefficient, tankInfo.PY * 1f / LocalTankComponent.m_coefficient,
-                        tankInfo.PZ * 1f / LocalTankComponent.m_coefficient);
+                tank.Position = new Vector3(tankInfo.PX * 1f / Tank.m_coefficient, tankInfo.PY * 1f / Tank.m_coefficient,
+                        tankInfo.PZ * 1f / Tank.m_coefficient);
 
                 //Unit unit = UnitFactory.Create(tankInfo.TankId);
                 //unit.Position = new Vector3(tankInfo.X, tankInfo.Y, tankInfo.Z);

@@ -27,6 +27,15 @@ namespace ETModel
         }
     }
 
+    [ObjectSystem]
+    public class TurretComponentFixedUpdateSystem: FixedUpdateSystem<TurretComponent>
+    {
+        public override void FixedUpdate(TurretComponent self)
+        {
+            self.FixedUpdate();
+        }
+    }
+
 
     /// <summary>
     /// 炮塔旋转组件
@@ -41,8 +50,19 @@ namespace ETModel
         private float rotSpeed = 0.5f;
 
         // 炮塔目标角度
+        /// <summary>
+        /// 左右
+        /// </summary>
         private float rotTarget = 0f;
+
+        public float RotTarget => this.rotTarget;
+
+        /// <summary>
+        /// 上下
+        /// </summary>
         private float rollTarget = 0f;
+
+        public float RollTarget => this.rollTarget;
 
         //炮管
         private Transform gunTransform;
@@ -59,16 +79,22 @@ namespace ETModel
 
         public void LateUpdate()
         {
-            if (this.GetParent<Tank>().m_tankType != TankType.Local)
-                return;
 
-            this.TargetSignPos();
+        }
+
+
+        public void FixedUpdate()
+        {
+            // 本地坦克才自己计算目标位置，才更新中心的图标
+            if (this.GetParent<Tank>().m_tankType == TankType.Local)
+                this.TargetSignPos();
 
             this.TurretRotate();
 
             this.GunRotate();
 
-            this.UpdateBoomIconPos();
+            if (this.GetParent<Tank>().m_tankType == TankType.Local)
+                this.UpdateBoomIconPos();
         }
 
         private void UpdateBoomIconPos()
@@ -100,7 +126,7 @@ namespace ETModel
 
 
         /// <summary>
-        /// 屏幕中间准心
+        /// 计算炮塔水平面旋转角度、炮管垂直面旋转角度
         /// </summary>
         private void TargetSignPos()
         {
@@ -186,9 +212,6 @@ namespace ETModel
         {
             this.rotTarget = RY;
             this.rollTarget = RX;
-
-            this.TurretRotate();
-            this.GunRotate();
         }
 
     }

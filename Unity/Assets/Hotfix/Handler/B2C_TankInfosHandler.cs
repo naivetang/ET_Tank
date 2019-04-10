@@ -24,7 +24,7 @@ namespace ETHotfix
                     continue;
                 }
 
-                int coefficient = LocalTankComponent.m_coefficient;
+                int coefficient = Tank.m_coefficient;
 
 
                 tank.GetComponent<RemoteTankComponent>().NetForecastInfo(

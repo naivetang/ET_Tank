@@ -152,20 +152,27 @@ namespace App
 					default:
 						throw new Exception($"命令行参数没有设置正确的AppType: {startConfig.AppType}");
 				}
-				
-				while (true)
-				{
-					try
-					{
-						Thread.Sleep(1);
-						OneThreadSynchronizationContext.Instance.Update();
-						Game.EventSystem.Update();
-					}
-					catch (Exception e)
-					{
-						Log.Error(e);
-					}
-				}
+
+                long fixedUpdateInterval = (long)(EventSystem.FixedUpdateTime * 1000);
+                long timing = TimeHelper.ClientNow();
+                while (true)
+                {
+                    try
+                    {
+                        Thread.Sleep(1);
+                        OneThreadSynchronizationContext.Instance.Update();
+                        Game.EventSystem.Update();
+                        if (TimeHelper.ClientNow() - timing >= fixedUpdateInterval)
+                        {
+                            timing += fixedUpdateInterval;
+                            Game.EventSystem.FixedUpdate();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e);
+                    }
+                }
 			}
 			catch (Exception e)
 			{
