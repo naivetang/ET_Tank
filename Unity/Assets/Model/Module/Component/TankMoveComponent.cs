@@ -23,32 +23,39 @@ namespace ETModel
             self.Update();
         }
     }
+    public class AxleInfo
+    {
+        //左轮
+        public WheelCollider leftWheel;
+        //右轮
+        public WheelCollider rightWheel;
+        /// <summary>
+        /// 是否是动力驱动轮
+        /// </summary>
+        public bool montor;
+        /// <summary>
+        /// 是否是转向驱动轮
+        /// </summary>
+        public bool steering;
+    }
 
     public class TankMoveComponent : Component
     {
         private Tank m_tank;
 
-        private class AxleInfo
-        {
-            //左轮
-            public WheelCollider leftWheel;
-            //右轮
-            public WheelCollider rightWheel;
-            //马力
-            public bool montor;
-            //转向
-            public bool steering;
-        }
-
         //轮轴
         private List<AxleInfo> axleInfos;
-        //马力
+        /// <summary>
+        /// 动力
+        /// </summary>
         private float motor = 0;
-        private readonly float maxMotor = 320f;
+        private readonly float maxMotor = 700f;
         //制动
         private float breakTorque = 0;
-        private readonly float maxBreakTorque = 150f;
-        //转向角
+        private readonly float maxBreakTorque = 300f;
+        /// <summary>
+        /// 转向角
+        /// </summary>
         private float steering = 0;
         private readonly float maxSteering = 40;
 
@@ -80,6 +87,10 @@ namespace ETModel
             Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
             motorClip = bundleGameObject.Get<AudioClip>("motor");
 
+            this.motorAudioSource.loop = true;
+
+            this.motorAudioSource.clip = this.motorClip;
+
             axleInfos = new List<AxleInfo>(2);
             
             // 前轮
@@ -100,7 +111,7 @@ namespace ETModel
         public void Update()
         {
 
-            if (this.m_tank.m_tankType != TankType.Local)
+            if (this.m_tank.TankType != TankType.Local)
                 return;
 
             this.PlayerCtrl();
@@ -112,6 +123,26 @@ namespace ETModel
             this.TrackRolling();
 
             this.Audio();
+        }
+
+        /// <summary>
+        /// 停止移动
+        /// </summary>
+        public void Stop()
+        {
+            foreach (AxleInfo axleInfo in this.axleInfos)
+            {
+                if (axleInfo.steering)
+                {
+                    axleInfo.leftWheel.steerAngle = axleInfo.rightWheel.steerAngle = 0;
+                }
+
+                if (axleInfo.montor)
+                {
+                    axleInfo.leftWheel.motorTorque = axleInfo.rightWheel.motorTorque = 0;
+                }
+
+            }
         }
 
         /// <summary>
@@ -204,8 +235,7 @@ namespace ETModel
         {
             if (PF.Mathf.Abs(this.motor) > 0.1f && !this.motorAudioSource.isPlaying)
             {
-                this.motorAudioSource.loop = true;
-                this.motorAudioSource.clip = this.motorClip;
+                
                 this.motorAudioSource.Play();
             }
             else if (PF.Mathf.Abs(this.motor) <= 0.1f)
@@ -213,6 +243,8 @@ namespace ETModel
                 this.motorAudioSource.Pause();
             }
         }
+
+
 
     }
 }

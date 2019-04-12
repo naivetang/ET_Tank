@@ -27,9 +27,12 @@ namespace ILRuntime.Runtime.Generated
             method = type.GetMethod("set_Position", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, set_Position_0);
 
+            field = type.GetField("m_coefficient", flag);
+            app.RegisterCLRFieldGetter(field, get_m_coefficient_0);
+            app.RegisterCLRFieldSetter(field, set_m_coefficient_0);
             field = type.GetField("m_hpChange", flag);
-            app.RegisterCLRFieldGetter(field, get_m_hpChange_0);
-            app.RegisterCLRFieldSetter(field, set_m_hpChange_0);
+            app.RegisterCLRFieldGetter(field, get_m_hpChange_1);
+            app.RegisterCLRFieldSetter(field, set_m_hpChange_1);
 
 
         }
@@ -55,13 +58,21 @@ namespace ILRuntime.Runtime.Generated
         }
 
 
-        static object get_m_hpChange_0(ref object o)
+        static object get_m_coefficient_0(ref object o)
+        {
+            return ETModel.Tank.m_coefficient;
+        }
+        static void set_m_coefficient_0(ref object o, object v)
+        {
+            ETModel.Tank.m_coefficient = (System.Int32)v;
+        }
+        static object get_m_hpChange_1(ref object o)
         {
             return ETModel.Tank.m_hpChange;
         }
-        static void set_m_hpChange_0(ref object o, object v)
+        static void set_m_hpChange_1(ref object o, object v)
         {
-            ETModel.Tank.m_hpChange = (System.Action<System.Single, System.Single, System.Single>)v;
+            ETModel.Tank.m_hpChange = (System.Action<System.Int32, System.Int32>)v;
         }
 
 

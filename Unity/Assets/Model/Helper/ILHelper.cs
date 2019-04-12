@@ -17,6 +17,7 @@ namespace ETModel
 			// 注册重定向函数
 
 			// 注册委托
+            appdomain.DelegateManager.RegisterMethodDelegate<int, int>();
             appdomain.DelegateManager.RegisterMethodDelegate<float, float>();
             appdomain.DelegateManager.RegisterMethodDelegate<float, float,float>();
 			appdomain.DelegateManager.RegisterMethodDelegate<List<object>>();

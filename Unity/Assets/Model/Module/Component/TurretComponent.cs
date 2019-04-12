@@ -86,14 +86,14 @@ namespace ETModel
         public void FixedUpdate()
         {
             // 本地坦克才自己计算目标位置，才更新中心的图标
-            if (this.GetParent<Tank>().m_tankType == TankType.Local)
+            if (this.GetParent<Tank>().TankType == TankType.Local)
                 this.TargetSignPos();
 
             this.TurretRotate();
 
             this.GunRotate();
 
-            if (this.GetParent<Tank>().m_tankType == TankType.Local)
+            if (this.GetParent<Tank>().TankType == TankType.Local)
                 this.UpdateBoomIconPos();
         }
 

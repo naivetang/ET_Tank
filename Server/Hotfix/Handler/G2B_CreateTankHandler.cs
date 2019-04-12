@@ -20,6 +20,18 @@ namespace ETHotfix
                 // 随机生成一辆坦克，id和instanceId不相等
                 Tank tank = ComponentFactory.CreateWithId<Tank>(IdGenerater.GenerateId());
 
+                // 进游戏的第一个人是蓝色方，其它都是红色方
+                if (!Game.HasBlue)
+                {
+                    tank.TankCamp = TankCamp.Blue;
+                    Game.HasBlue = true;
+                }
+                else
+                {
+                    tank.TankCamp = TankCamp.Red;
+                }
+
+
                 await tank.AddComponent<MailBoxComponent>().AddLocation();
 
                 tank.AddComponent<TankGateComponent, long>(message.GateSessionId);

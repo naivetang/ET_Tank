@@ -45,7 +45,11 @@ namespace ILRuntime.Runtime.Generated
             System_Collections_Generic_Dictionary_2_Int64_ILTypeInstance_Binding.Register(app);
             ETModel_UnOrderMultiMap_2_Type_ILTypeInstance_Binding.Register(app);
             System_Collections_Generic_Queue_1_Int64_Binding.Register(app);
+            ETModel_UnOrderMultiMap_2_Type_IFixedUpdateSystem_Binding.Register(app);
             System_Collections_Generic_List_1_ILTypeInstance_Binding_Enumerator_Binding.Register(app);
+            System_Collections_Generic_List_1_IFixedUpdateSystem_Binding.Register(app);
+            System_Collections_Generic_List_1_IFixedUpdateSystem_Binding_Enumerator_Binding.Register(app);
+            ETModel_IFixedUpdateSystem_Binding.Register(app);
             System_Collections_Generic_List_1_Type_Binding.Register(app);
             ETModel_Game_Binding.Register(app);
             ETModel_Hotfix_Binding.Register(app);
@@ -101,12 +105,16 @@ namespace ILRuntime.Runtime.Generated
             System_Collections_Generic_IEnumerator_1_TankInfo_Binding.Register(app);
             ETModel_TankInfo_Binding.Register(app);
             ETModel_TankComponent_Binding.Register(app);
-            UnityEngine_Vector3_Binding.Register(app);
             ETModel_Tank_Binding.Register(app);
+            UnityEngine_Vector3_Binding.Register(app);
+            ETModel_B2C_Shoot_Binding.Register(app);
+            PF_IntVector3_Binding.Register(app);
+            ETModel_TankShootComponent_Binding.Register(app);
             ETModel_B2C_TankInfos_Binding.Register(app);
             ETModel_ComponentWithId_Binding.Register(app);
             PF_Vector3_Binding.Register(app);
             ETModel_RemoteTankComponent_Binding.Register(app);
+            ETModel_TurretComponent_Binding.Register(app);
             UnityEngine_Input_Binding.Register(app);
             ETModel_ConfigAttribute_Binding.Register(app);
             ETModel_AppTypeHelper_Binding.Register(app);
@@ -116,7 +124,6 @@ namespace ILRuntime.Runtime.Generated
             ETModel_C2G_EnterBattle_Binding.Register(app);
             ETModel_G2C_EnterBattle_Binding.Register(app);
             FairyGUI_GProgressBar_Binding.Register(app);
-            ETModel_TurretComponent_Binding.Register(app);
             FairyGUI_Window_Binding.Register(app);
             ETModel_M2C_CreateUnits_Binding.Register(app);
             Google_Protobuf_Collections_RepeatedField_1_UnitInfo_Binding.Register(app);

@@ -95,6 +95,7 @@ namespace ETModel
         {
             // Log.Info("OnTriggerEnter");
 
+            // layer = 9 是自己
             if (other.gameObject != null && other.gameObject.layer == 9)
             {
                 return;
@@ -106,23 +107,42 @@ namespace ETModel
             ExplosionEffectFactory.Create(this.m_bullet.Position);
 
 
-            if (other.gameObject != null && other.gameObject.tag == Tag.Tank)
+            if (other.attachedRigidbody != null && other.attachedRigidbody.tag == Tag.Tank)
             {
                 // 给坦克造成伤害
 
                 TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
 
-                long objInstanceId = other.gameObject.GetInstanceID();
+                long objInstanceId = other.attachedRigidbody.gameObject.GetInstanceID();
 
                 Tank beAttackTank = tankComponent.Get(objInstanceId);
 
-                beAttackTank.BeAttacked(this.Tank,this.m_bullet.AttackPower);
+                // 如果自己阵营，不造成伤害
+                if (beAttackTank.TankCamp == this.Tank.TankCamp)
+                    return;
 
+                int damage = this.m_bullet.AttackPower + this.Tank.GetComponent<NumericComponent>()[NumericType.Atk];
+
+                beAttackTank.BeAttacked(this.Tank, damage);
+
+                Send_C2B_AttackTank(beAttackTank.Id, damage);
             }
 
             this.m_bullet.Dispose();
         }
 
-        
+
+        private void Send_C2B_AttackTank(long targetId, int damage)
+        {
+            C2B_AttackTank msg = new C2B_AttackTank();
+
+            msg.TargetTankId = targetId;
+
+            msg.Damage = damage;
+
+            SessionComponent.Instance.Session.Send(msg);
+        }
+
+
     }
 }

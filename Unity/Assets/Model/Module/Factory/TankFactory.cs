@@ -24,7 +24,7 @@ namespace ETModel
 
             if (id == 10000 || PlayerComponent.Instance.MyPlayer.TankId == id)
             {
-                tank.m_tankType = TankType.Local;
+                tank.TankType = TankType.Local;
 
                 tank.AddComponent<TankMoveComponent>();
 
@@ -46,7 +46,7 @@ namespace ETModel
             }
             else
             {
-                tank.m_tankType = TankType.Remote;
+                tank.TankType = TankType.Remote;
 
                 tank.AddComponent<RemoteTankComponent>();
 
@@ -57,7 +57,7 @@ namespace ETModel
                 tank.AddComponent<BulletComponent>();
             }
 
-
+            tank.AddComponent<NumericComponent>();
 
             tankComponent.Add(tank);
             return tank;

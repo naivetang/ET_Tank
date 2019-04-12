@@ -14,14 +14,14 @@ using ILRuntime.CLR.Utils;
 
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class ETModel_UnOrderMultiMap_2_Type_ILTypeInstance_Binding
+    unsafe class ETModel_UnOrderMultiMap_2_Type_IFixedUpdateSystem_Binding
     {
         public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>);
+            Type type = typeof(ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>);
             args = new Type[]{typeof(System.Type)};
             method = type.GetMethod("ContainsKey", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, ContainsKey_0);
@@ -31,7 +31,7 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{};
             method = type.GetMethod("Clear", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, Clear_2);
-            args = new Type[]{typeof(System.Type), typeof(ILRuntime.Runtime.Intepreter.ILTypeInstance)};
+            args = new Type[]{typeof(System.Type), typeof(ETModel.IFixedUpdateSystem)};
             method = type.GetMethod("Add", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, Add_3);
 
@@ -53,7 +53,7 @@ namespace ILRuntime.Runtime.Generated
             __intp.Free(ptr_of_this_method);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance> instance_of_this_method = (ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>)typeof(ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem> instance_of_this_method = (ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>)typeof(ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.ContainsKey(@t);
@@ -74,7 +74,7 @@ namespace ILRuntime.Runtime.Generated
             __intp.Free(ptr_of_this_method);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance> instance_of_this_method = (ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>)typeof(ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem> instance_of_this_method = (ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>)typeof(ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method[t];
@@ -94,7 +94,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance> instance_of_this_method = (ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>)typeof(ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem> instance_of_this_method = (ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>)typeof(ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             instance_of_this_method.Clear();
@@ -109,7 +109,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 3);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ILRuntime.Runtime.Intepreter.ILTypeInstance @k = (ILRuntime.Runtime.Intepreter.ILTypeInstance)typeof(ILRuntime.Runtime.Intepreter.ILTypeInstance).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.IFixedUpdateSystem @k = (ETModel.IFixedUpdateSystem)typeof(ETModel.IFixedUpdateSystem).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
@@ -117,7 +117,7 @@ namespace ILRuntime.Runtime.Generated
             __intp.Free(ptr_of_this_method);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
-            ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance> instance_of_this_method = (ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>)typeof(ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem> instance_of_this_method = (ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>)typeof(ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             instance_of_this_method.Add(@t, @k);
@@ -131,7 +131,7 @@ namespace ILRuntime.Runtime.Generated
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* __ret = ILIntepreter.Minus(__esp, 0);
 
-            var result_of_this_method = new ETModel.UnOrderMultiMap<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>();
+            var result_of_this_method = new ETModel.UnOrderMultiMap<System.Type, ETModel.IFixedUpdateSystem>();
 
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }

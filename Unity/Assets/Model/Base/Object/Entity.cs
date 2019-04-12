@@ -35,22 +35,28 @@ namespace ETModel
 			}
 			
 			base.Dispose();
-			
-			foreach (Component component in this.componentDict.Values)
-			{
-				try
-				{
-					component.Dispose();
-				}
-				catch (Exception e)
-				{
-					Log.Error(e);
-				}
-			}
-			
-			this.components.Clear();
-			this.componentDict.Clear();
-		}
+
+            ClearComponents();
+
+        }
+
+        public virtual void ClearComponents()
+        {
+            foreach (Component component in this.componentDict.Values)
+            {
+                try
+                {
+                    component.Dispose();
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e);
+                }
+            }
+
+            this.components.Clear();
+            this.componentDict.Clear();
+        }
 		
 		public virtual Component AddComponent(Component component)
 		{

@@ -1,4 +1,5 @@
-﻿using PF;
+﻿using System;
+using PF;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -20,11 +21,11 @@ namespace ETModel
 
         private Tank m_tank;
 
-        private float m_attackPower = 90f;
+        private int m_attackPower = 40;
 
         private float m_instanceTime = 0f;
 
-        public float AttackPower
+        public int AttackPower
         {
             get
             {
@@ -32,7 +33,7 @@ namespace ETModel
 
                 float realAtt = m_attackPower - (Time.time - this.m_instanceTime) * 30;
 
-                return realAtt;
+                return Convert.ToInt32(realAtt);
             }
             set => this.m_attackPower = value;
         }

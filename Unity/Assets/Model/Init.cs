@@ -38,6 +38,8 @@ namespace ETModel
 
 			    Game.Scene.AddComponent<TankComponent>();
 
+                Game.Scene.AddComponent<NumericWatcherComponent>();
+
                 // FGUI包管理
 				Game.Scene.AddComponent<FUIPackageComponent>();
 

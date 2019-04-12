@@ -14,14 +14,14 @@ using ILRuntime.CLR.Utils;
 
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class ETModel_TankInfo_Binding
+    unsafe class ETModel_B2C_Shoot_Binding
     {
         public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(ETModel.TankInfo);
+            Type type = typeof(ETModel.B2C_Shoot);
             args = new Type[]{};
             method = type.GetMethod("get_TankId", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_TankId_0);
@@ -43,12 +43,6 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{};
             method = type.GetMethod("get_RZ", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_RZ_6);
-            args = new Type[]{};
-            method = type.GetMethod("get_GunRX", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, get_GunRX_7);
-            args = new Type[]{};
-            method = type.GetMethod("get_TurretRY", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, get_TurretRY_8);
 
 
         }
@@ -61,7 +55,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.B2C_Shoot instance_of_this_method = (ETModel.B2C_Shoot)typeof(ETModel.B2C_Shoot).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.TankId;
@@ -78,7 +72,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.B2C_Shoot instance_of_this_method = (ETModel.B2C_Shoot)typeof(ETModel.B2C_Shoot).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.PX;
@@ -95,7 +89,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.B2C_Shoot instance_of_this_method = (ETModel.B2C_Shoot)typeof(ETModel.B2C_Shoot).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.PY;
@@ -112,7 +106,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.B2C_Shoot instance_of_this_method = (ETModel.B2C_Shoot)typeof(ETModel.B2C_Shoot).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.PZ;
@@ -129,7 +123,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.B2C_Shoot instance_of_this_method = (ETModel.B2C_Shoot)typeof(ETModel.B2C_Shoot).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.RX;
@@ -146,7 +140,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.B2C_Shoot instance_of_this_method = (ETModel.B2C_Shoot)typeof(ETModel.B2C_Shoot).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.RY;
@@ -163,44 +157,10 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.B2C_Shoot instance_of_this_method = (ETModel.B2C_Shoot)typeof(ETModel.B2C_Shoot).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.RZ;
-
-            __ret->ObjectType = ObjectTypes.Integer;
-            __ret->Value = result_of_this_method;
-            return __ret + 1;
-        }
-
-        static StackObject* get_GunRX_7(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-            __intp.Free(ptr_of_this_method);
-
-            var result_of_this_method = instance_of_this_method.GunRX;
-
-            __ret->ObjectType = ObjectTypes.Integer;
-            __ret->Value = result_of_this_method;
-            return __ret + 1;
-        }
-
-        static StackObject* get_TurretRY_8(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-            __intp.Free(ptr_of_this_method);
-
-            var result_of_this_method = instance_of_this_method.TurretRY;
 
             __ret->ObjectType = ObjectTypes.Integer;
             __ret->Value = result_of_this_method;

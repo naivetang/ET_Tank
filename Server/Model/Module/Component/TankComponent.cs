@@ -19,6 +19,11 @@ namespace ETModel
             }
             base.Dispose();
 
+            this.ClearTanks();
+        }
+
+        public void ClearTanks()
+        {
             foreach (Tank Tank in this.idTanks.Values)
             {
                 Tank.Dispose();

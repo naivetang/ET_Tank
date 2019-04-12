@@ -46,7 +46,7 @@ namespace ETModel
 
         public void Update()
         {
-            if (this.m_tank.m_tankType != TankType.Local)
+            if (this.m_tank.TankType != TankType.Local)
                 return;
             if (Input.GetMouseButtonDown(0))
             {
@@ -66,7 +66,7 @@ namespace ETModel
 
         private void LocalShoot()
         {
-            if (this.m_tank.m_tankType != TankType.Local)
+            if (this.m_tank.TankType != TankType.Local)
                 return;
 
             if (Time.time - this.lastShootTime < this.shootInterval)
@@ -110,7 +110,7 @@ namespace ETModel
 
         private void RemoteShoot(Vector3 pos, Vector3 eulerAngles)
         {
-            if (this.m_tank.m_tankType != TankType.Remote)
+            if (this.m_tank.TankType != TankType.Remote)
                 return;
 
             Bullet bullet = BulletFactory.Create(this.m_tank);

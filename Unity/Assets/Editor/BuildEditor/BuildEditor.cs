@@ -32,8 +32,8 @@ namespace ETEditor
 	{
 		private readonly Dictionary<string, BundleInfo> dictionary = new Dictionary<string, BundleInfo>();
 
-		private PlatformType platformType;
-		private bool isBuildExe;
+		private PlatformType platformType = PlatformType.PC;
+		private bool isBuildExe = true;
 		private bool isContainAB;
 		private BuildType buildType;
 		private BuildOptions buildOptions = BuildOptions.AllowDebugging | BuildOptions.Development;

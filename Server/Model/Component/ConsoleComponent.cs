@@ -75,6 +75,8 @@ namespace ETModel
                         continue;
                     }
 
+                    bool hasExp = false;
+
                     switch (line)
                     {
                         case "reload": 
@@ -84,6 +86,7 @@ namespace ETModel
                             }
                             catch (Exception e)
                             {
+                                hasExp = true;
                                 Console.WriteLine(e);
                             }
                             break;
@@ -95,6 +98,7 @@ namespace ETModel
                             }
                             catch (Exception e)
                             {
+                                hasExp = true;
                                 Console.WriteLine(e);
                             }
                             break;
@@ -110,6 +114,19 @@ namespace ETModel
                             }
                             catch (Exception e)
                             {
+                                hasExp = true;
+                                Console.WriteLine(e);
+                            }
+
+                            break;
+                        case "ClearTank":
+                            try
+                            {
+                                Game.Scene.GetComponent<TankComponent>().ClearTanks();
+                            }
+                            catch (Exception e)
+                            {
+                                hasExp = true;
                                 Console.WriteLine(e);
                             }
                             break;
@@ -117,6 +134,12 @@ namespace ETModel
                             Console.WriteLine($"no such command: {line}");
                             break;
                     }
+
+                    if (!hasExp)
+                    {
+                        Console.WriteLine("Finish");
+                    }
+
                 }
                 catch (Exception e)
                 {

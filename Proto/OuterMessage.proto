@@ -82,9 +82,17 @@ message UnitInfo
 	float Z = 4;
 }
 
+enum TankCamp
+{
+	None = 0;
+	Blue = 1;
+	Red = 2;
+}
 
 message TankInfo
 {
+
+
 	int64 TankId = 1;
 
 	// 位置
@@ -99,6 +107,8 @@ message TankInfo
 
 	int32 TurretRY = 8;
 	int32 GunRX = 9;
+
+	TankCamp TankCamp = 10;
 }
 
 message M2C_CreateUnits // IActorMessage
@@ -220,4 +230,31 @@ message B2C_Shoot // IActorMessage
 	int32 RX = 5;
 	int32 RY = 6;
 	int32 RZ = 7;
+}
+
+message C2B_AttackTank // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	// 目标坦克id
+	int64 TargetTankId = 1;
+
+	// 攻击力
+	int32 Damage = 2;
+}
+
+message B2C_AttackTank // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	// 攻击者
+	int64 SourceTankId = 1;
+
+	// 目标坦克id
+	int64 TargetTankId = 2;
+
+	// 攻击力
+	int32 Damage = 3;
 }

@@ -4,21 +4,25 @@ namespace ETModel
 {
     public enum TankType
     {
-        Hero,
-        Npc
+        Player,
+        Computer,
     }
 
+    // 坦克阵营
+
     [ObjectSystem]
-    public class TankAwakeSystem : AwakeSystem<Tank, TankType>
+    public class TankAwakeSystem : AwakeSystem<Tank>
     {
-        public override void Awake(Tank self, TankType a)
+        public override void Awake(Tank self)
         {
-            self.Awake(a);
+            self.Awake();
         }
     }
     public class Tank : Entity
     {
         public TankType TankType { get; private set; }
+
+        public TankCamp TankCamp { get; set; } = TankCamp.None;
 
         public int PX { get; set; } = 0;
         public int PY { get; set; } = 0;
@@ -34,9 +38,8 @@ namespace ETModel
         public int TurretRY { get; set; } = 0;
         public int GunRX { get; set; } = 0;
 
-        public void Awake(TankType tankType)
+        public void Awake( )
         {
-            this.TankType = tankType;
         }
 
         public override void Dispose()

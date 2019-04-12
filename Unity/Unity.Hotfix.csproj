@@ -99,6 +99,7 @@
     <Compile Include="Assets\Hotfix\FUI\UILogin\Component\UILoginComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILogin\Event\InitSceneStart_CreateLoginUI.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILogin\Factory\UILoginFactory.cs" />
+    <Compile Include="Assets\Hotfix\Handler\B2C_AttackTankHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_CreateTanksHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_ShootHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_TankInfosHandler.cs" />

@@ -8,6 +8,15 @@ using pbc = global::Google.Protobuf.Collections;
 using scg = global::System.Collections.Generic;
 namespace ETModel {
 
+  #region Enums
+  public enum TankCamp {
+    None = 0,
+    Blue = 1,
+    Red = 2,
+  }
+
+  #endregion
+
   #region Messages
   public partial class Actor_Test : pb::IMessage {
     private static readonly pb::MessageParser<Actor_Test> _parser = new pb::MessageParser<Actor_Test>(() => (Actor_Test)MessagePool.Instance.Fetch(typeof(Actor_Test)));
@@ -985,6 +994,14 @@ namespace ETModel {
       }
     }
 
+    private global::ETModel.TankCamp tankCamp_ = 0;
+    public global::ETModel.TankCamp TankCamp {
+      get { return tankCamp_; }
+      set {
+        tankCamp_ = value;
+      }
+    }
+
     public void WriteTo(pb::CodedOutputStream output) {
       if (TankId != 0L) {
         output.WriteRawTag(8);
@@ -1022,6 +1039,10 @@ namespace ETModel {
         output.WriteRawTag(72);
         output.WriteInt32(GunRX);
       }
+      if (TankCamp != 0) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) TankCamp);
+      }
     }
 
     public int CalculateSize() {
@@ -1052,6 +1073,9 @@ namespace ETModel {
       }
       if (GunRX != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(GunRX);
+      }
+      if (TankCamp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TankCamp);
       }
       return size;
     }
@@ -1106,6 +1130,10 @@ namespace ETModel {
           }
           case 72: {
             GunRX = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            tankCamp_ = (global::ETModel.TankCamp) input.ReadEnum();
             break;
           }
         }
@@ -2468,6 +2496,251 @@ namespace ETModel {
           }
           case 56: {
             RZ = input.ReadInt32();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class C2B_AttackTank : pb::IMessage {
+    private static readonly pb::MessageParser<C2B_AttackTank> _parser = new pb::MessageParser<C2B_AttackTank>(() => (C2B_AttackTank)MessagePool.Instance.Fetch(typeof(C2B_AttackTank)));
+    public static pb::MessageParser<C2B_AttackTank> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long targetTankId_;
+    /// <summary>
+    /// 目标坦克id
+    /// </summary>
+    public long TargetTankId {
+      get { return targetTankId_; }
+      set {
+        targetTankId_ = value;
+      }
+    }
+
+    private int damage_;
+    /// <summary>
+    /// 攻击力
+    /// </summary>
+    public int Damage {
+      get { return damage_; }
+      set {
+        damage_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (TargetTankId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(TargetTankId);
+      }
+      if (Damage != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Damage);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (TargetTankId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(TargetTankId);
+      }
+      if (Damage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Damage);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      targetTankId_ = 0;
+      damage_ = 0;
+      rpcId_ = 0;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            TargetTankId = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            Damage = input.ReadInt32();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class B2C_AttackTank : pb::IMessage {
+    private static readonly pb::MessageParser<B2C_AttackTank> _parser = new pb::MessageParser<B2C_AttackTank>(() => (B2C_AttackTank)MessagePool.Instance.Fetch(typeof(B2C_AttackTank)));
+    public static pb::MessageParser<B2C_AttackTank> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private long sourceTankId_;
+    /// <summary>
+    /// 攻击者
+    /// </summary>
+    public long SourceTankId {
+      get { return sourceTankId_; }
+      set {
+        sourceTankId_ = value;
+      }
+    }
+
+    private long targetTankId_;
+    /// <summary>
+    /// 目标坦克id
+    /// </summary>
+    public long TargetTankId {
+      get { return targetTankId_; }
+      set {
+        targetTankId_ = value;
+      }
+    }
+
+    private int damage_;
+    /// <summary>
+    /// 攻击力
+    /// </summary>
+    public int Damage {
+      get { return damage_; }
+      set {
+        damage_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (SourceTankId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(SourceTankId);
+      }
+      if (TargetTankId != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(TargetTankId);
+      }
+      if (Damage != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Damage);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (SourceTankId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(SourceTankId);
+      }
+      if (TargetTankId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(TargetTankId);
+      }
+      if (Damage != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Damage);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      sourceTankId_ = 0;
+      targetTankId_ = 0;
+      damage_ = 0;
+      rpcId_ = 0;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            SourceTankId = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            TargetTankId = input.ReadInt64();
+            break;
+          }
+          case 24: {
+            Damage = input.ReadInt32();
             break;
           }
           case 720: {

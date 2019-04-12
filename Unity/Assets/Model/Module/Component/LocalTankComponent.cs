@@ -33,7 +33,13 @@ namespace ETModel
             {
                 await timerComponent.WaitAsync(30);
 
+                if (m_tank.Died)
+
+                    return;
+                
+
                 C2B_TankInfo tankInfo = new C2B_TankInfo();
+
                 tankInfo.TankInfo = new TankInfo();
 
 
@@ -49,7 +55,7 @@ namespace ETModel
                 tankInfo.TankInfo.RY = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.y* m_coefficient);
                 tankInfo.TankInfo.RZ = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.z* m_coefficient);
 
-                TurretComponent turretComponent = this.GetParent<Tank>().GetComponent<TurretComponent>();
+                TurretComponent turretComponent = m_tank.GetComponent<TurretComponent>();
                 
 
                 tankInfo.TankInfo.TurretRY = Convert.ToInt32(turretComponent.RotTarget* m_coefficient);

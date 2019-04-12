@@ -81,6 +81,17 @@ namespace ETModel
 	[Message(OuterOpcode.B2C_Shoot)]
 	public partial class B2C_Shoot : IActorMessage {}
 
+	[Message(OuterOpcode.C2B_AttackTank)]
+	public partial class C2B_AttackTank : IActorLocationMessage {}
+
+// 目标坦克id
+// 攻击力
+	[Message(OuterOpcode.B2C_AttackTank)]
+	public partial class B2C_AttackTank : IActorMessage {}
+
+// 攻击者
+// 目标坦克id
+// 攻击力
 }
 namespace ETModel
 {
@@ -110,5 +121,7 @@ namespace ETModel
 		 public const ushort M2C_Reload = 122;
 		 public const ushort C2B_Shoot = 123;
 		 public const ushort B2C_Shoot = 124;
+		 public const ushort C2B_AttackTank = 125;
+		 public const ushort B2C_AttackTank = 126;
 	}
 }

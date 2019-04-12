@@ -17,7 +17,9 @@ namespace ETHotfix
             {
                 if(TankComponent.Instance.MyTank.Id == info.TankId)
                     continue;
+
                 Tank tank = TankComponent.Instance.Get(info.TankId);
+
                 if (tank == null)
                 {
                     Log.Error($"不存在坦克{info.TankId}");

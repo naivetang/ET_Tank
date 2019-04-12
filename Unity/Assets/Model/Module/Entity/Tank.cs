@@ -14,25 +14,51 @@ namespace ETModel
         Remote
     }
 
+
     public sealed class Tank : Entity
     {
 
         public static int m_coefficient = 1000000;
 
-        // 最大血量，当前血量，上一次扣掉/增加的血量
-        public static Action<float, float, float> m_hpChange;
+        // 最大血量，当前血量
+        public static Action<int, int> m_hpChange;
 
-        public TankType m_tankType = TankType.None;
 
-        private float m_maxHp = 100f;
+        // 坦克类型：本地还是其他
+        private TankType m_tankType;
 
-        private float m_hp = 100f;
+        public TankType TankType
+        {
+            get => this.m_tankType;
+            set
+            {
+                this.m_tankType = value;
+            }
+        }
+
+        // 坦克阵营：蓝方还是红方
+        private TankCamp m_tankCamp = TankCamp.None;
+
+        public TankCamp TankCamp
+        {
+            get => this.m_tankCamp;
+            set
+            {
+                this.m_tankCamp = value;
+            }
+        }
+
+        //private float m_maxHp = 100f;
+
+        //private float m_hp = 100f;
 
         private GameObject m_gameObject;
 
         private GameObject m_gun;
 
         private GameObject m_turret;
+
+        private bool m_died = false;
 
 
         public GameObject GameObject
@@ -50,38 +76,56 @@ namespace ETModel
             }
         }
 
+        public bool Died
+        {
+            get=> m_died;
+            set
+            {
+                m_died = value;
+                this.TankType = TankType.None;
+
+                this.DiedAfter();
+                //this.ClearComponents();
+            }
+        }
+
         public GameObject Gun => this.m_gun;
 
         public GameObject Turret => this.m_turret;
 
-        public void BeAttacked(Tank attacker, float att)
+        /// <summary>
+        /// 受到攻击
+        /// </summary>
+        /// <param name="attacker"></param>
+        /// <param name="att">伤害值，正值</param>
+        public void BeAttacked(Tank attacker, int att)
         {
-            if (m_hp <= 0)
+            //this.GetComponent<NumericComponent>()[NumericType.Hp]
+            if (this.Died)
                 return;
 
-            if (this.m_hp > 0)
-            {
-                this.m_hp -= att;
+            this.GetComponent<NumericComponent>().Change(NumericType.HpBase, -att);
+            
+        }
 
-                if (this.m_tankType == TankType.Local)
-                {
-                    // 通知血量变化
+        /// <summary>
+        /// 左下角血量条变化
+        /// </summary>
+        /// <param name="maxHp"></param>
+        /// <param name="hp"></param>
+        public void LocalTankHpUIChange(int maxHp, int hp)
+        {
+            m_hpChange?.Invoke(maxHp,hp);
+        }
 
-                    m_hpChange?.Invoke(this.m_maxHp, this.m_hp, -att);
-                }
+        /// <summary>
+        /// 头顶血量条变化
+        /// </summary>
+        /// <param name="maxHp"></param>
+        /// <param name="hp"></param>
+        public void RemoteTankHpUIChange(int maxHp, int hp)
+        {
 
-
-
-                //Game.EventSystem.Run(Game.Hotfix.);
-
-            }
-
-            if (this.m_hp <= 0)
-            {
-
-                TankFactory.CreateTankBoomEffect(this);
-
-            }
         }
         
 
@@ -117,6 +161,15 @@ namespace ETModel
                 return cameraPoint != null? cameraPoint.transform.position : this.Position;
             }
         }
+
+        private void DiedAfter()
+        {
+            TankFactory.CreateTankBoomEffect(this);
+
+            if(this.TankType == TankType.Local)
+                this.GetComponent<TankMoveComponent>()?.Stop();
+        }
+
         public override void Dispose()
         {
             if (this.IsDisposed)

@@ -17,7 +17,7 @@ namespace ETHotfix
             m_BoomPoint.GObject.SetXY(x, y);
         }
 
-        public void HpChange(float max,float current, float changeVal)
+        public void HpChange(int max,int current)
         {
             GProgressBar pb = this.m_HP.GObject.asProgress;
 

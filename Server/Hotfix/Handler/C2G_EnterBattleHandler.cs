@@ -45,6 +45,7 @@ namespace ETHotfix
                     tankInfo.RZ = t.RZ;
                     tankInfo.TurretRY = t.TurretRY;
                     tankInfo.GunRX = t.GunRX;
+                    tankInfo.TankCamp = t.TankCamp;
                     createTanks.Tanks.Add(tankInfo);
                 }
 
