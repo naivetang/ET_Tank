@@ -42,6 +42,7 @@ namespace ETModel
 
                 tankComponent.MyTank = tank;
 
+                // 如果是自己设置层级为9，为了让坦克不打中自己
                 tank.GameObject.layer = 9;
             }
             else
@@ -55,6 +56,8 @@ namespace ETModel
                 tank.AddComponent<TankShootComponent>();
 
                 tank.AddComponent<BulletComponent>();
+
+                tank.AddComponent<OverHeadComponent>();
             }
 
             tank.AddComponent<NumericComponent>();

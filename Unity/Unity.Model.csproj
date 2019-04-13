@@ -342,6 +342,7 @@
     <Compile Include="Assets\Model\Module\Component\BulletFlyComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\ExplosionEffectComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\LocalTankComponent.cs" />
+    <Compile Include="Assets\Model\Module\Component\OverHeadComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\RemoteTankMoveComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TankComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\TankMoveComponent.cs" />

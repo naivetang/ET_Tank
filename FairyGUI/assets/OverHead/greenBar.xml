@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="164,14" extention="ProgressBar">
+  <displayList>
+    <image id="n0_hzb6" name="n0" src="hzb65" fileName="black.png" xy="0,0" size="164,14">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_hzb6" name="bar" src="hzb64" fileName="green.png" xy="0,2" size="164,10"/>
+    <text id="n2_hzb6" name="title" xy="0,0" size="164,14" fontSize="12" align="center" vAlign="middle" autoSize="none" text="">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <ProgressBar titleType="valueAndmax"/>
+</component>

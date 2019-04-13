@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,100" pivot="0.5,1" anchor="true">
+  <displayList>
+    <component id="n0_hzb6" name="n0" src="hzb68" fileName="redBar.xml" xy="-33,74" group="n2_hzb6">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n1_hzb6" name="n1" src="hzb6a" fileName="whiteBar.xml" xy="-33,86" group="n2_hzb6">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <group id="n2_hzb6" name="bloodGroup" xy="-33,74" size="164,26" advanced="true"/>
+    <richtext id="n3_hzb6" name="name" xy="48,66" pivot="0.5,1" anchor="true" size="81,26" fontSize="19" color="#ffffff" vAlign="bottom" strokeColor="#000000" text="你的名字"/>
+  </displayList>
+</component>
