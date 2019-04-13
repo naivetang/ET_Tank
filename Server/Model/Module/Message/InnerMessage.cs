@@ -399,7 +399,7 @@ namespace ETModel
 
 // 所有的tank
 // 所有的tank
-		public List<TankInfo> Tanks = new List<TankInfo>();
+		public List<TankFrameInfo> Tanks = new List<TankFrameInfo>();
 
 	}
 

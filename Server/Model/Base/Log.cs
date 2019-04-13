@@ -29,6 +29,7 @@ namespace ETModel
 		public static void Error(Exception e)
 		{
 			globalLog.Error(e.ToString());
+            Console.WriteLine(e.ToString());
 		}
 
 		public static void Error(string message)

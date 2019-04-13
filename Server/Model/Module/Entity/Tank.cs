@@ -20,6 +20,10 @@ namespace ETModel
     }
     public class Tank : Entity
     {
+        public Player Player { get; set; }
+
+        public bool Died { get; set; } = false;
+
         public TankType TankType { get; private set; }
 
         public TankCamp TankCamp { get; set; } = TankCamp.None;

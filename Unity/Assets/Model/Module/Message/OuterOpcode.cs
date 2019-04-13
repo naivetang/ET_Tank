@@ -35,8 +35,8 @@ namespace ETModel
 	[Message(OuterOpcode.UnitInfo)]
 	public partial class UnitInfo {}
 
-	[Message(OuterOpcode.TankInfo)]
-	public partial class TankInfo {}
+	[Message(OuterOpcode.TankFrameInfo)]
+	public partial class TankFrameInfo {}
 
 // 位置
 // 朝向
@@ -44,6 +44,9 @@ namespace ETModel
 	public partial class M2C_CreateUnits : IActorMessage {}
 
 // 所有的unit
+	[Message(OuterOpcode.TankInfoFirstEnter)]
+	public partial class TankInfoFirstEnter {}
+
 	[Message(OuterOpcode.B2C_CreateTanks)]
 	public partial class B2C_CreateTanks : IActorMessage {}
 
@@ -51,11 +54,11 @@ namespace ETModel
 	[Message(OuterOpcode.Frame_ClickMap)]
 	public partial class Frame_ClickMap : IActorLocationMessage {}
 
-	[Message(OuterOpcode.C2B_TankInfo)]
-	public partial class C2B_TankInfo : IActorLocationMessage {}
+	[Message(OuterOpcode.C2B_TankFrameInfo)]
+	public partial class C2B_TankFrameInfo : IActorLocationMessage {}
 
-	[Message(OuterOpcode.B2C_TankInfos)]
-	public partial class B2C_TankInfos : IActorMessage {}
+	[Message(OuterOpcode.B2C_TankFrameInfos)]
+	public partial class B2C_TankFrameInfos : IActorMessage {}
 
 	[Message(OuterOpcode.M2C_PathfindingResult)]
 	public partial class M2C_PathfindingResult : IActorMessage {}
@@ -81,17 +84,24 @@ namespace ETModel
 	[Message(OuterOpcode.B2C_Shoot)]
 	public partial class B2C_Shoot : IActorMessage {}
 
-	[Message(OuterOpcode.C2B_AttackTank)]
-	public partial class C2B_AttackTank : IActorLocationMessage {}
+	[Message(OuterOpcode.C2B_AttackTankRequest)]
+	public partial class C2B_AttackTankRequest : IActorLocationRequest {}
 
+// 源坦克id
 // 目标坦克id
 // 攻击力
-	[Message(OuterOpcode.B2C_AttackTank)]
-	public partial class B2C_AttackTank : IActorMessage {}
+	[Message(OuterOpcode.B2C_AttackTankResponse)]
+	public partial class B2C_AttackTankResponse : IActorLocationResponse {}
 
 // 攻击者
 // 目标坦克id
-// 攻击力
+// 当前血量
+	[Message(OuterOpcode.B2C_AttackTank)]
+	public partial class B2C_AttackTank : IActorMessage {}
+
+// 源坦克id
+// 目标坦克id
+// 当前血量
 }
 namespace ETModel
 {
@@ -107,21 +117,23 @@ namespace ETModel
 		 public const ushort C2G_EnterBattle = 108;
 		 public const ushort G2C_EnterBattle = 109;
 		 public const ushort UnitInfo = 110;
-		 public const ushort TankInfo = 111;
+		 public const ushort TankFrameInfo = 111;
 		 public const ushort M2C_CreateUnits = 112;
-		 public const ushort B2C_CreateTanks = 113;
-		 public const ushort Frame_ClickMap = 114;
-		 public const ushort C2B_TankInfo = 115;
-		 public const ushort B2C_TankInfos = 116;
-		 public const ushort M2C_PathfindingResult = 117;
-		 public const ushort C2R_Ping = 118;
-		 public const ushort R2C_Ping = 119;
-		 public const ushort G2C_Test = 120;
-		 public const ushort C2M_Reload = 121;
-		 public const ushort M2C_Reload = 122;
-		 public const ushort C2B_Shoot = 123;
-		 public const ushort B2C_Shoot = 124;
-		 public const ushort C2B_AttackTank = 125;
-		 public const ushort B2C_AttackTank = 126;
+		 public const ushort TankInfoFirstEnter = 113;
+		 public const ushort B2C_CreateTanks = 114;
+		 public const ushort Frame_ClickMap = 115;
+		 public const ushort C2B_TankFrameInfo = 116;
+		 public const ushort B2C_TankFrameInfos = 117;
+		 public const ushort M2C_PathfindingResult = 118;
+		 public const ushort C2R_Ping = 119;
+		 public const ushort R2C_Ping = 120;
+		 public const ushort G2C_Test = 121;
+		 public const ushort C2M_Reload = 122;
+		 public const ushort M2C_Reload = 123;
+		 public const ushort C2B_Shoot = 124;
+		 public const ushort B2C_Shoot = 125;
+		 public const ushort C2B_AttackTankRequest = 126;
+		 public const ushort B2C_AttackTankResponse = 127;
+		 public const ushort B2C_AttackTank = 128;
 	}
 }

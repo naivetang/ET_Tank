@@ -166,9 +166,10 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_AnimatorComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_AppTypeHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_AsyncETVoidMethodBuilder_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_B2C_AttackTankResponse_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_CreateTanks_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_Shoot_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_B2C_TankInfos_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_B2C_TankFrameInfos_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ByteHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_C2G_EnterBattle_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_C2G_EnterMap_Binding.cs" />
@@ -231,7 +232,8 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_Tank_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_TankComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_TankFactory_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_TankInfo_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_TankFrameInfo_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_TankInfoFirstEnter_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_TankShootComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_TurretComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_UIFactoryAttribute_Binding.cs" />
@@ -257,7 +259,8 @@
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Int64_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Single_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_String_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_TankInfo_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_TankFrameInfo_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_TankInfoFirstEnter_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_UnitInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_FieldCodec_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_MessageParser_1_Google_Protobuf_Adapt_IMessage_Binding_Adapto_t.cs" />
@@ -285,7 +288,8 @@
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_UInt16_Object_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_HashSet_1_ILTypeInstance_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_HashSet_1_ILTypeInstance_Binding_Enumerator_Bindin_t.cs" />
-    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_TankInfo_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_TankFrameInfo_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_TankInfoFirstEnter_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_UnitInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_IFixedUpdateSystem_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_IFixedUpdateSystem_Binding_Enumerator_Bindi_t.cs" />

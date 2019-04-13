@@ -26,18 +26,19 @@ namespace ETModel
 
         public void Start()
         {
+        }
+
+		public void Awake()
+        {
+#if SERVER
+
             // 这里初始化base值
             this[NumericType.MaxHpBase] = 100;
 
             this[NumericType.HpBase] = 100;
-            
 
             this[NumericType.AtkBase] = 30;
-        }
-
-		public void Awake()
-		{
-			
+#endif
         }
 
         public int Change(NumericType numericType, int changeValue)

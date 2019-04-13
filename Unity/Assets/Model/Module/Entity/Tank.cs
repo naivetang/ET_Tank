@@ -23,6 +23,8 @@ namespace ETModel
         // 最大血量，当前血量
         public static Action<int, int> m_hpChange;
 
+        public string Name { get; set; }
+
 
         // 坦克类型：本地还是其他
         private TankType m_tankType;
@@ -125,7 +127,7 @@ namespace ETModel
         /// <param name="hp"></param>
         public void RemoteTankHpUIChange(int maxHp, int hp)
         {
-
+            this.GetComponent<OverHeadComponent>().HpChange(maxHp, hp);
         }
         
 

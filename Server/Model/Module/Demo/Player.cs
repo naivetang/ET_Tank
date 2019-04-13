@@ -9,9 +9,28 @@
 		}
 	}
 
-	public sealed class Player : Entity
+    [ObjectSystem]
+    public class Player2System : AwakeSystem<Player, UserDB>
+    {
+        public override void Awake(Player self, UserDB a)
+        {
+            self.Awake(a);
+        }
+    }
+
+    public static class PlayerHelper
+    {
+        public static Tank Tank(this Player self)
+        {
+            return Game.Scene.GetComponent<TankComponent>().Get(self.TankId);
+        }
+    }
+
+    public sealed class Player : Entity
 	{
 		public string Account { get; private set; }
+
+        public UserDB UserDB { get; private set; }
 
         public long TankId { get; set; } = 0L;
 
@@ -21,6 +40,11 @@
 		{
 			this.Account = account;
 		}
+
+        public void Awake(UserDB userDb)
+        {
+            this.UserDB = userDb;
+        }
 		
 		public override void Dispose()
 		{

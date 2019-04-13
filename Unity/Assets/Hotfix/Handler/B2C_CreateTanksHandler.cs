@@ -15,16 +15,29 @@ namespace ETHotfix
 
             TankComponent tankComponent = ETModel.Game.Scene.GetComponent<TankComponent>();
 
-            foreach (TankInfo tankInfo in message.Tanks)
+            // 第一次进入战场，先创建自己坦克（创建其他坦克时需要判断与自己坦克关系，所以先创建自己坦克）
+            if (tankComponent.MyTank != null)
+                foreach (TankInfoFirstEnter firstInfo in message.Tanks)
+                {
+                    TankFrameInfo tankInfo = firstInfo.TankFrameInfo;
+                    if (tankInfo.TankId == PlayerComponent.Instance.MyPlayer.TankId)
+                    {
+                        Tank tank = TankFactory.Create(firstInfo);
+                        tank.Position = new Vector3(tankInfo.PX * 1f / Tank.m_coefficient, tankInfo.PY * 1f / Tank.m_coefficient,
+                                tankInfo.PZ * 1f / Tank.m_coefficient);
+                        break;
+                    }
+                }
+
+            foreach (TankInfoFirstEnter firstInfo in message.Tanks)
             {
+                TankFrameInfo tankInfo = firstInfo.TankFrameInfo;
                 if (tankComponent.Get(tankInfo.TankId) != null)
                 {
                     continue;
                 }
 
-                Tank tank = TankFactory.Create(tankInfo.TankId);
-
-                tank.TankCamp = tankInfo.TankCamp;
+                Tank tank = TankFactory.Create(firstInfo);
 
                 tank.Position = new Vector3(tankInfo.PX * 1f / Tank.m_coefficient, tankInfo.PY * 1f / Tank.m_coefficient,
                         tankInfo.PZ * 1f / Tank.m_coefficient);

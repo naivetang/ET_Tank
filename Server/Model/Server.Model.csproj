@@ -349,7 +349,6 @@
     <Folder Include="Module\Message\Network\KCP\" />
     <Folder Include="Module\Message\Network\TCP\" />
     <Folder Include="Module\Message\MessagePool\" />
-    <Folder Include="Module\Numeric\" />
     <Folder Include="Module\Handler\" />
   </ItemGroup>
   <ItemGroup>

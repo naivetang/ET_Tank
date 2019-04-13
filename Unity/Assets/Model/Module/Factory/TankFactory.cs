@@ -4,8 +4,9 @@ namespace ETModel
 {
     public static class TankFactory
     {
-        public static Tank Create(long id)
+        public static Tank Create(TankInfoFirstEnter firstInfo)
         {
+            long id = firstInfo.TankFrameInfo.TankId;
 
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
             Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
@@ -20,7 +21,11 @@ namespace ETModel
             GameObject parent = GameObject.Find($"/Global/Unit");
             tank.GameObject.transform.SetParent(parent.transform, false);
 
-            
+            NumericComponent numericComponent = tank.AddComponent<NumericComponent>();
+
+            tank.Name = firstInfo.Name;
+
+            tank.TankCamp = firstInfo.TankCamp;  
 
             if (id == 10000 || PlayerComponent.Instance.MyPlayer.TankId == id)
             {
@@ -60,9 +65,17 @@ namespace ETModel
                 tank.AddComponent<OverHeadComponent>();
             }
 
-            tank.AddComponent<NumericComponent>();
+            
 
             tankComponent.Add(tank);
+
+            // 先将坦克加入TankComponent再赋值，因为赋值的时候会触发事件，事件中可能要从TankComponent中取坦克
+            numericComponent[NumericType.MaxHpBase] = firstInfo.MaxHpBase;
+
+            numericComponent[NumericType.HpBase] = firstInfo.HpBase;
+
+            numericComponent[NumericType.AtkBase] = firstInfo.AtkBase;
+
             return tank;
         }
 

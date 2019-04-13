@@ -31,22 +31,41 @@ namespace ETHotfix
 
                 B2C_CreateTanks createTanks = new B2C_CreateTanks();
 
+                //Player[] players = Game.Scene.GetComponent<PlayerComponent>().GetAll();
+
                 Tank[] tanks = Game.Scene.GetComponent<TankComponent>().GetAll();
 
                 foreach (Tank t in tanks)
                 {
-                    TankInfo tankInfo = new TankInfo();
-                    tankInfo.TankId = t.Id;
-                    tankInfo.PX = t.PX;
-                    tankInfo.PY = t.PY;
-                    tankInfo.PZ = t.PZ;
-                    tankInfo.RX = t.RX;
-                    tankInfo.RY = t.RY;
-                    tankInfo.RZ = t.RZ;
-                    tankInfo.TurretRY = t.TurretRY;
-                    tankInfo.GunRX = t.GunRX;
-                    tankInfo.TankCamp = t.TankCamp;
-                    createTanks.Tanks.Add(tankInfo);
+                    Player p = t.Player;
+
+                    TankFrameInfo tankFrameInfo = new TankFrameInfo();
+                    
+                    tankFrameInfo.TankId = t.Id;
+                    tankFrameInfo.PX = t.PX;
+                    tankFrameInfo.PY = t.PY;
+                    tankFrameInfo.PZ = t.PZ;
+                    tankFrameInfo.RX = t.RX;
+                    tankFrameInfo.RY = t.RY;
+                    tankFrameInfo.RZ = t.RZ;
+                    tankFrameInfo.TurretRY = t.TurretRY;
+                    tankFrameInfo.GunRX = t.GunRX;
+
+                    TankInfoFirstEnter tankInfoFirstEnter = new TankInfoFirstEnter();
+                    tankInfoFirstEnter.TankFrameInfo = tankFrameInfo;
+
+                    tankInfoFirstEnter.TankCamp = t.TankCamp;
+
+                    tankInfoFirstEnter.MaxHpBase = t.GetComponent<NumericComponent>()[NumericType.MaxHpBase];
+
+                    tankInfoFirstEnter.HpBase = t.GetComponent<NumericComponent>()[NumericType.HpBase];
+
+                    tankInfoFirstEnter.AtkBase = t.GetComponent<NumericComponent>()[NumericType.AtkBase];
+
+                    tankInfoFirstEnter.Name = p.UserDB.Name;
+
+
+                    createTanks.Tanks.Add(tankInfoFirstEnter);
                 }
 
                 Log.Info("广播坦克");

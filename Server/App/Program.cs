@@ -127,9 +127,11 @@ namespace App
 						
 						// 配置管理
 						Game.Scene.AddComponent<ConfigComponent>();
-						
-						// recast寻路组件
-						Game.Scene.AddComponent<PathfindingComponent>();
+
+                        Game.Scene.AddComponent<NumericWatcherComponent>();
+
+                        // recast寻路组件
+                        Game.Scene.AddComponent<PathfindingComponent>();
 						
 						Game.Scene.AddComponent<PlayerComponent>();
 						Game.Scene.AddComponent<UnitComponent>();

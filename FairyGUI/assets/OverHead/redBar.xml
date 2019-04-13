@@ -5,7 +5,7 @@
       <relation target="" sidePair="width-width,height-height"/>
     </image>
     <image id="n1_hzb6" name="bar" src="hzb66" fileName="red.png" xy="1,2" size="162,10"/>
-    <text id="n2_hzb6" name="title" xy="0,-2" size="164,19" fontSize="12" align="center" vAlign="middle" autoSize="none" text="">
+    <text id="n2_hzb6" name="title" xy="0,-2" size="164,19" fontSize="12" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="">
       <relation target="" sidePair="width-width,height-height"/>
     </text>
   </displayList>

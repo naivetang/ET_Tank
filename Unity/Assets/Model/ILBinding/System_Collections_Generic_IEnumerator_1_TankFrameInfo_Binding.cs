@@ -14,14 +14,14 @@ using ILRuntime.CLR.Utils;
 
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class System_Collections_Generic_IEnumerator_1_TankInfo_Binding
+    unsafe class System_Collections_Generic_IEnumerator_1_TankFrameInfo_Binding
     {
         public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(System.Collections.Generic.IEnumerator<ETModel.TankInfo>);
+            Type type = typeof(System.Collections.Generic.IEnumerator<ETModel.TankFrameInfo>);
             args = new Type[]{};
             method = type.GetMethod("get_Current", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_Current_0);
@@ -37,7 +37,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            System.Collections.Generic.IEnumerator<ETModel.TankInfo> instance_of_this_method = (System.Collections.Generic.IEnumerator<ETModel.TankInfo>)typeof(System.Collections.Generic.IEnumerator<ETModel.TankInfo>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            System.Collections.Generic.IEnumerator<ETModel.TankFrameInfo> instance_of_this_method = (System.Collections.Generic.IEnumerator<ETModel.TankFrameInfo>)typeof(System.Collections.Generic.IEnumerator<ETModel.TankFrameInfo>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.Current;

@@ -70,7 +70,7 @@ message G2C_EnterBattle // IResponse
 	// 自己的Tank id
 	int64 TankId = 1;
 	// 所有的Tank
-	repeated TankInfo Tanks = 2;
+	repeated TankFrameInfo Tanks = 2;
 }
 
 message UnitInfo
@@ -89,10 +89,8 @@ enum TankCamp
 	Red = 2;
 }
 
-message TankInfo
+message TankFrameInfo
 {
-
-
 	int64 TankId = 1;
 
 	// 位置
@@ -108,7 +106,7 @@ message TankInfo
 	int32 TurretRY = 8;
 	int32 GunRX = 9;
 
-	TankCamp TankCamp = 10;
+	
 }
 
 message M2C_CreateUnits // IActorMessage
@@ -119,12 +117,27 @@ message M2C_CreateUnits // IActorMessage
     repeated UnitInfo Units = 1;
 }
 
+message TankInfoFirstEnter
+{
+	TankFrameInfo TankFrameInfo = 1;
+
+	TankCamp TankCamp = 2;
+
+	string Name = 3;
+
+	int32 MaxHpBase = 4;
+
+	int32 HpBase = 5;
+
+	int32 AtkBase = 6;
+}
+
 message B2C_CreateTanks // IActorMessage
 {
 	int32 RpcId = 90;
 	int64 ActorId = 93;
 	// 所有的unit
-    repeated TankInfo Tanks = 1;
+    repeated TankInfoFirstEnter Tanks = 1;
 }
 
 message Frame_ClickMap // IActorLocationMessage
@@ -139,20 +152,20 @@ message Frame_ClickMap // IActorLocationMessage
 	float Z = 3;
 }
 
-message C2B_TankInfo // IActorLocationMessage
+message C2B_TankFrameInfo // IActorLocationMessage
 {
 	int32 RpcId = 90;
 	int64 ActorId = 93;
 
-	TankInfo TankInfo = 1;
+	TankFrameInfo TankFrameInfo = 1;
 }
 
-message B2C_TankInfos // IActorMessage
+message B2C_TankFrameInfos // IActorMessage
 {
 	int32 RpcId = 90;
 	int64 ActorId = 93;
 
-	repeated TankInfo TankInfos = 1;
+	repeated TankFrameInfo TankFrameInfos = 1;
 }
 
 message M2C_PathfindingResult // IActorMessage
@@ -232,22 +245,27 @@ message B2C_Shoot // IActorMessage
 	int32 RZ = 7;
 }
 
-message C2B_AttackTank // IActorLocationMessage
+message C2B_AttackTankRequest // IActorLocationRequest
 {
 	int32 RpcId = 90;
 	int64 ActorId = 93;
 
+	// 源坦克id
+	int64 SourceTankId = 1;
 	// 目标坦克id
-	int64 TargetTankId = 1;
+	int64 TargetTankId = 2;
 
 	// 攻击力
-	int32 Damage = 2;
+	int32 Damage = 4;
+
+
 }
 
-message B2C_AttackTank // IActorMessage
+message B2C_AttackTankResponse // IActorLocationResponse
 {
 	int32 RpcId = 90;
-	int64 ActorId = 93;
+	int32 Error = 91;
+	string Message = 92;
 
 	// 攻击者
 	int64 SourceTankId = 1;
@@ -255,6 +273,21 @@ message B2C_AttackTank // IActorMessage
 	// 目标坦克id
 	int64 TargetTankId = 2;
 
-	// 攻击力
-	int32 Damage = 3;
+	// 当前血量
+	int32 CurrentHp = 3;
+
+}
+
+message B2C_AttackTank // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	// 源坦克id
+	int64 SourceTankId = 1;
+	// 目标坦克id
+	int64 TargetTankId = 2;
+
+	// 当前血量
+	int32 CurrentHp = 3;
 }

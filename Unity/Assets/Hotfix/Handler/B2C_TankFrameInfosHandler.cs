@@ -5,15 +5,15 @@ using Vector3 = UnityEngine.Vector3;
 namespace ETHotfix
 {
     [MessageHandler]
-    public class B2C_TankInfosHandler : AMHandler<B2C_TankInfos>
+    public class B2C_TankFrameInfosHandler : AMHandler<B2C_TankFrameInfos>
     {
-        protected override void Run(ETModel.Session session, B2C_TankInfos message)
+        protected override void Run(ETModel.Session session, B2C_TankFrameInfos message)
         {
-            TankInfo[] tankInfo = message.TankInfos.array;
+            TankFrameInfo[] tankFrameInfo = message.TankFrameInfos.array;
 
             //Log.Warning($"坦克数量={message.TankInfos.Count}");
 
-            foreach (TankInfo info in message.TankInfos)
+            foreach (TankFrameInfo info in message.TankFrameInfos)
             {
                 if(TankComponent.Instance.MyTank.Id == info.TankId)
                     continue;

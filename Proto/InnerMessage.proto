@@ -265,7 +265,7 @@ message B2G_CreateTank // IResponse
     // 自己的tank id
     int64 TankId = 1;
     // 所有的tank
-    repeated TankInfo Tanks = 2;
+    repeated TankFrameInfo Tanks = 2;
 }
 
 message G2M_SessionDisconnect // IActorLocationMessage

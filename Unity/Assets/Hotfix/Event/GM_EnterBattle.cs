@@ -21,6 +21,7 @@ namespace ETHotfix
                 // 加载场景资源
                 await resourcesComponent.LoadBundleAsync("map.unity3d");
                 // 切换到Battle场景
+
                 using (SceneChangeComponent sceneChangeComponent = ETModel.Game.Scene.AddComponent<SceneChangeComponent>())
                 {
                     await sceneChangeComponent.ChangeSceneAsync(SceneType.Battle);

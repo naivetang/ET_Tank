@@ -2,7 +2,8 @@
 {
     // 一个数值可能会多种情况影响，比如速度,加个buff可能增加速度绝对值100，也有些buff增加10%速度，所以一个值可以由5个值进行控制其最终结果
     // final = (((base + add) * (100 + pct) / 100) + finalAdd) * (100 + finalPct) / 100;
-    public enum NumericType
+    public enum 
+            NumericType
     {
 		Max = 10000,
 

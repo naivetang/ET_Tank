@@ -118,29 +118,44 @@ namespace ETModel
                 Tank beAttackTank = tankComponent.Get(objInstanceId);
 
                 // 如果自己阵营，不造成伤害
-                if (beAttackTank.TankCamp == this.Tank.TankCamp)
-                    return;
+                //if (beAttackTank.TankCamp == this.Tank.TankCamp)
+                //    return;
 
                 int damage = this.m_bullet.AttackPower + this.Tank.GetComponent<NumericComponent>()[NumericType.Atk];
 
-                beAttackTank.BeAttacked(this.Tank, damage);
+                // beAttackTank.BeAttacked(this.Tank, damage);
 
-                Send_C2B_AttackTank(beAttackTank.Id, damage);
+                // 发送炮弹的玩家才向服务器通知
+                if(this.m_bullet.Tank.TankType == TankType.Local)
+                    Send_C2B_AttackTank(beAttackTank.Id, damage).NoAwait();
             }
 
             this.m_bullet.Dispose();
         }
 
-
-        private void Send_C2B_AttackTank(long targetId, int damage)
+        /// <summary>
+        /// 如果是自己打中了别的坦克才发送
+        /// </summary>
+        /// <param name="targetId"></param>
+        /// <param name="damage"></param>
+        private async ETVoid Send_C2B_AttackTank(long targetId, int damage)
         {
-            C2B_AttackTank msg = new C2B_AttackTank();
+            C2B_AttackTankRequest msg = new C2B_AttackTankRequest();
+
+            msg.SourceTankId = PlayerComponent.Instance.MyPlayer.TankId;
 
             msg.TargetTankId = targetId;
 
             msg.Damage = damage;
 
-            SessionComponent.Instance.Session.Send(msg);
+            B2C_AttackTankResponse response = (B2C_AttackTankResponse) await SessionComponent.Instance.Session.Call(msg);
+
+            if(response.SourceTankId != msg.SourceTankId || response.TargetTankId != msg.TargetTankId)
+                Log.Error("回包错误");
+
+            ETModel.Tank tank = Game.Scene.GetComponent<TankComponent>().Get(targetId);
+
+            tank.GetComponent<NumericComponent>().Set(NumericType.HpBase,response.CurrentHp); 
         }
 
 

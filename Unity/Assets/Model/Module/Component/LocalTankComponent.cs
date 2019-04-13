@@ -38,28 +38,28 @@ namespace ETModel
                     return;
                 
 
-                C2B_TankInfo tankInfo = new C2B_TankInfo();
+                C2B_TankFrameInfo tankInfo = new C2B_TankFrameInfo();
 
-                tankInfo.TankInfo = new TankInfo();
+                tankInfo.TankFrameInfo = new TankFrameInfo();
 
 
-                tankInfo.TankInfo.TankId = m_tank.Id;
+                tankInfo.TankFrameInfo.TankId = m_tank.Id;
 
                 int m_coefficient = Tank.m_coefficient;
 
-                tankInfo.TankInfo.PX = Convert.ToInt32(m_tank.Position.x * m_coefficient);
-                tankInfo.TankInfo.PY = Convert.ToInt32(this.m_tank.Position.y* m_coefficient);
-                tankInfo.TankInfo.PZ = Convert.ToInt32(m_tank.Position.z* m_coefficient);
+                tankInfo.TankFrameInfo.PX = Convert.ToInt32(m_tank.Position.x * m_coefficient);
+                tankInfo.TankFrameInfo.PY = Convert.ToInt32(this.m_tank.Position.y* m_coefficient);
+                tankInfo.TankFrameInfo.PZ = Convert.ToInt32(m_tank.Position.z* m_coefficient);
 
-                tankInfo.TankInfo.RX = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.x* m_coefficient);
-                tankInfo.TankInfo.RY = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.y* m_coefficient);
-                tankInfo.TankInfo.RZ = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.z* m_coefficient);
+                tankInfo.TankFrameInfo.RX = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.x* m_coefficient);
+                tankInfo.TankFrameInfo.RY = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.y* m_coefficient);
+                tankInfo.TankFrameInfo.RZ = Convert.ToInt32(m_tank.GameObject.transform.eulerAngles.z* m_coefficient);
 
                 TurretComponent turretComponent = m_tank.GetComponent<TurretComponent>();
                 
 
-                tankInfo.TankInfo.TurretRY = Convert.ToInt32(turretComponent.RotTarget* m_coefficient);
-                tankInfo.TankInfo.GunRX = Convert.ToInt32(turretComponent .RollTarget* m_coefficient);
+                tankInfo.TankFrameInfo.TurretRY = Convert.ToInt32(turretComponent.RotTarget* m_coefficient);
+                tankInfo.TankFrameInfo.GunRX = Convert.ToInt32(turretComponent .RollTarget* m_coefficient);
 
                 //Log.Warning("发送成功");
 

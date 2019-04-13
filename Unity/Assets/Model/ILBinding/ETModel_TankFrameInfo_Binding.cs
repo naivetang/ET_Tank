@@ -14,14 +14,14 @@ using ILRuntime.CLR.Utils;
 
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class ETModel_TankInfo_Binding
+    unsafe class ETModel_TankFrameInfo_Binding
     {
         public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(ETModel.TankInfo);
+            Type type = typeof(ETModel.TankFrameInfo);
             args = new Type[]{};
             method = type.GetMethod("get_TankId", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_TankId_0);
@@ -61,7 +61,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.TankFrameInfo instance_of_this_method = (ETModel.TankFrameInfo)typeof(ETModel.TankFrameInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.TankId;
@@ -78,7 +78,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.TankFrameInfo instance_of_this_method = (ETModel.TankFrameInfo)typeof(ETModel.TankFrameInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.PX;
@@ -95,7 +95,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.TankFrameInfo instance_of_this_method = (ETModel.TankFrameInfo)typeof(ETModel.TankFrameInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.PY;
@@ -112,7 +112,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.TankFrameInfo instance_of_this_method = (ETModel.TankFrameInfo)typeof(ETModel.TankFrameInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.PZ;
@@ -129,7 +129,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.TankFrameInfo instance_of_this_method = (ETModel.TankFrameInfo)typeof(ETModel.TankFrameInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.RX;
@@ -146,7 +146,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.TankFrameInfo instance_of_this_method = (ETModel.TankFrameInfo)typeof(ETModel.TankFrameInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.RY;
@@ -163,7 +163,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.TankFrameInfo instance_of_this_method = (ETModel.TankFrameInfo)typeof(ETModel.TankFrameInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.RZ;
@@ -180,7 +180,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.TankFrameInfo instance_of_this_method = (ETModel.TankFrameInfo)typeof(ETModel.TankFrameInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.GunRX;
@@ -197,7 +197,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ETModel.TankInfo instance_of_this_method = (ETModel.TankInfo)typeof(ETModel.TankInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            ETModel.TankFrameInfo instance_of_this_method = (ETModel.TankFrameInfo)typeof(ETModel.TankFrameInfo).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.TurretRY;

@@ -20,6 +20,10 @@ namespace ETHotfix
                 // 随机生成一辆坦克，id和instanceId不相等
                 Tank tank = ComponentFactory.CreateWithId<Tank>(IdGenerater.GenerateId());
 
+                tank.Player = Game.Scene.GetComponent<PlayerComponent>().Get(message.PlayerId);
+
+                tank.AddComponent<NumericComponent>();
+
                 // 进游戏的第一个人是蓝色方，其它都是红色方
                 if (!Game.HasBlue)
                 {

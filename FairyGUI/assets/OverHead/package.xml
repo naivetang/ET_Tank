@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <packageDescription id="i1d2q1c7" jpegQuality="80" compressPNG="true">
   <resources>
-    <image id="hzb60" name="0.png" path="/"/>
-    <image id="hzb61" name="1.png" path="/"/>
-    <image id="hzb62" name="task.png" path="/"/>
+    <image id="hzb60" name="0.png" path="/" exported="true"/>
+    <image id="hzb61" name="1.png" path="/" exported="true"/>
+    <image id="hzb62" name="task.png" path="/" exported="true"/>
     <component id="hzb63" name="bloodbar.xml" path="/" exported="true"/>
-    <image id="hzb64" name="green.png" path="/"/>
-    <image id="hzb65" name="black.png" path="/"/>
-    <image id="hzb66" name="red.png" path="/"/>
+    <image id="hzb64" name="green.png" path="/" exported="true"/>
+    <image id="hzb65" name="black.png" path="/" exported="true"/>
+    <image id="hzb66" name="red.png" path="/" exported="true"/>
     <component id="hzb67" name="greenBar.xml" path="/" exported="true"/>
     <component id="hzb68" name="redBar.xml" path="/" exported="true"/>
-    <image id="hzb69" name="white.png" path="/"/>
+    <image id="hzb69" name="white.png" path="/" exported="true"/>
     <component id="hzb6a" name="whiteBar.xml" path="/" exported="true"/>
     <component id="hzb6b" name="OverHead.xml" path="/" exported="true"/>
   </resources>

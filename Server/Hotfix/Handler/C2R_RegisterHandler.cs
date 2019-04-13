@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using ETModel;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace ETHotfix
 {
@@ -19,13 +20,12 @@ namespace ETHotfix
             R2C_Regist response = new R2C_Regist();
             try
             {
-                //if (message.Account != "abcdef" || message.Password != "111111")
-                //{
-                //	response.Error = ErrorCode.ERR_AccountOrPasswordError;
-                //	reply(response);
-                //	return;
-                //}
-                bool ret = await this.CreateAccount(message, response);
+                bool ret = await this.hasAccount(message, response);
+
+                if (!ret)
+                {
+                    await CreateAccount(message.Account, message.Password);
+                }
 
                 reply(response);
                 
@@ -36,11 +36,11 @@ namespace ETHotfix
             }
         }
 
-        private async Task<bool> CreateAccount(C2R_Regist message,R2C_Regist responce)
+        private async ETTask<bool> hasAccount(C2R_Regist message,R2C_Regist responce)
         {
             DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
 
-            List<ComponentWithId> accounts = await db.Query<Account>(t => t.UserName == message.Account);
+            List<ComponentWithId> accounts = await db.Query<Account>(t => t.Name == message.Account);
 
             if (accounts.Count >= 1)
             {
@@ -48,20 +48,30 @@ namespace ETHotfix
 
                 responce.Message = "此账号已注册";
 
-                return false;
+                return true;
             }
+
+            return false;
+        }
+
+        private async ETTask CreateAccount(string Name, string Password)
+        {
+            DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
 
             Account account = ComponentFactory.Create<Account>();
 
-            account.UserName = message.Account;
+            account.Name = Name;
 
-            account.Password = message.Password;
+            account.Password = Password;
 
             await db.Save(account);
 
-            responce.Error = ErrorCode.ERR_Success;
+            UserDB userDb = ComponentFactory.Create<UserDB>();
 
-            return true;
+            userDb.Name = Name;
+
+            await db.Save(userDb);
+
         }
     }
 }

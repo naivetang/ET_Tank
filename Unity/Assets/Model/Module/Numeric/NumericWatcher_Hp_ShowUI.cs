@@ -15,6 +15,9 @@
 		{
             Tank tank = Game.Scene.GetComponent<TankComponent>().Get(id);
 
+            if (tank == null)
+                return;
+
             int nowHp = tank.GetComponent<NumericComponent>()[NumericType.Hp];
 
             // if (nowHp < 0)

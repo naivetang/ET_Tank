@@ -102,7 +102,7 @@
     <Compile Include="Assets\Hotfix\Handler\B2C_AttackTankHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_CreateTanksHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_ShootHandler.cs" />
-    <Compile Include="Assets\Hotfix\Handler\B2C_TankInfosHandler.cs" />
+    <Compile Include="Assets\Hotfix\Handler\B2C_TankFrameInfosHandler.cs" />
     <Compile Include="Assets\Hotfix\Init.cs" />
     <Compile Include="Assets\Hotfix\Module\Actor\IActorMessage.cs" />
     <Compile Include="Assets\Hotfix\Module\ActorLocation\IActorLocationMessage.cs" />

@@ -9,5 +9,7 @@
 	    public const string GM = "GM";
 	    public const string Common = "Common";
 	    public const string MainInterface = "MainInterface";
+
+        public const string OverHead = "OverHead";
     }
 }

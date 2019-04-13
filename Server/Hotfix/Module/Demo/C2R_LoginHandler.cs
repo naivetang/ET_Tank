@@ -19,9 +19,9 @@ namespace ETHotfix
 			R2C_Login response = new R2C_Login();
 			try
 			{
-			    var ret = await CheckAccount(message, response);
+			    Account ret = await CheckAccount(message, response);
 
-			    if (!ret)
+			    if (ret == null)
 			    {
 			        reply(response);
 
@@ -33,6 +33,7 @@ namespace ETHotfix
 				Log.Debug($"gate address: {MongoHelper.ToJson(config)}");
 				IPEndPoint innerAddress = config.GetComponent<InnerConfig>().IPEndPoint;
 				Session gateSession = Game.Scene.GetComponent<NetInnerComponent>().Get(innerAddress);
+
                 // 向gate请求一个key,客户端可以拿着这个key连接gate
                 G2R_GetLoginKey g2RGetLoginKey = (G2R_GetLoginKey)await gateSession.Call(new R2G_GetLoginKey() {Account = message.Account});
 
@@ -48,12 +49,12 @@ namespace ETHotfix
 			}
 		}
 
-	    private async Task<bool> CheckAccount(C2R_Login message,R2C_Login response)
+	    private async Task<Account> CheckAccount(C2R_Login message,R2C_Login response)
 	    {
 	        DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
 
-	        List<ComponentWithId> accounts = await db.Query<Account>(account => account.UserName == message.Account);
-	        //var accounts = await db.Query<Account>($"{{\'UserName\':\'{message.Account}\'}}");
+	        List<ComponentWithId> accounts = await db.Query<Account>(account => account.Name == message.Account);
+	        //var accounts = await db.Query<Account>($"{{\'Name\':\'{message.Account}\'}}");
 
 	        if (accounts.Count == 0)
 	        {
@@ -61,14 +62,14 @@ namespace ETHotfix
 
 	            response.Message = "不存在此账号";
 
-	            return false;
+	            return null;
 	        }
             else
 	        {
 	            Account a = accounts[0] as Account;
 	            if (a.Password == message.Password)
 	            {
-	                return true;
+	                return a;
 	            }
 	            else
 	            {
@@ -76,7 +77,7 @@ namespace ETHotfix
 
 	                response.Message = "密码错误";
 
-	                return false;
+	                return null;
                 }
 	        }
 	    }

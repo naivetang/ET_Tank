@@ -14,25 +14,20 @@ using ILRuntime.CLR.Utils;
 
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class Google_Protobuf_Collections_RepeatedField_1_TankInfo_Binding
+    unsafe class Google_Protobuf_Collections_RepeatedField_1_TankInfoFirstEnter_Binding
     {
         public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
-            FieldInfo field;
             Type[] args;
-            Type type = typeof(Google.Protobuf.Collections.RepeatedField<ETModel.TankInfo>);
+            Type type = typeof(Google.Protobuf.Collections.RepeatedField<ETModel.TankInfoFirstEnter>);
             args = new Type[]{};
             method = type.GetMethod("get_Count", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_Count_0);
             args = new Type[]{};
             method = type.GetMethod("GetEnumerator", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, GetEnumerator_1);
-
-            field = type.GetField("array", flag);
-            app.RegisterCLRFieldGetter(field, get_array_0);
-            app.RegisterCLRFieldSetter(field, set_array_0);
 
 
         }
@@ -45,7 +40,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            Google.Protobuf.Collections.RepeatedField<ETModel.TankInfo> instance_of_this_method = (Google.Protobuf.Collections.RepeatedField<ETModel.TankInfo>)typeof(Google.Protobuf.Collections.RepeatedField<ETModel.TankInfo>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            Google.Protobuf.Collections.RepeatedField<ETModel.TankInfoFirstEnter> instance_of_this_method = (Google.Protobuf.Collections.RepeatedField<ETModel.TankInfoFirstEnter>)typeof(Google.Protobuf.Collections.RepeatedField<ETModel.TankInfoFirstEnter>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.Count;
@@ -62,7 +57,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 1);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            Google.Protobuf.Collections.RepeatedField<ETModel.TankInfo> instance_of_this_method = (Google.Protobuf.Collections.RepeatedField<ETModel.TankInfo>)typeof(Google.Protobuf.Collections.RepeatedField<ETModel.TankInfo>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            Google.Protobuf.Collections.RepeatedField<ETModel.TankInfoFirstEnter> instance_of_this_method = (Google.Protobuf.Collections.RepeatedField<ETModel.TankInfoFirstEnter>)typeof(Google.Protobuf.Collections.RepeatedField<ETModel.TankInfoFirstEnter>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             var result_of_this_method = instance_of_this_method.GetEnumerator();
@@ -75,15 +70,6 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-
-        static object get_array_0(ref object o)
-        {
-            return ((Google.Protobuf.Collections.RepeatedField<ETModel.TankInfo>)o).array;
-        }
-        static void set_array_0(ref object o, object v)
-        {
-            ((Google.Protobuf.Collections.RepeatedField<ETModel.TankInfo>)o).array = (ETModel.TankInfo[])v;
-        }
 
 
     }
