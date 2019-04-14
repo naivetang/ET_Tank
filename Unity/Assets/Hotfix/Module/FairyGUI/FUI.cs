@@ -15,7 +15,7 @@ namespace ETHotfix
 		}
 	}
 	
-	public sealed class FUI: Entity
+	public sealed class FUI: Entity 
 	{
 		public GObject GObject;
 		

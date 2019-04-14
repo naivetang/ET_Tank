@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="850,100" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <graph id="n0_s4di" name="n0" xy="0,0" size="850,100" hideByEditor="true" visible="false" touchable="false" type="rect" lineSize="0" fillColor="#fff0f0f0">
+      <gearDisplay controller="button" pages="0"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <graph id="n1_s4di" name="n1" xy="0,0" size="850,100" hideByEditor="true" visible="false" touchable="false" type="rect" lineSize="0" fillColor="#fffafafa">
+      <gearDisplay controller="button" pages="2"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <graph id="n2_s4di" name="n2" xy="0,0" size="850,100" hideByEditor="true" visible="false" touchable="false" type="rect" lineSize="0" fillColor="#ffcccccc">
+      <gearDisplay controller="button" pages="1,3"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <graph id="n3_s4di" name="jishu" xy="0,0" size="850,100" touchable="false" type="rect" fillColor="#ff262626"/>
+    <graph id="n4_s4di" name="oushu" xy="0,0" size="850,100" hideByEditor="true" touchable="false" type="rect" lineSize="0" fillColor="#ff575757"/>
+    <loader id="n5_s4di" name="touxian" xy="13,22" size="74,54" url="ui://imnv6csbgnr4m" fill="scale"/>
+    <text id="n6_s4di" name="n6" xy="99,22" size="201,56" fontSize="30" color="#ffffff" vAlign="middle" autoSize="none" text="你的名字"/>
+    <image id="n7_s4di" name="n7" src="gnr4h" fileName="Rank/8.png" pkg="imnv6csb" xy="714,34" size="70,42"/>
+  </displayList>
+  <Button/>
+</component>

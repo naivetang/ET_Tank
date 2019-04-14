@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
   <displayList>
-    <graph id="n6_rg0p" name="n6" xy="0,0" size="1920,1080" type="rect" fillColor="#ff000000">
+    <image id="n12_gnr4" name="n12" src="gnr414" fileName="bg_light.png" pkg="imnv6csb" xy="0,0" size="1920,1080">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <graph id="n6_rg0p" name="n6" xy="0,0" size="1920,1080" hideByEditor="true" visible="false" type="rect" fillColor="#ff000000">
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
-    <component id="n8_n3ew" name="AccountInput" src="w4q24" fileName="Account.xml" xy="811,185" size="325,92">
-      <Label titleFontSize="30"/>
+    <component id="n8_n3ew" name="AccountInput" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="842,382" size="325,74">
+      <Label titleFontSize="30" prompt="请输入账号"/>
     </component>
-    <component id="n10_ifcc" name="PasswordInput" src="ifcc5" fileName="Password.xml" xy="811,329" size="325,92">
-      <Label titleFontSize="30"/>
+    <component id="n10_ifcc" name="PasswordInput" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="842,492" size="325,74">
+      <Label titleFontSize="30" prompt="请输入密码" password="true"/>
     </component>
-    <text id="n11_ifcc" name="ErrorPrompt" xy="854,456" size="199,65" fontSize="30" color="#ff0000" align="center" vAlign="middle" autoSize="none" autoClearText="true" text="密码错误"/>
-    <component id="n1_lvs1" name="RegistBtn" src="lvs12" fileName="Button.xml" xy="811,546" size="325,92">
+    <text id="n11_ifcc" name="ErrorPrompt" xy="898,612" size="199,47" hideByEditor="true" fontSize="30" color="#ff0000" align="center" vAlign="middle" autoSize="none" autoClearText="true" text="密码错误"/>
+    <component id="n1_lvs1" name="RegistBtn" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="886,704" size="238,48">
       <Button title="注册" titleFontSize="30"/>
     </component>
-    <component id="n9_n3ew" name="LoginBtn" src="lvs12" fileName="Button.xml" xy="811,685" size="325,92">
+    <component id="n9_n3ew" name="LoginBtn" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="886,799" size="239,48">
       <Button title="登录" titleFontSize="30"/>
+    </component>
+    <component id="n14_gnr4" name="ExitBtn" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="1507,896">
+      <Button title="退出"/>
+    </component>
+    <image id="n16_ou9f" name="n16" src="ou9f8" fileName="LoginUI/Frame.png" xy="769,6" group="n20_ou9f"/>
+    <image id="n17_ou9f" name="n17" src="ou9f9" fileName="LoginUI/Lighter.png" xy="889,97" group="n20_ou9f"/>
+    <image id="n18_ou9f" name="n18" src="ou9f6" fileName="LoginUI/Sniny.png" xy="942,108" group="n20_ou9f"/>
+    <image id="n19_ou9f" name="n19" src="ou9f7" fileName="LoginUI/Downborder.png" xy="961,168" group="n20_ou9f"/>
+    <text id="n22_ou9f" name="n22" xy="793,1014" size="405,39" group="n20_ou9f" font="STFangsong" fontSize="31" color="#ffffff" text="西南科技大学虚拟现实实验室"/>
+    <text id="n21_ou9f" name="n21" xy="865,42" size="261,77" group="n20_ou9f" font="STFangsong" fontSize="65" color="#ffffff" text="坦克大战"/>
+    <group id="n20_ou9f" name="n20" xy="769,6" size="453,1047" collapsed="true"/>
+    <component id="n25_ou9f" name="n25" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="186,788">
+      <Button title="关于"/>
+    </component>
+    <component id="n26_ou9f" name="n26" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="185,872">
+      <Button title="设置"/>
     </component>
   </displayList>
 </component>

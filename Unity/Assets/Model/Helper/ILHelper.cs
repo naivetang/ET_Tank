@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using FairyGUI;
 using ILRuntime.CLR.Method;
 using ILRuntime.CLR.TypeSystem;
 using ILRuntime.Runtime.Enviorment;
@@ -28,6 +29,7 @@ namespace ETModel
 			appdomain.DelegateManager.RegisterMethodDelegate<Session, byte, ushort, MemoryStream>();
 			appdomain.DelegateManager.RegisterMethodDelegate<Session>();
 			appdomain.DelegateManager.RegisterMethodDelegate<ILTypeInstance>();
+			appdomain.DelegateManager.RegisterMethodDelegate<EventContext>();
 			appdomain.DelegateManager.RegisterFunctionDelegate<Google.Protobuf.Adapt_IMessage.Adaptor>();
 			appdomain.DelegateManager.RegisterMethodDelegate<Google.Protobuf.Adapt_IMessage.Adaptor>();
 			appdomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.EventCallback0>((act) =>
@@ -37,9 +39,16 @@ namespace ETModel
 					((Action)act)();
 				});
 			});
+            appdomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.EventCallback1>((act) =>
+            {
+                return new FairyGUI.EventCallback1((context) =>
+                {
+                    ((Action<FairyGUI.EventContext>)act)(context);
+                });
+            });
 
 
-			CLRBindings.Initialize(appdomain);
+            CLRBindings.Initialize(appdomain);
 
 			// 注册适配器
 			Assembly assembly = typeof(Init).Assembly;

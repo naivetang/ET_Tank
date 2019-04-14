@@ -6,7 +6,16 @@ using UnityEngine;
 
 namespace ETModel
 {
-	/// <summary>
+    [ObjectSystem]
+    public class FUIPackageAwakeSystem : AwakeSystem<FUIPackageComponent>
+    {
+        public override void Awake(FUIPackageComponent self)
+        {
+            self.AddPackage(UIType.Common);
+        }
+    }
+
+    /// <summary>
 	/// 管理所有UI Package
 	/// </summary>
 	public class FUIPackageComponent: Component

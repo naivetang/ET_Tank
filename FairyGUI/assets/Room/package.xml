@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="1ojks5pu" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="s4di0" name="Room.xml" path="/" exported="true"/>
+    <component id="s4di1" name="ChatCom.xml" path="/" exported="true"/>
+    <component id="s4di2" name="ListItem.xml" path="/" exported="true"/>
+    <component id="s4di3" name="List.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="Room"/>
+</packageDescription>

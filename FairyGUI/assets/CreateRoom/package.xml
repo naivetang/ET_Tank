@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="1lz2k03p" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="s4di0" name="CreateRoom.xml" path="/" exported="true"/>
+    <image id="s4di1" name="Ornamental.png" path="/" exported="true"/>
+    <image id="s4di2" name="Text BG.png" path="/" exported="true"/>
+    <image id="s4di3" name="BBG.png" path="/" exported="true"/>
+  </resources>
+  <publish name="CreateRoom"/>
+</packageDescription>

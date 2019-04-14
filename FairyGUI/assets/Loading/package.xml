@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="faxteumd" jpegQuality="80" compressPNG="true">
+  <resources>
+    <image id="gnr40" name="loading_fill.png" path="/" exported="true"/>
+    <image id="gnr41" name="darkening_repeatable.png" path="/" exported="true"/>
+    <image id="gnr42" name="loading_empty_frame.png" path="/" exported="true"/>
+  </resources>
+  <publish name="Loading"/>
+</packageDescription>

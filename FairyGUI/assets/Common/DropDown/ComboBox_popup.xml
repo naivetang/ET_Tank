@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="150,164">
+  <displayList>
+    <image id="n2_s4di" name="n2" src="s4di1k" fileName="BBG.png" xy="0,0" size="150,164">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <graph id="n0_s4di" name="n0" xy="0,0" size="150,164" hideByEditor="true" visible="false" touchable="false" type="rect" lineColor="#ffa0a0a0" fillColor="#fff0f0f0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <list id="n1_s4di" name="list" xy="0,0" size="149,164" overflow="scroll" defaultItem="ui://imnv6csbs4di1g">
+      <relation target="" sidePair="width-width"/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+  <relation target="n1_s4di" sidePair="height-height"/>
+</component>

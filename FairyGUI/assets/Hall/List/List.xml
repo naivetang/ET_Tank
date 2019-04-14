@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1300,600" opaque="false">
+  <displayList>
+    <list id="n0_s4di" name="n0" xy="0,61" size="1263,536" layout="flow_vt" overflow="scroll" lineGap="1" lineItemCount="10" defaultItem="ui://f77fjnyas4dip">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n3_s4di" name="n3" src="s4dic" fileName="List/RoomItemTop.xml" xy="0,0"/>
+  </displayList>
+</component>

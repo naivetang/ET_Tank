@@ -3,6 +3,57 @@
   <resources>
     <component id="oo602" name="Button.xml" path="/" exported="true"/>
     <component id="oo600" name="BG.xml" path="/" exported="true"/>
+    <image id="gnr43" name="button_normal.png" path="/Button/" exported="true" scale="9grid" scale9grid="52,11,104,22"/>
+    <image id="gnr44" name="button_active.png" path="/Button/" exported="true" scale="9grid" scale9grid="52,11,104,22"/>
+    <image id="gnr45" name="button_hover.png" path="/Button/" exported="true" scale="9grid" scale9grid="52,11,104,22"/>
+    <image id="gnr46" name="chat_bg.png" path="/" exported="true"/>
+    <image id="gnr47" name="check_normal.png" path="/CheckBox/" exported="true"/>
+    <image id="gnr48" name="chec_hovered.png" path="/CheckBox/" exported="true"/>
+    <image id="gnr49" name="check.png" path="/CheckBox/" exported="true"/>
+    <image id="gnr4a" name="check_combined.png" path="/CheckBox/" exported="true"/>
+    <image id="gnr4b" name="2.png" path="/Rank/" exported="true"/>
+    <image id="gnr4c" name="3.png" path="/Rank/" exported="true"/>
+    <image id="gnr4d" name="4.png" path="/Rank/" exported="true"/>
+    <image id="gnr4e" name="5.png" path="/Rank/" exported="true"/>
+    <image id="gnr4f" name="6.png" path="/Rank/" exported="true"/>
+    <image id="gnr4g" name="7.png" path="/Rank/" exported="true"/>
+    <image id="gnr4h" name="8.png" path="/Rank/" exported="true"/>
+    <image id="gnr4i" name="9.png" path="/Rank/" exported="true"/>
+    <image id="gnr4j" name="10.png" path="/Rank/" exported="true"/>
+    <image id="gnr4k" name="11.png" path="/Rank/" exported="true"/>
+    <image id="gnr4l" name="12.png" path="/Rank/" exported="true"/>
+    <image id="gnr4m" name="13.png" path="/Rank/" exported="true"/>
+    <image id="gnr4n" name="14.png" path="/Rank/" exported="true"/>
+    <image id="gnr4o" name="15.png" path="/Rank/" exported="true"/>
+    <image id="gnr4p" name="16.png" path="/Rank/" exported="true"/>
+    <image id="gnr4q" name="17.png" path="/Rank/" exported="true"/>
+    <image id="gnr4r" name="18.png" path="/Rank/" exported="true"/>
+    <image id="gnr4s" name="1.png" path="/Rank/" exported="true"/>
+    <image id="gnr4t" name="dd_slider_empty.png" path="/DropDown/" exported="true"/>
+    <image id="gnr4u" name="dd_slider_hover_or_dragged.png" path="/DropDown/" exported="true"/>
+    <image id="gnr4v" name="dd_slider_normal.png" path="/DropDown/" exported="true"/>
+    <image id="gnr4w" name="active_bg.png" path="/DropDown/" exported="true"/>
+    <image id="gnr4x" name="dd_normal.png" path="/DropDown/" exported="true"/>
+    <image id="gnr4y" name="form_normal.png" path="/Form/" exported="true" scale="9grid" scale9grid="7,3,229,29"/>
+    <image id="gnr4z" name="form_hover.png" path="/Form/" exported="true"/>
+    <image id="gnr410" name="xp_bar_fill.png" path="/Bar/" exported="true"/>
+    <image id="gnr411" name="xp_bar_empty.png" path="/Bar/" exported="true"/>
+    <image id="gnr412" name="big_bg.png" path="/" exported="true"/>
+    <image id="gnr413" name="bg_dark.png" path="/" exported="true"/>
+    <image id="gnr414" name="bg_light.png" path="/" exported="true" scale="9grid" scale9grid="0,96,1024,576"/>
+    <component id="gnr416" name="Input.xml" path="/Form/" exported="true"/>
+    <component id="gnr419" name="Button.xml" path="/Button/" exported="true"/>
+    <component id="ou9f1a" name="Bg_Light.xml" path="/" exported="true"/>
+    <component id="ou9f1b" name="Bg_Dark.xml" path="/" exported="true"/>
+    <image id="s4di1c" name="ditiao_0003.png" path="/" exported="true"/>
+    <component id="s4di1d" name="Bg_Null.xml" path="/" exported="true"/>
+    <image id="s4di1e" name="Bg.png" path="/" exported="true"/>
+    <image id="s4di1f" name="DD Arrow.png" path="/"/>
+    <component id="s4di1g" name="ComboBox_item.xml" path="/DropDown/" exported="true"/>
+    <component id="s4di1h" name="ComboBox_popup.xml" path="/DropDown/" exported="true"/>
+    <component id="s4di1i" name="ComboBox.xml" path="/DropDown/" exported="true"/>
+    <image id="s4di1j" name="DD Arrow.png" path="/DropDown/" exported="true"/>
+    <image id="s4di1k" name="BBG.png" path="/" exported="true"/>
   </resources>
   <publish name="Common"/>
 </packageDescription>

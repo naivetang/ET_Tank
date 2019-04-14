@@ -166,7 +166,7 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_AnimatorComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_AppTypeHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_AsyncETVoidMethodBuilder_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_B2C_AttackTankResponse_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_B2C_AttackTank_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_CreateTanks_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_Shoot_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_TankFrameInfos_Binding.cs" />
@@ -217,6 +217,7 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_MessageInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_MessageProxy_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_NetworkComponent_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_NumericComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_OpcodeHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_OpcodeTypeComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Player_Binding.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_UnOrderMultiMap_2_Type_IFixedUpdateSystem_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_UnOrderMultiMap_2_Type_ILTypeInstance_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_EventListener_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\FairyGUI_GComboBox_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GObject_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GProgressBar_Binding.cs" />

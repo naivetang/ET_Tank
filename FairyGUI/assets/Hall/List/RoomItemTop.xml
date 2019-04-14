@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1250,61" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n12_s4di" name="n12" src="s4dil" fileName="List/Categories Line.png" xy="0,0" size="1250,61"/>
+    <richtext id="n3_s4di" name="n3" xy="0,-1" size="102,62" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="号码"/>
+    <richtext id="n4_s4di" name="n4" xy="113,1" size="642,59" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="房间名"/>
+    <richtext id="n5_s4di" name="n5" xy="953,2" size="147,56" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="玩家"/>
+    <richtext id="n6_s4di" name="n6" xy="1115,1" size="132,57" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="状态"/>
+    <richtext id="n7_s4di" name="n7" xy="765,2" size="180,56" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="地图"/>
+    <image id="n8_s4di" name="n8" src="w243b" fileName="List/VBorder.png" xy="106,0" size="2,61"/>
+    <image id="n9_s4di" name="n9" src="w243b" fileName="List/VBorder.png" xy="760,0" size="2,61"/>
+    <image id="n10_s4di" name="n10" src="w243b" fileName="List/VBorder.png" xy="948,0" size="2,61"/>
+    <image id="n11_s4di" name="n11" src="w243b" fileName="List/VBorder.png" xy="1107,0" size="2,61"/>
+  </displayList>
+  <Button/>
+</component>

@@ -11,5 +11,9 @@
 	    public const string MainInterface = "MainInterface";
 
         public const string OverHead = "OverHead";
+
+        public const string Hall = "Hall";
+        public const string CreateRoom = "CreateRoom";
+        public const string Room = "Room";
     }
 }

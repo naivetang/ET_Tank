@@ -91,9 +91,14 @@
     <Compile Include="Assets\Hotfix\Event\GM_CreateTank.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_EnterBattle.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_EnterBattleAndCreateTank.cs" />
+    <Compile Include="Assets\Hotfix\Event\LoginHasFinish_CreateHallUI.cs" />
+    <Compile Include="Assets\Hotfix\FUI\CreateRoom\CreateRoomViewComponent.cs" />
+    <Compile Include="Assets\Hotfix\FUI\FUIBase.cs" />
+    <Compile Include="Assets\Hotfix\FUI\FUIFactory.cs" />
     <Compile Include="Assets\Hotfix\FUI\GM\ClickEnter_OpenGM.cs" />
     <Compile Include="Assets\Hotfix\FUI\GM\FUIGMComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\GM\FUIGMFactory.cs" />
+    <Compile Include="Assets\Hotfix\FUI\Hall\HallViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILobby\Component\UILobbyComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILobby\Factory\UILobbyFactory.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILogin\Component\UILoginComponent.cs" />

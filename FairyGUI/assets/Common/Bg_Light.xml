@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <image id="n0_ou9f" name="n0" src="gnr414" fileName="bg_light.png" xy="0,0" size="1920,1080">
+      <relation target="" sidePair="height-height,width-width"/>
+    </image>
+  </displayList>
+</component>

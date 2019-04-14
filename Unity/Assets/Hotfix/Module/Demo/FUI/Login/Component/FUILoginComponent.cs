@@ -2,7 +2,7 @@
 
 namespace ETHotfix
 {
-    public class FUILoginComponent: Component
+    public class FUILoginComponent: FUIBase
 	{
 		// 缓存只需要缓存FUI类型即可
 		public FUI AccountInput;
@@ -25,17 +25,17 @@ namespace ETHotfix
     {
         public override void Awake(FUILoginComponent self)
         {
-            FUI FGUICompunt = self.GetParent<FUI>();
+            self.FUIComponent = self.GetParent<FUI>();
 
-            self.AccountInput = FGUICompunt.Get("AccountInput");
+            self.AccountInput = self.FUIComponent.Get("AccountInput");
 
-            self.PasswordInput = FGUICompunt.Get("PasswordInput");
+            self.PasswordInput = self.FUIComponent.Get("PasswordInput");
 
-            self.ErrorPrompt = FGUICompunt.Get("ErrorPrompt");
+            self.ErrorPrompt = self.FUIComponent.Get("ErrorPrompt");
 
-            self.RegistBtn = FGUICompunt.Get("RegistBtn");
+            self.RegistBtn = self.FUIComponent.Get("RegistBtn");
 
-            self.LoginBtn = FGUICompunt.Get("LoginBtn");
+            self.LoginBtn = self.FUIComponent.Get("LoginBtn");
 
             self.LoginBtn.GObject.asButton.onClick.Set(() => { LoginBtnOnClick(self); });
 
@@ -109,7 +109,8 @@ namespace ETHotfix
             // 逻辑层不应该去调用UI，逻辑层只关心逻辑并且抛出事件，由UI层自己去订阅事件，而且注意事件名字
             // 很多人容易把这个事件取名成LoginFinishiCreateLobbyUI，这是不对的，事件抛出去不可能知道谁订阅了这个事件，
             // 也不会知道别人订阅这个事件是干什么的,这里只知道我Login Finish
-            Game.EventSystem.Run(EventIdType.LoginFinish);
+            //Game.EventSystem.Run(EventIdType.LoginFinish);
+            Game.EventSystem.Run(EventIdType.LoginHasFinish);
         }
 
         public static void RigistBtnOnClick(FUILoginComponent self)

@@ -74,9 +74,10 @@ namespace ILRuntime.Runtime.Generated
             ETModel_ETTask_1_ILTypeInstance_Binding_Awaiter_Binding.Register(app);
             FairyGUI_GObject_Binding.Register(app);
             FairyGUI_EventListener_Binding.Register(app);
+            FairyGUI_GComboBox_Binding.Register(app);
+            ETModel_ETAsyncTaskMethodBuilder_1_ILTypeInstance_Binding.Register(app);
             FairyGUI_GComponent_Binding.Register(app);
             System_Char_Binding.Register(app);
-            ETModel_ETAsyncTaskMethodBuilder_1_ILTypeInstance_Binding.Register(app);
             FairyGUI_UIPackage_Binding.Register(app);
             UnityEngine_GameObject_Binding.Register(app);
             ReferenceCollector_Binding.Register(app);
@@ -99,8 +100,9 @@ namespace ILRuntime.Runtime.Generated
             ETModel_ETTask_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding.Register(app);
             ETModel_ETTask_1_Google_Protobuf_Adapt_IMessage_Binding_Adaptor_Binding_Awaiter_Binding.Register(app);
             ETModel_ComponentFactory_Binding.Register(app);
-            ETModel_B2C_AttackTankResponse_Binding.Register(app);
+            ETModel_B2C_AttackTank_Binding.Register(app);
             ETModel_TankComponent_Binding.Register(app);
+            ETModel_NumericComponent_Binding.Register(app);
             ETModel_B2C_CreateTanks_Binding.Register(app);
             Google_Protobuf_Collections_RepeatedField_1_TankInfoFirstEnter_Binding.Register(app);
             System_Collections_Generic_IEnumerator_1_TankInfoFirstEnter_Binding.Register(app);
