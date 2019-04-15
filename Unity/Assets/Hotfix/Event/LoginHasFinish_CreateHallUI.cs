@@ -11,7 +11,7 @@ namespace ETHotfix
         }
         public async ETVoid RunAsync()
         {
-            FUI fui = await FUIFactory.Create<HallViewComponent>(FUIType.Hall);
+            
         }
 
        

@@ -1,0 +1,3 @@
+{"_id":1,"Chinese":"开始游戏","English":"Start Game"}
+{"_id":2,"Chinese":"准备","English":"Ready"}
+{"_id":3,"Chinese":"测试","English":"Test"}

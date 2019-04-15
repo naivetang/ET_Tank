@@ -17,7 +17,49 @@ namespace ETHotfix
 			return component;
 		}
 
-		public static T CreateWithParent<T>(Component parent) where T : Component
+        public static Component CreateWithParent<P>(Type type, Component parent,P p1)
+        {
+            Component component = Game.ObjectPool.Fetch(type);
+            component.Parent = parent;
+            ComponentWithId componentWithId = component as ComponentWithId;
+            if (componentWithId != null)
+            {
+                componentWithId.Id = component.InstanceId;
+            }
+
+            Game.EventSystem.Awake(component, p1);
+            return component;
+        }
+
+        public static Component CreateWithParent<P1,P2>(Type type, Component parent, P1 p1, P2 p2)
+        {
+            Component component = Game.ObjectPool.Fetch(type);
+            component.Parent = parent;
+            ComponentWithId componentWithId = component as ComponentWithId;
+            if (componentWithId != null)
+            {
+                componentWithId.Id = component.InstanceId;
+            }
+
+            Game.EventSystem.Awake(component, p1, p2);
+            return component;
+        }
+
+        public static Component CreateWithParent<P1, P2, P3>(Type type, Component parent, P1 p1, P2 p2, P3 p3)
+        {
+            Component component = Game.ObjectPool.Fetch(type);
+            component.Parent = parent;
+            ComponentWithId componentWithId = component as ComponentWithId;
+            if (componentWithId != null)
+            {
+                componentWithId.Id = component.InstanceId;
+            }
+
+            Game.EventSystem.Awake(component, p1, p2, p3);
+            return component;
+        }
+
+        public static T CreateWithParent<T>(Component parent) where T : Component
 		{
 			T component = Game.ObjectPool.Fetch<T>();
 			component.Parent = parent;

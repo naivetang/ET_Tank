@@ -5,8 +5,15 @@
 		public long UnitId { get; set; }
 
         public long TankId { get; set; }
-		
-		public override void Dispose()
+
+        public string Name { get; set; }
+
+        public int Level { get; set; }
+
+        public int Experience { get; set; }
+
+
+        public override void Dispose()
 		{
 			if (this.IsDisposed)
 			{

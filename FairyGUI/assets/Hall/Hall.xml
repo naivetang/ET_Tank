@@ -8,7 +8,7 @@
     <image id="n6_ou9f" name="n6" src="ou9f5" fileName="Lighter.png" xy="155,114" group="n3_ou9f"/>
     <image id="n7_ou9f" name="n7" src="ou9f1" fileName="Sniny.png" xy="188,160" group="n3_ou9f"/>
     <image id="n8_ou9f" name="n8" src="ou9f2" fileName="Downborder.png" xy="201,169" group="n3_ou9f"/>
-    <text id="n9_ou9f" name="n9" xy="131,72" size="184,55" group="n3_ou9f" font="STFangsong" fontSize="45" color="#ffffff" text="坦克大战"/>
+    <text id="n9_ou9f" name="n9" xy="131,72" size="185,55" group="n3_ou9f" font="STFangsong" fontSize="45" color="#ffffff" text="坦克大战"/>
     <component id="n10_ou9f" name="CreateRoom" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,293" size="241,55" group="n3_ou9f">
       <Button title="创建游戏"/>
     </component>
@@ -42,7 +42,7 @@
     <image id="n22_ou9f" name="n22" src="ou9f8" fileName="Ornament.png" xy="1327,83" size="348,48" group="n24_ou9f" rotation="180"/>
     <component id="n41_s4di" name="n41" src="s4din" fileName="List/List.xml" xy="549,113" size="1288,576" group="n24_ou9f"/>
     <group id="n24_ou9f" name="BG" xy="494,67" size="1390,669" group="n23_ou9f"/>
-    <group id="n23_ou9f" name="right" xy="494,67" size="1390,669" advanced="true" collapsed="true"/>
+    <group id="n23_ou9f" name="right" xy="494,67" size="1390,669" advanced="true"/>
     <component id="n29_s4di" name="n29" src="s4dir" fileName="ChatCom.xml" xy="486,763"/>
   </displayList>
 </component>

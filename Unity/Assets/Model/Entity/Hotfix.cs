@@ -24,8 +24,9 @@ namespace ETModel
 
 		public Hotfix()
         {
+#if ILRuntime
             OnApplicationQuit += () => { appDomain.DebugService.StopDebugService(); };
-
+#endif
         }
 
 		public void GotoHotfix()

@@ -3062,6 +3062,803 @@ namespace ETModel {
 
   }
 
+  public partial class C2G_CreateRoom : pb::IMessage {
+    private static readonly pb::MessageParser<C2G_CreateRoom> _parser = new pb::MessageParser<C2G_CreateRoom>(() => (C2G_CreateRoom)MessagePool.Instance.Fetch(typeof(C2G_CreateRoom)));
+    public static pb::MessageParser<C2G_CreateRoom> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private int peopleNum_;
+    /// <summary>
+    /// 人数
+    /// </summary>
+    public int PeopleNum {
+      get { return peopleNum_; }
+      set {
+        peopleNum_ = value;
+      }
+    }
+
+    private string mapName_ = "";
+    /// <summary>
+    /// 地图
+    /// </summary>
+    public string MapName {
+      get { return mapName_; }
+      set {
+        mapName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private int bigModel_;
+    /// <summary>
+    /// 模式 1回合制，2时间制
+    /// </summary>
+    public int BigModel {
+      get { return bigModel_; }
+      set {
+        bigModel_ = value;
+      }
+    }
+
+    private int smallModel_;
+    /// <summary>
+    /// 回合制：多少个回合  时间制：多少分钟
+    /// </summary>
+    public int SmallModel {
+      get { return smallModel_; }
+      set {
+        smallModel_ = value;
+      }
+    }
+
+    private string roomNam_ = "";
+    /// <summary>
+    /// 房间名
+    /// </summary>
+    public string RoomNam {
+      get { return roomNam_; }
+      set {
+        roomNam_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PeopleNum != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(PeopleNum);
+      }
+      if (MapName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(MapName);
+      }
+      if (BigModel != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(BigModel);
+      }
+      if (SmallModel != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(SmallModel);
+      }
+      if (RoomNam.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(RoomNam);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (PeopleNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PeopleNum);
+      }
+      if (MapName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MapName);
+      }
+      if (BigModel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BigModel);
+      }
+      if (SmallModel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SmallModel);
+      }
+      if (RoomNam.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RoomNam);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      peopleNum_ = 0;
+      mapName_ = "";
+      bigModel_ = 0;
+      smallModel_ = 0;
+      roomNam_ = "";
+      rpcId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            PeopleNum = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            MapName = input.ReadString();
+            break;
+          }
+          case 24: {
+            BigModel = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            SmallModel = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            RoomNam = input.ReadString();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class RoomOnePeople : pb::IMessage {
+    private static readonly pb::MessageParser<RoomOnePeople> _parser = new pb::MessageParser<RoomOnePeople>(() => (RoomOnePeople)MessagePool.Instance.Fetch(typeof(RoomOnePeople)));
+    public static pb::MessageParser<RoomOnePeople> Parser { get { return _parser; } }
+
+    private int level_;
+    /// <summary>
+    /// 等级
+    /// </summary>
+    public int Level {
+      get { return level_; }
+      set {
+        level_ = value;
+      }
+    }
+
+    private string name_ = "";
+    /// <summary>
+    /// 名字
+    /// </summary>
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private bool state_;
+    /// <summary>
+    /// false：未准备  true：准备
+    /// </summary>
+    public bool State {
+      get { return state_; }
+      set {
+        state_ = value;
+      }
+    }
+
+    private long id_;
+    /// <summary>
+    /// 
+    /// </summary>
+    public long Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Level != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Level);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (State != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(State);
+      }
+      if (Id != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(Id);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Level);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (State != false) {
+        size += 1 + 1;
+      }
+      if (Id != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      level_ = 0;
+      name_ = "";
+      state_ = false;
+      id_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Level = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 24: {
+            State = input.ReadBool();
+            break;
+          }
+          case 32: {
+            Id = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class RoomSimpleInfo : pb::IMessage {
+    private static readonly pb::MessageParser<RoomSimpleInfo> _parser = new pb::MessageParser<RoomSimpleInfo>(() => (RoomSimpleInfo)MessagePool.Instance.Fetch(typeof(RoomSimpleInfo)));
+    public static pb::MessageParser<RoomSimpleInfo> Parser { get { return _parser; } }
+
+    private long roomId_;
+    /// <summary>
+    ///房间Id
+    /// </summary>
+    public long RoomId {
+      get { return roomId_; }
+      set {
+        roomId_ = value;
+      }
+    }
+
+    private int peopleNum_;
+    /// <summary>
+    ///人数
+    /// </summary>
+    public int PeopleNum {
+      get { return peopleNum_; }
+      set {
+        peopleNum_ = value;
+      }
+    }
+
+    private string mapName_ = "";
+    /// <summary>
+    ///地图
+    /// </summary>
+    public string MapName {
+      get { return mapName_; }
+      set {
+        mapName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private int bigModel_;
+    /// <summary>
+    ///模式 1回合制，2时间制
+    /// </summary>
+    public int BigModel {
+      get { return bigModel_; }
+      set {
+        bigModel_ = value;
+      }
+    }
+
+    private int smallModel_;
+    /// <summary>
+    ///回合制：多少个回合  时间制：多少分钟
+    /// </summary>
+    public int SmallModel {
+      get { return smallModel_; }
+      set {
+        smallModel_ = value;
+      }
+    }
+
+    private string roomName_ = "";
+    /// <summary>
+    ///房间名
+    /// </summary>
+    public string RoomName {
+      get { return roomName_; }
+      set {
+        roomName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private int state_;
+    /// <summary>
+    ///当前状态 1:准备中 2:游戏中
+    /// </summary>
+    public int State {
+      get { return state_; }
+      set {
+        state_ = value;
+      }
+    }
+
+    private int serialNumber_;
+    /// <summary>
+    ///房间序号
+    /// </summary>
+    public int SerialNumber {
+      get { return serialNumber_; }
+      set {
+        serialNumber_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RoomId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(RoomId);
+      }
+      if (PeopleNum != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PeopleNum);
+      }
+      if (MapName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(MapName);
+      }
+      if (BigModel != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(BigModel);
+      }
+      if (SmallModel != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(SmallModel);
+      }
+      if (RoomName.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(RoomName);
+      }
+      if (State != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(State);
+      }
+      if (SerialNumber != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(SerialNumber);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RoomId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoomId);
+      }
+      if (PeopleNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PeopleNum);
+      }
+      if (MapName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MapName);
+      }
+      if (BigModel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BigModel);
+      }
+      if (SmallModel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SmallModel);
+      }
+      if (RoomName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RoomName);
+      }
+      if (State != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(State);
+      }
+      if (SerialNumber != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SerialNumber);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      roomId_ = 0;
+      peopleNum_ = 0;
+      mapName_ = "";
+      bigModel_ = 0;
+      smallModel_ = 0;
+      roomName_ = "";
+      state_ = 0;
+      serialNumber_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            RoomId = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            PeopleNum = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            MapName = input.ReadString();
+            break;
+          }
+          case 32: {
+            BigModel = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            SmallModel = input.ReadInt32();
+            break;
+          }
+          case 50: {
+            RoomName = input.ReadString();
+            break;
+          }
+          case 56: {
+            State = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            SerialNumber = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// 房间内的详细信息
+  /// </summary>
+  public partial class G2C_RoomDetailInfo : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_RoomDetailInfo> _parser = new pb::MessageParser<G2C_RoomDetailInfo>(() => (G2C_RoomDetailInfo)MessagePool.Instance.Fetch(typeof(G2C_RoomDetailInfo)));
+    public static pb::MessageParser<G2C_RoomDetailInfo> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private int error_;
+    public int Error {
+      get { return error_; }
+      set {
+        error_ = value;
+      }
+    }
+
+    private string message_ = "";
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private long roomId_;
+    /// <summary>
+    /// 人数
+    ///int32 PeopleNum = 1;
+    /// 地图
+    ///string MapName = 2;
+    /// 模式 1回合制，2时间制
+    ///int32 BigModel = 3;
+    /// 回合制：多少个回合  时间制：多少分钟
+    ///int32 SmallModel = 4;
+    /// 房间名
+    ///string RoomNam = 5;
+    /// 房间Id
+    /// </summary>
+    public long RoomId {
+      get { return roomId_; }
+      set {
+        roomId_ = value;
+      }
+    }
+
+    private static readonly pb::FieldCodec<global::ETModel.RoomOnePeople> _repeated_leftCamp_codec
+        = pb::FieldCodec.ForMessage(18, global::ETModel.RoomOnePeople.Parser);
+    private pbc::RepeatedField<global::ETModel.RoomOnePeople> leftCamp_ = new pbc::RepeatedField<global::ETModel.RoomOnePeople>();
+    public pbc::RepeatedField<global::ETModel.RoomOnePeople> LeftCamp {
+      get { return leftCamp_; }
+      set { leftCamp_ = value; }
+    }
+
+    private static readonly pb::FieldCodec<global::ETModel.RoomOnePeople> _repeated_rightCamp_codec
+        = pb::FieldCodec.ForMessage(26, global::ETModel.RoomOnePeople.Parser);
+    private pbc::RepeatedField<global::ETModel.RoomOnePeople> rightCamp_ = new pbc::RepeatedField<global::ETModel.RoomOnePeople>();
+    public pbc::RepeatedField<global::ETModel.RoomOnePeople> RightCamp {
+      get { return rightCamp_; }
+      set { rightCamp_ = value; }
+    }
+
+    private global::ETModel.RoomSimpleInfo roomSimpleInfo_;
+    public global::ETModel.RoomSimpleInfo RoomSimpleInfo {
+      get { return roomSimpleInfo_; }
+      set {
+        roomSimpleInfo_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RoomId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(RoomId);
+      }
+      leftCamp_.WriteTo(output, _repeated_leftCamp_codec);
+      rightCamp_.WriteTo(output, _repeated_rightCamp_codec);
+      if (roomSimpleInfo_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(RoomSimpleInfo);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (Error != 0) {
+        output.WriteRawTag(216, 5);
+        output.WriteInt32(Error);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(226, 5);
+        output.WriteString(Message);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (Error != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Error);
+      }
+      if (Message.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
+      if (RoomId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoomId);
+      }
+      size += leftCamp_.CalculateSize(_repeated_leftCamp_codec);
+      size += rightCamp_.CalculateSize(_repeated_rightCamp_codec);
+      if (roomSimpleInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RoomSimpleInfo);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      roomId_ = 0;
+      for (int i = 0; i < leftCamp_.Count; i++) { MessagePool.Instance.Recycle(leftCamp_[i]); }
+      leftCamp_.Clear();
+      for (int i = 0; i < rightCamp_.Count; i++) { MessagePool.Instance.Recycle(rightCamp_[i]); }
+      rightCamp_.Clear();
+      if (roomSimpleInfo_ != null) MessagePool.Instance.Recycle(roomSimpleInfo_); roomSimpleInfo_ = null;
+      rpcId_ = 0;
+      error_ = 0;
+      message_ = "";
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            RoomId = input.ReadInt64();
+            break;
+          }
+          case 18: {
+            leftCamp_.AddEntriesFrom(input, _repeated_leftCamp_codec);
+            break;
+          }
+          case 26: {
+            rightCamp_.AddEntriesFrom(input, _repeated_rightCamp_codec);
+            break;
+          }
+          case 34: {
+            if (roomSimpleInfo_ == null) {
+              roomSimpleInfo_ = new global::ETModel.RoomSimpleInfo();
+            }
+            input.ReadMessage(roomSimpleInfo_);
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 728: {
+            Error = input.ReadInt32();
+            break;
+          }
+          case 738: {
+            Message = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class G2C_UserBaseInfo : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_UserBaseInfo> _parser = new pb::MessageParser<G2C_UserBaseInfo>(() => (G2C_UserBaseInfo)MessagePool.Instance.Fetch(typeof(G2C_UserBaseInfo)));
+    public static pb::MessageParser<G2C_UserBaseInfo> Parser { get { return _parser; } }
+
+    private int level_;
+    /// <summary>
+    /// 等级
+    /// </summary>
+    public int Level {
+      get { return level_; }
+      set {
+        level_ = value;
+      }
+    }
+
+    private int experience_;
+    /// <summary>
+    /// 经验
+    /// </summary>
+    public int Experience {
+      get { return experience_; }
+      set {
+        experience_ = value;
+      }
+    }
+
+    private string name_ = "";
+    /// <summary>
+    /// 名字
+    /// </summary>
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Level != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Level);
+      }
+      if (Experience != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Experience);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Level);
+      }
+      if (Experience != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Experience);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      level_ = 0;
+      experience_ = 0;
+      name_ = "";
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Level = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Experience = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class G2C_Rooms : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_Rooms> _parser = new pb::MessageParser<G2C_Rooms>(() => (G2C_Rooms)MessagePool.Instance.Fetch(typeof(G2C_Rooms)));
+    public static pb::MessageParser<G2C_Rooms> Parser { get { return _parser; } }
+
+    private static readonly pb::FieldCodec<global::ETModel.RoomSimpleInfo> _repeated_roomSimpleInfo_codec
+        = pb::FieldCodec.ForMessage(10, global::ETModel.RoomSimpleInfo.Parser);
+    private pbc::RepeatedField<global::ETModel.RoomSimpleInfo> roomSimpleInfo_ = new pbc::RepeatedField<global::ETModel.RoomSimpleInfo>();
+    public pbc::RepeatedField<global::ETModel.RoomSimpleInfo> RoomSimpleInfo {
+      get { return roomSimpleInfo_; }
+      set { roomSimpleInfo_ = value; }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      roomSimpleInfo_.WriteTo(output, _repeated_roomSimpleInfo_codec);
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      size += roomSimpleInfo_.CalculateSize(_repeated_roomSimpleInfo_codec);
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      for (int i = 0; i < roomSimpleInfo_.Count; i++) { MessagePool.Instance.Recycle(roomSimpleInfo_[i]); }
+      roomSimpleInfo_.Clear();
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            roomSimpleInfo_.AddEntriesFrom(input, _repeated_roomSimpleInfo_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   #endregion
 
 }

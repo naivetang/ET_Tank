@@ -1,4 +1,7 @@
-﻿namespace ETModel
+﻿using System;
+using Google.Protobuf.Collections;
+
+namespace ETModel
 {
 	[ObjectSystem]
 	public class PlayerSystem : AwakeSystem<Player, string>
@@ -10,11 +13,20 @@
 	}
 
     [ObjectSystem]
-    public class Player2System : AwakeSystem<Player, UserDB>
+    public class Player2System : AwakeSystem<Player, Session, UserDB>
     {
-        public override void Awake(Player self, UserDB a)
+        public override void Awake(Player self, Session a, UserDB b)
         {
-            self.Awake(a);
+            self.Awake(a, b);
+        }
+    }
+
+    [ObjectSystem]
+    public class PlayerStartSystem:StartSystem<Player>
+    {
+        public override void Start(Player self)
+        {
+            self.Start();
         }
     }
 
@@ -36,17 +48,86 @@
 
         public long UnitId { get; set; } = 0L;
 
+        public Session Session { get; set; }
+
 		public void Awake(string account)
 		{
 			this.Account = account;
 		}
 
-        public void Awake(UserDB userDb)
+        public void Awake(Session session,UserDB userDb)
         {
             this.UserDB = userDb;
+            this.Session = session;
+            
         }
-		
-		public override void Dispose()
+
+        public void Start()
+        {
+            this.BeginSuccLogin();
+            this.AfterSuccLogin();
+        }
+
+        // 在回复登陆成功之前发送
+        private void BeginSuccLogin()
+        {
+            this.Send_G2C_UserBaseInfo();
+            
+        }
+
+        private void AfterSuccLogin()
+        {
+            this.Send_G2C_Rooms();
+        }
+
+        private void Send_G2C_UserBaseInfo()
+        {
+            // 下发等级，名字
+            G2C_UserBaseInfo msg = new G2C_UserBaseInfo();
+
+            msg.Level = this.UserDB.Level;
+
+            msg.Experience = this.UserDB.Experience;
+
+            msg.Name = this.UserDB.Name;
+
+            this.Session.Send(msg);
+        }
+
+        private void Send_G2C_Rooms()
+        {
+            G2C_Rooms msg = new G2C_Rooms();
+
+            msg.RoomSimpleInfo = new RepeatedField<RoomSimpleInfo>();
+
+            Room[] rooms = Game.Scene.GetComponent<RoomComponent>().GetAll;
+
+            foreach (Room room in rooms)
+            {
+                RoomSimpleInfo simpleInfo = new RoomSimpleInfo();
+
+                simpleInfo.RoomId = room.Id;
+
+                simpleInfo.PeopleNum = room.PeopleNum;
+
+                simpleInfo.MapName = room.MapName;
+
+                simpleInfo.BigModel = (int)room.BigModel;
+
+                simpleInfo.SmallModel = room.SmallMode;
+
+                simpleInfo.RoomName = room.RoomName;
+
+                simpleInfo.State = room.State;
+
+                msg.RoomSimpleInfo.Add(simpleInfo);
+            }
+
+            this.Session.Send(msg);
+        }
+
+
+        public override void Dispose()
 		{
 			if (this.IsDisposed)
 			{
@@ -54,6 +135,14 @@
 			}
 
 			base.Dispose();
-		}
+
+            this.Account = string.Empty;
+
+            this.UserDB = null;
+
+            this.TankId = 0L;
+
+            this.UnitId = 0L;
+        }
 	}
 }

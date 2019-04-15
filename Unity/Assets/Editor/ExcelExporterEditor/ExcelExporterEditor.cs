@@ -235,16 +235,18 @@ public class ExcelExporterEditor : EditorWindow
 
 	private void ExportSheet(ISheet sheet, StreamWriter sw)
 	{
+        // 从第三行开始，计算有多少列
 		int cellCount = sheet.GetRow(3).LastCellNum;
 
 		CellInfo[] cellInfos = new CellInfo[cellCount];
 
+        // 把第三行到第五行数据保存
 		for (int i = 2; i < cellCount; i++)
 		{
 			string fieldDesc = GetCellString(sheet, 2, i);
 			string fieldName = GetCellString(sheet, 3, i);
 			string fieldType = GetCellString(sheet, 4, i);
-			cellInfos[i] = new CellInfo() { Name = fieldName, Type = fieldType, Desc = fieldDesc };
+			cellInfos[i] = new CellInfo() { Desc = fieldDesc, Name = fieldName, Type = fieldType };
 		}
 		
 		for (int i = 5; i <= sheet.LastRowNum; ++i)

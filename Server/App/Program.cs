@@ -128,14 +128,21 @@ namespace App
 						// 配置管理
 						Game.Scene.AddComponent<ConfigComponent>();
 
+                        // 数值变化检测组件
                         Game.Scene.AddComponent<NumericWatcherComponent>();
 
                         // recast寻路组件
                         Game.Scene.AddComponent<PathfindingComponent>();
 						
+                        // 登陆之后保护的玩家
 						Game.Scene.AddComponent<PlayerComponent>();
 						Game.Scene.AddComponent<UnitComponent>();
+
+                        // 进入战场后的战场组件
                         Game.Scene.AddComponent<TankComponent>();
+
+                        // 房间系统组件
+                        Game.Scene.AddComponent<RoomComponent>();
 
 						Game.Scene.AddComponent<ConsoleComponent>();
 						// Game.Scene.AddComponent<HttpComponent>();

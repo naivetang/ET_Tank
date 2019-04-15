@@ -26,5 +26,56 @@ namespace ETHotfix
             return fui;
         }
 
+        public static async ETTask<FUI> Create<T,P1>(string packageName, P1 p1) where T : FUIBase
+        {
+            await ETTask.CompletedTask;
+            
+            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(packageName);
+
+            FUI fui = ComponentFactory.Create<FUI, GObject>(UIPackage.CreateObject(packageName, packageName));
+
+            fui.Name = packageName;
+
+            fui.AddComponent(typeof(T), p1);
+
+            Game.Scene.GetComponent<FUIComponent>().Add(fui);
+
+            return fui;
+        }
+
+        public static async ETTask<FUI> Create<T, P1, P2>(string packageName, P1 p1, P2 p2) where T : FUIBase
+        {
+            await ETTask.CompletedTask;
+
+            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(packageName);
+
+            FUI fui = ComponentFactory.Create<FUI, GObject>(UIPackage.CreateObject(packageName, packageName));
+
+            fui.Name = packageName;
+
+            fui.AddComponent(typeof(T), p1, p2);
+
+            Game.Scene.GetComponent<FUIComponent>().Add(fui);
+
+            return fui;
+        }
+
+        public static async ETTask<FUI> Create<T, P1, P2, P3>(string packageName, P1 p1, P2 p2, P3 p3) where T : FUIBase
+        {
+            await ETTask.CompletedTask;
+
+            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(packageName);
+
+            FUI fui = ComponentFactory.Create<FUI, GObject>(UIPackage.CreateObject(packageName, packageName));
+
+            fui.Name = packageName;
+
+            fui.AddComponent(typeof(T), p1, p2, p3);
+
+            Game.Scene.GetComponent<FUIComponent>().Add(fui);
+
+            return fui;
+        }
+
     }
 }

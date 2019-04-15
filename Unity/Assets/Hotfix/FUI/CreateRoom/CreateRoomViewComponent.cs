@@ -1,4 +1,6 @@
-﻿using ETModel;
+﻿using System;
+using System.Collections.Generic;
+using ETModel;
 using FairyGUI;
 
 namespace ETHotfix
@@ -18,6 +20,8 @@ namespace ETHotfix
         private GButton m_closeBtn;
         private GButton m_enterBtn;
 
+        private GLabel m_roomName;
+
         private GComboBox m_peopleNum;
 
         private GComboBox m_map;
@@ -32,9 +36,9 @@ namespace ETHotfix
 
         private string[] m_models = new string[] { "回合制","时间制" };
 
-        private string[] m_rounds = new[] {"1回合" ,"5回合", "10回合", "12回合" };
+        private string[] m_rounds = new[] {"1 回合" ,"5 回合", "10 回合", "12 回合" };
 
-        private string[] m_times = new[] { "1min","5min", "10min", "12min" };
+        private string[] m_times = new[] { "1 min","5 min", "10 min", "12 min" };
 
 
         public void Awake()
@@ -47,7 +51,13 @@ namespace ETHotfix
         {
             this.m_closeBtn = this.FUIComponent.Get("Close").GObject.asButton;
 
-            this.m_closeBtn.onClick.Set(this.Close);
+            this.m_closeBtn.onClick.Set(this.OnClose);
+
+            this.m_enterBtn = this.FUIComponent.Get("Enter").GObject.asButton;
+
+            this.m_enterBtn.onClick.Set(this.EnterBtn_OnClick);
+
+            this.m_roomName = this.FUIComponent.Get("n7").GObject.asLabel;
 
             this.m_peopleNum = this.FUIComponent.Get("n2").GObject.asComboBox;
 
@@ -90,6 +100,73 @@ namespace ETHotfix
                 this.m_smallModel.items = this.m_smallModel.values = this.m_times;
             }
             this.m_smallModel.selectedIndex = 0;
+        }
+
+
+
+        private int GetPeopleNum()
+        {
+            return Convert.ToInt32(this.m_peopleNum.value.Split('v')[0]);
+        }
+
+        private string GetMapName()
+        {
+            return this.m_map.value;
+        }
+        /// <summary>
+        /// 1回合制   2时间制
+        /// </summary>
+        /// <returns></returns>
+        private int GetBigModel()
+        {
+            return this.m_bigModel.selectedIndex + 1;
+        }
+
+        private int GetSmallModel()
+        {
+            return Convert.ToInt32(this.m_smallModel.value.Split(' ')[0]);
+        }
+
+        private string GetRoomName()
+        {
+            return this.m_roomName.text;
+        }
+        private void EnterBtn_OnClick()
+        {
+            this.Send_C2G_CreateRoom().NoAwait();
+        }
+        private async ETVoid Send_C2G_CreateRoom()
+        {
+            C2G_CreateRoom msg= new C2G_CreateRoom();
+
+            msg.PeopleNum = this.GetPeopleNum();
+
+            msg.MapName = this.GetMapName();
+
+            msg.BigModel = this.GetBigModel();
+
+            msg.SmallModel = this.GetSmallModel();
+
+            msg.RoomNam = this.GetRoomName();
+
+            G2C_RoomDetailInfo response = (G2C_RoomDetailInfo) await ETModel.SessionComponent.Instance.Session.Call(msg);
+
+            // response.LeftCamp
+            //
+            // List<RoomViewComponent.RoomOnePeople> leftList =new List<RoomViewComponent.RoomOnePeople>();
+            //
+            // RoomViewComponent.RoomOnePeople item = new RoomViewComponent.RoomOnePeople();
+            //
+            // item.m_level = 1;
+            //
+            // item.m_isOver = true;
+            //
+            // item.m_name = PlayerComponent.Instance.MyPlayer.Name;
+            //
+            // leftList.Add(item);
+
+
+            await FUIFactory.Create<RoomViewComponent, G2C_RoomDetailInfo>(FUIType.Room,response);
         }
     }
 }

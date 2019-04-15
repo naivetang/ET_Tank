@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="850,500">
   <displayList>
-    <list id="n0_s4di" name="n0" xy="0,0" size="850,500" overflow="scroll" defaultItem="ui://1ojks5pus4di2">
+    <list id="n0_s4di" name="n0" xy="0,0" size="850,500" lineGap="4" defaultItem="ui://1ojks5pus4di2">
       <item/>
       <item/>
       <item/>

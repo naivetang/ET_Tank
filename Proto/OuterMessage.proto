@@ -291,3 +291,97 @@ message B2C_AttackTank // IActorMessage
 	// 当前血量
 	int32 CurrentHp = 3;
 }
+
+message C2G_CreateRoom // IRequest
+{
+	int32 RpcId = 90;
+
+	// 人数
+	int32 PeopleNum = 1;
+	// 地图
+	string MapName = 2;
+	// 模式 1回合制，2时间制
+	int32 BigModel = 3;
+	// 回合制：多少个回合  时间制：多少分钟
+	int32 SmallModel = 4;
+	// 房间名
+	string RoomNam = 5;
+}
+
+message RoomOnePeople
+{
+	// 等级
+	int32 Level = 1;
+	// 名字
+	string Name = 2;
+	// false：未准备  true：准备
+	bool State = 3;
+	// 
+	int64 id = 4;
+}
+
+message RoomSimpleInfo
+{
+	//房间Id
+	int64 RoomId = 1;
+	//人数
+	int32 PeopleNum = 2;
+	//地图
+	string MapName = 3;
+	//模式 1回合制，2时间制
+	int32 BigModel = 4;
+	//回合制：多少个回合  时间制：多少分钟
+	int32 SmallModel = 5;
+	//房间名
+	string RoomName = 6;
+	//当前状态 1:准备中 2:游戏中
+	int32 State = 7;
+	//房间序号
+	int32 SerialNumber = 8;
+}
+
+// 房间内的详细信息
+message G2C_RoomDetailInfo // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+
+	// 人数
+	//int32 PeopleNum = 1;
+	// 地图
+	//string MapName = 2;
+	// 模式 1回合制，2时间制
+	//int32 BigModel = 3;
+	// 回合制：多少个回合  时间制：多少分钟
+	//int32 SmallModel = 4;
+	// 房间名
+	//string RoomNam = 5;
+	// 房间Id
+	int64 RoomId = 1;
+
+	repeated RoomOnePeople LeftCamp = 2;
+
+	repeated RoomOnePeople RightCamp = 3;
+
+	RoomSimpleInfo RoomSimpleInfo = 4;
+
+}
+
+
+message G2C_UserBaseInfo // IMessage
+{
+	// 等级
+	int32 Level = 1;
+
+	// 经验
+	int32 Experience = 2;
+	
+	// 名字
+	string Name = 3;
+}
+
+message G2C_Rooms // IMessage
+{
+	repeated RoomSimpleInfo RoomSimpleInfo = 1;
+}

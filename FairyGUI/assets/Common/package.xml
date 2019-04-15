@@ -48,12 +48,21 @@
     <image id="s4di1c" name="ditiao_0003.png" path="/" exported="true"/>
     <component id="s4di1d" name="Bg_Null.xml" path="/" exported="true"/>
     <image id="s4di1e" name="Bg.png" path="/" exported="true"/>
-    <image id="s4di1f" name="DD Arrow.png" path="/"/>
+    <image id="s4di1f" name="DD Arrow.png" path="/" exported="true"/>
     <component id="s4di1g" name="ComboBox_item.xml" path="/DropDown/" exported="true"/>
     <component id="s4di1h" name="ComboBox_popup.xml" path="/DropDown/" exported="true"/>
     <component id="s4di1i" name="ComboBox.xml" path="/DropDown/" exported="true"/>
     <image id="s4di1j" name="DD Arrow.png" path="/DropDown/" exported="true"/>
     <image id="s4di1k" name="BBG.png" path="/" exported="true"/>
+    <image id="m9xx1l" name="bg_content_transp.png" path="/" exported="true"/>
+    <image id="m9xx1m" name="kb_table_bg.png" path="/" exported="true"/>
+    <image id="m9xx1n" name="kb_table_heading_highlight.png" path="/" exported="true"/>
+    <image id="m9xx1o" name="select_highlight.png" path="/" exported="true"/>
+    <image id="m9xx1p" name="id_bg.png" path="/" exported="true"/>
+    <image id="m9xx1q" name="sbutton_a.png" path="/Button2/" exported="true" scale="9grid" scale9grid="20,7,40,14"/>
+    <image id="m9xx1r" name="sbutton_h.png" path="/Button2/" exported="true" scale="9grid" scale9grid="20,7,40,14"/>
+    <image id="m9xx1s" name="sbutton_n.png" path="/Button2/" exported="true" scale="9grid" scale9grid="20,7,40,14"/>
+    <component id="m9xx1t" name="Button.xml" path="/Button2/" exported="true"/>
   </resources>
   <publish name="Common"/>
 </packageDescription>

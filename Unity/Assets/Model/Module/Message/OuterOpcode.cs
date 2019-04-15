@@ -102,6 +102,56 @@ namespace ETModel
 // 源坦克id
 // 目标坦克id
 // 当前血量
+	[Message(OuterOpcode.C2G_CreateRoom)]
+	public partial class C2G_CreateRoom : IRequest {}
+
+// 人数
+// 地图
+// 模式 1回合制，2时间制
+// 回合制：多少个回合  时间制：多少分钟
+// 房间名
+	[Message(OuterOpcode.RoomOnePeople)]
+	public partial class RoomOnePeople {}
+
+// 等级
+// 名字
+// false：未准备  true：准备
+//
+	[Message(OuterOpcode.RoomSimpleInfo)]
+	public partial class RoomSimpleInfo {}
+
+//房间Id
+//人数
+//地图
+//模式 1回合制，2时间制
+//回合制：多少个回合  时间制：多少分钟
+//房间名
+//当前状态 1:准备中 2:游戏中
+//房间序号
+// 房间内的详细信息
+	[Message(OuterOpcode.G2C_RoomDetailInfo)]
+	public partial class G2C_RoomDetailInfo : IResponse {}
+
+// 人数
+//int32 PeopleNum = 1;
+// 地图
+//string MapName = 2;
+// 模式 1回合制，2时间制
+//int32 BigModel = 3;
+// 回合制：多少个回合  时间制：多少分钟
+//int32 SmallModel = 4;
+// 房间名
+//string RoomNam = 5;
+// 房间Id
+	[Message(OuterOpcode.G2C_UserBaseInfo)]
+	public partial class G2C_UserBaseInfo : IMessage {}
+
+// 等级
+// 经验
+// 名字
+	[Message(OuterOpcode.G2C_Rooms)]
+	public partial class G2C_Rooms : IMessage {}
+
 }
 namespace ETModel
 {
@@ -135,5 +185,11 @@ namespace ETModel
 		 public const ushort C2B_AttackTankRequest = 126;
 		 public const ushort B2C_AttackTankResponse = 127;
 		 public const ushort B2C_AttackTank = 128;
+		 public const ushort C2G_CreateRoom = 129;
+		 public const ushort RoomOnePeople = 130;
+		 public const ushort RoomSimpleInfo = 131;
+		 public const ushort G2C_RoomDetailInfo = 132;
+		 public const ushort G2C_UserBaseInfo = 133;
+		 public const ushort G2C_Rooms = 134;
 	}
 }

@@ -86,8 +86,58 @@ namespace ETHotfix
 			this.componentDict.Add(type, component);
 			return component;
 		}
+        public Component AddComponent<P1>(Type type, P1 p1)
+        {
+            if (this.componentDict.ContainsKey(type))
+            {
+                throw new Exception($"AddComponent, component already exist, id: {this.Id}, component: {type.Name}");
+            }
 
-		public K AddComponent<K>() where K : Component, new()
+            Component component = ComponentFactory.CreateWithParent(type, this, p1);
+
+            if (component is ISerializeToEntity)
+            {
+                this.components.Add(component);
+            }
+            this.componentDict.Add(type, component);
+            return component;
+        }
+
+        public Component AddComponent<P1, P2>(Type type, P1 p1, P2 p2)
+        {
+            if (this.componentDict.ContainsKey(type))
+            {
+                throw new Exception($"AddComponent, component already exist, id: {this.Id}, component: {type.Name}");
+            }
+
+            Component component = ComponentFactory.CreateWithParent(type, this, p1, p2);
+
+            if (component is ISerializeToEntity)
+            {
+                this.components.Add(component);
+            }
+            this.componentDict.Add(type, component);
+            return component;
+        }
+
+        public Component AddComponent<P1, P2, P3>(Type type, P1 p1, P2 p2, P3 p3)
+        {
+            if (this.componentDict.ContainsKey(type))
+            {
+                throw new Exception($"AddComponent, component already exist, id: {this.Id}, component: {type.Name}");
+            }
+
+            Component component = ComponentFactory.CreateWithParent(type, this, p1, p2, p3);
+
+            if (component is ISerializeToEntity)
+            {
+                this.components.Add(component);
+            }
+            this.componentDict.Add(type, component);
+            return component;
+        }
+
+        public K AddComponent<K>() where K : Component, new()
 		{
 			Type type = typeof (K);
 			if (this.componentDict.ContainsKey(type))

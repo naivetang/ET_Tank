@@ -7,7 +7,7 @@ namespace ETHotfix
     {
         public FUI FUIComponent;
 
-        public virtual void Close()
+        public virtual void OnClose()
         {
             Game.Scene.GetComponent<FUIComponent>().Remove(this.FUIComponent.Name);
         }

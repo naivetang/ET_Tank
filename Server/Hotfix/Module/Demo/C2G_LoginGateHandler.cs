@@ -31,7 +31,9 @@ namespace ETHotfix
 
                 //Player player = ComponentFactory.Create<Player, string>(account);
 
-                Player player = ComponentFactory.Create<Player, UserDB>(userDb);
+                Player player = ComponentFactory.Create<Player, Session, UserDB>(session, userDb);
+
+                player.Session = session;
 
                 Game.Scene.GetComponent<PlayerComponent>().Add(player);
 
@@ -56,7 +58,6 @@ namespace ETHotfix
             DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
 
             List<ComponentWithId> accounts = await db.Query<UserDB>(account => account.Name == name);
-            //var accounts = await db.Query<Account>($"{{\'Name\':\'{message.Account}\'}}");
 
             if (accounts.Count == 0)
             {
