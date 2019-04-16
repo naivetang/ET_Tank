@@ -49,3 +49,5 @@ Server/.DS_Store
 /Server/.vscode/
 .vs/
 .objs/
+/Config/md5.txt
+/Unity/Assets/Res/Config/md5.txt

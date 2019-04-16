@@ -1,3 +1,5 @@
 {"_id":1,"Chinese":"开始游戏","English":"Start Game"}
 {"_id":2,"Chinese":"准备","English":"Ready"}
 {"_id":3,"Chinese":"测试","English":"Test"}
+{"_id":4,"Chinese":"准备中","English":"Reading"}
+{"_id":5,"Chinese":"游戏中","English":"Playing"}

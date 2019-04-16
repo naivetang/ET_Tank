@@ -22,7 +22,7 @@ namespace ETModel
     {
         public int PeopleNum { get; set; }
 
-        public string MapName { get; set; }
+        public int MapTableId { get; set; }
 
         public BigModel BigModel { get; set; }
 
@@ -35,6 +35,9 @@ namespace ETModel
 
         //当前状态 1:准备中 2:游戏中
         public int State { get; set; } = 1;
+
+        // 房间的序列号 1 开始
+        public int SerialNumber { get; set; }
 
         private List<RoomOnePeople> LeftCamp { get; set; } = new List<RoomOnePeople>();
         private List<RoomOnePeople> RightCamp { get; set; } = new List<RoomOnePeople>();
@@ -115,7 +118,7 @@ namespace ETModel
 
             this.PeopleNum = 0;
 
-            this.MapName = string.Empty;
+            this.MapTableId = 0;
 
             this.BigModel = BigModel.None;
 

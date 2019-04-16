@@ -8,9 +8,10 @@ namespace ETHotfix
         public static async ETTask<FUI> Create()
         {
 	        await ETTask.CompletedTask;
-	        
-	        // 可以同步或者异步加载,异步加载需要搞个转圈圈,这里为了简单使用同步加载
-	        // await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIType.Login);
+
+            // 可以同步或者异步加载,异步加载需要搞个转圈圈,这里为了简单使用同步加载
+            // await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIType.Login);
+            await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIType.Common);
 	        ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(FUIType.Login);
 	        
 	        FUI fui = ComponentFactory.Create<FUI, GObject>(UIPackage.CreateObject(FUIType.Login, FUIType.Login));

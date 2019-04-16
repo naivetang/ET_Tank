@@ -50,3 +50,5 @@ MonoBehaviour:
     gameObject: {fileID: 4900000, guid: c245c7dda13b3ad43b2278925e922899, type: 3}
   - key: Message
     gameObject: {fileID: 4900000, guid: 9b07d10c3e283c347b1e336bc693dcc8, type: 3}
+  - key: Map
+    gameObject: {fileID: 4900000, guid: e04642db99aebee4ebbeee6336910240, type: 3}

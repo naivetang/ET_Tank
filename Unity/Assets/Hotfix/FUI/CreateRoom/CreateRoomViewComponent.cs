@@ -32,7 +32,9 @@ namespace ETHotfix
 
         private string[] m_nums = new string[] { "1v1", "2v2", "3v3", "4v4", "5v5" };
 
-        private string[] m_maps = new string[] { "沙漠一灰" };
+        private List<string> m_mapNames = new List<string>();
+
+        private List<string> m_mapId = new List<string>();
 
         private string[] m_models = new string[] { "回合制","时间制" };
 
@@ -57,6 +59,8 @@ namespace ETHotfix
 
             this.m_enterBtn.onClick.Set(this.EnterBtn_OnClick);
 
+            IConfig[] configs = Game.Scene.GetComponent<ConfigComponent>().GetAll(typeof(Map)) as IConfig[];
+
             this.m_roomName = this.FUIComponent.Get("n7").GObject.asLabel;
 
             this.m_peopleNum = this.FUIComponent.Get("n2").GObject.asComboBox;
@@ -69,7 +73,19 @@ namespace ETHotfix
 
             this.m_map = this.FUIComponent.Get("n6").GObject.asComboBox;
 
-            this.m_map.items = this.m_map.values = m_maps;
+            foreach (IConfig conf in configs)
+            {
+                Map map = conf as Map;
+
+                this.m_mapNames.Add(map.ChineseMapName);
+
+                this.m_mapId.Add(map.Id.ToString());
+            }
+
+            this.m_map.items = this.m_mapNames.ToArray();
+
+            this.m_map.values = this.m_mapId.ToArray();
+            //this.m_map.items = this.m_map.values = this.m_mapNames;
 
             this.m_map.selectedIndex = 0;
 
@@ -109,9 +125,9 @@ namespace ETHotfix
             return Convert.ToInt32(this.m_peopleNum.value.Split('v')[0]);
         }
 
-        private string GetMapName()
+        private int GetMapName()
         {
-            return this.m_map.value;
+            return Convert.ToInt32(this.m_map.value);
         }
         /// <summary>
         /// 1回合制   2时间制
@@ -141,7 +157,7 @@ namespace ETHotfix
 
             msg.PeopleNum = this.GetPeopleNum();
 
-            msg.MapName = this.GetMapName();
+            msg.MapId = this.GetMapName();
 
             msg.BigModel = this.GetBigModel();
 

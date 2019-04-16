@@ -110,7 +110,7 @@ namespace ETModel
 
                 simpleInfo.PeopleNum = room.PeopleNum;
 
-                simpleInfo.MapName = room.MapName;
+                simpleInfo.MapId = room.MapTableId;
 
                 simpleInfo.BigModel = (int)room.BigModel;
 
@@ -119,6 +119,8 @@ namespace ETModel
                 simpleInfo.RoomName = room.RoomName;
 
                 simpleInfo.State = room.State;
+
+                simpleInfo.SerialNumber = room.SerialNumber;
 
                 msg.RoomSimpleInfo.Add(simpleInfo);
             }

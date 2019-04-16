@@ -40,8 +40,13 @@ public class ExcelExporterEditor : EditorWindow
 	{
 		GetWindow(typeof(ExcelExporterEditor));
 	}
-
+    /// <summary>
+    /// Excel表格所在位置
+    /// </summary>
 	private const string ExcelPath = "../Excel";
+    /// <summary>
+    /// 服务端存储配置位置
+    /// </summary>
 	private const string ServerConfigPath = "../Config/";
 
 	private bool isClient;
@@ -53,6 +58,7 @@ public class ExcelExporterEditor : EditorWindow
 	{
 		try
 		{
+            //客户端存储配置位置
 			const string clientPath = "./Assets/Res/Config";
 
 			if (GUILayout.Button("导出客户端配置"))
@@ -98,7 +104,7 @@ public class ExcelExporterEditor : EditorWindow
 			}
 
 			ExportClass(filePath, exportDir, csHead);
-			Log.Info($"生成{Path.GetFileName(filePath)}类");
+			//Log.Info($"生成{Path.GetFileName(filePath).Split('.')[0]}类");
 		}
 		AssetDatabase.Refresh();
 	}
@@ -126,7 +132,7 @@ public class ExcelExporterEditor : EditorWindow
 			sb.Append("\t{\n");
 			sb.Append("\t}\n\n");
 
-			sb.Append($"\tpublic class {protoName}: IConfig\n");
+			sb.Append($"\tpublic partial class {protoName}: IConfig\n");
 			sb.Append("\t{\n");
 			sb.Append("\t\tpublic long Id { get; set; }\n");
 
@@ -173,7 +179,7 @@ public class ExcelExporterEditor : EditorWindow
 
 	private void ExportAll(string exportDir)
 	{
-		string md5File = Path.Combine(ExcelPath, "md5.txt");
+		string md5File = Path.Combine(exportDir, "md5.txt");
 		if (!File.Exists(md5File))
 		{
 			this.md5Info = new ExcelMD5Info();
@@ -207,7 +213,7 @@ public class ExcelExporterEditor : EditorWindow
 
 		File.WriteAllText(md5File, this.md5Info.ToJson());
 
-		Log.Info("所有表导表完成");
+		//Log.Info("所有表导表完成");
 		AssetDatabase.Refresh();
 	}
 

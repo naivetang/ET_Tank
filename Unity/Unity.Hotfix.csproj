@@ -84,6 +84,7 @@
     <Compile Include="Assets\Hotfix\Base\Object\IUpdateSystem.cs" />
     <Compile Include="Assets\Hotfix\Base\Object\Object.cs" />
     <Compile Include="Assets\Hotfix\Base\Object\ObjectPool.cs" />
+    <Compile Include="Assets\Hotfix\Entity\Config\Map.cs" />
     <Compile Include="Assets\Hotfix\Entity\Config\Message.cs" />
     <Compile Include="Assets\Hotfix\Entity\Config\UnitConfig.cs" />
     <Compile Include="Assets\Hotfix\Entity\Game.cs" />
@@ -112,6 +113,8 @@
     <Compile Include="Assets\Hotfix\Handler\B2C_TankFrameInfosHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_RoomsHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_UserBaseInfoHandler.cs" />
+    <Compile Include="Assets\Hotfix\Helper\MapHelper.cs" />
+    <Compile Include="Assets\Hotfix\Helper\MessageHelper.cs" />
     <Compile Include="Assets\Hotfix\Init.cs" />
     <Compile Include="Assets\Hotfix\Module\Actor\IActorMessage.cs" />
     <Compile Include="Assets\Hotfix\Module\ActorLocation\IActorLocationMessage.cs" />

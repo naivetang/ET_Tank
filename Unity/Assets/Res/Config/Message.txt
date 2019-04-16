@@ -1,2 +1,5 @@
 {"Id":1,"Chinese":"开始游戏","English":"Start Game"}
 {"Id":2,"Chinese":"准备","English":"Ready"}
+{"Id":3,"Chinese":"测试","English":"Test"}
+{"Id":4,"Chinese":"准备中","English":"Reading"}
+{"Id":5,"Chinese":"游戏中","English":"Playing"}

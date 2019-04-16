@@ -1,4 +1,5 @@
-﻿using ETModel;
+﻿using System;
+using ETModel;
 
 namespace ETHotfix
 {
@@ -37,9 +38,13 @@ namespace ETHotfix
 
             self.LoginBtn = self.FUIComponent.Get("LoginBtn");
 
+            //if(Game.Scene.GetComponent<FUIPackageComponent>().get)
+
             self.LoginBtn.GObject.asButton.onClick.Set(() => { LoginBtnOnClick(self); });
 
-            self.RegistBtn.GObject.asButton.onClick.Set(()=>{RigistBtnOnClick(self);});
+            self.RegistBtn.GObject.asButton.onClick.Set(() => { RigistBtnOnClick(self); });
+
+            
 
             //login.Get("LoginBtn").GObject.asButton.onClick.Add(() => LoginBtnOnClick(self));
         }

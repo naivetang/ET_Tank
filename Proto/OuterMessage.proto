@@ -299,7 +299,7 @@ message C2G_CreateRoom // IRequest
 	// 人数
 	int32 PeopleNum = 1;
 	// 地图
-	string MapName = 2;
+	int32 MapId = 2;
 	// 模式 1回合制，2时间制
 	int32 BigModel = 3;
 	// 回合制：多少个回合  时间制：多少分钟
@@ -327,7 +327,7 @@ message RoomSimpleInfo
 	//人数
 	int32 PeopleNum = 2;
 	//地图
-	string MapName = 3;
+	int32 MapId = 3;
 	//模式 1回合制，2时间制
 	int32 BigModel = 4;
 	//回合制：多少个回合  时间制：多少分钟

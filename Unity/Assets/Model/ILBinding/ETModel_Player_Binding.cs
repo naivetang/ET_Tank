@@ -28,9 +28,18 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{};
             method = type.GetMethod("get_TankId", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_TankId_1);
+            args = new Type[]{typeof(System.String)};
+            method = type.GetMethod("set_Name", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, set_Name_2);
+            args = new Type[]{typeof(System.Int32)};
+            method = type.GetMethod("set_Level", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, set_Level_3);
+            args = new Type[]{typeof(System.Int32)};
+            method = type.GetMethod("set_Experience", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, set_Experience_4);
             args = new Type[]{typeof(System.Int64)};
             method = type.GetMethod("set_TankId", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, set_TankId_2);
+            app.RegisterCLRMethodRedirection(method, set_TankId_5);
 
 
         }
@@ -71,7 +80,62 @@ namespace ILRuntime.Runtime.Generated
             return __ret + 1;
         }
 
-        static StackObject* set_TankId_2(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* set_Name_2(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.String @value = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            ETModel.Player instance_of_this_method = (ETModel.Player)typeof(ETModel.Player).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.Name = value;
+
+            return __ret;
+        }
+
+        static StackObject* set_Level_3(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Int32 @value = ptr_of_this_method->Value;
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            ETModel.Player instance_of_this_method = (ETModel.Player)typeof(ETModel.Player).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.Level = value;
+
+            return __ret;
+        }
+
+        static StackObject* set_Experience_4(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Int32 @value = ptr_of_this_method->Value;
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            ETModel.Player instance_of_this_method = (ETModel.Player)typeof(ETModel.Player).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.Experience = value;
+
+            return __ret;
+        }
+
+        static StackObject* set_TankId_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;

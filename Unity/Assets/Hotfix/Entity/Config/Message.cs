@@ -7,7 +7,7 @@ namespace ETHotfix
 	{
 	}
 
-	public class Message: IConfig
+	public partial class Message: IConfig
 	{
 		public long Id { get; set; }
 		public string Chinese;

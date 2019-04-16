@@ -26,7 +26,7 @@ namespace ETHotfix
 
                 room.PeopleNum = message.PeopleNum;
 
-                room.MapName = message.MapName;
+                room.MapTableId = message.MapId;
 
                 room.BigModel = (BigModel)message.BigModel;
 
@@ -55,7 +55,7 @@ namespace ETHotfix
                     RoomSimpleInfo roomSimpleInfo = response.RoomSimpleInfo;
                     roomSimpleInfo.RoomId = room.Id;
                     roomSimpleInfo.PeopleNum = room.PeopleNum;
-                    roomSimpleInfo.MapName = room.MapName;
+                    roomSimpleInfo.MapId = room.MapTableId;
                     roomSimpleInfo.BigModel = (int)room.BigModel;
                     roomSimpleInfo.SmallModel = room.SmallMode;
                     room.RoomName = room.RoomName;

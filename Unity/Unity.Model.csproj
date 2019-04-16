@@ -148,6 +148,7 @@
     <Compile Include="Assets\Model\Component\GlobalConfigComponent.cs" />
     <Compile Include="Assets\Model\Component\SceneChangeComponent.cs" />
     <Compile Include="Assets\Model\Component\TimerComponent.cs" />
+    <Compile Include="Assets\Model\Entity\Config\Map.cs" />
     <Compile Include="Assets\Model\Entity\Config\Message.cs" />
     <Compile Include="Assets\Model\Entity\Config\UnitConfig.cs" />
     <Compile Include="Assets\Model\Entity\Game.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_Shoot_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_TankFrameInfos_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ByteHelper_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_C2G_CreateRoom_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_C2G_EnterBattle_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_C2G_EnterMap_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_CanvasConfig_Binding.cs" />
@@ -200,6 +202,9 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_FUIPackageComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_G2C_EnterBattle_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_G2C_EnterMap_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_G2C_RoomDetailInfo_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_G2C_Rooms_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_G2C_UserBaseInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Game_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_GameObjectHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_GizmosDebug_Binding.cs" />
@@ -225,6 +230,8 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_PlayerComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_RemoteTankComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ResourcesComponent_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_RoomOnePeople_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\ETModel_RoomSimpleInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_RpcException_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Scene_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_SceneChangeComponent_Binding.cs" />
@@ -246,9 +253,12 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_UnitPathComponent_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_UnOrderMultiMap_2_Type_IFixedUpdateSystem_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_UnOrderMultiMap_2_Type_ILTypeInstance_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\FairyGUI_Controller_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_EventListener_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GComboBox_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GComponent_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\FairyGUI_GList_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\FairyGUI_GLoader_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GObject_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GProgressBar_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\FairyGUI_GRoot_Binding.cs" />
@@ -260,6 +270,8 @@
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Google_Protobuf_Adapt_IMessage_Bi_t.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Int32_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Int64_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_RoomOnePeople_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_RoomSimpleInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_Single_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_String_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\Google_Protobuf_Collections_RepeatedField_1_TankFrameInfo_Binding.cs" />
@@ -291,6 +303,8 @@
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_Dictionary_2_UInt16_Object_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_HashSet_1_ILTypeInstance_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_HashSet_1_ILTypeInstance_Binding_Enumerator_Bindin_t.cs" />
+    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_RoomOnePeople_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_RoomSimpleInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_TankFrameInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_TankInfoFirstEnter_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_IEnumerator_1_UnitInfo_Binding.cs" />
@@ -299,6 +313,8 @@
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_ILTypeInstance_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_ILTypeInstance_Binding_Enumerator_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_Object_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_RoomOnePeople_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_RoomSimpleInfo_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_String_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_Type_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_Generic_List_1_Type_Binding_Enumerator_Binding.cs" />
@@ -310,8 +326,10 @@
     <Compile Include="Assets\Model\ILBinding\System_Collections_IDictionary_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_IEnumerable_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Collections_IEnumerator_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\System_Convert_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Exception_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_IDisposable_Binding.cs" />
+    <Compile Include="Assets\Model\ILBinding\System_Int32_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Linq_Enumerable_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_NotImplementedException_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\System_Object_Binding.cs" />

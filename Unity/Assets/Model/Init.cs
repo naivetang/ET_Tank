@@ -10,6 +10,8 @@ namespace ETModel
         private void Start()
 		{
             Time.fixedDeltaTime = 1f / 60;
+            
+
             this.StartAsync().NoAwait();
 		}
 		

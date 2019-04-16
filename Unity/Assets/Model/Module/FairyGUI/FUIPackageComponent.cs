@@ -11,7 +11,7 @@ namespace ETModel
     {
         public override void Awake(FUIPackageComponent self)
         {
-            self.AddPackage(UIType.Common);
+            //self.AddPackageAsync(UIType.Common).GetAwaiter();
         }
     }
 
@@ -70,5 +70,7 @@ namespace ETModel
 			ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(type.StringToAB());
 #endif
 		}
+
+        
 	}
 }

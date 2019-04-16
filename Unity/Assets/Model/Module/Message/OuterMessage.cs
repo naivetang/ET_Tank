@@ -3085,14 +3085,14 @@ namespace ETModel {
       }
     }
 
-    private string mapName_ = "";
+    private int mapId_;
     /// <summary>
     /// 地图
     /// </summary>
-    public string MapName {
-      get { return mapName_; }
+    public int MapId {
+      get { return mapId_; }
       set {
-        mapName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        mapId_ = value;
       }
     }
 
@@ -3134,9 +3134,9 @@ namespace ETModel {
         output.WriteRawTag(8);
         output.WriteInt32(PeopleNum);
       }
-      if (MapName.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(MapName);
+      if (MapId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(MapId);
       }
       if (BigModel != 0) {
         output.WriteRawTag(24);
@@ -3164,8 +3164,8 @@ namespace ETModel {
       if (PeopleNum != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PeopleNum);
       }
-      if (MapName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(MapName);
+      if (MapId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MapId);
       }
       if (BigModel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(BigModel);
@@ -3181,7 +3181,7 @@ namespace ETModel {
 
     public void MergeFrom(pb::CodedInputStream input) {
       peopleNum_ = 0;
-      mapName_ = "";
+      mapId_ = 0;
       bigModel_ = 0;
       smallModel_ = 0;
       roomNam_ = "";
@@ -3196,8 +3196,8 @@ namespace ETModel {
             PeopleNum = input.ReadInt32();
             break;
           }
-          case 18: {
-            MapName = input.ReadString();
+          case 16: {
+            MapId = input.ReadInt32();
             break;
           }
           case 24: {
@@ -3365,14 +3365,14 @@ namespace ETModel {
       }
     }
 
-    private string mapName_ = "";
+    private int mapId_;
     /// <summary>
     ///地图
     /// </summary>
-    public string MapName {
-      get { return mapName_; }
+    public int MapId {
+      get { return mapId_; }
       set {
-        mapName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        mapId_ = value;
       }
     }
 
@@ -3440,9 +3440,9 @@ namespace ETModel {
         output.WriteRawTag(16);
         output.WriteInt32(PeopleNum);
       }
-      if (MapName.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(MapName);
+      if (MapId != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(MapId);
       }
       if (BigModel != 0) {
         output.WriteRawTag(32);
@@ -3474,8 +3474,8 @@ namespace ETModel {
       if (PeopleNum != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PeopleNum);
       }
-      if (MapName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(MapName);
+      if (MapId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MapId);
       }
       if (BigModel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(BigModel);
@@ -3498,7 +3498,7 @@ namespace ETModel {
     public void MergeFrom(pb::CodedInputStream input) {
       roomId_ = 0;
       peopleNum_ = 0;
-      mapName_ = "";
+      mapId_ = 0;
       bigModel_ = 0;
       smallModel_ = 0;
       roomName_ = "";
@@ -3518,8 +3518,8 @@ namespace ETModel {
             PeopleNum = input.ReadInt32();
             break;
           }
-          case 26: {
-            MapName = input.ReadString();
+          case 24: {
+            MapId = input.ReadInt32();
             break;
           }
           case 32: {

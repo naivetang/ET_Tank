@@ -8,9 +8,6 @@ namespace ETHotfix
         protected override void Run(ETModel.Session session, G2C_Rooms message)
         {
             RunAsync(session,message).NoAwait();
-            
-
-
         }
 
         protected async ETVoid RunAsync(ETModel.Session session, G2C_Rooms message)

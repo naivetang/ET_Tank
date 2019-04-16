@@ -16,7 +16,7 @@ namespace ETHotfix
 
             FUI fui = ComponentFactory.Create<FUI, GObject>(UIPackage.CreateObject(FUIType.MainInterface, FUIType.MainInterface));
 
-            fui.Name = FUIType.Login;
+            fui.Name = FUIType.MainInterface;
 
             // 这里可以根据UI逻辑的复杂度关联性，拆分成多个小组件来写逻辑,这里逻辑比较简单就只使用一个组件了
             fui.AddComponent<FUIMainItfComponent>();
