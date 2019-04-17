@@ -139,7 +139,9 @@ namespace App
 						Game.Scene.AddComponent<UnitComponent>();
 
                         // 进入战场后的战场组件
-                        Game.Scene.AddComponent<TankComponent>();
+                        //Game.Scene.AddComponent<TankComponent>();
+
+                        Game.Scene.AddComponent<BattleComponent>();
 
                         // 房间系统组件
                         Game.Scene.AddComponent<RoomComponent>();

@@ -20,7 +20,10 @@ namespace ETModel
     }
     public class Tank : Entity
     {
-        public Player Player { get; set; }
+
+        public long PlayerId { get; set; }
+
+        public Battle Battle { get; set; }
 
         public bool Died { get; set; } = false;
 

@@ -18,8 +18,9 @@ namespace ETModel
         Round = 1,
         Time = 2,
     }
-    public sealed class Room : Entity
+    public sealed partial class Room : Entity
     {
+
         public int PeopleNum { get; set; }
 
         public int MapTableId { get; set; }
@@ -39,46 +40,71 @@ namespace ETModel
         // 房间的序列号 1 开始
         public int SerialNumber { get; set; }
 
-        private List<RoomOnePeople> LeftCamp { get; set; } = new List<RoomOnePeople>();
-        private List<RoomOnePeople> RightCamp { get; set; } = new List<RoomOnePeople>();
+        private Dictionary<long,RoomOnePeople> LeftCamp { get; set; } = new Dictionary<long, RoomOnePeople>();
+
+        private int LeftCount => this.LeftCamp.Count;
+
+        private Dictionary<long,RoomOnePeople> RightCamp { get; set; } = new Dictionary<long, RoomOnePeople>();
+
+        private int RightCount => this.RightCamp.Count;
 
         private readonly Dictionary<long, Player> idPlayers = new Dictionary<long, Player>();
+
+        private long m_latestPlayerId;
 
         public void Awake()
         {
 
         }
 
-        public RoomOnePeople AddLeftCamp(Player player)
+        private RoomOnePeople AddLeftCamp(Player player)
         {
-            Add(player);
             RoomOnePeople one = new RoomOnePeople();
             one.Id = player.Id;
             one.Level = player.UserDB.Level;
             one.Name = player.UserDB.Name;
             one.State = false;
-            this.LeftCamp.Add(one);
+            one.Camp = 1;
+            this.LeftCamp.Add(player.Id, one);
             return one;
         }
 
-        public RoomOnePeople AddRightCamp(Player player)
+        
+
+        private RoomOnePeople AddRightCamp(Player player)
         {
-            Add(player);
             RoomOnePeople one = new RoomOnePeople();
             one.Id = player.Id;
             one.Level = player.UserDB.Level;
             one.Name = player.UserDB.Name;
             one.State = false;
-            this.RightCamp.Add(one);
+            one.Camp = 2;
+            this.RightCamp.Add(player.Id, one);
             return one;
         }
 
-        private void Add(Player player)
+        
+
+        public RoomOnePeople Add(Player player)
         {
+            if (this.Count >= this.PeopleNum * 2)
+                return null;
+
+            if (GetPlayer(player.Id) != null)
+                return null;
+
             this.idPlayers.Add(player.Id, player);
+
+            m_latestPlayerId = player.Id;
+
+            RoomOnePeople ret = this.LeftCount <= this.RightCount? this.AddLeftCamp(player) : this.AddRightCamp(player);
+
+            this.BroadcastRoomDetailInfo();
+
+            return ret;
         }
 
-        public Player Get(long id)
+        public Player GetPlayer(long id)
         {
             if(this.idPlayers.TryGetValue(id, out Player gamer))
                 return gamer;
@@ -86,9 +112,27 @@ namespace ETModel
             return null;
         }
 
+        public RoomOnePeople GetPlayerRoomInfo(long id)
+        {
+            if (this.LeftCamp.TryGetValue(id, out RoomOnePeople left))
+            {
+                return left;
+            }
+            else if (this.RightCamp.TryGetValue(id, out RoomOnePeople right))
+            {
+                return right;
+            }
+
+            return null;
+        }
+
         public void Remove(long id)
         {
             this.idPlayers.Remove(id);
+
+            this.m_latestPlayerId = id;
+
+            this.BroadcastRoomDetailInfo();
         }
 
         public int Count

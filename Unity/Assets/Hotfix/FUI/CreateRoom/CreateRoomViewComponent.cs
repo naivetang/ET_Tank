@@ -165,7 +165,11 @@ namespace ETHotfix
 
             msg.RoomNam = this.GetRoomName();
 
-            G2C_RoomDetailInfo response = (G2C_RoomDetailInfo) await ETModel.SessionComponent.Instance.Session.Call(msg);
+            ETModel.SessionComponent.Instance.Session.Send(msg);
+
+            await ETTask.CompletedTask;
+
+            //G2C_RoomDetailInfo response = (G2C_RoomDetailInfo) await ETModel.SessionComponent.Instance.Session.Call(msg);
 
             // response.LeftCamp
             //
@@ -182,7 +186,7 @@ namespace ETHotfix
             // leftList.Add(item);
 
 
-            await FUIFactory.Create<RoomViewComponent, G2C_RoomDetailInfo>(FUIType.Room,response);
+            //await FUIFactory.Create<RoomViewComponent, G2C_RoomDetailInfo>(FUIType.Room,response);
         }
     }
 }

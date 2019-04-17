@@ -60,6 +60,8 @@ message G2C_EnterMap // IResponse
 message C2G_EnterBattle // IRequest
 {
 	int32 RpcId = 90;
+
+	int64 BattleId = 1;
 }
 
 message G2C_EnterBattle // IResponse
@@ -308,6 +310,13 @@ message C2G_CreateRoom // IRequest
 	string RoomNam = 5;
 }
 
+message C2G_EnterRoom // IRequest
+{
+	int32 RpcId = 90;
+
+	int64 RoomId = 1;
+}
+
 message RoomOnePeople
 {
 	// 等级
@@ -318,6 +327,8 @@ message RoomOnePeople
 	bool State = 3;
 	// 
 	int64 id = 4;
+	// 阵营 1:左边 2：右边
+	int32 Camp = 5;
 }
 
 message RoomSimpleInfo
@@ -338,26 +349,13 @@ message RoomSimpleInfo
 	int32 State = 7;
 	//房间序号
 	int32 SerialNumber = 8;
+	// 房主id
+	int64 RoomOwnerId = 9;
 }
 
 // 房间内的详细信息
-message G2C_RoomDetailInfo // IResponse
+message G2C_RoomDetailInfo // IMessage
 {
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-
-	// 人数
-	//int32 PeopleNum = 1;
-	// 地图
-	//string MapName = 2;
-	// 模式 1回合制，2时间制
-	//int32 BigModel = 3;
-	// 回合制：多少个回合  时间制：多少分钟
-	//int32 SmallModel = 4;
-	// 房间名
-	//string RoomNam = 5;
-	// 房间Id
 	int64 RoomId = 1;
 
 	repeated RoomOnePeople LeftCamp = 2;
@@ -365,7 +363,6 @@ message G2C_RoomDetailInfo // IResponse
 	repeated RoomOnePeople RightCamp = 3;
 
 	RoomSimpleInfo RoomSimpleInfo = 4;
-
 }
 
 
@@ -384,4 +381,22 @@ message G2C_UserBaseInfo // IMessage
 message G2C_Rooms // IMessage
 {
 	repeated RoomSimpleInfo RoomSimpleInfo = 1;
+}
+
+message C2G_StartGame // IMessage
+{
+
+	int64 RoomId = 1;
+}
+
+message G2C_StartGame // IMessage
+{
+
+	int64 RoomId = 1;
+}
+
+message C2B_LoadAssetFinish // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
 }

@@ -40,7 +40,7 @@ namespace ETHotfix
                     return;
                 }
 
-                Tank targetTank = Game.Scene.GetComponent<TankComponent>().Get(message.TargetTankId);
+                Tank targetTank = entity.Battle.Get(message.TargetTankId);
 
                 if (entity.TankCamp == targetTank.TankCamp)
                     return;

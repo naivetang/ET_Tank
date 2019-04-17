@@ -647,7 +647,19 @@ namespace ETModel {
       }
     }
 
+    private long battleId_;
+    public long BattleId {
+      get { return battleId_; }
+      set {
+        battleId_ = value;
+      }
+    }
+
     public void WriteTo(pb::CodedOutputStream output) {
+      if (BattleId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(BattleId);
+      }
       if (RpcId != 0) {
         output.WriteRawTag(208, 5);
         output.WriteInt32(RpcId);
@@ -659,10 +671,14 @@ namespace ETModel {
       if (RpcId != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
       }
+      if (BattleId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BattleId);
+      }
       return size;
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
+      battleId_ = 0;
       rpcId_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -670,6 +686,10 @@ namespace ETModel {
           default:
             input.SkipLastField();
             break;
+          case 8: {
+            BattleId = input.ReadInt64();
+            break;
+          }
           case 720: {
             RpcId = input.ReadInt32();
             break;
@@ -3222,6 +3242,71 @@ namespace ETModel {
 
   }
 
+  public partial class C2G_EnterRoom : pb::IMessage {
+    private static readonly pb::MessageParser<C2G_EnterRoom> _parser = new pb::MessageParser<C2G_EnterRoom>(() => (C2G_EnterRoom)MessagePool.Instance.Fetch(typeof(C2G_EnterRoom)));
+    public static pb::MessageParser<C2G_EnterRoom> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long roomId_;
+    public long RoomId {
+      get { return roomId_; }
+      set {
+        roomId_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RoomId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(RoomId);
+      }
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (RoomId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoomId);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      roomId_ = 0;
+      rpcId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            RoomId = input.ReadInt64();
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public partial class RoomOnePeople : pb::IMessage {
     private static readonly pb::MessageParser<RoomOnePeople> _parser = new pb::MessageParser<RoomOnePeople>(() => (RoomOnePeople)MessagePool.Instance.Fetch(typeof(RoomOnePeople)));
     public static pb::MessageParser<RoomOnePeople> Parser { get { return _parser; } }
@@ -3270,6 +3355,17 @@ namespace ETModel {
       }
     }
 
+    private int camp_;
+    /// <summary>
+    /// 阵营 1:左边 2：右边
+    /// </summary>
+    public int Camp {
+      get { return camp_; }
+      set {
+        camp_ = value;
+      }
+    }
+
     public void WriteTo(pb::CodedOutputStream output) {
       if (Level != 0) {
         output.WriteRawTag(8);
@@ -3287,6 +3383,10 @@ namespace ETModel {
         output.WriteRawTag(32);
         output.WriteInt64(Id);
       }
+      if (Camp != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Camp);
+      }
     }
 
     public int CalculateSize() {
@@ -3303,6 +3403,9 @@ namespace ETModel {
       if (Id != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
       }
+      if (Camp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Camp);
+      }
       return size;
     }
 
@@ -3311,6 +3414,7 @@ namespace ETModel {
       name_ = "";
       state_ = false;
       id_ = 0;
+      camp_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3331,6 +3435,10 @@ namespace ETModel {
           }
           case 32: {
             Id = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            Camp = input.ReadInt32();
             break;
           }
         }
@@ -3431,6 +3539,17 @@ namespace ETModel {
       }
     }
 
+    private long roomOwnerId_;
+    /// <summary>
+    /// 房主id
+    /// </summary>
+    public long RoomOwnerId {
+      get { return roomOwnerId_; }
+      set {
+        roomOwnerId_ = value;
+      }
+    }
+
     public void WriteTo(pb::CodedOutputStream output) {
       if (RoomId != 0L) {
         output.WriteRawTag(8);
@@ -3464,6 +3583,10 @@ namespace ETModel {
         output.WriteRawTag(64);
         output.WriteInt32(SerialNumber);
       }
+      if (RoomOwnerId != 0L) {
+        output.WriteRawTag(72);
+        output.WriteInt64(RoomOwnerId);
+      }
     }
 
     public int CalculateSize() {
@@ -3492,6 +3615,9 @@ namespace ETModel {
       if (SerialNumber != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(SerialNumber);
       }
+      if (RoomOwnerId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoomOwnerId);
+      }
       return size;
     }
 
@@ -3504,6 +3630,7 @@ namespace ETModel {
       roomName_ = "";
       state_ = 0;
       serialNumber_ = 0;
+      roomOwnerId_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3542,6 +3669,10 @@ namespace ETModel {
             SerialNumber = input.ReadInt32();
             break;
           }
+          case 72: {
+            RoomOwnerId = input.ReadInt64();
+            break;
+          }
         }
       }
     }
@@ -3555,44 +3686,7 @@ namespace ETModel {
     private static readonly pb::MessageParser<G2C_RoomDetailInfo> _parser = new pb::MessageParser<G2C_RoomDetailInfo>(() => (G2C_RoomDetailInfo)MessagePool.Instance.Fetch(typeof(G2C_RoomDetailInfo)));
     public static pb::MessageParser<G2C_RoomDetailInfo> Parser { get { return _parser; } }
 
-    private int rpcId_;
-    public int RpcId {
-      get { return rpcId_; }
-      set {
-        rpcId_ = value;
-      }
-    }
-
-    private int error_;
-    public int Error {
-      get { return error_; }
-      set {
-        error_ = value;
-      }
-    }
-
-    private string message_ = "";
-    public string Message {
-      get { return message_; }
-      set {
-        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     private long roomId_;
-    /// <summary>
-    /// 人数
-    ///int32 PeopleNum = 1;
-    /// 地图
-    ///string MapName = 2;
-    /// 模式 1回合制，2时间制
-    ///int32 BigModel = 3;
-    /// 回合制：多少个回合  时间制：多少分钟
-    ///int32 SmallModel = 4;
-    /// 房间名
-    ///string RoomNam = 5;
-    /// 房间Id
-    /// </summary>
     public long RoomId {
       get { return roomId_; }
       set {
@@ -3635,31 +3729,10 @@ namespace ETModel {
         output.WriteRawTag(34);
         output.WriteMessage(RoomSimpleInfo);
       }
-      if (RpcId != 0) {
-        output.WriteRawTag(208, 5);
-        output.WriteInt32(RpcId);
-      }
-      if (Error != 0) {
-        output.WriteRawTag(216, 5);
-        output.WriteInt32(Error);
-      }
-      if (Message.Length != 0) {
-        output.WriteRawTag(226, 5);
-        output.WriteString(Message);
-      }
     }
 
     public int CalculateSize() {
       int size = 0;
-      if (RpcId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
-      }
-      if (Error != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Error);
-      }
-      if (Message.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(Message);
-      }
       if (RoomId != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoomId);
       }
@@ -3678,9 +3751,6 @@ namespace ETModel {
       for (int i = 0; i < rightCamp_.Count; i++) { MessagePool.Instance.Recycle(rightCamp_[i]); }
       rightCamp_.Clear();
       if (roomSimpleInfo_ != null) MessagePool.Instance.Recycle(roomSimpleInfo_); roomSimpleInfo_ = null;
-      rpcId_ = 0;
-      error_ = 0;
-      message_ = "";
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3704,18 +3774,6 @@ namespace ETModel {
               roomSimpleInfo_ = new global::ETModel.RoomSimpleInfo();
             }
             input.ReadMessage(roomSimpleInfo_);
-            break;
-          }
-          case 720: {
-            RpcId = input.ReadInt32();
-            break;
-          }
-          case 728: {
-            Error = input.ReadInt32();
-            break;
-          }
-          case 738: {
-            Message = input.ReadString();
             break;
           }
         }
@@ -3851,6 +3909,161 @@ namespace ETModel {
             break;
           case 10: {
             roomSimpleInfo_.AddEntriesFrom(input, _repeated_roomSimpleInfo_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class C2G_StartGame : pb::IMessage {
+    private static readonly pb::MessageParser<C2G_StartGame> _parser = new pb::MessageParser<C2G_StartGame>(() => (C2G_StartGame)MessagePool.Instance.Fetch(typeof(C2G_StartGame)));
+    public static pb::MessageParser<C2G_StartGame> Parser { get { return _parser; } }
+
+    private long roomId_;
+    public long RoomId {
+      get { return roomId_; }
+      set {
+        roomId_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RoomId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(RoomId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RoomId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoomId);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      roomId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            RoomId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class G2C_StartGame : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_StartGame> _parser = new pb::MessageParser<G2C_StartGame>(() => (G2C_StartGame)MessagePool.Instance.Fetch(typeof(G2C_StartGame)));
+    public static pb::MessageParser<G2C_StartGame> Parser { get { return _parser; } }
+
+    private long roomId_;
+    public long RoomId {
+      get { return roomId_; }
+      set {
+        roomId_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RoomId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(RoomId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RoomId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoomId);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      roomId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            RoomId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class C2B_LoadAssetFinish : pb::IMessage {
+    private static readonly pb::MessageParser<C2B_LoadAssetFinish> _parser = new pb::MessageParser<C2B_LoadAssetFinish>(() => (C2B_LoadAssetFinish)MessagePool.Instance.Fetch(typeof(C2B_LoadAssetFinish)));
+    public static pb::MessageParser<C2B_LoadAssetFinish> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      rpcId_ = 0;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
             break;
           }
         }

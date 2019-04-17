@@ -254,6 +254,10 @@ message G2B_CreateTank // IRequest
     int64 PlayerId = 1;
     // Gate服务器与Map服务器通信时创建的SessionId
     int64 GateSessionId = 2;
+    // 房主开始游戏创建的战场
+    int64 BattleId = 3;
+    // 阵营 1：左  2右
+    int32 Camp = 4;
 }
 
 message B2G_CreateTank // IResponse
@@ -278,4 +282,18 @@ message G2B_SessionDisconnect // IActorLocationMessage
 {
     int32 RpcId = 90;
     int64 ActorId = 94;
+}
+
+message G2B_CreateBattle // IRequest
+{
+    int32 RpcId = 90;
+
+    int64 RoomId = 1;
+}
+
+message B2G_CreateBattle // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
 }

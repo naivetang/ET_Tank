@@ -14,13 +14,8 @@ namespace ETHotfix
         {
             Game.EventSystem.Run(EventIdType.LoginHasFinish);
 
-            FUI fui = await FUIFactory.Create<HallViewComponent, G2C_Rooms>(FUIType.Hall, message);
+            await FUIFactory.Create<HallViewComponent, G2C_Rooms>(FUIType.Hall, message);
 
-            if (fui == null)
-            {
-                Log.Error("还未创建大厅界面");
-                return;
-            }
 
         }
     }

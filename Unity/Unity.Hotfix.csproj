@@ -89,6 +89,7 @@
     <Compile Include="Assets\Hotfix\Entity\Config\UnitConfig.cs" />
     <Compile Include="Assets\Hotfix\Entity\Game.cs" />
     <Compile Include="Assets\Hotfix\Entity\Scene.cs" />
+    <Compile Include="Assets\Hotfix\Event\EnterBattle_LoadBattleScene.cs" />
     <Compile Include="Assets\Hotfix\Event\EnterBattleFinish_UnloadPag.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_CreateTank.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_EnterBattle.cs" />
@@ -111,7 +112,9 @@
     <Compile Include="Assets\Hotfix\Handler\B2C_CreateTanksHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_ShootHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_TankFrameInfosHandler.cs" />
+    <Compile Include="Assets\Hotfix\Handler\G2C_RoomDetailInfoHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_RoomsHandler.cs" />
+    <Compile Include="Assets\Hotfix\Handler\G2C_StartGameHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_UserBaseInfoHandler.cs" />
     <Compile Include="Assets\Hotfix\Helper\MapHelper.cs" />
     <Compile Include="Assets\Hotfix\Helper\MessageHelper.cs" />

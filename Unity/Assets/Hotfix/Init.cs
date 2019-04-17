@@ -46,7 +46,7 @@ namespace ETHotfix
 			{
 				Game.EventSystem.Update();
 
-			    if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+			    if (Input.GetKeyDown(KeyCode.F2))
 			    {
 			        Game.EventSystem.Run(EventIdType.ClickEnter);
 			    }

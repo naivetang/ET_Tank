@@ -110,6 +110,9 @@ namespace ETModel
 // 模式 1回合制，2时间制
 // 回合制：多少个回合  时间制：多少分钟
 // 房间名
+	[Message(OuterOpcode.C2G_EnterRoom)]
+	public partial class C2G_EnterRoom : IRequest {}
+
 	[Message(OuterOpcode.RoomOnePeople)]
 	public partial class RoomOnePeople {}
 
@@ -117,6 +120,7 @@ namespace ETModel
 // 名字
 // false：未准备  true：准备
 //
+// 阵营 1:左边 2：右边
 	[Message(OuterOpcode.RoomSimpleInfo)]
 	public partial class RoomSimpleInfo {}
 
@@ -128,21 +132,11 @@ namespace ETModel
 //房间名
 //当前状态 1:准备中 2:游戏中
 //房间序号
+// 房主id
 // 房间内的详细信息
 	[Message(OuterOpcode.G2C_RoomDetailInfo)]
-	public partial class G2C_RoomDetailInfo : IResponse {}
+	public partial class G2C_RoomDetailInfo : IMessage {}
 
-// 人数
-//int32 PeopleNum = 1;
-// 地图
-//string MapName = 2;
-// 模式 1回合制，2时间制
-//int32 BigModel = 3;
-// 回合制：多少个回合  时间制：多少分钟
-//int32 SmallModel = 4;
-// 房间名
-//string RoomNam = 5;
-// 房间Id
 	[Message(OuterOpcode.G2C_UserBaseInfo)]
 	public partial class G2C_UserBaseInfo : IMessage {}
 
@@ -151,6 +145,15 @@ namespace ETModel
 // 名字
 	[Message(OuterOpcode.G2C_Rooms)]
 	public partial class G2C_Rooms : IMessage {}
+
+	[Message(OuterOpcode.C2G_StartGame)]
+	public partial class C2G_StartGame : IMessage {}
+
+	[Message(OuterOpcode.G2C_StartGame)]
+	public partial class G2C_StartGame : IMessage {}
+
+	[Message(OuterOpcode.C2B_LoadAssetFinish)]
+	public partial class C2B_LoadAssetFinish : IActorLocationMessage {}
 
 }
 namespace ETModel
@@ -186,10 +189,14 @@ namespace ETModel
 		 public const ushort B2C_AttackTankResponse = 127;
 		 public const ushort B2C_AttackTank = 128;
 		 public const ushort C2G_CreateRoom = 129;
-		 public const ushort RoomOnePeople = 130;
-		 public const ushort RoomSimpleInfo = 131;
-		 public const ushort G2C_RoomDetailInfo = 132;
-		 public const ushort G2C_UserBaseInfo = 133;
-		 public const ushort G2C_Rooms = 134;
+		 public const ushort C2G_EnterRoom = 130;
+		 public const ushort RoomOnePeople = 131;
+		 public const ushort RoomSimpleInfo = 132;
+		 public const ushort G2C_RoomDetailInfo = 133;
+		 public const ushort G2C_UserBaseInfo = 134;
+		 public const ushort G2C_Rooms = 135;
+		 public const ushort C2G_StartGame = 136;
+		 public const ushort G2C_StartGame = 137;
+		 public const ushort C2B_LoadAssetFinish = 138;
 	}
 }

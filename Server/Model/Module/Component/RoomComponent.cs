@@ -18,6 +18,28 @@ namespace ETModel
 
         private readonly Dictionary<long,Room> idRooms = new Dictionary<long, Room>();
 
+        // 序列化id
+        private readonly Dictionary<int, bool> serialNumber = new Dictionary<int, bool>();
+
+        public int GetSerialNum()
+        {
+            if (this.serialNumber.Count == this.idRooms.Count)
+            {
+                this.serialNumber[this.serialNumber.Count + 1] = false;
+                return this.serialNumber.Count;
+            }
+            else
+            {
+                for (int i = 1; i <= this.serialNumber.Count; i++)
+                {
+                    if (this.serialNumber[i] == false)
+                        return i;
+                }       
+            }
+
+            return 0;
+        }
+
         public void Awake()
         {
             Instance = this;
@@ -26,6 +48,23 @@ namespace ETModel
         public void Add(Room room)
         {
             this.idRooms.Add(room.Id, room);
+
+            this.serialNumber[room.SerialNumber] = true;
+        }
+
+        public void Remove(long id)
+        {
+            
+            if (this.idRooms.TryGetValue(id, out Room room))
+            {
+                this.idRooms.Remove(id);
+
+                this.serialNumber[room.SerialNumber] = false;
+
+                return;
+            }
+
+            Log.Error($"不存在房间id {id}");
         }
 
         public Room Get(long id)
@@ -57,6 +96,10 @@ namespace ETModel
             {
                 room.Dispose();
             }
+
+            this.idRooms.Clear();
+
+            this.serialNumber.Clear();
 
             Instance = null;
         }

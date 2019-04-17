@@ -19,6 +19,9 @@
 
         public const string UnderAttack = "UnderAttack";
 
+        // 服务器通知进入战场
+        public const string EnterBattle = "EnterBattle";
+
         public const string EnterBattleFinish = "EnterBattleFinish";
 
     }

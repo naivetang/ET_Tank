@@ -51,6 +51,8 @@ namespace ETHotfix
 
             m_list.itemRenderer = ItemRenderer;
 
+            m_list.onClickItem.Add(this.ListItemClick);
+
             this.m_list.numItems = this.m_rooms.Count;
 
             this.m_createButton.onClick.Set(this.CreateBtn_OnClick);
@@ -70,8 +72,31 @@ namespace ETHotfix
             go.asCom.GetChild("n6").asRichTextField.text = roomSimpleInfo.State == 1 ? Message.Get(4) : Message.Get(5);
 
             go.asCom.GetChild("n7").asRichTextField.text = Map.Get(roomSimpleInfo.MapId);
+
+            go.data = roomSimpleInfo;
         }
-        
+
+        private void ListItemClick(EventContext context)
+        {
+            if (!context.inputEvent.isDoubleClick)
+                return;
+
+            Send_C2G_EnterRoom((context.data as GButton).data as RoomSimpleInfo).NoAwait();
+        }
+
+        private async ETVoid Send_C2G_EnterRoom(RoomSimpleInfo roomInfo)
+        {
+            C2G_EnterRoom msg = new C2G_EnterRoom();
+
+            msg.RoomId = roomInfo.RoomId;
+
+            G2C_RoomDetailInfo response = (G2C_RoomDetailInfo) await ETModel.SessionComponent.Instance.Session.Call(msg);
+
+            if (Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Room) != null)
+                return;
+
+            await FUIFactory.Create<RoomViewComponent, G2C_RoomDetailInfo>(FUIType.Room, response);
+        }
 
         private void CreateBtn_OnClick()
         {

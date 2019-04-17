@@ -28,7 +28,7 @@ namespace ETHotfix
 
         private bool m_isOwners;
 
-        private long m_ownerId;
+        private long m_roomOwnerId;
 
         // 有效人数
         private int m_eftvPeopleNum;
@@ -45,21 +45,39 @@ namespace ETHotfix
 
         private GList m_rightList;
 
+        private long id;
+
         public void Awake(G2C_RoomDetailInfo msg)
         {
             this.FUIComponent = this.GetParent<FUI>();
             this.RepeatedFieldToList(msg.LeftCamp,this.m_leftItems);
             this.RepeatedFieldToList(msg.RightCamp,this.m_rightItems);
             this.m_eftvPeopleNum = msg.RoomSimpleInfo.PeopleNum;
-            this.m_ownerId = msg.RoomSimpleInfo.RoomId;
-            this.m_isOwners = this.m_ownerId == PlayerComponent.Instance.MyPlayer.Id;
+            this.m_roomOwnerId = msg.RoomSimpleInfo.RoomOwnerId;
+            this.m_isOwners = this.m_roomOwnerId == PlayerComponent.Instance.MyPlayer.Id;
+            this.id = msg.RoomId;
             this.StartFUI();
+        }
+
+        public void RefreshData(G2C_RoomDetailInfo msg)
+        {
+            this.RepeatedFieldToList(msg.LeftCamp, this.m_leftItems);
+
+            this.RepeatedFieldToList(msg.RightCamp, this.m_rightItems);
+
+            this.m_roomOwnerId = msg.RoomSimpleInfo.RoomOwnerId;
+
+            this.m_isOwners = this.m_roomOwnerId == PlayerComponent.Instance.MyPlayer.Id;
+
+            this.UI();
         }
 
         private void RepeatedFieldToList(RepeatedField<RoomOnePeople> a, List<RoomOnePeople> b)
         {
             if (a == null)
                 return;
+
+            b.Clear();
 
             foreach (RoomOnePeople roomOnePeople in a)
             {
@@ -83,11 +101,14 @@ namespace ETHotfix
             
             this.m_rightList.numItems = 5;
 
+            this.UI();
+        }
+
+        private void UI()
+        {
             UpdateList(this.m_leftItems, this.m_leftList);
 
             UpdateList(this.m_rightItems, this.m_rightList);
-
-            m_isOwners = (this.m_leftItems.Count + this.m_rightItems.Count) == 1;
 
 
             if (this.m_isOwners)
@@ -106,7 +127,16 @@ namespace ETHotfix
 
         private void StartGame()
         {
+            this.Send_C2G_StartGame();
+        }
 
+        private void Send_C2G_StartGame()
+        {
+            C2G_StartGame msg = new C2G_StartGame();
+
+            msg.RoomId = this.id;
+
+            ETModel.SessionComponent.Instance.Session.Send(msg);
         }
 
         private void Ready()
@@ -136,9 +166,9 @@ namespace ETHotfix
 
                 com.GetChild("n6").asTextField.text = item.Name;
 
-                com.GetChild("n12").asImage.visible = item.Id == this.m_ownerId;
+                com.GetChild("n12").asImage.visible = item.Id == this.m_roomOwnerId;
 
-                com.GetChild("n7").asImage.visible = (item.Id != this.m_ownerId) && (item.State? true : false);
+                com.GetChild("n7").asImage.visible = (item.Id != this.m_roomOwnerId) && (item.State? true : false);
 
             }
 

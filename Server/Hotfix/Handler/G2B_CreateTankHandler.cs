@@ -17,30 +17,25 @@ namespace ETHotfix
             B2G_CreateTank response = new B2G_CreateTank();
             try
             {
+
+                Battle battle = Game.Scene.GetComponent<BattleComponent>().Get(message.BattleId);
+                
                 // 随机生成一辆坦克，id和instanceId不相等
                 Tank tank = ComponentFactory.CreateWithId<Tank>(IdGenerater.GenerateId());
 
-                tank.Player = Game.Scene.GetComponent<PlayerComponent>().Get(message.PlayerId);
+                tank.PlayerId = message.PlayerId;
+
+                tank.Battle = battle;
 
                 tank.AddComponent<NumericComponent>();
 
-                // 进游戏的第一个人是蓝色方，其它都是红色方
-                if (!Game.HasBlue)
-                {
-                    tank.TankCamp = TankCamp.Blue;
-                    Game.HasBlue = true;
-                }
-                else
-                {
-                    tank.TankCamp = TankCamp.Red;
-                }
+                battle.Add(tank);
 
+                tank.TankCamp = message.Camp == 1? TankCamp.Blue : TankCamp.Red;
 
                 await tank.AddComponent<MailBoxComponent>().AddLocation();
 
                 tank.AddComponent<TankGateComponent, long>(message.GateSessionId);
-
-                Game.Scene.GetComponent<TankComponent>().Add(tank);
 
                 response.TankId = tank.Id;
 

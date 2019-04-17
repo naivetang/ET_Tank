@@ -382,6 +382,14 @@ namespace ETModel
 // Gate服务器与Map服务器通信时创建的SessionId
 		public long GateSessionId { get; set; }
 
+// 房主开始游戏创建的战场
+// 房主开始游戏创建的战场
+		public long BattleId { get; set; }
+
+// 阵营 1：左  2右
+// 阵营 1：左  2右
+		public int Camp { get; set; }
+
 	}
 
 	[Message(InnerOpcode.B2G_CreateTank)]
@@ -418,6 +426,26 @@ namespace ETModel
 		public int RpcId { get; set; }
 
 		public long ActorId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.G2B_CreateBattle)]
+	public partial class G2B_CreateBattle: IRequest
+	{
+		public int RpcId { get; set; }
+
+		public long RoomId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.B2G_CreateBattle)]
+	public partial class B2G_CreateBattle: IResponse
+	{
+		public int RpcId { get; set; }
+
+		public int Error { get; set; }
+
+		public string Message { get; set; }
 
 	}
 

@@ -2,7 +2,6 @@
 {
 	public static class Game
     {
-        public static bool HasBlue = false;
 
 		private static Scene scene;
 
