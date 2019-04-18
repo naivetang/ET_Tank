@@ -390,6 +390,10 @@ namespace ETModel
 // 阵营 1：左  2右
 		public int Camp { get; set; }
 
+// 名字
+// 名字
+		public string Name { get; set; }
+
 	}
 
 	[Message(InnerOpcode.B2G_CreateTank)]
@@ -435,6 +439,12 @@ namespace ETModel
 		public int RpcId { get; set; }
 
 		public long RoomId { get; set; }
+
+		public List<RoomOnePeople> LeftCamp = new List<RoomOnePeople>();
+
+		public List<RoomOnePeople> RightCamp = new List<RoomOnePeople>();
+
+		public RoomSimpleInfo RoomSimpleInfo { get; set; }
 
 	}
 

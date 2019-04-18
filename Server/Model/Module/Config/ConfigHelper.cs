@@ -3,7 +3,7 @@ using System.IO;
 
 namespace ETModel
 {
-	public static class ConfigHelper
+	public static partial class ConfigHelper
 	{
 		public static string GetText(string key)
 		{

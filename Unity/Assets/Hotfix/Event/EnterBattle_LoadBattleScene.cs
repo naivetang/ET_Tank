@@ -23,6 +23,8 @@ namespace ETHotfix
                 await sceneChangeComponent.ChangeSceneAsync(SceneType.Battle);
             }
 
+            Game.EventSystem.Run(EventIdType.EnterBattleFinish);
+
             C2B_LoadAssetFinish msg = new C2B_LoadAssetFinish();
 
             ETModel.SessionComponent.Instance.Session.Send(msg);

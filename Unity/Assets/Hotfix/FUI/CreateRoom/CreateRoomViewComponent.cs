@@ -150,6 +150,8 @@ namespace ETHotfix
         private void EnterBtn_OnClick()
         {
             this.Send_C2G_CreateRoom().NoAwait();
+
+            this.OnClose();
         }
         private async ETVoid Send_C2G_CreateRoom()
         {

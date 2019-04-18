@@ -20,12 +20,15 @@ namespace ETModel
     }
     public class Tank : Entity
     {
+        public static int m_coefficient = 1000000;
 
         public long PlayerId { get; set; }
 
         public Battle Battle { get; set; }
 
         public bool Died { get; set; } = false;
+
+        public string Name { get; set; }
 
         public TankType TankType { get; private set; }
 

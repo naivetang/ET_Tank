@@ -9,7 +9,8 @@ namespace ETHotfix
     {
         protected override void Run(Tank entity, C2B_LoadAssetFinish message)
         {
-            throw new NotImplementedException();
+
+            entity.Battle.HasLoadSceneFinishNum += 1;
         }
     }
 }

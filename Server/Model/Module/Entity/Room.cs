@@ -148,8 +148,15 @@ namespace ETModel
             return this.idPlayers.Values.ToArray();
         }
 
+        public RoomOnePeople[] GetLeftCamp()
+        {
+            return this.LeftCamp.Values.ToArray();
+        }
 
-
+        public RoomOnePeople[] GetRightCamp()
+        {
+            return this.RightCamp.Values.ToArray();
+        }
 
         public override void Dispose()
         {

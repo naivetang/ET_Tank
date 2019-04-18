@@ -9,10 +9,19 @@ namespace ETHotfix
         {
             FUIComponent fuiComponent = Game.Scene.GetComponent<FUIComponent>();
 
-            fuiComponent.Remove(FUIType.Lobby);
+            //fuiComponent.Remove(FUIType.Lobby);
+
+            fuiComponent.Remove(FUIType.Room);
+
+
+            fuiComponent.Remove(FUIType.Hall);
+
+            
 
             // 卸载包
-            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().RemovePackage(FUIType.Lobby);
+            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().RemovePackage(FUIType.Room);
+
+            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().RemovePackage(FUIType.Hall);
         }
     }
 }

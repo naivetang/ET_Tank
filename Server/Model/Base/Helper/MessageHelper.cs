@@ -24,7 +24,7 @@ namespace ETModel
             }
         }
 
-        public static void BroadcastBattle(Battle battle, IActorMessage message)
+        public static void Broadcast(this Battle battle, IActorMessage message)
         {
             Tank[] tanks = battle.GetAll();
             ActorMessageSenderComponent actorLocationSenderComponent = Game.Scene.GetComponent<ActorMessageSenderComponent>();

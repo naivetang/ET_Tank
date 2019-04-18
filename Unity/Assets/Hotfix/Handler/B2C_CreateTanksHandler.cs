@@ -16,7 +16,7 @@ namespace ETHotfix
             TankComponent tankComponent = ETModel.Game.Scene.GetComponent<TankComponent>();
 
             // 第一次进入战场，先创建自己坦克（创建其他坦克时需要判断与自己坦克关系，所以先创建自己坦克）
-            if (tankComponent.MyTank != null)
+            if (tankComponent.MyTank == null)
                 foreach (TankInfoFirstEnter firstInfo in message.Tanks)
                 {
                     TankFrameInfo tankInfo = firstInfo.TankFrameInfo;

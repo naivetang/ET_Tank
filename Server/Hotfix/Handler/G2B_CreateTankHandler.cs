@@ -27,6 +27,8 @@ namespace ETHotfix
 
                 tank.Battle = battle;
 
+                tank.Name = message.Name;
+
                 tank.AddComponent<NumericComponent>();
 
                 battle.Add(tank);

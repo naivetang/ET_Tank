@@ -1,4 +1,5 @@
 ﻿
+using System;
 using ETModel;
 
 namespace ETModel
@@ -8,20 +9,30 @@ namespace ETModel
     {
         public void Run(long id, int value)
         {
-            Tank tank = Game.Scene.GetComponent<TankComponent>().Get(id);
+            try
+            {
+                return;
 
-             if (tank == null)
-                 return;
+                Tank tank = Game.Scene.GetComponent<TankComponent>().Get(id);
 
-             NumericComponent numericComponent = tank.GetComponent<NumericComponent>();
+                if (tank == null)
+                    return;
 
-             if (numericComponent == null)
-                 return;
+                NumericComponent numericComponent = tank.GetComponent<NumericComponent>();
 
-            int nowHp = numericComponent[NumericType.Hp];
+                if (numericComponent == null)
+                    return;
 
-            if (nowHp <= 0)
-                tank.Died = true;
+                int nowHp = numericComponent[NumericType.Hp];
+
+                if (nowHp <= 0)
+                    tank.Died = true;
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+            }
+            
         }
     }
 }

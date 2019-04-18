@@ -36,6 +36,8 @@ namespace ETHotfix
 
                 msg.Camp = info.Camp;
 
+                msg.Name = player.UserDB.Name;
+
                 B2G_CreateTank createTank = (B2G_CreateTank)await battleSession.Call(msg);
                 player.TankId = createTank.TankId;
                 response.TankId = createTank.TankId;

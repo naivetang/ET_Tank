@@ -258,6 +258,8 @@ message G2B_CreateTank // IRequest
     int64 BattleId = 3;
     // 阵营 1：左  2右
     int32 Camp = 4;
+    // 名字
+    string Name = 5;
 }
 
 message B2G_CreateTank // IResponse
@@ -289,6 +291,12 @@ message G2B_CreateBattle // IRequest
     int32 RpcId = 90;
 
     int64 RoomId = 1;
+    
+	repeated RoomOnePeople LeftCamp = 2;
+
+	repeated RoomOnePeople RightCamp = 3;
+
+	RoomSimpleInfo RoomSimpleInfo = 4;
 }
 
 message B2G_CreateBattle // IResponse

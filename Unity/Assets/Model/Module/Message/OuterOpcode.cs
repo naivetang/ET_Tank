@@ -119,7 +119,7 @@ namespace ETModel
 // 等级
 // 名字
 // false：未准备  true：准备
-//
+// 玩家id
 // 阵营 1:左边 2：右边
 	[Message(OuterOpcode.RoomSimpleInfo)]
 	public partial class RoomSimpleInfo {}

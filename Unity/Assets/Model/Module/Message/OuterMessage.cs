@@ -3346,7 +3346,7 @@ namespace ETModel {
 
     private long id_;
     /// <summary>
-    /// 
+    /// 玩家id
     /// </summary>
     public long Id {
       get { return id_; }

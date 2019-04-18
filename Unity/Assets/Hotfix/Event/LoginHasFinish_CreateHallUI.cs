@@ -7,13 +7,12 @@ namespace ETHotfix
     {
         public override void Run()
         {
-            RunAsync().NoAwait();
-        }
-        public async ETVoid RunAsync()
-        {
-            
-        }
+            Game.Scene.GetComponent<FUIComponent>().Remove(FUIType.Login);
 
+            // 卸载包
+            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().RemovePackage(FUIType.Login);
+
+        }
        
     }
 }
