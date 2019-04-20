@@ -77,7 +77,7 @@ namespace ETModel
 
         private void AfterSuccLogin()
         {
-            this.Send_G2C_Rooms();
+            //this.Send_G2C_Rooms();
         }
 
         private void Send_G2C_UserBaseInfo()

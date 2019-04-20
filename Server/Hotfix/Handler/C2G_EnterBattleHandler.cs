@@ -38,6 +38,8 @@ namespace ETHotfix
 
                 msg.Name = player.UserDB.Name;
 
+                msg.Level = player.UserDB.Level;
+
                 B2G_CreateTank createTank = (B2G_CreateTank)await battleSession.Call(msg);
                 player.TankId = createTank.TankId;
                 response.TankId = createTank.TankId;

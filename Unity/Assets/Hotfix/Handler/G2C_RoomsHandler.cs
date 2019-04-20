@@ -12,11 +12,20 @@ namespace ETHotfix
 
         protected async ETVoid RunAsync(ETModel.Session session, G2C_Rooms message)
         {
-            Game.EventSystem.Run(EventIdType.LoginHasFinish);
+            //Game.EventSystem.Run(EventIdType.LoginHasFinish);
 
-            await FUIFactory.Create<HallViewComponent, G2C_Rooms>(FUIType.Hall, message);
+            FUI fui = Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Hall);
 
+            if (fui == null)
+            {
+                Log.Error($"再刷新HallViewComponent数据时还未创建HallViewComponent");
+            }
+            else
+            {
+                fui.GetComponent<HallViewComponent>().RefreshData(message);
+            }
 
+            await ETTask.CompletedTask;
         }
     }
 }

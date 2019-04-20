@@ -30,8 +30,25 @@
 	    MaxHpFinalAdd = MaxHp * 10 + 4,
 		MaxHpFinalPct = MaxHp * 10 + 5,
 
+        
         Atk = 1003,
         AtkBase = Atk * 10 + 1,
         AtkAdd = Atk * 10 + 2,
-	}
+
+        // 造成伤害
+        Kills = 1004,
+        KillsBase = Kills * 10 + 1,
+
+        // 输出伤害
+        Damage = 1005,
+        DamageBase = Damage * 10 + 1,
+
+        // 死亡数
+        Deaths = 1006,
+        DeathsBase = Deaths * 10 + 1,
+
+        // 承受伤害
+        TakeDamage = 1007,
+        TakeDamageBase = TakeDamage * 10 + 1,
+    }
 }

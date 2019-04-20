@@ -16,16 +16,6 @@ namespace ETHotfix
 
     public class RoomViewComponent : FUIBase
     {
-        // public class RoomOnePeople
-        // {
-        //     public int m_level = 0;
-        //     public string m_name = string.Empty;
-        //     // 准备
-        //     public bool m_hasPrepare;
-        //     // 是否是房主
-        //     public bool m_isOver;
-        // }
-
         private bool m_isOwners;
 
         private long m_roomOwnerId;
@@ -191,7 +181,23 @@ namespace ETHotfix
 
         private void ExitBtn_OnClick()
         {
-            this.OnClose();
+            this.Send_C2G_ExitRoom().NoAwait();
+
+        }
+
+        private async ETVoid Send_C2G_ExitRoom()
+        {
+            C2G_ExitRoom msg = new C2G_ExitRoom();
+
+            msg.Id = this.id;
+
+            G2C_ExitRoom response = (G2C_ExitRoom) await ETModel.SessionComponent.Instance.Session.Call(msg);
+
+            if (response.Error == ErrorCode.ERR_Success)
+            {
+                this.OnClose();
+            }
+
         }
 
     }

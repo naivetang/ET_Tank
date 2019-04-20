@@ -12,6 +12,8 @@
 		public const string RobotClient = "RobotClient";
 		public const string Realm = "Realm";
 		public const string Battle = "Battle";
+		public const string Init = "Init";
+		public const string Start = "Start";
 	}
 	
 	public sealed class Scene: Entity

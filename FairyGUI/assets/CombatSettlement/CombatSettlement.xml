@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <component id="n2_wuiu" name="n2" src="ou9f1a" fileName="Bg_Light.xml" pkg="imnv6csb" xy="0,0"/>
+    <image id="n3_wuiu" name="n3" src="wuiue" fileName="picture/BG Big.png" xy="62,139" size="1795,815" group="n7_wuiu"/>
+    <image id="n4_wuiu" name="n4" src="wuiud" fileName="picture/Ornamentb.png" xy="66,295" size="8,501" group="n7_wuiu"/>
+    <image id="n5_wuiu" name="n5" src="wuiud" fileName="picture/Ornamentb.png" xy="1844,301" size="8,501" group="n7_wuiu"/>
+    <image id="n6_wuiu" name="n6" src="wuiuc" fileName="picture/Ornament.png" xy="792,945" size="335,21" group="n7_wuiu"/>
+    <image id="n9_wuiu" name="n9" src="wuiu6" fileName="picture/Heading.png" xy="64,36" size="1788,115" group="n7_wuiu"/>
+    <image id="n12_wuiu" name="n12" src="wuiub" fileName="picture/V.png" xy="903,41" size="112,102" group="n7_wuiu" aspect="true"/>
+    <image id="n13_wuiu" name="n13" src="wuiua" fileName="picture/Triangle.png" xy="930,50" size="58,63" group="n7_wuiu" aspect="true"/>
+    <image id="n14_wuiu" name="n14" src="wuiu7" fileName="picture/Red Left.png" xy="70,49" size="406,96" group="n7_wuiu"/>
+    <image id="n15_wuiu" name="n15" src="wuiu8" fileName="picture/Red Light.png" xy="665,44" size="286,99" group="n7_wuiu"/>
+    <image id="n16_wuiu" name="n16" src="wuiu9" fileName="picture/Red Light2.png" xy="59,121" size="25,37" group="n7_wuiu" aspect="true"/>
+    <image id="n17_wuiu" name="n17" src="wuiu4" fileName="picture/Faction Crest 2.png" xy="87,53" size="93,86" group="n7_wuiu" aspect="true"/>
+    <image id="n19_wuiu" name="n19" src="wuiu3" fileName="picture/Blue Light2.png" xy="1832,123" size="24,34" group="n7_wuiu" aspect="true"/>
+    <image id="n20_wuiu" name="n20" src="wuiu2" fileName="picture/Blue Light.png" xy="964,45" size="314,97" group="n7_wuiu"/>
+    <image id="n21_wuiu" name="n21" src="wuiu1" fileName="picture/Blue Left.png" xy="1516,50" size="330,92" group="n7_wuiu"/>
+    <image id="n22_wuiu" name="n22" src="wuiu5" fileName="picture/Faction Crest.png" xy="1744,51" size="96,89" group="n7_wuiu" aspect="true"/>
+    <richtext id="n24_wuiu" name="n24" xy="628,68" size="232,56" group="n7_wuiu" fontSize="46" color="#ffffff" strokeColor="#6b3232" strokeSize="3" text="潜伏者   [5]"/>
+    <richtext id="n25_wuiu" name="n25" xy="1034,69" size="232,56" group="n7_wuiu" fontSize="46" color="#ffffff" strokeColor="#1e547d" strokeSize="3" text="[5]   保卫者"/>
+    <loader id="n28_dbt8" name="n28" xy="213,53" size="70,86" group="n7_wuiu" aspect="true" url="ui://wf4sazq3dbt8f"/>
+    <loader id="n29_dbt8" name="n29" xy="1649,54" size="70,86" group="n7_wuiu" aspect="true" url="ui://wf4sazq3dbt8g"/>
+    <group id="n7_wuiu" name="n7" xy="59,36" size="1798,930"/>
+    <component id="n10_wuiu" name="n10" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="820,996" size="278,56">
+      <Button title="再来一局"/>
+    </component>
+    <component id="n32_dbt8" name="n32" src="dbt8m" fileName="List/List.xml" xy="79,237"/>
+    <component id="n33_dbt8" name="n33" src="dbt8m" fileName="List/List.xml" xy="971,237"/>
+    <image id="n34_dbt8" name="n34" src="dbt8i" fileName="List/Mid Separation Border.png" xy="957,237" size="4,600"/>
+  </displayList>
+</component>

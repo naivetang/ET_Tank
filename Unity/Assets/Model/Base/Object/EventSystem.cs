@@ -689,15 +689,35 @@ namespace ETModel
 			}
 			foreach (IEvent iEvent in iEvents)
 			{
-				try
-				{
-					iEvent?.Handle(a, b, c);
-				}
-				catch (Exception e)
-				{
-					Log.Error(e);
-				}
-			}
-		}
-	}
+                try
+                {
+                    iEvent?.Handle(a, b, c);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e);
+                }
+            }
+        }
+
+        public void Run<A, B, C, D>(string type, A a, B b, C c, D d)
+        {
+            List<IEvent> iEvents;
+            if (!this.allEvents.TryGetValue(type, out iEvents))
+            {
+                return;
+            }
+            foreach (IEvent iEvent in iEvents)
+            {
+                try
+                {
+                    iEvent?.Handle(a, b, c, d);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e);
+                }
+            }
+        }
+    }
 }

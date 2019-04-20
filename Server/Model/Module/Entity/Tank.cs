@@ -1,4 +1,5 @@
-﻿using PF;
+﻿using System;
+using PF;
 
 namespace ETModel
 {
@@ -26,11 +27,47 @@ namespace ETModel
 
         public Battle Battle { get; set; }
 
-        public bool Died { get; set; } = false;
+        private bool m_died = false;
+
+        public int Level { get; set; }
+
+        public bool Died
+        {
+            get => m_died;
+            set
+            {
+                this.m_died = value;
+
+                if (this.m_died)
+                {
+                    if (this.Battle.BigMode == BigModel.Time)
+                    {
+                        if (this.TankCamp == TankCamp.Left)
+                            ++this.Battle.TimeLeftDiedNum;
+                        else
+                        {
+                            ++this.Battle.TimeRightDiedNum;
+                        }
+                    }
+                    else
+                    {
+                        if (this.TankCamp == TankCamp.Left)
+                            ++this.Battle.RoundLeftDiedNum;
+                        else
+                        {
+                            ++this.Battle.RoundRightDiedNum;
+                        }
+                    }
+
+                }
+                
+            }
+        }
+
+        
 
         public string Name { get; set; }
 
-        public TankType TankType { get; private set; }
 
         public TankCamp TankCamp { get; set; } = TankCamp.None;
 
@@ -50,6 +87,13 @@ namespace ETModel
 
         public void Awake( )
         {
+        }
+
+        public void Reset()
+        {
+            this.GetComponent<NumericComponent>()[NumericType.HpBase] = this.GetComponent<NumericComponent>()[NumericType.MaxHpBase];
+
+            this.Died = false;
         }
 
         public override void Dispose()

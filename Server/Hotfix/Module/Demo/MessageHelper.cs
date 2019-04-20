@@ -46,5 +46,28 @@ namespace ETHotfix
                 actorMessageSender.Send(message);
             }
         }
+
+        public static void BroadcastExceptSelf(this Player self,IMessage message)
+        {
+            Player[] players = Game.Scene.GetComponent<PlayerComponent>().GetAll();
+
+            foreach (Player player in players)
+            {
+                if(player == self)
+                    continue;
+
+                player.Session.Send(message);
+            }
+        }
+
+        public static void BroadcastPlayer(IMessage message)
+        {
+            Player[] players = Game.Scene.GetComponent<PlayerComponent>().GetAll();
+
+            foreach (Player player in players)
+            {
+                player.Session.Send(message);
+            }
+        }
     }
 }

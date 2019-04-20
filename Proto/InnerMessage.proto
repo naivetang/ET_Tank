@@ -260,6 +260,7 @@ message G2B_CreateTank // IRequest
     int32 Camp = 4;
     // 名字
     string Name = 5;
+    int32 Level = 6;
 }
 
 message B2G_CreateTank // IResponse

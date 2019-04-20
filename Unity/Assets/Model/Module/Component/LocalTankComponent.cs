@@ -1,6 +1,7 @@
 ﻿
 
 using System;
+using System.Threading;
 using UnityEngine;
 
 namespace ETModel
@@ -18,24 +19,27 @@ namespace ETModel
     {
         private Tank m_tank;
 
+        private CancellationTokenSource CancellationTokenSource;
+
         public void Awake()
         {
             m_tank = this.GetParent<Tank>();
-            this.HeartBeat30ms1().NoAwait();
+            CancellationTokenSource = new CancellationTokenSource();
+            this.HeartBeat30ms().NoAwait();
         }
 
 
-        private async ETVoid HeartBeat30ms1()
+        private async ETVoid HeartBeat30ms()
         {
             TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
 
             while (true)
             {
-                await timerComponent.WaitAsync(30);
+                await timerComponent.WaitAsync(30, CancellationTokenSource.Token);
 
                 if (m_tank.Died)
 
-                    return;
+                    continue;
                 
 
                 C2B_TankFrameInfo tankInfo = new C2B_TankFrameInfo();
@@ -76,6 +80,9 @@ namespace ETModel
             }
 
             base.Dispose();
+
+            CancellationTokenSource?.Cancel();
+            this.CancellationTokenSource?.Dispose();
         }
     }
 }

@@ -29,11 +29,13 @@ namespace ETHotfix
 
                 tank.Name = message.Name;
 
+                tank.Level = message.Level;
+
                 tank.AddComponent<NumericComponent>();
 
                 battle.Add(tank);
 
-                tank.TankCamp = message.Camp == 1? TankCamp.Blue : TankCamp.Red;
+                tank.TankCamp = message.Camp == 1? TankCamp.Left : TankCamp.Right;
 
                 await tank.AddComponent<MailBoxComponent>().AddLocation();
 

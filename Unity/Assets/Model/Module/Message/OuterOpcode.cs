@@ -110,6 +110,12 @@ namespace ETModel
 // 模式 1回合制，2时间制
 // 回合制：多少个回合  时间制：多少分钟
 // 房间名
+	[Message(OuterOpcode.C2G_ExitRoom)]
+	public partial class C2G_ExitRoom : IRequest {}
+
+	[Message(OuterOpcode.G2C_ExitRoom)]
+	public partial class G2C_ExitRoom : IResponse {}
+
 	[Message(OuterOpcode.C2G_EnterRoom)]
 	public partial class C2G_EnterRoom : IRequest {}
 
@@ -155,6 +161,26 @@ namespace ETModel
 	[Message(OuterOpcode.C2B_LoadAssetFinish)]
 	public partial class C2B_LoadAssetFinish : IActorLocationMessage {}
 
+// 当前回合结束
+	[Message(OuterOpcode.B2C_RoundEnd)]
+	public partial class B2C_RoundEnd : IActorMessage {}
+
+// 赢得阵营 1:左边 2：右边
+// 开始下一回合
+	[Message(OuterOpcode.B2C_StartNextRound)]
+	public partial class B2C_StartNextRound : IActorMessage {}
+
+	[Message(OuterOpcode.PersonBattleData)]
+	public partial class PersonBattleData {}
+
+// 杀敌数
+// 输出伤害
+// 死亡数
+//
+// 游戏结束
+	[Message(OuterOpcode.B2C_BattleEnd)]
+	public partial class B2C_BattleEnd : IActorMessage {}
+
 }
 namespace ETModel
 {
@@ -189,14 +215,20 @@ namespace ETModel
 		 public const ushort B2C_AttackTankResponse = 127;
 		 public const ushort B2C_AttackTank = 128;
 		 public const ushort C2G_CreateRoom = 129;
-		 public const ushort C2G_EnterRoom = 130;
-		 public const ushort RoomOnePeople = 131;
-		 public const ushort RoomSimpleInfo = 132;
-		 public const ushort G2C_RoomDetailInfo = 133;
-		 public const ushort G2C_UserBaseInfo = 134;
-		 public const ushort G2C_Rooms = 135;
-		 public const ushort C2G_StartGame = 136;
-		 public const ushort G2C_StartGame = 137;
-		 public const ushort C2B_LoadAssetFinish = 138;
+		 public const ushort C2G_ExitRoom = 130;
+		 public const ushort G2C_ExitRoom = 131;
+		 public const ushort C2G_EnterRoom = 132;
+		 public const ushort RoomOnePeople = 133;
+		 public const ushort RoomSimpleInfo = 134;
+		 public const ushort G2C_RoomDetailInfo = 135;
+		 public const ushort G2C_UserBaseInfo = 136;
+		 public const ushort G2C_Rooms = 137;
+		 public const ushort C2G_StartGame = 138;
+		 public const ushort G2C_StartGame = 139;
+		 public const ushort C2B_LoadAssetFinish = 140;
+		 public const ushort B2C_RoundEnd = 141;
+		 public const ushort B2C_StartNextRound = 142;
+		 public const ushort PersonBattleData = 143;
+		 public const ushort B2C_BattleEnd = 144;
 	}
 }

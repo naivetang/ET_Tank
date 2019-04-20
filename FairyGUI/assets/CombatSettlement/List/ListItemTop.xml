@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="870,100">
+  <displayList>
+    <image id="n0_dbt8" name="n0" src="dbt8h" fileName="List/Categories Line.png" xy="5,0" size="858,100"/>
+    <text id="n1_dbt8" name="ping" xy="3,16" size="91,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="PING"/>
+    <text id="n2_dbt8" name="name" xy="109,16" size="241,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="NAME"/>
+    <text id="n3_dbt8" name="rank" xy="363,16" size="95,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="RANK&#xA;"/>
+    <text id="n4_dbt8" name="kills" xy="473,16" size="91,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="KILLS&#xA;"/>
+    <text id="n5_dbt8" name="damage" xy="578,16" size="140,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="DAMAGE&#xA;"/>
+    <text id="n6_dbt8" name="death" xy="731,16" size="132,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="DEATHS&#xA;"/>
+    <image id="n7_dbt8" name="n7" src="dbt8j" fileName="List/VBorder.png" xy="100,0" size="2,100"/>
+    <image id="n8_dbt8" name="n8" src="dbt8j" fileName="List/VBorder.png" xy="356,0" size="2,100"/>
+    <image id="n9_dbt8" name="n9" src="dbt8j" fileName="List/VBorder.png" xy="464,0" size="2,100"/>
+    <image id="n10_dbt8" name="n10" src="dbt8j" fileName="List/VBorder.png" xy="570,0" size="2,100"/>
+    <image id="n11_dbt8" name="n11" src="dbt8j" fileName="List/VBorder.png" xy="723,0" size="2,100"/>
+  </displayList>
+</component>

@@ -6,11 +6,11 @@ using Google.Protobuf.Collections;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class HallViewAwakeComponent : AwakeSystem<HallViewComponent, G2C_Rooms>
+    public class HallViewAwakeComponent : AwakeSystem<HallViewComponent>
     {
-        public override void Awake(HallViewComponent self, G2C_Rooms a)
+        public override void Awake(HallViewComponent self)
         {
-            self.Awake(a);
+            self.Awake();
         }
     }
 
@@ -22,13 +22,17 @@ namespace ETHotfix
 
         private List<RoomSimpleInfo> m_rooms = new List<RoomSimpleInfo>();
 
-        public void Awake(G2C_Rooms rooms)
+        public void Awake()
         {
             this.FUIComponent = this.GetParent<FUI>();
 
-            RepeatedFieldToList(rooms.RoomSimpleInfo,m_rooms);
-
             this.StartFUI();
+        }
+
+        public void RefreshData(G2C_Rooms rooms)
+        {
+            RepeatedFieldToList(rooms.RoomSimpleInfo, m_rooms);
+            this.UI();
         }
 
         private void RepeatedFieldToList(RepeatedField<RoomSimpleInfo> a, List<RoomSimpleInfo> b)
@@ -36,6 +40,8 @@ namespace ETHotfix
 
             if (a == null)
                 return;
+
+            b.Clear();
 
             foreach (RoomSimpleInfo roomOnePeople in a)
             {
@@ -53,9 +59,14 @@ namespace ETHotfix
 
             m_list.onClickItem.Add(this.ListItemClick);
 
-            this.m_list.numItems = this.m_rooms.Count;
-
             this.m_createButton.onClick.Set(this.CreateBtn_OnClick);
+
+            this.UI();
+        }
+
+        private void UI()
+        {
+            this.m_list.numItems = this.m_rooms.Count;
         }
 
         private void ItemRenderer(int i, GObject go)

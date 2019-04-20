@@ -394,6 +394,8 @@ namespace ETModel
 // 名字
 		public string Name { get; set; }
 
+		public int Level { get; set; }
+
 	}
 
 	[Message(InnerOpcode.B2G_CreateTank)]

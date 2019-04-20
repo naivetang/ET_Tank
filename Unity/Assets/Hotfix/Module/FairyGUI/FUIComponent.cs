@@ -46,5 +46,10 @@ namespace ETHotfix
 			FUI ui = this.Root.Get(name);
 			return ui;
 		}
+
+        public void RemoveChildren()
+        {
+            this.Root.RemoveChildren();
+        }
 	}
 }

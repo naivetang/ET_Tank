@@ -25,6 +25,10 @@ namespace ETModel
 
         public string Name { get; set; }
 
+        private TankType m_backups = TankType.None;
+
+
+        private GameObject m_boomEffectGO;
 
         // 坦克类型：本地还是其他
         private TankType m_tankType;
@@ -35,6 +39,8 @@ namespace ETModel
             set
             {
                 this.m_tankType = value;
+                if(m_backups == TankType.None)
+                    this.m_backups = value;
             }
         }
 
@@ -84,9 +90,14 @@ namespace ETModel
             set
             {
                 m_died = value;
-                this.TankType = TankType.None;
 
-                this.DiedAfter();
+                if (value)
+                {
+                    this.TankType = TankType.None;
+
+                    this.DiedAfter();
+                }
+                
                 //this.ClearComponents();
             }
         }
@@ -94,6 +105,29 @@ namespace ETModel
         public GameObject Gun => this.m_gun;
 
         public GameObject Turret => this.m_turret;
+
+        /// <summary>
+        /// 开始下一局需要重置数据
+        /// </summary>
+        public void Reset()
+        {
+            this.TankType = this.m_backups;
+
+            this.Died = false;
+
+            this.GetComponent<TankMoveComponent>()?.Stop();
+
+            this.GetComponent<NumericComponent>()[NumericType.HpBase] = this.GetComponent<NumericComponent>()[NumericType.MaxHpBase];
+
+            if(this.m_boomEffectGO != null)
+            {
+                ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+
+                resourcesComponent.RecycleObj(PrefabType.TankBoom, m_boomEffectGO);
+
+                m_boomEffectGO = null;
+            }
+    }
 
         /// <summary>
         /// 受到攻击
@@ -166,7 +200,7 @@ namespace ETModel
 
         private void DiedAfter()
         {
-            TankFactory.CreateTankBoomEffect(this);
+            this.m_boomEffectGO = TankFactory.CreateTankBoomEffect(this);
 
             if(this.TankType == TankType.Local)
                 this.GetComponent<TankMoveComponent>()?.Stop();
@@ -194,6 +228,8 @@ namespace ETModel
             //Log.Info("删除坦克");
 
             base.Dispose();
+
+            m_backups = TankType.None;
         }
     }
 }

@@ -7,32 +7,46 @@ namespace ETModel
     [NumericWatcher(NumericType.Hp)]
     public class NumericWatcher_Hp  : INumericWatcher
     {
-        public void Run(long id, int value)
+        public void Run(long battleId, long tankId, NumericType changeType)
         {
             try
             {
-                return;
-
-                Tank tank = Game.Scene.GetComponent<TankComponent>().Get(id);
-
+                Tank tank = Game.Scene.GetComponent<BattleComponent>().Get(battleId).Get(tankId);
                 if (tank == null)
                     return;
 
                 NumericComponent numericComponent = tank.GetComponent<NumericComponent>();
 
                 if (numericComponent == null)
+                {
+                    Log.Error($"未添加NumericComponent组件");
                     return;
+                }
 
                 int nowHp = numericComponent[NumericType.Hp];
 
                 if (nowHp <= 0)
                     tank.Died = true;
+
+                if (tank.Battle.BigMode == BigModel.Time)
+                {
+                    Reset(tank).NoAwait();
+                }
             }
             catch (Exception e)
             {
                 Log.Error(e);
             }
             
+        }
+
+        private async ETVoid Reset(Tank tank)
+        {
+            TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
+
+            await timerComponent.WaitAsync(3000);
+
+            tank.Reset();
         }
     }
 }

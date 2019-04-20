@@ -15,5 +15,10 @@
         public const string Hall = "Hall";
         public const string CreateRoom = "CreateRoom";
         public const string Room = "Room";
+
+        /// <summary>
+        /// 结算界面
+        /// </summary>
+        public const string CombatSettlement = "CombatSettlement";
     }
 }

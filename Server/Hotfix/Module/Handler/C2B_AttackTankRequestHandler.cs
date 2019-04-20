@@ -45,19 +45,36 @@ namespace ETHotfix
                 if (entity.TankCamp == targetTank.TankCamp)
                     return;
 
+                if (targetTank.Died)
+                    return;
+
                 B2C_AttackTankResponse response = new B2C_AttackTankResponse();
 
-                NumericComponent numericComponent = targetTank.GetComponent<NumericComponent>();
+                NumericComponent sourceNumeric = entity.GetComponent<NumericComponent>();
 
-                int damage = numericComponent[NumericType.HpBase] < message.Damage ? numericComponent[NumericType.HpBase] : message.Damage;
+                NumericComponent targetNumeric = targetTank.GetComponent<NumericComponent>();
 
-                int currHp = targetTank.GetComponent<NumericComponent>().Change(NumericType.HpBase, -damage);
+                int damage = targetNumeric[NumericType.HpBase] < message.Damage ? targetNumeric[NumericType.HpBase] : message.Damage;
+
+                sourceNumeric.Change(NumericType.DamageBase, damage);
+
+                targetNumeric.Change(NumericType.TakeDamageBase, damage);
+
+                int curtHp = targetNumeric.Change(NumericType.HpBase, -damage);
+
+                if (curtHp == 0)
+                {
+                    sourceNumeric.Change(NumericType.KillsBase, sourceNumeric.GetAsInt(NumericType.Kills) + 1);
+
+                    targetNumeric.Change(NumericType.DeathsBase, sourceNumeric.GetAsInt(NumericType.Deaths) + 1);
+
+                }
 
                 response.SourceTankId = entity.Id;
 
                 response.TargetTankId = message.TargetTankId;
 
-                response.CurrentHp = currHp;
+                response.CurrentHp = curtHp;
 
                 reply(response);
 

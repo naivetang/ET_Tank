@@ -87,8 +87,8 @@ message UnitInfo
 enum TankCamp
 {
 	None = 0;
-	Blue = 1;
-	Red = 2;
+	Left = 1;
+	Right = 2;
 }
 
 message TankFrameInfo
@@ -310,6 +310,20 @@ message C2G_CreateRoom // IRequest
 	string RoomNam = 5;
 }
 
+message C2G_ExitRoom // IRequest
+{
+	int32 RpcId = 90;
+
+	int64 id = 1;
+}
+
+message G2C_ExitRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
 message C2G_EnterRoom // IRequest
 {
 	int32 RpcId = 90;
@@ -399,4 +413,59 @@ message C2B_LoadAssetFinish // IActorLocationMessage
 {
 	int32 RpcId = 90;
 	int64 ActorId = 93;
+}
+
+// 当前回合结束
+message B2C_RoundEnd // IActorMessage
+{
+	int64 ActorId = 93;
+
+	// 赢得阵营 1:左边 2：右边
+	int32 WinCamp = 1;
+}
+
+// 开始下一回合
+message B2C_StartNextRound // IActorMessage
+{
+	int64 ActorId = 93;
+
+	repeated TankFrameInfo TankFrameInfos = 1;
+}
+
+message PersonBattleData
+{
+	int64 playerId = 1;
+	// 杀敌数
+	int32 kills = 2;
+	// 输出伤害
+	int32 Damage = 3;
+	// 死亡数
+	int32 Deaths = 4;
+	// 
+	string Name = 5;
+
+	int32 Ping = 6;
+
+	int32 Level = 7;
+}
+
+
+// 游戏结束
+message B2C_BattleEnd // IActorMessage
+{
+	int64 ActorId = 93;
+
+	int64 BattleId = 1;
+
+	int32 BigModel = 2;
+
+	int32 SmallModel = 3;
+
+	int32 LeftCampWinNum = 4;
+
+	int32 RightCampWinNum = 5;
+
+	repeated PersonBattleData LeftCamp = 6;
+
+	repeated PersonBattleData RightCamp = 7;
 }

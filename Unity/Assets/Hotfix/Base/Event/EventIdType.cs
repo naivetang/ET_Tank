@@ -24,5 +24,9 @@
 
         public const string EnterBattleFinish = "EnterBattleFinish";
 
+        public const string ExitBattleFinish = "ExitBattleFinish";
+
+        public const string ChangeScene = "ChangeScene";
+
     }
 }

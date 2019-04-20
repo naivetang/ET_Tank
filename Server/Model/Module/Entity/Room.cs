@@ -130,9 +130,38 @@ namespace ETModel
         {
             this.idPlayers.Remove(id);
 
+            if (this.LeftCamp.ContainsKey(id))
+            {
+                this.LeftCamp.Remove(id);
+            }
+            else if (this.RightCamp.ContainsKey(id))
+            {
+                this.RightCamp.Remove(id);
+            }
+
+
+
+            if (id == OwnerId)
+            {
+                this.OwnerId = this.GetOwnerId();
+            }
+
             this.m_latestPlayerId = id;
 
-            this.BroadcastRoomDetailInfo();
+            if(this.idPlayers.Count > 0)
+                this.BroadcastRoomDetailInfo();
+        }
+
+        private long GetOwnerId()
+        {
+            if (this.LeftCamp.Count > 0)
+                return this.GetLeftCamp()[0].Id;
+            else if (this.RightCamp.Count > 0)
+                return this.GetRightCamp()[0].Id;
+            else
+            {
+                return 0;
+            }
         }
 
         public int Count

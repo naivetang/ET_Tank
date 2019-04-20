@@ -7,11 +7,12 @@ namespace ETHotfix
     {
         public override void Run()
         {
-            Game.Scene.GetComponent<FUIComponent>().Remove(FUIType.Login);
+            FUI fui = Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Hall);
 
-            // 卸载包
-            ETModel.Game.Scene.GetComponent<FUIPackageComponent>().RemovePackage(FUIType.Login);
-
+            if (fui == null)
+            {
+                FUIFactory.Create<HallViewComponent>(FUIType.Hall).NoAwait();
+            }
         }
        
     }

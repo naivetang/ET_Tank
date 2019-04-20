@@ -89,12 +89,15 @@
     <Compile Include="Assets\Hotfix\Entity\Config\UnitConfig.cs" />
     <Compile Include="Assets\Hotfix\Entity\Game.cs" />
     <Compile Include="Assets\Hotfix\Entity\Scene.cs" />
+    <Compile Include="Assets\Hotfix\Event\ChangeScene_UnloadView.cs" />
     <Compile Include="Assets\Hotfix\Event\EnterBattle_LoadBattleScene.cs" />
     <Compile Include="Assets\Hotfix\Event\EnterBattleFinish_UnloadPag.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_CreateTank.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_EnterBattle.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_EnterBattleAndCreateTank.cs" />
     <Compile Include="Assets\Hotfix\Event\LoginHasFinish_CreateHallUI.cs" />
+    <Compile Include="Assets\Hotfix\Event\LoginHasFinish_RemoveLoginUI.cs" />
+    <Compile Include="Assets\Hotfix\FUI\CombatSettlement\CombatSettlementViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\CreateRoom\CreateRoomViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\FUIBase.cs" />
     <Compile Include="Assets\Hotfix\FUI\FUIFactory.cs" />
@@ -109,8 +112,11 @@
     <Compile Include="Assets\Hotfix\FUI\UILogin\Event\InitSceneStart_CreateLoginUI.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILogin\Factory\UILoginFactory.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_AttackTankHandler.cs" />
+    <Compile Include="Assets\Hotfix\Handler\B2C_BattleEndHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_CreateTanksHandler.cs" />
+    <Compile Include="Assets\Hotfix\Handler\B2C_RoundEndHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_ShootHandler.cs" />
+    <Compile Include="Assets\Hotfix\Handler\B2C_StartNextRoundHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_TankFrameInfosHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_RoomDetailInfoHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_RoomsHandler.cs" />

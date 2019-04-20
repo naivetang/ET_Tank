@@ -111,11 +111,23 @@ namespace ETHotfix
             // 测试消息有成员是class类型
             G2C_PlayerInfo g2CPlayerInfo = (G2C_PlayerInfo) await SessionComponent.Instance.Session.Call(new C2G_PlayerInfo());
 
+
+            // 加载Unit资源
+            ResourcesComponent resourcesComponent = ETModel.Game.Scene.GetComponent<ResourcesComponent>();
+
+            // 加载场景资源
+            await resourcesComponent.LoadBundleAsync("start.unity3d");
+            // 切换到Battle场景
+            using (SceneChangeComponent sceneChangeComponent = ETModel.Game.Scene.AddComponent<SceneChangeComponent>())
+            {
+                await sceneChangeComponent.ChangeSceneAsync(SceneType.Start);
+            }
+
             // 逻辑层不应该去调用UI，逻辑层只关心逻辑并且抛出事件，由UI层自己去订阅事件，而且注意事件名字
             // 很多人容易把这个事件取名成LoginFinishiCreateLobbyUI，这是不对的，事件抛出去不可能知道谁订阅了这个事件，
             // 也不会知道别人订阅这个事件是干什么的,这里只知道我Login Finish
             //Game.EventSystem.Run(EventIdType.LoginFinish);
-            //Game.EventSystem.Run(EventIdType.LoginHasFinish);
+            Game.EventSystem.Run(EventIdType.LoginHasFinish);
         }
 
         public static void RigistBtnOnClick(FUILoginComponent self)

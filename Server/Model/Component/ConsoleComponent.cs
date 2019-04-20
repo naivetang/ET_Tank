@@ -130,6 +130,25 @@ namespace ETModel
                                 Console.WriteLine(e);
                             }
                             break;
+                        case "tank info":
+                            try
+                            {
+                                Battle battle =  Game.Scene.GetComponent<BattleComponent>().GetAll()[0];
+
+                                Tank[] tanks =  battle.GetAll();
+
+                                foreach (Tank tank in tanks)
+                                {
+                                    Console.WriteLine($"{tank.Died}");
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                hasExp = true;
+                                Console.WriteLine(e);
+                            }
+                            break;
+
                         default:
                             Console.WriteLine($"no such command: {line}");
                             break;
