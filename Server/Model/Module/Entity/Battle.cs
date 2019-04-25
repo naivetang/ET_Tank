@@ -22,9 +22,12 @@ namespace ETModel
         {
             public RoomOnePeople RoomInfo;
             public Tank Tank;
-            public int PosIndex;
+            public int Index;
             // 玩家id
             public long Id;
+
+            public Vector3 InitPos;
+            public Vector3 InitRot;
         }
 
 
@@ -147,7 +150,7 @@ namespace ETModel
                 {
 
                     //TODO:初始化所有tank，开始心跳
-                    this.InitTanksPos();
+                    this.InitTanks();
 
                     this.BroadcastCreateTank();
 
@@ -214,7 +217,7 @@ namespace ETModel
 
             await timerComponent.WaitAsync(40);
 
-            InitTanksPos();
+            this.InitTanks();
 
             this.B2C_StartNextRound();
 
@@ -280,11 +283,59 @@ namespace ETModel
             Send_B2C_BattleEnd();
         }
 
+        public async ETVoid TimeResetTank(Tank tank)
+        {
+            TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
+
+            await timerComponent.WaitAsync(3000);
+
+            Map mapInfo = (Map)Game.Scene.GetComponent<ConfigComponent>().Get(typeof(Map), 1001);
+            if(this.m_LeftCamp.TryGetValue(tank.PlayerId,out BattleOnePeople onePeople))
+            {
+                InitOneTank(tank,onePeople.Index);
+                
+            }
+            else if(this.m_RightCamp.TryGetValue(tank.PlayerId, out  onePeople))
+            {
+                InitOneTank(tank, onePeople.Index);
+                
+            }
+
+            tank.Reset();
+
+            Send_B2C_TankReset(tank);
+        }
+
+        private void Send_B2C_TankReset(Tank tank)
+        {
+            B2C_TankReset msg = new B2C_TankReset();
+
+            msg.TankFrameInfo = new TankFrameInfo();
+
+            msg.TankFrameInfo.TankId = tank.Id;
+
+            msg.TankFrameInfo.PX = tank.PX;
+            msg.TankFrameInfo.PY = tank.PY;
+            msg.TankFrameInfo.PZ = tank.PZ;
+
+            msg.TankFrameInfo.RX = tank.RX;
+            msg.TankFrameInfo.RY = tank.RY;
+            msg.TankFrameInfo.RZ = tank.RZ;
+
+            msg.TankFrameInfo.TurretRY = tank.TurretRY;
+            msg.TankFrameInfo.GunRX = tank.GunRX;
+
+            this.Broadcast(msg);
+
+        }
+
         private void Send_B2C_BattleEnd()
         {
             B2C_BattleEnd msg = new B2C_BattleEnd();
 
             msg.BattleId = this.Id;
+
+            msg.WinCamp = this.RoundLeftWinNum > this.RoundRightWinNum? 1 : 2;
 
             msg.BigModel = (int)this.BigMode;
 
@@ -356,7 +407,7 @@ namespace ETModel
             this.Broadcast(msg);
         }
 
-        private void InitTanksPos()
+        private void InitTanks()
         {
             Map mapInfo = (Map)Game.Scene.GetComponent<ConfigComponent>().Get(typeof(Map), 1001);
 
@@ -366,12 +417,10 @@ namespace ETModel
             {
                 Tank tank = battleOnePeople.Tank;
 
-                battleOnePeople.PosIndex = index;
+                battleOnePeople.Index = index;
 
-                Vector3 vec = GetPos(mapInfo, true, index++);
-                tank.PX = (int)(vec.x * Tank.m_coefficient);
-                tank.PY = (int)(vec.y * Tank.m_coefficient);
-                tank.PZ = (int)(vec.z * Tank.m_coefficient);
+                InitOneTank(tank, index);
+
             }
 
             index = 1;
@@ -380,34 +429,47 @@ namespace ETModel
             {
                 Tank tank = battleOnePeople.Tank;
 
-                battleOnePeople.PosIndex = index;
+                battleOnePeople.Index = index;
 
-                Vector3 vec = GetPos(mapInfo, false, index++);
-                tank.PX = (int)(vec.x * Tank.m_coefficient);
-                tank.PY = (int)(vec.y * Tank.m_coefficient);
-                tank.PZ = (int)(vec.z * Tank.m_coefficient);
+                InitOneTank(tank, index);
+
             }
         }
 
-        public Vector3 GetPos(Map mapInfo, bool left, int index)
+        private void InitOneTank(Tank tank, int index)
         {
-            if (left)
+            Map mapInfo = (Map)Game.Scene.GetComponent<ConfigComponent>().Get(typeof(Map), 1001);
+            Vector3 Pos;
+            Vector3 Rot;
+            if (tank.TankCamp == TankCamp.Left)
             {
                 switch (index)
                 {
                     case 1:
-                        return ConfigHelper.String2Vector3(mapInfo.LeftPos1);
+                        Pos =  ConfigHelper.String2Vector3(mapInfo.LeftPos1);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.LeftRot1);
+                        break;
                     case 2:
-                        return ConfigHelper.String2Vector3(mapInfo.LeftPos2);
+                        Pos = ConfigHelper.String2Vector3(mapInfo.LeftPos2);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.LeftRot2);
+                        break;
                     case 3:
-                        return ConfigHelper.String2Vector3(mapInfo.LeftPos3);
+                        Pos = ConfigHelper.String2Vector3(mapInfo.LeftPos3);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.LeftRot3);
+                        break;
                     case 4:
-                        return ConfigHelper.String2Vector3(mapInfo.LeftPos4);
+                        Pos = ConfigHelper.String2Vector3(mapInfo.LeftPos4);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.LeftRot4);
+                        break;
                     case 5:
-                        return ConfigHelper.String2Vector3(mapInfo.LeftPos5);
+                        Pos = ConfigHelper.String2Vector3(mapInfo.LeftPos5);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.LeftRot5);
+                        break;
                     default:
                         Log.Error($"{index}不能大于5");
-                        return Vector3.zero;
+                        Pos = Vector3.zero;
+                        Rot = Vector3.zero;
+                        break;
                 }
             }
             else
@@ -415,23 +477,42 @@ namespace ETModel
                 switch (index)
                 {
                     case 1:
-                        return ConfigHelper.String2Vector3(mapInfo.RightPos1);
+                        Pos = ConfigHelper.String2Vector3(mapInfo.RightPos1);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos1);
+                        break;
                     case 2:
-                        return ConfigHelper.String2Vector3(mapInfo.RightPos2);
+                        Pos = ConfigHelper.String2Vector3(mapInfo.RightPos2);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos2);
+                        break;
                     case 3:
-                        return ConfigHelper.String2Vector3(mapInfo.RightPos3);
+                        Pos = ConfigHelper.String2Vector3(mapInfo.RightPos3);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos3);
+                        break;
                     case 4:
-                        return ConfigHelper.String2Vector3(mapInfo.RightPos4);
+                        Pos = ConfigHelper.String2Vector3(mapInfo.RightPos4);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos4);
+                        break;
                     case 5:
-                        return ConfigHelper.String2Vector3(mapInfo.RightPos5);
+                        Pos = ConfigHelper.String2Vector3(mapInfo.RightPos5);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos5);
+                        break;
                     default:
                         Log.Error($"{index}不能大于5");
-                        return Vector3.zero;
+                        Pos = Vector3.zero;
+                        Rot = Vector3.zero;
+                        break;
                 }
 
             }
-        }
+            tank.PX = (int)(Pos.x * Tank.m_coefficient);
+            tank.PY = (int)(Pos.y * Tank.m_coefficient);
+            tank.PZ = (int)(Pos.z * Tank.m_coefficient);
 
+            tank.RX = (int) (Rot.x * Tank.m_coefficient);
+            tank.RY = (int) (Rot.y * Tank.m_coefficient);
+            tank.RZ = (int) (Rot.z * Tank.m_coefficient);
+        }
+        
         private async ETVoid HeartBeat30ms()
         {
             TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
