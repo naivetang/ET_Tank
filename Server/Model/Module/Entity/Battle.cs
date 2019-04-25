@@ -478,23 +478,23 @@ namespace ETModel
                 {
                     case 1:
                         Pos = ConfigHelper.String2Vector3(mapInfo.RightPos1);
-                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos1);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightRot1);
                         break;
                     case 2:
                         Pos = ConfigHelper.String2Vector3(mapInfo.RightPos2);
-                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos2);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightRot2);
                         break;
                     case 3:
                         Pos = ConfigHelper.String2Vector3(mapInfo.RightPos3);
-                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos3);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightRot3);
                         break;
                     case 4:
                         Pos = ConfigHelper.String2Vector3(mapInfo.RightPos4);
-                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos4);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightRot4);
                         break;
                     case 5:
                         Pos = ConfigHelper.String2Vector3(mapInfo.RightPos5);
-                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightPos5);
+                        Rot =  ConfigHelper.String2Vector3(mapInfo.RightRot5);
                         break;
                     default:
                         Log.Error($"{index}不能大于5");

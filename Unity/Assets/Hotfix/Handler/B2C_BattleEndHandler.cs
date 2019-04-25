@@ -18,6 +18,9 @@ namespace ETHotfix
             foreach (Tank tank in tanks)
             {
                 tank.Dispose();
+
+
+                ETModel.Game.Scene.GetComponent<ResourcesComponent>().RecycleObj(PrefabType.Tank,tank.GameObject);
             }
 
             // 加载Unit资源

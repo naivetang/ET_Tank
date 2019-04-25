@@ -22,6 +22,23 @@ namespace ETHotfix
 
         private List<RoomSimpleInfo> m_rooms = new List<RoomSimpleInfo>();
 
+        private static G2C_Rooms m_data;
+
+        public static G2C_Rooms Data
+        {
+            get => m_data;
+            set
+            {
+                m_data = value;
+                FUI fui = Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Hall);
+                if (fui != null)
+                {
+                    fui.GetComponent<HallViewComponent>().RefreshData();
+                }
+            }
+
+        } 
+
         public void Awake()
         {
             this.FUIComponent = this.GetParent<FUI>();
@@ -29,9 +46,9 @@ namespace ETHotfix
             this.StartFUI();
         }
 
-        public void RefreshData(G2C_Rooms rooms)
+        public void RefreshData()
         {
-            RepeatedFieldToList(rooms.RoomSimpleInfo, m_rooms);
+            RepeatedFieldToList(m_data.RoomSimpleInfo, m_rooms);
             this.UI();
         }
 
@@ -60,6 +77,9 @@ namespace ETHotfix
             m_list.onClickItem.Add(this.ListItemClick);
 
             this.m_createButton.onClick.Set(this.CreateBtn_OnClick);
+
+            if(m_data != null)
+                RepeatedFieldToList(m_data.RoomSimpleInfo, m_rooms);
 
             this.UI();
         }
@@ -117,6 +137,11 @@ namespace ETHotfix
         private async ETVoid CreateRoomAsync()
         {
             FUI fui = await FUIFactory.Create<CreateRoomViewComponent>(FUIType.CreateRoom);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
         }
     }
 }

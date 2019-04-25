@@ -4534,6 +4534,74 @@ namespace ETModel {
 
   }
 
+  public partial class B2C_TankReset : pb::IMessage {
+    private static readonly pb::MessageParser<B2C_TankReset> _parser = new pb::MessageParser<B2C_TankReset>(() => (B2C_TankReset)MessagePool.Instance.Fetch(typeof(B2C_TankReset)));
+    public static pb::MessageParser<B2C_TankReset> Parser { get { return _parser; } }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private global::ETModel.TankFrameInfo tankFrameInfo_;
+    public global::ETModel.TankFrameInfo TankFrameInfo {
+      get { return tankFrameInfo_; }
+      set {
+        tankFrameInfo_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (tankFrameInfo_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(TankFrameInfo);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (tankFrameInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TankFrameInfo);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      if (tankFrameInfo_ != null) MessagePool.Instance.Recycle(tankFrameInfo_); tankFrameInfo_ = null;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            if (tankFrameInfo_ == null) {
+              tankFrameInfo_ = new global::ETModel.TankFrameInfo();
+            }
+            input.ReadMessage(tankFrameInfo_);
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   /// <summary>
   /// 游戏结束
   /// </summary>
@@ -4554,6 +4622,17 @@ namespace ETModel {
       get { return battleId_; }
       set {
         battleId_ = value;
+      }
+    }
+
+    private int winCamp_;
+    /// <summary>
+    /// 1:左方胜 2：右方胜
+    /// </summary>
+    public int WinCamp {
+      get { return winCamp_; }
+      set {
+        winCamp_ = value;
       }
     }
 
@@ -4590,7 +4669,7 @@ namespace ETModel {
     }
 
     private static readonly pb::FieldCodec<global::ETModel.PersonBattleData> _repeated_leftCamp_codec
-        = pb::FieldCodec.ForMessage(50, global::ETModel.PersonBattleData.Parser);
+        = pb::FieldCodec.ForMessage(58, global::ETModel.PersonBattleData.Parser);
     private pbc::RepeatedField<global::ETModel.PersonBattleData> leftCamp_ = new pbc::RepeatedField<global::ETModel.PersonBattleData>();
     public pbc::RepeatedField<global::ETModel.PersonBattleData> LeftCamp {
       get { return leftCamp_; }
@@ -4598,7 +4677,7 @@ namespace ETModel {
     }
 
     private static readonly pb::FieldCodec<global::ETModel.PersonBattleData> _repeated_rightCamp_codec
-        = pb::FieldCodec.ForMessage(58, global::ETModel.PersonBattleData.Parser);
+        = pb::FieldCodec.ForMessage(66, global::ETModel.PersonBattleData.Parser);
     private pbc::RepeatedField<global::ETModel.PersonBattleData> rightCamp_ = new pbc::RepeatedField<global::ETModel.PersonBattleData>();
     public pbc::RepeatedField<global::ETModel.PersonBattleData> RightCamp {
       get { return rightCamp_; }
@@ -4610,20 +4689,24 @@ namespace ETModel {
         output.WriteRawTag(8);
         output.WriteInt64(BattleId);
       }
-      if (BigModel != 0) {
+      if (WinCamp != 0) {
         output.WriteRawTag(16);
+        output.WriteInt32(WinCamp);
+      }
+      if (BigModel != 0) {
+        output.WriteRawTag(24);
         output.WriteInt32(BigModel);
       }
       if (SmallModel != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteInt32(SmallModel);
       }
       if (LeftCampWinNum != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteInt32(LeftCampWinNum);
       }
       if (RightCampWinNum != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteInt32(RightCampWinNum);
       }
       leftCamp_.WriteTo(output, _repeated_leftCamp_codec);
@@ -4641,6 +4724,9 @@ namespace ETModel {
       }
       if (BattleId != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(BattleId);
+      }
+      if (WinCamp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(WinCamp);
       }
       if (BigModel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(BigModel);
@@ -4661,6 +4747,7 @@ namespace ETModel {
 
     public void MergeFrom(pb::CodedInputStream input) {
       battleId_ = 0;
+      winCamp_ = 0;
       bigModel_ = 0;
       smallModel_ = 0;
       leftCampWinNum_ = 0;
@@ -4681,26 +4768,30 @@ namespace ETModel {
             break;
           }
           case 16: {
-            BigModel = input.ReadInt32();
+            WinCamp = input.ReadInt32();
             break;
           }
           case 24: {
-            SmallModel = input.ReadInt32();
+            BigModel = input.ReadInt32();
             break;
           }
           case 32: {
-            LeftCampWinNum = input.ReadInt32();
+            SmallModel = input.ReadInt32();
             break;
           }
           case 40: {
+            LeftCampWinNum = input.ReadInt32();
+            break;
+          }
+          case 48: {
             RightCampWinNum = input.ReadInt32();
             break;
           }
-          case 50: {
+          case 58: {
             leftCamp_.AddEntriesFrom(input, _repeated_leftCamp_codec);
             break;
           }
-          case 58: {
+          case 66: {
             rightCamp_.AddEntriesFrom(input, _repeated_rightCamp_codec);
             break;
           }

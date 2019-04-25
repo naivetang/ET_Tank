@@ -177,10 +177,14 @@ namespace ETModel
 // 输出伤害
 // 死亡数
 //
+	[Message(OuterOpcode.B2C_TankReset)]
+	public partial class B2C_TankReset : IActorMessage {}
+
 // 游戏结束
 	[Message(OuterOpcode.B2C_BattleEnd)]
 	public partial class B2C_BattleEnd : IActorMessage {}
 
+// 1:左方胜 2：右方胜
 }
 namespace ETModel
 {
@@ -229,6 +233,7 @@ namespace ETModel
 		 public const ushort B2C_RoundEnd = 141;
 		 public const ushort B2C_StartNextRound = 142;
 		 public const ushort PersonBattleData = 143;
-		 public const ushort B2C_BattleEnd = 144;
+		 public const ushort B2C_TankReset = 144;
+		 public const ushort B2C_BattleEnd = 145;
 	}
 }

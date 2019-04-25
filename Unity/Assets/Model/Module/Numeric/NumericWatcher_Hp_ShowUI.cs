@@ -46,7 +46,10 @@
             }
 
             if (nowHp == 0)
+            {
                 tank.Died = true;
+                tank.GetComponent<TankMoveComponent>()?.Stop();
+            }
 
             Log.Warning($"当前血量 = {nowHp}");
         }

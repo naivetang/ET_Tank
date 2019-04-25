@@ -25,6 +25,9 @@ namespace ETHotfix
                         Tank tank = TankFactory.Create(firstInfo);
                         tank.Position = new Vector3(tankInfo.PX * 1f / Tank.m_coefficient, tankInfo.PY * 1f / Tank.m_coefficient,
                                 tankInfo.PZ * 1f / Tank.m_coefficient);
+
+                        tank.GameObject.transform.eulerAngles = new Vector3(tankInfo.RX * 1f / Tank.m_coefficient, tankInfo.RY * 1f / Tank.m_coefficient,
+                                tankInfo.RZ * 1f / Tank.m_coefficient);
                         break;
                     }
                 }
@@ -41,6 +44,8 @@ namespace ETHotfix
 
                 tank.Position = new Vector3(tankInfo.PX * 1f / Tank.m_coefficient, tankInfo.PY * 1f / Tank.m_coefficient,
                         tankInfo.PZ * 1f / Tank.m_coefficient);
+                tank.GameObject.transform.eulerAngles = new Vector3(tankInfo.RX * 1f / Tank.m_coefficient, tankInfo.RY * 1f / Tank.m_coefficient,
+                        tankInfo.RZ * 1f / Tank.m_coefficient);
             }
         }
     }

@@ -64,20 +64,16 @@ namespace ETModel
 
         public void Start()
         {
-            this.BeginSuccLogin();
             this.AfterSuccLogin();
         }
-
-        // 在回复登陆成功之前发送
-        private void BeginSuccLogin()
-        {
-            this.Send_G2C_UserBaseInfo();
-            
-        }
-
+        
+        /// <summary>
+        ///  在回复登陆成功之后发送
+        /// </summary>
         private void AfterSuccLogin()
         {
-            //this.Send_G2C_Rooms();
+            this.Send_G2C_UserBaseInfo();
+            this.Send_G2C_Rooms();
         }
 
         private void Send_G2C_UserBaseInfo()

@@ -14,16 +14,7 @@ namespace ETHotfix
         {
             //Game.EventSystem.Run(EventIdType.LoginHasFinish);
 
-            FUI fui = Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Hall);
-
-            if (fui == null)
-            {
-                Log.Error($"再刷新HallViewComponent数据时还未创建HallViewComponent");
-            }
-            else
-            {
-                fui.GetComponent<HallViewComponent>().RefreshData(message);
-            }
+            HallViewComponent.Data = message;
 
             await ETTask.CompletedTask;
         }

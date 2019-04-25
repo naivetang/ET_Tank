@@ -26,11 +26,15 @@ namespace ETModel
                 int nowHp = numericComponent[NumericType.Hp];
 
                 if (nowHp <= 0)
+                {
                     tank.Died = true;
 
-                if (tank.Battle.BigMode == BigModel.Time)
-                {
-                    Reset(tank).NoAwait();
+
+
+                    if (tank.Battle.BigMode == BigModel.Time)
+                    {
+                        tank.Battle.TimeResetTank(tank).NoAwait();
+                    }
                 }
             }
             catch (Exception e)
@@ -40,13 +44,5 @@ namespace ETModel
             
         }
 
-        private async ETVoid Reset(Tank tank)
-        {
-            TimerComponent timerComponent = Game.Scene.GetComponent<TimerComponent>();
-
-            await timerComponent.WaitAsync(3000);
-
-            tank.Reset();
-        }
     }
 }

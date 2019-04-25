@@ -449,6 +449,12 @@ message PersonBattleData
 	int32 Level = 7;
 }
 
+message B2C_TankReset // IActorMessage
+{
+	int64 ActorId = 93;
+
+	TankFrameInfo TankFrameInfo = 1;
+}
 
 // 游戏结束
 message B2C_BattleEnd // IActorMessage
@@ -457,15 +463,18 @@ message B2C_BattleEnd // IActorMessage
 
 	int64 BattleId = 1;
 
-	int32 BigModel = 2;
+	// 1:左方胜 2：右方胜
+	int32 WinCamp = 2;
 
-	int32 SmallModel = 3;
+	int32 BigModel = 3;
 
-	int32 LeftCampWinNum = 4;
+	int32 SmallModel = 4;
 
-	int32 RightCampWinNum = 5;
+	int32 LeftCampWinNum = 5;
 
-	repeated PersonBattleData LeftCamp = 6;
+	int32 RightCampWinNum = 6;
 
-	repeated PersonBattleData RightCamp = 7;
+	repeated PersonBattleData LeftCamp = 7;
+
+	repeated PersonBattleData RightCamp = 8;
 }

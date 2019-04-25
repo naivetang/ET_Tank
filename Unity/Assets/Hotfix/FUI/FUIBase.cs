@@ -11,6 +11,8 @@ namespace ETHotfix
         {
             if(Game.Scene.GetComponent<FUIComponent>().Get(this.FUIComponent.Name) != null)
                 Game.Scene.GetComponent<FUIComponent>().Remove(this.FUIComponent.Name);
+
+            this.Dispose();
         }
     }
 }
