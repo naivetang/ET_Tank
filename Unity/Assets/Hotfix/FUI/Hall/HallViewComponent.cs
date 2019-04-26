@@ -2,6 +2,7 @@
 using ETModel;
 using FairyGUI;
 using Google.Protobuf.Collections;
+using UnityEngine;
 
 namespace ETHotfix
 {
@@ -98,11 +99,30 @@ namespace ETHotfix
 
             go.asCom.GetChild("n4").asRichTextField.text = roomSimpleInfo.RoomName;
 
-            go.asCom.GetChild("n5").asRichTextField.text = $"{roomSimpleInfo.PeopleNum}V{roomSimpleInfo.PeopleNum}";
+            go.asCom.GetChild("n5").asRichTextField.text = $"{roomSimpleInfo.ExistNum}/{roomSimpleInfo.PeopleNum*2}";
 
             go.asCom.GetChild("n6").asRichTextField.text = roomSimpleInfo.State == 1 ? Message.Get(4) : Message.Get(5);
 
             go.asCom.GetChild("n7").asRichTextField.text = Map.Get(roomSimpleInfo.MapId);
+
+
+
+            if (roomSimpleInfo.State == 1)
+            {
+                go.asCom.GetChild("n3").asRichTextField.color = Color.white;
+                go.asCom.GetChild("n4").asRichTextField.color = Color.white;
+                go.asCom.GetChild("n5").asRichTextField.color = Color.white;
+                go.asCom.GetChild("n6").asRichTextField.color = Color.white;
+                go.asCom.GetChild("n7").asRichTextField.color = Color.white;
+            }
+            else
+            {
+                go.asCom.GetChild("n3").asRichTextField.color = Color.red;
+                go.asCom.GetChild("n4").asRichTextField.color = Color.red;
+                go.asCom.GetChild("n5").asRichTextField.color = Color.red;
+                go.asCom.GetChild("n6").asRichTextField.color = Color.red;
+                go.asCom.GetChild("n7").asRichTextField.color = Color.red;
+            }
 
             go.data = roomSimpleInfo;
         }
@@ -121,12 +141,12 @@ namespace ETHotfix
 
             msg.RoomId = roomInfo.RoomId;
 
-            G2C_RoomDetailInfo response = (G2C_RoomDetailInfo) await ETModel.SessionComponent.Instance.Session.Call(msg);
+           await ETModel.SessionComponent.Instance.Session.Call(msg);
 
-            if (Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Room) != null)
-                return;
-
-            await FUIFactory.Create<RoomViewComponent, G2C_RoomDetailInfo>(FUIType.Room, response);
+            // if (Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Room) != null)
+            //     return;
+            //
+            // await FUIFactory.Create<RoomViewComponent, G2C_RoomDetailInfo>(FUIType.Room, response);
         }
 
         private void CreateBtn_OnClick()

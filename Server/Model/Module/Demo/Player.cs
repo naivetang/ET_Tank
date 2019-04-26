@@ -118,6 +118,8 @@ namespace ETModel
 
                 simpleInfo.SerialNumber = room.SerialNumber;
 
+                simpleInfo.ExistNum = room.Count;
+
                 msg.RoomSimpleInfo.Add(simpleInfo);
             }
 

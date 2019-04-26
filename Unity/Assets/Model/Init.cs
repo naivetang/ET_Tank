@@ -42,7 +42,6 @@ namespace ETModel
 
                 Game.Scene.AddComponent<NumericWatcherComponent>();
 
-                //await Game.Scene.GetComponent<TimerComponent>().WaitAsync(5000);
 
                 // FGUI包管理
                 Game.Scene.AddComponent<FUIPackageComponent>();

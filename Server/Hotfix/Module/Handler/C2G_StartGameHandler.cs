@@ -77,6 +77,8 @@ namespace ETHotfix
             await mapSession.Call(msg);
 
             room.BroadCastStartGame();
+
+            BroadcastMessage.Send_G2C_Rooms();
         }
     }
 }

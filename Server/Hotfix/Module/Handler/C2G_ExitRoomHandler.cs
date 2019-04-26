@@ -25,10 +25,12 @@ namespace ETHotfix
                 {
                     Game.Scene.GetComponent<RoomComponent>().Remove(roomId);
 
-                    this.Send_G2C_Rooms();
+                    BroadcastMessage.Send_G2C_Rooms();
                 }
 
                 reply(response);
+
+                BroadcastMessage.Send_G2C_Rooms();
             }
             catch (Exception e)
             {
@@ -37,40 +39,7 @@ namespace ETHotfix
             
         }
 
-        private void Send_G2C_Rooms()
-        {
-            // 下发所有房间信息
-            G2C_Rooms msg = new G2C_Rooms();
-
-            msg.RoomSimpleInfo = new RepeatedField<RoomSimpleInfo>();
-
-            Room[] rooms = Game.Scene.GetComponent<RoomComponent>().GetAll;
-
-            foreach (Room room in rooms)
-            {
-                RoomSimpleInfo simpleInfo = new RoomSimpleInfo();
-
-                simpleInfo.RoomId = room.Id;
-
-                simpleInfo.PeopleNum = room.PeopleNum;
-
-                simpleInfo.MapId = room.MapTableId;
-
-                simpleInfo.BigModel = (int)room.BigModel;
-
-                simpleInfo.SmallModel = room.SmallMode;
-
-                simpleInfo.RoomName = room.RoomName;
-
-                simpleInfo.State = room.State;
-
-                simpleInfo.SerialNumber = room.SerialNumber;
-
-                msg.RoomSimpleInfo.Add(simpleInfo);
-            }
-
-            MessageHelper.BroadcastPlayer(msg);
-        }
+      
 
     }
 }

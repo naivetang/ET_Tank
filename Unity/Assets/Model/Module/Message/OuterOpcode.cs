@@ -139,6 +139,7 @@ namespace ETModel
 //当前状态 1:准备中 2:游戏中
 //房间序号
 // 房主id
+// 当前房间已有人数
 // 房间内的详细信息
 	[Message(OuterOpcode.G2C_RoomDetailInfo)]
 	public partial class G2C_RoomDetailInfo : IMessage {}

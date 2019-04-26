@@ -31,9 +31,14 @@ namespace ETHotfix
                 if (room.Add(player) == null)
                 {
                     Log.Error($"房间已满，或者玩家{player.UserDB.Name}已经存在房间{room.RoomName}中");
+                    return;
                 }
 
+                BroadcastMessage.Send_G2C_Rooms();
+
                 await ETTask.CompletedTask;
+
+
             }
             catch (Exception e)
             {

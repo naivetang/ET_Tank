@@ -9,7 +9,5 @@ namespace ETHotfix
             Map message = Game.Scene.GetComponent<ConfigComponent>().Get(typeof(Map), id) as Map;
             return message.ChineseMapName;
         }
-        
-
     }
 }

@@ -3700,6 +3700,17 @@ namespace ETModel {
       }
     }
 
+    private int existNum_;
+    /// <summary>
+    /// 当前房间已有人数
+    /// </summary>
+    public int ExistNum {
+      get { return existNum_; }
+      set {
+        existNum_ = value;
+      }
+    }
+
     public void WriteTo(pb::CodedOutputStream output) {
       if (RoomId != 0L) {
         output.WriteRawTag(8);
@@ -3737,6 +3748,10 @@ namespace ETModel {
         output.WriteRawTag(72);
         output.WriteInt64(RoomOwnerId);
       }
+      if (ExistNum != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(ExistNum);
+      }
     }
 
     public int CalculateSize() {
@@ -3768,6 +3783,9 @@ namespace ETModel {
       if (RoomOwnerId != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoomOwnerId);
       }
+      if (ExistNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ExistNum);
+      }
       return size;
     }
 
@@ -3781,6 +3799,7 @@ namespace ETModel {
       state_ = 0;
       serialNumber_ = 0;
       roomOwnerId_ = 0;
+      existNum_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3821,6 +3840,10 @@ namespace ETModel {
           }
           case 72: {
             RoomOwnerId = input.ReadInt64();
+            break;
+          }
+          case 80: {
+            ExistNum = input.ReadInt32();
             break;
           }
         }

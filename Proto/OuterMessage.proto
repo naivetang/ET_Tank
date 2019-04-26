@@ -365,6 +365,8 @@ message RoomSimpleInfo
 	int32 SerialNumber = 8;
 	// 房主id
 	int64 RoomOwnerId = 9;
+	// 当前房间已有人数
+	int32 ExistNum = 10;
 }
 
 // 房间内的详细信息
