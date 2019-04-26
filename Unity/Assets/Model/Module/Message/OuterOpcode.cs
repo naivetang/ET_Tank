@@ -150,6 +150,21 @@ namespace ETModel
 // 等级
 // 经验
 // 名字
+// 游戏id
+	[Message(OuterOpcode.G2C_SettingInfo)]
+	public partial class G2C_SettingInfo : IMessage {}
+
+// 选择的语言
+// 音量
+// 二进制开关：头顶名字显示、血量显示
+// 旋转速度
+	[Message(OuterOpcode.C2G_SettingInfo)]
+	public partial class C2G_SettingInfo : IMessage {}
+
+// 选择的语言
+// 音量
+// 二进制开关：头顶名字显示、血量显示
+// 旋转速度
 	[Message(OuterOpcode.G2C_Rooms)]
 	public partial class G2C_Rooms : IMessage {}
 
@@ -227,14 +242,16 @@ namespace ETModel
 		 public const ushort RoomSimpleInfo = 134;
 		 public const ushort G2C_RoomDetailInfo = 135;
 		 public const ushort G2C_UserBaseInfo = 136;
-		 public const ushort G2C_Rooms = 137;
-		 public const ushort C2G_StartGame = 138;
-		 public const ushort G2C_StartGame = 139;
-		 public const ushort C2B_LoadAssetFinish = 140;
-		 public const ushort B2C_RoundEnd = 141;
-		 public const ushort B2C_StartNextRound = 142;
-		 public const ushort PersonBattleData = 143;
-		 public const ushort B2C_TankReset = 144;
-		 public const ushort B2C_BattleEnd = 145;
+		 public const ushort G2C_SettingInfo = 137;
+		 public const ushort C2G_SettingInfo = 138;
+		 public const ushort G2C_Rooms = 139;
+		 public const ushort C2G_StartGame = 140;
+		 public const ushort G2C_StartGame = 141;
+		 public const ushort C2B_LoadAssetFinish = 142;
+		 public const ushort B2C_RoundEnd = 143;
+		 public const ushort B2C_StartNextRound = 144;
+		 public const ushort PersonBattleData = 145;
+		 public const ushort B2C_TankReset = 146;
+		 public const ushort B2C_BattleEnd = 147;
 	}
 }

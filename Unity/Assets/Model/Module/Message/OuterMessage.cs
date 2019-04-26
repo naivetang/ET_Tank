@@ -15,6 +15,12 @@ namespace ETModel {
     Right = 2,
   }
 
+  public enum Language {
+    Lnone = 0,
+    Chinese = 1,
+    English = 2,
+  }
+
   #endregion
 
   #region Messages
@@ -3992,6 +3998,17 @@ namespace ETModel {
       }
     }
 
+    private long userDBID_;
+    /// <summary>
+    /// 游戏id
+    /// </summary>
+    public long UserDBID {
+      get { return userDBID_; }
+      set {
+        userDBID_ = value;
+      }
+    }
+
     public void WriteTo(pb::CodedOutputStream output) {
       if (Level != 0) {
         output.WriteRawTag(8);
@@ -4004,6 +4021,10 @@ namespace ETModel {
       if (Name.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Name);
+      }
+      if (UserDBID != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(UserDBID);
       }
     }
 
@@ -4018,6 +4039,9 @@ namespace ETModel {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
+      if (UserDBID != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UserDBID);
+      }
       return size;
     }
 
@@ -4025,6 +4049,7 @@ namespace ETModel {
       level_ = 0;
       experience_ = 0;
       name_ = "";
+      userDBID_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4041,6 +4066,242 @@ namespace ETModel {
           }
           case 26: {
             Name = input.ReadString();
+            break;
+          }
+          case 32: {
+            UserDBID = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class G2C_SettingInfo : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_SettingInfo> _parser = new pb::MessageParser<G2C_SettingInfo>(() => (G2C_SettingInfo)MessagePool.Instance.Fetch(typeof(G2C_SettingInfo)));
+    public static pb::MessageParser<G2C_SettingInfo> Parser { get { return _parser; } }
+
+    private global::ETModel.Language language_ = 0;
+    /// <summary>
+    /// 选择的语言
+    /// </summary>
+    public global::ETModel.Language Language {
+      get { return language_; }
+      set {
+        language_ = value;
+      }
+    }
+
+    private int volume_;
+    /// <summary>
+    /// 音量
+    /// </summary>
+    public int Volume {
+      get { return volume_; }
+      set {
+        volume_ = value;
+      }
+    }
+
+    private int binarySwitch_;
+    /// <summary>
+    /// 二进制开关：头顶名字显示、血量显示
+    /// </summary>
+    public int BinarySwitch {
+      get { return binarySwitch_; }
+      set {
+        binarySwitch_ = value;
+      }
+    }
+
+    private int rotSpeed_;
+    /// <summary>
+    /// 旋转速度
+    /// </summary>
+    public int RotSpeed {
+      get { return rotSpeed_; }
+      set {
+        rotSpeed_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Language != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Language);
+      }
+      if (Volume != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Volume);
+      }
+      if (BinarySwitch != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(BinarySwitch);
+      }
+      if (RotSpeed != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(RotSpeed);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (Language != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Language);
+      }
+      if (Volume != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Volume);
+      }
+      if (BinarySwitch != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BinarySwitch);
+      }
+      if (RotSpeed != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RotSpeed);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      volume_ = 0;
+      binarySwitch_ = 0;
+      rotSpeed_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            language_ = (global::ETModel.Language) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            Volume = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            BinarySwitch = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            RotSpeed = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class C2G_SettingInfo : pb::IMessage {
+    private static readonly pb::MessageParser<C2G_SettingInfo> _parser = new pb::MessageParser<C2G_SettingInfo>(() => (C2G_SettingInfo)MessagePool.Instance.Fetch(typeof(C2G_SettingInfo)));
+    public static pb::MessageParser<C2G_SettingInfo> Parser { get { return _parser; } }
+
+    private global::ETModel.Language language_ = 0;
+    /// <summary>
+    /// 选择的语言
+    /// </summary>
+    public global::ETModel.Language Language {
+      get { return language_; }
+      set {
+        language_ = value;
+      }
+    }
+
+    private int volume_;
+    /// <summary>
+    /// 音量
+    /// </summary>
+    public int Volume {
+      get { return volume_; }
+      set {
+        volume_ = value;
+      }
+    }
+
+    private int binarySwitch_;
+    /// <summary>
+    /// 二进制开关：头顶名字显示、血量显示
+    /// </summary>
+    public int BinarySwitch {
+      get { return binarySwitch_; }
+      set {
+        binarySwitch_ = value;
+      }
+    }
+
+    private int rotSpeed_;
+    /// <summary>
+    /// 旋转速度
+    /// </summary>
+    public int RotSpeed {
+      get { return rotSpeed_; }
+      set {
+        rotSpeed_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Language != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Language);
+      }
+      if (Volume != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Volume);
+      }
+      if (BinarySwitch != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(BinarySwitch);
+      }
+      if (RotSpeed != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(RotSpeed);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (Language != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Language);
+      }
+      if (Volume != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Volume);
+      }
+      if (BinarySwitch != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BinarySwitch);
+      }
+      if (RotSpeed != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RotSpeed);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      volume_ = 0;
+      binarySwitch_ = 0;
+      rotSpeed_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            language_ = (global::ETModel.Language) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            Volume = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            BinarySwitch = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            RotSpeed = input.ReadInt32();
             break;
           }
         }

@@ -9,10 +9,16 @@ namespace ETHotfix
 		{
 			// 发送断线消息
             long id = self.Player.UnitId == 0L? self.Player.TankId : self.Player.UnitId;
-			ActorLocationSender actorLocationSender = Game.Scene.GetComponent<ActorLocationSenderComponent>().Get(id);
-			//actorLocationSender.Send(new G2M_SessionDisconnect());
-			actorLocationSender.Send(new G2B_SessionDisconnect());
-			Game.Scene.GetComponent<PlayerComponent>()?.Remove(self.Player.Id);
+            if (id != 0)
+            {
+                ActorLocationSender actorLocationSender = Game.Scene.GetComponent<ActorLocationSenderComponent>().Get(id);
+                //actorLocationSender.Send(new G2M_SessionDisconnect());
+                actorLocationSender.Send(new G2B_SessionDisconnect());
+            }
+            Game.Scene.GetComponent<PlayerComponent>()?.Remove(self.Player.Id);
+
 		}
+
+        
 	}
 }

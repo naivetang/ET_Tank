@@ -37,8 +37,12 @@ namespace ETModel
 		}
 
 		public void Remove(long id)
-		{
+        {
+            Player player = Get(id);
+
 			this.idPlayers.Remove(id);
+
+            player.Dispose();
 		}
 
 		public int Count

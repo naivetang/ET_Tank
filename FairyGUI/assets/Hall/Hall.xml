@@ -22,7 +22,7 @@
       <Button title="好友"/>
     </component>
     <component id="n15_ou9f" name="n15" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,705" size="241,44" group="n3_ou9f">
-      <Button title="关于"/>
+      <Button title="设置"/>
     </component>
     <component id="n16_ou9f" name="n16" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,792" size="241,55" group="n3_ou9f">
       <Button title="退出"/>

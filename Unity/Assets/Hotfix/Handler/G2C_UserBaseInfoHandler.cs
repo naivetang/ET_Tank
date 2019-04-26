@@ -15,6 +15,8 @@ namespace ETHotfix
             player.Level = message.Level;
 
             player.Experience = message.Experience;
+
+            player.DbID = message.UserDBID;
         }
     }
 }

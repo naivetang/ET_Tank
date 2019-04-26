@@ -61,7 +61,7 @@ namespace ETModel
         {
             RoomOnePeople one = new RoomOnePeople();
             one.Id = player.Id;
-            one.Level = player.UserDB.Level;
+            one.Level = player.UserDB.GetComponent<UserBaseComponent>().Level;
             one.Name = player.UserDB.Name;
             one.State = false;
             one.Camp = 1;
@@ -75,7 +75,7 @@ namespace ETModel
         {
             RoomOnePeople one = new RoomOnePeople();
             one.Id = player.Id;
-            one.Level = player.UserDB.Level;
+            one.Level = player.UserDB.GetComponent<UserBaseComponent>().Level;
             one.Name = player.UserDB.Name;
             one.State = false;
             one.Camp = 2;

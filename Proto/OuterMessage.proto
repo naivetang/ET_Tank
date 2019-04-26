@@ -381,6 +381,12 @@ message G2C_RoomDetailInfo // IMessage
 	RoomSimpleInfo RoomSimpleInfo = 4;
 }
 
+enum Language
+{
+	LNone = 0;
+	Chinese = 1;
+	English = 2;
+}
 
 message G2C_UserBaseInfo // IMessage
 {
@@ -392,6 +398,39 @@ message G2C_UserBaseInfo // IMessage
 	
 	// 名字
 	string Name = 3;
+
+	// 游戏id
+	int64 UserDBID = 4;
+}
+
+message G2C_SettingInfo // IMessage
+{
+	// 选择的语言
+	Language Language = 1;
+
+	// 音量
+	int32 Volume = 2;
+
+	// 二进制开关：头顶名字显示、血量显示
+	int32 BinarySwitch = 3;
+
+	// 旋转速度
+	int32 RotSpeed = 4;
+}
+
+message C2G_SettingInfo // IMessage
+{
+	// 选择的语言
+	Language Language = 1;
+
+	// 音量
+	int32 Volume = 2;
+
+	// 二进制开关：头顶名字显示、血量显示
+	int32 BinarySwitch = 3;
+
+	// 旋转速度
+	int32 RotSpeed = 4;
 }
 
 message G2C_Rooms // IMessage

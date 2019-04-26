@@ -5,14 +5,6 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ETModel
 {
-    [ObjectSystem]
-    public class UserDBAwakeSystem: AwakeSystem<UserDB>
-    {
-        public override void Awake(UserDB self)
-        {
-            self.Awake();
-        }
-    }
     /// <summary>
     /// 登陆时候检查用的
     /// </summary>
@@ -31,16 +23,24 @@ namespace ETModel
     public class UserDB : ETModel.Entity
     {
         public string Name;
+    }
 
-        public int Level;
+    public class UserBaseComponent : Component, ISerializeToEntity
+    {
+        public int Level = 1;
 
-        public int Experience;
+        public int Experience = 0;
+    }
 
-        public void Awake()
-        {
-            this.Level = 1;
+    [BsonIgnoreExtraElements]
+    public class SettingInfoComponent: Component , ISerializeToEntity
+    {
+        public Language Language = Language.Chinese;
 
-            this.Experience = 0;
-        }
+        public int Volume = 100;
+
+        public int BinarySwitch = 0x0001;
+
+        public int RotSpeed = 50;
     }
 }

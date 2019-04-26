@@ -3,14 +3,14 @@ using Google.Protobuf.Collections;
 
 namespace ETModel
 {
-	[ObjectSystem]
-	public class PlayerSystem : AwakeSystem<Player, string>
-	{
-		public override void Awake(Player self, string a)
-		{
-			self.Awake(a);
-		}
-	}
+    [ObjectSystem]
+    public class PlayerSystem : AwakeSystem<Player, string>
+    {
+        public override void Awake(Player self, string a)
+        {
+            self.Awake(a);
+        }
+    }
 
     [ObjectSystem]
     public class Player2System : AwakeSystem<Player, Session, UserDB>
@@ -22,7 +22,7 @@ namespace ETModel
     }
 
     [ObjectSystem]
-    public class PlayerStartSystem:StartSystem<Player>
+    public class PlayerStartSystem : StartSystem<Player>
     {
         public override void Start(Player self)
         {
@@ -39,8 +39,8 @@ namespace ETModel
     }
 
     public sealed class Player : Entity
-	{
-		public string Account { get; private set; }
+    {
+        public string Account { get; private set; }
 
         public UserDB UserDB { get; private set; }
 
@@ -50,29 +50,30 @@ namespace ETModel
 
         public Session Session { get; set; }
 
-		public void Awake(string account)
-		{
-			this.Account = account;
-		}
+        public void Awake(string account)
+        {
+            this.Account = account;
+        }
 
-        public void Awake(Session session,UserDB userDb)
+        public void Awake(Session session, UserDB userDb)
         {
             this.UserDB = userDb;
             this.Session = session;
-            
+
         }
 
         public void Start()
         {
             this.AfterSuccLogin();
         }
-        
+
         /// <summary>
         ///  在回复登陆成功之后发送
         /// </summary>
         private void AfterSuccLogin()
         {
             this.Send_G2C_UserBaseInfo();
+            this.Send_G2C_SettingInfo();
             this.Send_G2C_Rooms();
         }
 
@@ -81,13 +82,36 @@ namespace ETModel
             // 下发等级，名字
             G2C_UserBaseInfo msg = new G2C_UserBaseInfo();
 
-            msg.Level = this.UserDB.Level;
+            UserBaseComponent userBase = this.UserDB.GetComponent<UserBaseComponent>();
 
-            msg.Experience = this.UserDB.Experience;
+            msg.Level = userBase.Level;
+
+            msg.Experience = userBase.Experience;
 
             msg.Name = this.UserDB.Name;
 
+            msg.UserDBID = this.UserDB.Id;
+
             this.Session.Send(msg);
+        }
+
+        private void Send_G2C_SettingInfo()
+        {
+            SettingInfoComponent settingInfo = this.UserDB.GetComponent<SettingInfoComponent>();
+
+            G2C_SettingInfo msg = new G2C_SettingInfo();
+
+            msg.Language = settingInfo.Language;
+
+            msg.Volume = settingInfo.Volume;
+
+            msg.BinarySwitch = settingInfo.BinarySwitch;
+
+            msg.RotSpeed = settingInfo.RotSpeed;
+
+            this.Session.Send(msg);
+
+            //msg.Language = this.UserDB;
         }
 
         private void Send_G2C_Rooms()
@@ -128,13 +152,20 @@ namespace ETModel
 
 
         public override void Dispose()
-		{
-			if (this.IsDisposed)
-			{
-				return;
-			}
+        {
+            this.DisposeAsync().NoAwait();
+        }
 
-			base.Dispose();
+        private async ETVoid DisposeAsync()
+        {
+            if (this.IsDisposed)
+            {
+                return;
+            }
+
+            await this.UpdateUserDB();
+
+            base.Dispose();
 
             this.Account = string.Empty;
 
@@ -143,6 +174,19 @@ namespace ETModel
             this.TankId = 0L;
 
             this.UnitId = 0L;
+
+            this.Session = null;
         }
-	}
+
+
+        public async ETTask UpdateUserDB()
+        {
+
+            DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
+
+            await db.Save(this.UserDB);
+
+
+        }
+    }
 }

@@ -20,5 +20,7 @@
         /// 结算界面
         /// </summary>
         public const string CombatSettlement = "CombatSettlement";
+
+        public const string GameSettings = "GameSettings";
     }
 }

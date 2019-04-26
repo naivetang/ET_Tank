@@ -12,6 +12,8 @@
 
         public int Experience { get; set; }
 
+        public long DbID { get; set; }
+
 
         public override void Dispose()
 		{

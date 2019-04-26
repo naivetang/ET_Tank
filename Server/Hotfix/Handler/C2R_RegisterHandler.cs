@@ -70,6 +70,10 @@ namespace ETHotfix
 
             userDb.Name = Name;
 
+            userDb.AddComponent<UserBaseComponent>();
+
+            userDb.AddComponent<SettingInfoComponent>();
+
             await db.Save(userDb);
 
         }

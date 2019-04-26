@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <component id="n0_tg57" name="n0" src="s4di1d" fileName="Bg_Null.xml" pkg="imnv6csb" xy="0,0"/>
+    <image id="n1_tg57" name="n1" src="tg571" fileName="BBG.png" xy="555,155" size="808,794"/>
+    <image id="n2_tg57" name="n2" src="tg573" fileName="Text BG.png" xy="545,65" size="828,89"/>
+    <image id="n3_tg57" name="n3" src="tg572" fileName="Ornamental.png" xy="542,53" size="230,30"/>
+    <text id="n4_tg57" name="n4" xy="849,80" size="220,55" font="Consolas" fontSize="45" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="设置"/>
+    <text id="n5_tg57" name="n5" xy="648,224" size="268,40" font="Consolas" fontSize="30" color="#ffffff" vAlign="middle" text="名字名字名字名字"/>
+    <text id="n6_tg57" name="n6" xy="648,300" size="134,40" font="Consolas" fontSize="30" color="#ffffff" vAlign="middle" text="游戏ID："/>
+    <image id="n7_tg57" name="n7" src="tg574" fileName="xian_0012.png" xy="585,371" size="732,2"/>
+    <text id="n8_tg57" name="n8" xy="650,476" size="68,40" group="n11_tg57" font="Consolas" fontSize="30" color="#ffffff" vAlign="middle" text="音效"/>
+    <component id="n9_tg57" name="n9" src="tg571u" fileName="CheckBox/CheckBox.xml" pkg="imnv6csb" xy="735,476" size="38,38" group="n11_tg57">
+      <relation target="n8_tg57" sidePair="middle-middle"/>
+    </component>
+    <component id="n10_tg57" name="n10" src="tg57i" fileName="Slider/Slider2.xml" xy="838,481" size="387,28" group="n11_tg57">
+      <relation target="n8_tg57" sidePair="middle-middle"/>
+      <Slider value="50" max="100"/>
+    </component>
+    <group id="n11_tg57" name="n11" xy="650,476" size="575,40" advanced="true"/>
+    <image id="n14_tg57" name="n14" src="tg574" fileName="xian_0012.png" xy="585,555" size="732,2"/>
+    <text id="n12_tg57" name="n12" xy="652,401" size="65,40" group="n15_tg57" font="Consolas" fontSize="30" color="#ffffff" vAlign="middle" text="语言"/>
+    <component id="n13_tg57" name="n13" src="s4di1i" fileName="DropDown/ComboBox.xml" pkg="imnv6csb" xy="837,398" size="179,43" group="n15_tg57">
+      <ComboBox title="语言" visibleItemCount="10"/>
+    </component>
+    <group id="n15_tg57" name="n15" xy="652,398" size="364,43" advanced="true" collapsed="true"/>
+    <component id="n17_tg57" name="n17" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="857,855">
+      <Button title="确认"/>
+    </component>
+    <text id="n18_tg57" name="n18" xy="659,621" size="220,40" font="Consolas" fontSize="30" color="#ffffff" vAlign="middle" autoSize="none" text="头顶名字显示"/>
+    <text id="n19_tg57" name="n19" xy="659,677" size="217,40" font="Consolas" fontSize="30" color="#ffffff" vAlign="middle" autoSize="none" text="头顶血量显示"/>
+    <text id="n20_tg57" name="n20" xy="659,731" size="171,40" font="Consolas" fontSize="30" color="#ffffff" vAlign="middle" autoSize="none" text="旋转速度"/>
+    <component id="n21_tg57" name="n21" src="tg57i" fileName="Slider/Slider2.xml" xy="899,737" size="391,27">
+      <relation target="n20_tg57" sidePair="middle-middle"/>
+      <Slider value="50" max="100"/>
+    </component>
+    <component id="n22_tg57" name="n22" src="tg57g" fileName="ChectBtn/Button2.xml" xy="901,616">
+      <relation target="n18_tg57" sidePair="middle-middle"/>
+    </component>
+    <component id="n23_tg57" name="n23" src="tg57g" fileName="ChectBtn/Button2.xml" xy="901,673">
+      <relation target="n19_tg57" sidePair="middle-middle"/>
+    </component>
+  </displayList>
+</component>

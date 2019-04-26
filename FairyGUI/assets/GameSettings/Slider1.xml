@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="490,28" extention="Slider">
+  <displayList>
+    <image id="n0_tg57" name="n0" src="tg577" fileName="ditiao_0529.png" xy="0,0" size="490,28">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_tg57" name="bar" src="tg578" fileName="ditiao_0530.png" xy="2,2" size="466,24" color="#4f6189">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <component id="n4_tg57" name="grip" src="tg576" fileName="Button1.xml" xy="471,15" pivot="0.5,0.5" anchor="true" size="34,36">
+      <relation target="n1_tg57" sidePair="right-right"/>
+      <relation target="" sidePair="width-width%,height-height%"/>
+    </component>
+    <text id="n2_tg57" name="title" xy="491,-3" size="56,32" font="Consolas" fontSize="18" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="100%">
+      <relation target="n0_tg57" sidePair="left-right,middle-middle"/>
+    </text>
+  </displayList>
+  <Slider/>
+</component>

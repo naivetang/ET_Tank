@@ -38,7 +38,7 @@ namespace ETHotfix
 
                 msg.Name = player.UserDB.Name;
 
-                msg.Level = player.UserDB.Level;
+                msg.Level = player.UserDB.GetComponent<UserBaseComponent>().Level;
 
                 B2G_CreateTank createTank = (B2G_CreateTank)await battleSession.Call(msg);
                 player.TankId = createTank.TankId;

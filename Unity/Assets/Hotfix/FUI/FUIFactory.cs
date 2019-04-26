@@ -10,6 +10,8 @@ namespace ETHotfix
         {
             await ETTask.CompletedTask;
 
+            
+
             // 可以同步或者异步加载,异步加载需要搞个转圈圈,这里为了简单使用同步加载
             // await ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackageAsync(FUIType.Login);
             ETModel.Game.Scene.GetComponent<FUIPackageComponent>().AddPackage(packageName);

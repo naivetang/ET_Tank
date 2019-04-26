@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
-using ETModel;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
-namespace ETHotfix
+namespace ETModel
 {
     [ObjectSystem]
     public class DbProxyComponentSystem: AwakeSystem<DBProxyComponent>

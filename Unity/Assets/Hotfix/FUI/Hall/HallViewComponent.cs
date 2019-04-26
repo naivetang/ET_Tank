@@ -21,6 +21,8 @@ namespace ETHotfix
 
         private GList m_list;
 
+        private GButton m_settingBtn;
+
         private List<RoomSimpleInfo> m_rooms = new List<RoomSimpleInfo>();
 
         private static G2C_Rooms m_data;
@@ -73,6 +75,10 @@ namespace ETHotfix
 
             m_list = this.FUIComponent.Get("n41").GObject.asCom.GetChild("n0").asList;
 
+            m_settingBtn = this.FUIComponent.Get("n15").GObject.asButton;
+
+            m_settingBtn.onClick.Set(this.SettingBtn_OnClick);
+
             m_list.itemRenderer = ItemRenderer;
 
             m_list.onClickItem.Add(this.ListItemClick);
@@ -88,6 +94,16 @@ namespace ETHotfix
         private void UI()
         {
             this.m_list.numItems = this.m_rooms.Count;
+        }
+
+        private void SettingBtn_OnClick()
+        {
+            this.CreateSetAsync().NoAwait();
+        }
+
+        private async ETVoid CreateSetAsync()
+        {
+            FUI fui = await FUIFactory.Create<GameSettingsViewComponent>(FUIType.GameSettings);
         }
 
         private void ItemRenderer(int i, GObject go)
