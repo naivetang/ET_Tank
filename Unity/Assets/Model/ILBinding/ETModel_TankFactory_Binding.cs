@@ -41,9 +41,10 @@ namespace ILRuntime.Runtime.Generated
             __intp.Free(ptr_of_this_method);
 
 
-            var result_of_this_method = ETModel.TankFactory.Create(@firstInfo);
+            //var result_of_this_method = ETModel.TankFactory.Create(@firstInfo);
 
-            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+            //return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
+            return null;
         }
 
 

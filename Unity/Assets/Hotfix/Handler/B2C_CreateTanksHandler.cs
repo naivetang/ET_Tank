@@ -22,12 +22,12 @@ namespace ETHotfix
                     TankFrameInfo tankInfo = firstInfo.TankFrameInfo;
                     if (tankInfo.TankId == PlayerComponent.Instance.MyPlayer.TankId)
                     {
-                        Tank tank = TankFactory.Create(firstInfo);
-                        tank.Position = new Vector3(tankInfo.PX * 1f / Tank.m_coefficient, tankInfo.PY * 1f / Tank.m_coefficient,
+                        Vector3 pos = new Vector3(tankInfo.PX * 1f / Tank.m_coefficient, tankInfo.PY * 1f / Tank.m_coefficient,
                                 tankInfo.PZ * 1f / Tank.m_coefficient);
 
-                        tank.GameObject.transform.eulerAngles = new Vector3(tankInfo.RX * 1f / Tank.m_coefficient, tankInfo.RY * 1f / Tank.m_coefficient,
-                                tankInfo.RZ * 1f / Tank.m_coefficient);
+                        Vector3 rot = new Vector3(tankInfo.RX * 1f / Tank.m_coefficient, tankInfo.RY * 1f / Tank.m_coefficient,
+                                       tankInfo.RZ * 1f / Tank.m_coefficient);
+                        Tank tank = TankFactory.Create(firstInfo, pos, rot);
                         break;
                     }
                 }
@@ -40,12 +40,13 @@ namespace ETHotfix
                     continue;
                 }
 
-                Tank tank = TankFactory.Create(firstInfo);
-
-                tank.Position = new Vector3(tankInfo.PX * 1f / Tank.m_coefficient, tankInfo.PY * 1f / Tank.m_coefficient,
+                Vector3 pos = new Vector3(tankInfo.PX * 1f / Tank.m_coefficient, tankInfo.PY * 1f / Tank.m_coefficient,
                         tankInfo.PZ * 1f / Tank.m_coefficient);
-                tank.GameObject.transform.eulerAngles = new Vector3(tankInfo.RX * 1f / Tank.m_coefficient, tankInfo.RY * 1f / Tank.m_coefficient,
+
+                Vector3 rot = new Vector3(tankInfo.RX * 1f / Tank.m_coefficient, tankInfo.RY * 1f / Tank.m_coefficient,
                         tankInfo.RZ * 1f / Tank.m_coefficient);
+
+                Tank tank = TankFactory.Create(firstInfo, pos, rot);
             }
         }
     }

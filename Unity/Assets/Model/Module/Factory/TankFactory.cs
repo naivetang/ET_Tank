@@ -4,7 +4,7 @@ namespace ETModel
 {
     public static class TankFactory
     {
-        public static Tank Create(TankInfoFirstEnter firstInfo)
+        public static Tank Create(TankInfoFirstEnter firstInfo,Vector3 Pos, Vector3 Rot)
         {
             long id = firstInfo.TankFrameInfo.TankId;
 
@@ -18,6 +18,12 @@ namespace ETModel
 
             Tank tank = ComponentFactory.CreateWithId<Tank>(id);
             tank.GameObject = resourcesComponent.NewObj(PrefabType.Tank, prefab);
+
+            tank.GameObject.transform.position = Pos;
+
+            tank.GameObject.transform.eulerAngles = Rot;
+
+
             GameObject parent = GameObject.Find($"/Global/Unit");
             tank.GameObject.transform.SetParent(parent.transform, false);
 

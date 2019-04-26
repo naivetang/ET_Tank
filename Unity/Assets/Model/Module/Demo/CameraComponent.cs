@@ -41,7 +41,7 @@ namespace ETModel
         private float minRoll = PF.Mathf.Deg2Rad(-10);//10f * Mathf.PI * 2 / 360;
 
         //纵向角度
-        private float roll = 30f * Mathf.PI * 2 / 360;
+        private float roll = 0f * Mathf.PI * 2 / 360;
 
         //横向旋转角度
         private float rotSpeed = 0.2f;
@@ -65,6 +65,8 @@ namespace ETModel
 		{
 			this.mainCamera = Camera.main;
             this.tank = this.GetParent<Tank>();
+
+            rot = PF.Mathf.Deg2Rad(this.tank.GameObject.transform.eulerAngles.y + 180);
         }
 
 		public void LateUpdate()
@@ -90,11 +92,11 @@ namespace ETModel
 
             float height = this.distance * Mathf.Sin(roll);
 
-            cameraPos.x = targetPos.x + d * Mathf.Cos(rot);
+            cameraPos.x = targetPos.x + d * Mathf.Sin(rot);
 
             cameraPos.y = targetPos.y + height;
 
-            cameraPos.z = targetPos.z + d * Mathf.Sin(rot);
+            cameraPos.z = targetPos.z + d * Mathf.Cos(rot);
 
             this.MainCamera.transform.position = cameraPos;
 
@@ -118,7 +120,7 @@ namespace ETModel
         {
             float x = Input.GetAxis("Mouse X") * this.rotSpeed;
 
-            this.rot -= x;
+            this.rot += x;
 
 
 
