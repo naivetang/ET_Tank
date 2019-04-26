@@ -75,7 +75,8 @@ namespace ETHotfix
             }
         }
 
-        private void StartFUI()
+
+        protected override void StartFUI()
         {
             this.m_startGame = this.FUIComponent.Get("n1").GObject.asButton;
 

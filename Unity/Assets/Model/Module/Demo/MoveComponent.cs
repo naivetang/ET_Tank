@@ -36,7 +36,7 @@ namespace ETModel
 			}
 			
 			Unit unit = this.GetParent<Unit>();
-			long timeNow = TimeHelper.Now();
+			long timeNow = TimeHelper.NowMilliSecond();
 
 			if (timeNow - this.StartTime >= this.needTime)
 			{
@@ -65,7 +65,7 @@ namespace ETModel
 
 			
 			this.StartPos = unit.Position;
-			this.StartTime = TimeHelper.Now();
+			this.StartTime = TimeHelper.NowMilliSecond();
 			float distance = (this.Target - this.StartPos).magnitude;
 			if (Math.Abs(distance) < 0.1f)
 			{

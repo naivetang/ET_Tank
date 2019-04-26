@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using ETModel;
 using UnityEngine.SceneManagement;
 
-namespace ETModel
+namespace ETHotfix
 {
 
     [ObjectSystem]
@@ -24,8 +25,8 @@ namespace ETModel
 		}
 	}
 
-	public class SceneChangeComponent: Component
-	{
+	public class SceneChangeComponent: Component, System.IDisposable
+    {
 		public AsyncOperation loadMapOperation;
 		public ETTaskCompletionSource tcs;
 	    public float deltaTime;
@@ -33,7 +34,7 @@ namespace ETModel
 
         public void Awake()
         {
-            Game.EventSystem.Run("SceneChange");
+            Game.EventSystem.Run(EventIdType.ChangeScene);
         }
 
 		public ETTask ChangeSceneAsync(string sceneName)
@@ -41,7 +42,8 @@ namespace ETModel
             this.tcs = new ETTaskCompletionSource();
 			// 加载map
 			this.loadMapOperation = SceneManager.LoadSceneAsync(sceneName);
-			return this.tcs.Task;
+
+            return this.tcs.Task;
 		}
 
 		public int Process
@@ -75,6 +77,9 @@ namespace ETModel
 			}
 			
 			this.Entity.RemoveComponent<SceneChangeComponent>();
-		}
-	}
+
+            Game.EventSystem.Run(EventIdType.ChangeSceneFinish, SceneManager.GetActiveScene().name);
+        }
+
+    }
 }

@@ -42,7 +42,7 @@ namespace ETModel
 				return;
 			}
 
-			long timeNow = TimeHelper.Now();
+			long timeNow = TimeHelper.NowMilliSecond();
 
 			if (timeNow < this.minTime)
 			{
@@ -118,7 +118,7 @@ namespace ETModel
 		public ETTask WaitAsync(long time, CancellationToken cancellationToken)
 		{
 			ETTaskCompletionSource tcs = new ETTaskCompletionSource();
-			Timer timer = new Timer { Id = IdGenerater.GenerateId(), Time = TimeHelper.Now() + time, tcs = tcs };
+			Timer timer = new Timer { Id = IdGenerater.GenerateId(), Time = TimeHelper.NowMilliSecond() + time, tcs = tcs };
 			this.timers[timer.Id] = timer;
 			this.timeId.Add(timer.Time, timer.Id);
 			if (timer.Time < this.minTime)
@@ -132,7 +132,7 @@ namespace ETModel
 		public ETTask WaitAsync(long time)
 		{
 			ETTaskCompletionSource tcs = new ETTaskCompletionSource();
-			Timer timer = new Timer { Id = IdGenerater.GenerateId(), Time = TimeHelper.Now() + time, tcs = tcs };
+			Timer timer = new Timer { Id = IdGenerater.GenerateId(), Time = TimeHelper.NowMilliSecond() + time, tcs = tcs };
 			this.timers[timer.Id] = timer;
 			this.timeId.Add(timer.Time, timer.Id);
 			if (timer.Time < this.minTime)

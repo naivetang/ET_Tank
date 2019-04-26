@@ -6,5 +6,7 @@
 	    public const string UILoading = "UILoading";
 
 	    public const string Common = "Common";
+	    public const string RootLayer = "RootLayer";
 	}
+
 }

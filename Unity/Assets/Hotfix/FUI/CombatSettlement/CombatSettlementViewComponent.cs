@@ -41,7 +41,8 @@ namespace ETHotfix
             this.StartFUI();
         }
 
-        private void StartFUI()
+
+        protected override void StartFUI()
         {
             m_againBtn = this.FUIComponent.Get("n10").GObject.asButton;
             m_leftList = this.FUIComponent.Get("n32").Get("n1").GObject.asList;

@@ -67,16 +67,16 @@ namespace ETHotfix
 			this.GObject = null;
 		}
 
-		public void Add(FUI ui)
+		public void Add(FUI ui ,int index)
 		{
 			if (!(this.GObject is GComponent gComponent))
 			{
 				throw new Exception($"this ui is not GComponent, so has not child, {this.Name}");
 			}
 			this.children.Add(ui.Name, ui);
-			gComponent.AddChild(ui.GObject);
+            gComponent.AddChildAt(ui.GObject, index);
 			ui.Parent = this;
-		}
+        }
 
 		public void Remove(string name)
 		{
@@ -125,8 +125,9 @@ namespace ETHotfix
 
 			if (!(this.GObject is GComponent gComponent))
 			{
-				throw new Exception($"this ui is not GComponent, so has not child, {this.Name}");
-			}
+                Log.Error($"this ui is not GComponent, so has not child, {this.Name}");
+                return null;
+            }
 			GObject gObject = gComponent.GetChild(name);
 
 		    if (gObject == null)
@@ -136,10 +137,14 @@ namespace ETHotfix
 
 			child = ComponentFactory.Create<FUI, GObject>(gObject);
 
-			this.Add(child);
+            child.Parent = this;
+
+            this.children.Add(child.Name, child);
 			
 			return child;
 		}
+
+        public int numChildren => (this.GObject.asCom).numChildren;
 
 		public bool Visible
 		{

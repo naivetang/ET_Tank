@@ -28,5 +28,9 @@
 
         public const string ChangeScene = "ChangeScene";
 
+        public const string ChangeSceneFinish = "ChangeSceneFinish";
+
+        public const string CreateTanksFinish = "CreateTanksFinish";
+
     }
 }

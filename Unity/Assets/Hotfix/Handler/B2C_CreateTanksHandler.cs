@@ -48,6 +48,8 @@ namespace ETHotfix
 
                 Tank tank = TankFactory.Create(firstInfo, pos, rot);
             }
+
+            Game.EventSystem.Run(EventIdType.CreateTanksFinish);
         }
     }
 }

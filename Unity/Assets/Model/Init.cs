@@ -42,8 +42,12 @@ namespace ETModel
 
                 Game.Scene.AddComponent<NumericWatcherComponent>();
 
+                //await Game.Scene.GetComponent<TimerComponent>().WaitAsync(5000);
+
                 // FGUI包管理
-				Game.Scene.AddComponent<FUIPackageComponent>();
+                Game.Scene.AddComponent<FUIPackageComponent>();
+
+                
 
                 // FGUI组件管理
                 Game.Scene.AddComponent<FUIComponent>();
@@ -51,8 +55,10 @@ namespace ETModel
 				// 下载ab包
 				await BundleHelper.DownloadBundle();
 
+                await Game.Scene.GetComponent<FUIPackageComponent>().CreateConstPackage();
+
                 // 加载热更新
-				Game.Hotfix.LoadHotfixAssembly();
+                Game.Hotfix.LoadHotfixAssembly();
 
 				// 加载配置
 				Game.Scene.GetComponent<ResourcesComponent>().LoadBundle("config.unity3d");

@@ -4,6 +4,8 @@
     <image id="gnr40" name="loading_fill.png" path="/" exported="true"/>
     <image id="gnr41" name="darkening_repeatable.png" path="/" exported="true"/>
     <image id="gnr42" name="loading_empty_frame.png" path="/" exported="true"/>
+    <component id="kvwd3" name="Loading.xml" path="/" exported="true"/>
+    <component id="kvwd4" name="LoadingBar.xml" path="/" exported="true"/>
   </resources>
   <publish name="Loading"/>
 </packageDescription>

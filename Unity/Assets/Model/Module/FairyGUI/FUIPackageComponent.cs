@@ -71,6 +71,13 @@ namespace ETModel
 #endif
 		}
 
+
+        public async ETTask CreateConstPackage()
+        {
+            await this.AddPackageAsync(UIType.Common);
+            await this.AddPackageAsync(UIType.RootLayer);
+        }
+
         
 	}
 }

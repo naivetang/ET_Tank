@@ -7,6 +7,9 @@ namespace ETHotfix
     {
         public FUI FUIComponent;
 
+        protected abstract void StartFUI();
+
+
         public virtual void OnClose()
         {
             if(Game.Scene.GetComponent<FUIComponent>().Get(this.FUIComponent.Name) != null)

@@ -1,8 +1,9 @@
-﻿using FairyGUI;
+﻿using System.Collections.Generic;
+using FairyGUI;
 
 namespace ETModel
 {
-	[ObjectSystem]
+    [ObjectSystem]
 	public class FUIComponentAwakeSystem : AwakeSystem<FUIComponent>
 	{
 		public override void Awake(FUIComponent self)
@@ -18,8 +19,7 @@ namespace ETModel
 	public class FUIComponent: Component
 	{
 		public FUI Root;
-		
-		public override void Dispose()
+        public override void Dispose()
 		{
 			if (this.IsDisposed)
 			{

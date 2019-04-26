@@ -49,7 +49,7 @@ namespace ETHotfix
             this.StartFUI();
         }
 
-        private void StartFUI()
+        protected override void StartFUI()
         {
             this.m_closeBtn = this.FUIComponent.Get("Close").GObject.asButton;
 

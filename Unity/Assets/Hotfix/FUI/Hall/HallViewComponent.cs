@@ -66,7 +66,7 @@ namespace ETHotfix
             }
         }
 
-        private void StartFUI()
+        protected override void StartFUI()
         {
             m_createButton = this.FUIComponent.Get("CreateRoom").GObject.asButton;
 

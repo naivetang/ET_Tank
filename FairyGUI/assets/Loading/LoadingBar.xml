@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1880,85" extention="ProgressBar">
+  <displayList>
+    <image id="n0_kvwd" name="n0" src="gnr42" fileName="loading_empty_frame.png" xy="0,0" size="1880,85">
+      <relation target="" sidePair="width-width%,height-height%"/>
+    </image>
+    <image id="n1_kvwd" name="bar" src="gnr40" fileName="loading_fill.png" xy="58,26" size="1765,31">
+      <relation target="" sidePair="width-width%,height-height"/>
+    </image>
+    <text id="n2_kvwd" name="title" xy="1,2" size="1880,83" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="1000">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <ProgressBar/>
+</component>

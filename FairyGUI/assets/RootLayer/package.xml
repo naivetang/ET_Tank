@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="bq193kxa" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="tg570" name="RootLayer.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="RootLayer"/>
+</packageDescription>

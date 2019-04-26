@@ -123,7 +123,7 @@ namespace ETModel
         {
 
             // 时间间隔
-            this.m_delta = (TimeHelper.Now() - this.m_lastRecvInfoTime) / 1000f;
+            this.m_delta = (TimeHelper.NowMilliSecond() - this.m_lastRecvInfoTime) / 1000f;
             UpdatePos();
             WheelsRotation();
         }
@@ -139,21 +139,21 @@ namespace ETModel
                 this.m_fPos = this.m_lPos + (this.m_nPos - this.m_lPos) * 2;
                 this.m_fRot = this.m_lRot + (this.m_nRot - this.m_lRot) * 2;
 
-                if (TimeHelper.Now() - this.m_lastRecvInfoTime > 300f)
+                if (TimeHelper.NowMilliSecond() - this.m_lastRecvInfoTime > 300f)
                 {
                     this.m_fPos = this.m_nPos;
                     this.m_fRot = this.m_nRot;
                 }
 
                 // 时间间隔
-                //this.m_delta = (TimeHelper.Now() - this.m_lastRecvInfoTime) / 1000f;
+                //this.m_delta = (TimeHelper.NowMilliSecond() - this.m_lastRecvInfoTime) / 1000f;
 
                 //Log.Info($"{this.m_delta}");
 
                 // 更新
                 this.m_lPos = this.m_nPos;
                 this.m_lRot = this.m_nRot;
-                this.m_lastRecvInfoTime = TimeHelper.Now();
+                this.m_lastRecvInfoTime = TimeHelper.NowMilliSecond();
             }
             catch (Exception e)
             {

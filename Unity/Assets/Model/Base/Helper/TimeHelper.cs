@@ -23,9 +23,23 @@ namespace ETModel
         /// 客户端时间 毫秒
         /// </summary>
         /// <returns></returns>
-		public static long Now()
+        public static long Now()
+        {
+            return ClientNow();
+        }
+
+        /// <summary>
+        /// 客户端时间 毫秒
+        /// </summary>
+        /// <returns></returns>
+		public static long NowMilliSecond()
 		{
 			return ClientNow();
 		}
+
+        public static long NowSecond()
+        {
+            return ClientNow() / 1000;
+        }
     }
 }

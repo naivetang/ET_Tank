@@ -84,6 +84,7 @@
     <Compile Include="Assets\Hotfix\Base\Object\IUpdateSystem.cs" />
     <Compile Include="Assets\Hotfix\Base\Object\Object.cs" />
     <Compile Include="Assets\Hotfix\Base\Object\ObjectPool.cs" />
+    <Compile Include="Assets\Hotfix\Component\SceneChangeComponent.cs" />
     <Compile Include="Assets\Hotfix\Entity\Config\Map.cs" />
     <Compile Include="Assets\Hotfix\Entity\Config\Message.cs" />
     <Compile Include="Assets\Hotfix\Entity\Config\UnitConfig.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Assets\Hotfix\Event\GM_EnterBattleAndCreateTank.cs" />
     <Compile Include="Assets\Hotfix\Event\LoginHasFinish_CreateHallUI.cs" />
     <Compile Include="Assets\Hotfix\Event\LoginHasFinish_RemoveLoginUI.cs" />
+    <Compile Include="Assets\Hotfix\Event\SceneChange.cs" />
+    <Compile Include="Assets\Hotfix\Event\SceneChangeFinish.cs" />
     <Compile Include="Assets\Hotfix\FUI\CombatSettlement\CombatSettlementViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\CreateRoom\CreateRoomViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\FUIBase.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="Assets\Hotfix\FUI\GM\FUIGMComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\GM\FUIGMFactory.cs" />
     <Compile Include="Assets\Hotfix\FUI\Hall\HallViewComponent.cs" />
+    <Compile Include="Assets\Hotfix\FUI\Loading\LoadingViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\Room\RoomViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILobby\Component\UILobbyComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILobby\Factory\UILobbyFactory.cs" />

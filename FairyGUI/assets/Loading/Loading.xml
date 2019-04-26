@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" designImageAlpha="0">
+  <displayList>
+    <graph id="n4_tg57" name="n4" xy="0,0" size="1920,1080" type="rect" fillColor="#ff000000"/>
+    <component id="n3_kvwd" name="n3" src="kvwd4" fileName="LoadingBar.xml" xy="14,952" size="1880,85">
+      <ProgressBar value="4" max="100"/>
+    </component>
+  </displayList>
+</component>

@@ -10,7 +10,7 @@ namespace ETHotfix
         {
             try
             {
-                Game.Scene.GetComponent<FUIComponent>().RemoveChildren();
+                Game.Scene.GetComponent<FUIComponent>().CloseUIWhenChangeScene();
             }
             catch (Exception e)
             {
