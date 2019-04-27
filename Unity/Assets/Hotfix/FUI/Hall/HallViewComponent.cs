@@ -17,11 +17,19 @@ namespace ETHotfix
 
     public class HallViewComponent : FUIBase
     {
+        private GTextField m_title;
+
         private GButton m_createButton;
+        private GButton m_mallButton;
+        private GButton m_cangKuButton;
+        private GButton m_friendButton;
+        private GButton m_settingBtn;
+        private GButton m_exitButton;
 
         private GList m_list;
 
-        private GButton m_settingBtn;
+        private GComponent m_listTitle;
+
 
         private List<RoomSimpleInfo> m_rooms = new List<RoomSimpleInfo>();
 
@@ -71,11 +79,18 @@ namespace ETHotfix
 
         protected override void StartFUI()
         {
+            m_title = this.FUIComponent.Get("n9").GObject.asTextField;
+
             m_createButton = this.FUIComponent.Get("CreateRoom").GObject.asButton;
+            this.m_mallButton = this.FUIComponent.Get("n12").GObject.asButton;
+            this.m_cangKuButton = this.FUIComponent.Get("n13").GObject.asButton;
+            this.m_friendButton = this.FUIComponent.Get("n14").GObject.asButton;
+            m_settingBtn = this.FUIComponent.Get("n15").GObject.asButton;
+            this.m_exitButton = this.FUIComponent.Get("n16").GObject.asButton;
 
             m_list = this.FUIComponent.Get("n41").GObject.asCom.GetChild("n0").asList;
 
-            m_settingBtn = this.FUIComponent.Get("n15").GObject.asButton;
+            m_listTitle = this.FUIComponent.Get("n41").GObject.asCom.GetChild("n3").asCom;
 
             m_settingBtn.onClick.Set(this.SettingBtn_OnClick);
 
@@ -94,6 +109,27 @@ namespace ETHotfix
         private void UI()
         {
             this.m_list.numItems = this.m_rooms.Count;
+
+            Lanaguage();
+        }
+
+        private void Lanaguage()
+        {
+
+            this.m_title.text = Message.Get(1006);
+
+            this.m_createButton.text = Message.Get(1007);
+            this.m_mallButton.text = Message.Get(1008);
+            this.m_cangKuButton.text = Message.Get(1009);
+            this.m_friendButton.text = Message.Get(1010);
+            this.m_settingBtn.text = Message.Get(1011);
+            this.m_exitButton.text = Message.Get(1012);
+
+            m_listTitle.GetChild("n3").asRichTextField.text = Message.Get(1013);
+            m_listTitle.GetChild("n4").asRichTextField.text = Message.Get(1014);
+            m_listTitle.GetChild("n5").asRichTextField.text = Message.Get(1016);
+            m_listTitle.GetChild("n6").asRichTextField.text = Message.Get(1017);
+            m_listTitle.GetChild("n7").asRichTextField.text = Message.Get(1015);
         }
 
         private void SettingBtn_OnClick()
@@ -117,7 +153,7 @@ namespace ETHotfix
 
             go.asCom.GetChild("n5").asRichTextField.text = $"{roomSimpleInfo.ExistNum}/{roomSimpleInfo.PeopleNum*2}";
 
-            go.asCom.GetChild("n6").asRichTextField.text = roomSimpleInfo.State == 1 ? Message.Get(4) : Message.Get(5);
+            go.asCom.GetChild("n6").asRichTextField.text = roomSimpleInfo.State == 1 ? Message.Get(1004) : Message.Get(1005);
 
             go.asCom.GetChild("n7").asRichTextField.text = Map.Get(roomSimpleInfo.MapId);
 

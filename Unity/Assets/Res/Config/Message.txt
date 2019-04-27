@@ -1,5 +1,17 @@
-{"Id":1,"Chinese":"开始游戏","English":"Start Game"}
-{"Id":2,"Chinese":"准备","English":"Ready"}
-{"Id":3,"Chinese":"测试","English":"Test"}
-{"Id":4,"Chinese":"准备中","English":"Reading"}
-{"Id":5,"Chinese":"游戏中","English":"Playing"}
+{"Id":1001,"Chinese":"开始游戏","English":"Start Game"}
+{"Id":1002,"Chinese":"准备","English":"Ready"}
+{"Id":1003,"Chinese":"测试","English":"Test"}
+{"Id":1004,"Chinese":"准备中","English":"Reading"}
+{"Id":1005,"Chinese":"游戏中","English":"Playing"}
+{"Id":1006,"Chinese":"坦克大战","English":"TankGame"}
+{"Id":1007,"Chinese":"创建游戏","English":"CreateGame"}
+{"Id":1008,"Chinese":"商城","English":"Mall"}
+{"Id":1009,"Chinese":"仓库","English":"Warehouse"}
+{"Id":1010,"Chinese":"好友","English":"Friend"}
+{"Id":1011,"Chinese":"设置","English":"Setting"}
+{"Id":1012,"Chinese":"退出","English":"Exit"}
+{"Id":1013,"Chinese":"号码","English":"Num"}
+{"Id":1014,"Chinese":"房间名","English":"Room"}
+{"Id":1015,"Chinese":"地图","English":"Map"}
+{"Id":1016,"Chinese":"玩家","English":"Players"}
+{"Id":1017,"Chinese":"状态","English":"State"}

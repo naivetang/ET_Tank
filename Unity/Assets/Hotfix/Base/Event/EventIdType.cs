@@ -32,5 +32,7 @@
 
         public const string CreateTanksFinish = "CreateTanksFinish";
 
+        public const string LanguageChange = "LanguageChange";
+
     }
 }

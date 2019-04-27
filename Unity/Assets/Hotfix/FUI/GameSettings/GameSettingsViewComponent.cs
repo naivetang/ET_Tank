@@ -17,7 +17,7 @@ namespace ETHotfix
 
     public class GameSettingsViewComponent : FUIBase
     {
-        public static G2C_SettingInfo Data { get; set; }
+        public static G2C_SettingInfo Data { get; set; } = null;
 
         private GTextField m_name;
 
@@ -75,7 +75,7 @@ namespace ETHotfix
         {
             
 
-            this.m_language.selectedIndex = 0;
+            this.m_language.selectedIndex = GetLanguage() == Language.Chinese ? 0 : 1;
 
             this.m_name.text = PlayerComponent.Instance.MyPlayer.Name;
 
@@ -103,7 +103,17 @@ namespace ETHotfix
         {
             C2G_SettingInfo msg = new C2G_SettingInfo();
 
-            Data.Language = msg.Language = this.m_language.selectedIndex == 0? Language.Chinese : Language.English;
+            msg.Language = this.m_language.selectedIndex == 0? Language.Chinese : Language.English;
+
+            if (Data.Language != msg.Language)
+            {
+                Data.Language = msg.Language;
+
+                PlayerPrefs.SetInt(PlayerPrefsKey.Language, (int)Data.Language);
+
+                Game.EventSystem.Run(EventIdType.LanguageChange);
+            }
+
 
             Data.Volume = msg.Volume = (int)this.m_volume.value;
 
@@ -123,6 +133,25 @@ namespace ETHotfix
             val += (this.m_showHP.selected? 1 : 0) * (int)Mathf.Pow(2,1);
 
             return val;
+        }
+
+        public static Language GetLanguage()
+        {
+            if (Data == null)
+            {
+                if (PlayerPrefs.HasKey(PlayerPrefsKey.Language))
+                {
+                    return (Language)PlayerPrefs.GetInt(PlayerPrefsKey.Language);
+                }
+                else
+                {
+                    return Language.Chinese;
+                }
+            }
+            else
+            {
+                return Data.Language;
+            }
         }
     }
 }

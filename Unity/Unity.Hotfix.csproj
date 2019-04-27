@@ -85,6 +85,7 @@
     <Compile Include="Assets\Hotfix\Base\Object\Object.cs" />
     <Compile Include="Assets\Hotfix\Base\Object\ObjectPool.cs" />
     <Compile Include="Assets\Hotfix\Component\SceneChangeComponent.cs" />
+    <Compile Include="Assets\Hotfix\Config\PlayerPrefsKey.cs" />
     <Compile Include="Assets\Hotfix\Entity\Config\Map.cs" />
     <Compile Include="Assets\Hotfix\Entity\Config\Message.cs" />
     <Compile Include="Assets\Hotfix\Entity\Config\UnitConfig.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\Hotfix\Event\GM_CreateTank.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_EnterBattle.cs" />
     <Compile Include="Assets\Hotfix\Event\GM_EnterBattleAndCreateTank.cs" />
+    <Compile Include="Assets\Hotfix\Event\LanguageChange_RefreshHallView.cs" />
     <Compile Include="Assets\Hotfix\Event\LoginHasFinish_CreateHallUI.cs" />
     <Compile Include="Assets\Hotfix\Event\LoginHasFinish_RemoveLoginUI.cs" />
     <Compile Include="Assets\Hotfix\Event\SceneChange.cs" />

@@ -8,7 +8,16 @@ namespace ETHotfix
         public static string Get(int id)
         {
             Message message = Game.Scene.GetComponent<ConfigComponent>().Get(typeof(Message), id) as Message;
-            return message.Chinese;
+
+            if (message == null)
+                return "null";
+
+            Language language = GameSettingsViewComponent.GetLanguage();
+
+            if (language == Language.Chinese)
+                return message.Chinese;
+            else
+                return message.English;
         }
     }
 }
