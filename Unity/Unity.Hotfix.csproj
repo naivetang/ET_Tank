@@ -147,10 +147,8 @@
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Lobby\System\FUILobbyComponentSystem.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Lobby\System\FUILobbyFactory.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Lobby\System\LoginFinish_CreateLobbyUI.cs" />
-    <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\Component\FUILoginComponent.cs" />
+    <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\Component\LoginViewComponent.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\System\CreateLobbyUIFinish_RemoveLoginUI.cs" />
-    <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\System\FUILoginComponentSystem.cs" />
-    <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\System\FUILoginFactory.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\System\InitSceneStart_CreateLoginFUI.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\MainInterface\CreateMainIntView.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\MainInterface\FUIMainItfComponent.cs" />

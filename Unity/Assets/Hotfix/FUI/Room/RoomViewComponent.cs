@@ -101,19 +101,25 @@ namespace ETHotfix
 
             UpdateList(this.m_rightItems, this.m_rightList);
 
+            this.Lanaguage();
 
             if (this.m_isOwners)
             {
-                Message message = (Message)Game.Scene.GetComponent<ConfigComponent>().Get(typeof(Message), 1);
-                this.m_startGame.text = message.English;
                 this.m_startGame.onClick.Set(this.StartGame);
             }
             else
             {
-                Message message = (Message)Game.Scene.GetComponent<ConfigComponent>().Get(typeof(Message), 2);
-                this.m_startGame.text = message.English;
                 this.m_startGame.onClick.Set(this.Ready);
             }
+        }
+
+        private void Lanaguage()
+        {
+            if(this.m_isOwners)
+                this.m_startGame.text = Message.Get(1001);
+            else
+                this.m_startGame.text = Message.Get(1002);
+            this.m_exit.text = Message.Get(1024);
         }
 
         private void StartGame()

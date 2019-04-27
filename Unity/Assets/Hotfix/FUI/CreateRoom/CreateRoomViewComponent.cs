@@ -103,6 +103,22 @@ namespace ETHotfix
 
             this.m_smallModel.selectedIndex = 0;
             //this.m_smallModel.items = this.m_smallModel.values = this.
+
+            this.UI();
+        }
+
+        private void UI()
+        {
+            this.Lanaguage();
+        }
+
+        private void Lanaguage()
+        {
+            m_roomName.GetTextField().asTextInput.promptText = Message.Get(1028);
+
+            this.m_enterBtn.text = Message.Get(1026);
+
+            this.m_closeBtn.text = Message.Get(1027);
         }
 
         private void BigModel_OnChange(EventContext context)

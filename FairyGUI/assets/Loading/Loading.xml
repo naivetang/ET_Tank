@@ -5,5 +5,27 @@
     <component id="n3_kvwd" name="n3" src="kvwd4" fileName="LoadingBar.xml" xy="14,952" size="1880,85">
       <ProgressBar value="4" max="100"/>
     </component>
+    <text id="n5_tctx" name="n5" xy="848,874" size="123,51" group="n9_tctx" font="Consolas" fontSize="40" color="#ffffff" text="加载中"/>
+    <text id="n6_tctx" name="n6" xy="983,874" size="27,51" group="n9_tctx" font="Consolas" fontSize="40" color="#ffffff" text=".">
+      <relation target="n5_tctx" sidePair="left-right"/>
+    </text>
+    <text id="n7_tctx" name="n7" xy="1013,874" size="27,51" group="n9_tctx" font="Consolas" fontSize="40" color="#ffffff" text=".">
+      <relation target="n6_tctx" sidePair="left-right"/>
+    </text>
+    <text id="n8_tctx" name="n8" xy="1044,874" size="27,51" group="n9_tctx" font="Consolas" fontSize="40" color="#ffffff" text=".">
+      <relation target="n7_tctx" sidePair="left-right"/>
+    </text>
+    <group id="n9_tctx" name="n9" xy="848,874" size="223,51" advanced="true">
+      <relation target="n3_kvwd" sidePair="center-center"/>
+    </group>
   </displayList>
+  <transition name="t1" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Visible" target="n6_tctx" value="false"/>
+    <item time="0" type="Visible" target="n7_tctx" value="false"/>
+    <item time="0" type="Visible" target="n8_tctx" value="false"/>
+    <item time="6" type="Visible" target="n6_tctx" value="true"/>
+    <item time="12" type="Visible" target="n7_tctx" value="true"/>
+    <item time="18" type="Visible" target="n8_tctx" value="true"/>
+    <item time="24" type="Visible" target="n6_tctx" value="true"/>
+  </transition>
 </component>

@@ -12,10 +12,8 @@ namespace ETHotfix
 
 		public async ETVoid RunAsync()
 		{
-			FUIComponent fuiComponent = Game.Scene.GetComponent<FUIComponent>();
 			// 使用工厂创建一个Login UI
-			FUI ui = await FUILoginFactory.Create();
-			fuiComponent.Add(ui);
+            await FUIFactory.Create<LoginViewComponent>(FUIType.Login);
         }
 	}
 }

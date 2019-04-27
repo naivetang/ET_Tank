@@ -27,13 +27,15 @@
     <image id="n17_ou9f" name="n17" src="ou9f9" fileName="LoginUI/Lighter.png" xy="889,97" group="n20_ou9f"/>
     <image id="n18_ou9f" name="n18" src="ou9f6" fileName="LoginUI/Sniny.png" xy="942,108" group="n20_ou9f"/>
     <image id="n19_ou9f" name="n19" src="ou9f7" fileName="LoginUI/Downborder.png" xy="961,168" group="n20_ou9f"/>
-    <text id="n22_ou9f" name="n22" xy="793,1014" size="405,39" group="n20_ou9f" font="STFangsong" fontSize="31" color="#ffffff" text="西南科技大学虚拟现实实验室"/>
-    <text id="n21_ou9f" name="n21" xy="865,42" size="261,77" group="n20_ou9f" font="STFangsong" fontSize="65" color="#ffffff" text="坦克大战"/>
-    <group id="n20_ou9f" name="n20" xy="769,6" size="453,1047" collapsed="true"/>
-    <component id="n25_ou9f" name="n25" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="186,788">
+    <text id="n22_ou9f" name="n22" xy="997,1033" pivot="0.5,0.5" anchor="true" size="408,39" group="n20_ou9f" font="STFangsong" fontSize="31" color="#ffffff" text="西南科技大学虚拟现实实验室">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <text id="n21_ou9f" name="n21" xy="865,42" size="265,77" group="n20_ou9f" font="STFangsong" fontSize="65" color="#ffffff" text="坦克大战"/>
+    <group id="n20_ou9f" name="n20" xy="769,6" size="453,1047" hideByEditor="true" collapsed="true"/>
+    <component id="n25_ou9f" name="n25" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="1504,797">
       <Button title="关于"/>
     </component>
-    <component id="n26_ou9f" name="n26" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="185,872">
+    <component id="n26_ou9f" name="n26" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="185,872" hideByEditor="true" visible="false">
       <Button title="设置"/>
     </component>
   </displayList>

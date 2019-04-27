@@ -24,7 +24,7 @@ namespace ETHotfix
 
             // FUI uilong = Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Login);
             //
-            // uilong.GetComponent<FUILoginComponent>();
+            // uilong.GetComponent<LoginViewComponent>();
 
             return fui;
         }

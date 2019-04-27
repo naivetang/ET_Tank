@@ -1,9 +1,10 @@
 ﻿using System;
 using ETModel;
+using FairyGUI;
 
 namespace ETHotfix
 {
-    public class FUILoginComponent: FUIBase
+    public class LoginViewComponent: FUIBase
 	{
 		// 缓存只需要缓存FUI类型即可
 		public FUI AccountInput;
@@ -17,22 +18,77 @@ namespace ETHotfix
         // 错误提示
 	    public FUI ErrorPrompt;
 
+        public GTextField m_title;
+
+        public GTextField m_label;
+
+        public GButton m_aboutBtn;
+
+        public GButton m_exitBtn;
+
+        public void Awake()
+        {
+            this.StartFUI();
+        }
+
         protected override void StartFUI()
         {
+            this.UI();
+        }
+
+        public void UI()
+        {
+            this.Lanaguage();
+        }
+
+        public  void Lanaguage( )
+        {
+            this.m_title.text = Message.Get(1006);
+
+            this.m_label.text = Message.Get(1018);
+
+            RegistBtn.GObject.text = Message.Get(1019);
+
+            this.LoginBtn.GObject.text = Message.Get(1020);
+
+            this.m_aboutBtn.text = Message.Get(1021);
+
+            this.m_exitBtn.text = Message.Get(1012);
+
+            this.AccountInput.GObject.asLabel.GetTextField().asTextInput.promptText = Message.Get(1022);
+            this.PasswordInput.GObject.asLabel.GetTextField().asTextInput.promptText = Message.Get(1023);
+        }
+
+        public  void RefreshData()
+        {
+        }
+    }
+
+    public static class LoginViewComponentSystem
+    {
+        public static void Lanaguage(this LoginViewComponent self)
+        {
             
+        }
+
+        public static void RefreshData(this LoginViewComponent self)
+        {
+            Lanaguage(self);
         }
     }
 
 
 
     [ObjectSystem]
-    public class FUILoginComponentSystem: AwakeSystem<FUILoginComponent>
+    public class LoginViewAwakeSystem: AwakeSystem<LoginViewComponent>
     {
-        public override void Awake(FUILoginComponent self)
+        public override void Awake(LoginViewComponent self)
         {
             self.FUIComponent = self.GetParent<FUI>();
 
             self.AccountInput = self.FUIComponent.Get("AccountInput");
+
+            
 
             self.PasswordInput = self.FUIComponent.Get("PasswordInput");
 
@@ -42,18 +98,26 @@ namespace ETHotfix
 
             self.LoginBtn = self.FUIComponent.Get("LoginBtn");
 
+            self.m_title = self.FUIComponent.Get("n21").GObject.asTextField;
+
+            self.m_label = self.FUIComponent.Get("n22").GObject.asTextField;
+
+            self.m_aboutBtn = self.FUIComponent.Get("n25").GObject.asButton;
+
+            self.m_exitBtn = self.FUIComponent.Get("ExitBtn").GObject.asButton;
+
             //if(Game.Scene.GetComponent<FUIPackageComponent>().get)
 
             self.LoginBtn.GObject.asButton.onClick.Set(() => { LoginBtnOnClick(self); });
 
             self.RegistBtn.GObject.asButton.onClick.Set(() => { RigistBtnOnClick(self); });
 
-            
+            self.Awake();
 
             //login.Get("LoginBtn").GObject.asButton.onClick.Add(() => LoginBtnOnClick(self));
         }
 
-        public static void LoginBtnOnClick(FUILoginComponent self)
+        public static void LoginBtnOnClick(LoginViewComponent self)
         {
             string account = self.AccountInput.Get("title").GObject.asTextInput.text;  
             
@@ -64,7 +128,7 @@ namespace ETHotfix
             Login(self, account, password).NoAwait();
         }
 
-        public static async ETVoid Login(FUILoginComponent self, string account, string password)
+        public static async ETVoid Login(LoginViewComponent self, string account, string password)
         {
 
             #region 客户端给服务器发送登陆信息
@@ -136,7 +200,7 @@ namespace ETHotfix
             Game.EventSystem.Run(EventIdType.LoginHasFinish);
         }
 
-        public static void RigistBtnOnClick(FUILoginComponent self)
+        public static void RigistBtnOnClick(LoginViewComponent self)
         {
             string account = self.AccountInput.Get("title").GObject.asTextInput.text;
 
@@ -148,7 +212,7 @@ namespace ETHotfix
             Rigist(self, account, password).NoAwait();
         }
 
-        public static async ETVoid Rigist(FUILoginComponent self, string account, string password)
+        public static async ETVoid Rigist(LoginViewComponent self, string account, string password)
         {
 
             // 创建一个ETModel层的Session
@@ -179,7 +243,7 @@ namespace ETHotfix
             
         }
 
-        private static void SetErrorPrompt(FUILoginComponent self, string Prompt)
+        private static void SetErrorPrompt(LoginViewComponent self, string Prompt)
         {
             self.ErrorPrompt.GObject.asTextField.text = Prompt;
         }

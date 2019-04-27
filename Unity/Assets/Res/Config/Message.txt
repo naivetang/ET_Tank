@@ -15,3 +15,11 @@
 {"Id":1015,"Chinese":"地图","English":"Map"}
 {"Id":1016,"Chinese":"玩家","English":"Players"}
 {"Id":1017,"Chinese":"状态","English":"State"}
+{"Id":1018,"Chinese":"西南科技大学虚拟现实实验室","English":"Southwest University of Science and Technology Virtual Reality Lab"}
+{"Id":1019,"Chinese":"注册","English":"Regist"}
+{"Id":1020,"Chinese":"登陆","English":"Login"}
+{"Id":1021,"Chinese":"关于","English":"About"}
+{"Id":1022,"Chinese":"请输入账号","English":"Username"}
+{"Id":1023,"Chinese":"请输入密码","English":"Password"}
+{"Id":1024,"Chinese":"退出房间","English":"Exit Room"}
+{"Id":1025,"Chinese":"加载中","English":"Loading"}

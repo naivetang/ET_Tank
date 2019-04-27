@@ -60,6 +60,13 @@ namespace ETHotfix
             this.m_bar.max = 100f;
 
             this.m_bar.value = 0f;
+
+           this.Lanaguage();
+        }
+
+        private void Lanaguage()
+        {
+            this.FUIComponent.Get("n5").GObject.asTextField.text = Message.Get(1025);
         }
 
         public void Update()
