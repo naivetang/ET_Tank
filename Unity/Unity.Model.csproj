@@ -99,6 +99,7 @@
     <Compile Include="Assets\Model\Base\LogType.cs" />
     <Compile Include="Assets\Model\Base\MultiMap.cs" />
     <Compile Include="Assets\Model\Base\Object\BaseAttribute.cs" />
+    <Compile Include="Assets\Model\Base\Object\ComObjectPool.cs" />
     <Compile Include="Assets\Model\Base\Object\Component.cs" />
     <Compile Include="Assets\Model\Base\Object\ComponentFactory.cs" />
     <Compile Include="Assets\Model\Base\Object\ComponentWithId.cs" />
@@ -117,7 +118,6 @@
     <Compile Include="Assets\Model\Base\Object\IStartSystem.cs" />
     <Compile Include="Assets\Model\Base\Object\IUpdateSystem.cs" />
     <Compile Include="Assets\Model\Base\Object\Object.cs" />
-    <Compile Include="Assets\Model\Base\Object\ObjectPool.cs" />
     <Compile Include="Assets\Model\Base\Object\ObjectSystemAttribute.cs" />
     <Compile Include="Assets\Model\Base\OneThreadSynchronizationContext.cs" />
     <Compile Include="Assets\Model\Base\QueueDictionary.cs" />

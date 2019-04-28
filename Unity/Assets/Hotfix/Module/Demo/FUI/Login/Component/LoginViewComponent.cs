@@ -15,9 +15,6 @@ namespace ETHotfix
 
 	    public FUI LoginBtn;
 
-        // 错误提示
-	    public FUI ErrorPrompt;
-
         public GTextField m_title;
 
         public GTextField m_label;
@@ -64,19 +61,6 @@ namespace ETHotfix
         }
     }
 
-    public static class LoginViewComponentSystem
-    {
-        public static void Lanaguage(this LoginViewComponent self)
-        {
-            
-        }
-
-        public static void RefreshData(this LoginViewComponent self)
-        {
-            Lanaguage(self);
-        }
-    }
-
 
 
     [ObjectSystem]
@@ -88,11 +72,7 @@ namespace ETHotfix
 
             self.AccountInput = self.FUIComponent.Get("AccountInput");
 
-            
-
             self.PasswordInput = self.FUIComponent.Get("PasswordInput");
-
-            self.ErrorPrompt = self.FUIComponent.Get("ErrorPrompt");
 
             self.RegistBtn = self.FUIComponent.Get("RegistBtn");
 
@@ -123,9 +103,8 @@ namespace ETHotfix
             
             string password = self.PasswordInput.Get("title").GObject.asTextInput.text;
 
-            SetErrorPrompt(self, "");
-
             Login(self, account, password).NoAwait();
+            
         }
 
         public static async ETVoid Login(LoginViewComponent self, string account, string password)
@@ -207,8 +186,6 @@ namespace ETHotfix
             string password = self.PasswordInput.Get("title").GObject.asTextInput.text;
 
 
-            SetErrorPrompt(self, "");
-
             Rigist(self, account, password).NoAwait();
         }
 
@@ -245,7 +222,7 @@ namespace ETHotfix
 
         private static void SetErrorPrompt(LoginViewComponent self, string Prompt)
         {
-            self.ErrorPrompt.GObject.asTextField.text = Prompt;
+            Game.EventSystem.Run(EventIdType.ShowPopMessage,Prompt,PopMessageType.Float);
         }
 
     }

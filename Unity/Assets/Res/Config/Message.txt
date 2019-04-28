@@ -32,3 +32,4 @@
 {"Id":1032,"Chinese":"头顶名字显示","English":"Top Name Display"}
 {"Id":1033,"Chinese":"头顶血条显示","English":"Blood Strip Display"}
 {"Id":1034,"Chinese":"旋转速度","English":"Spinning Speed"}
+{"Id":1044,"Chinese":"房间名字符3~5","English":"Room name characters 3~5"}

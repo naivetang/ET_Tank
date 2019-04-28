@@ -204,6 +204,11 @@ namespace ETModel
 	public partial class B2C_BattleEnd : IActorMessage {}
 
 // 1:左方胜 2：右方胜
+// 从下往上飘动
+// 滚动
+	[Message(OuterOpcode.A2C_PopMessage)]
+	public partial class A2C_PopMessage : IMessage {}
+
 }
 namespace ETModel
 {
@@ -257,5 +262,6 @@ namespace ETModel
 		 public const ushort PersonBattleData = 146;
 		 public const ushort B2C_TankReset = 147;
 		 public const ushort B2C_BattleEnd = 148;
+		 public const ushort A2C_PopMessage = 149;
 	}
 }

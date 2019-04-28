@@ -526,3 +526,19 @@ message B2C_BattleEnd // IActorMessage
 
 	repeated PersonBattleData RightCamp = 8;
 }
+
+enum PopMessageType
+{
+	PNone = 0;
+	// 从下往上飘动
+	Float = 1;
+	// 滚动
+	Scroll = 2;
+}
+
+message A2C_PopMessage // IMessage
+{
+	PopMessageType Type = 1;
+	
+	string Text = 2;
+}

@@ -34,5 +34,10 @@
 
         public const string LanguageChange = "LanguageChange";
 
+
+        public const string ShowPopMessage = "ShowPopMessage";
+
+
+
     }
 }

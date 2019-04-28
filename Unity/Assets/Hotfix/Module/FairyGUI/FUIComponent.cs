@@ -27,10 +27,19 @@ namespace ETHotfix
 		}
 	}
 
-	/// <summary>
-	/// 管理所有顶层UI, 顶层UI都是GRoot的孩子
-	/// </summary>
-	public class FUIComponent: Component
+    [ObjectSystem]
+    public class FUIComponentStartSystem : StartSystem<FUIComponent>
+    {
+        public override void Start(FUIComponent self)
+        {
+            self.Start();
+        }
+    }
+
+    /// <summary>
+    /// 管理所有顶层UI, 顶层UI都是GRoot的孩子
+    /// </summary>
+    public class FUIComponent: Component
 	{
 		public FUI Root;
 
@@ -44,6 +53,19 @@ namespace ETHotfix
             
             this.InitFairyGUI();
 
+        }
+
+        public void Start()
+        {
+            this.CreateConstView();
+        }
+
+        /// <summary>
+        /// 创建常驻UI
+        /// </summary>
+        private void CreateConstView()
+        {
+            FUIFactory.Create<PopMessageViewComponent>(FUIType.PopMessage).NoAwait();
         }
 
         private void InitFairyGUI()
@@ -84,7 +106,8 @@ namespace ETHotfix
         private void InitViewDepth()
         {
             RegViewDepth(FUIType.Loading, 100);
-            RegViewDepth(FUIType.MainInterface, 99);
+            RegViewDepth(FUIType.MainInterface, 98);
+            RegViewDepth(FUIType.PopMessage, 99);
         }
         private static void RegViewDepth(string viewName, int depth)
         {
@@ -151,6 +174,7 @@ namespace ETHotfix
         private void InitUIChangeSceneNotClose()
         {
             RegUIChangeSceneNotClose(FUIType.Loading);
+            RegUIChangeSceneNotClose(FUIType.PopMessage);
         }
 
         private static void RegUIChangeSceneNotClose(string comName)

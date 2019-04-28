@@ -27,13 +27,13 @@
 			}
 		}
 
-		private static ObjectPool objectPool;
+		private static ComObjectPool comObjectPool;
 
-		public static ObjectPool ObjectPool
+		public static ComObjectPool ComObjectPool
 		{
 			get
 			{
-				return objectPool ?? (objectPool = new ObjectPool());
+				return comObjectPool ?? (comObjectPool = new ComObjectPool());
 			}
 		}
 
@@ -42,7 +42,7 @@
 			scene.Dispose();
 			scene = null;
 			eventSystem = null;
-			objectPool = null;
+			comObjectPool = null;
 		}
 	}
 }

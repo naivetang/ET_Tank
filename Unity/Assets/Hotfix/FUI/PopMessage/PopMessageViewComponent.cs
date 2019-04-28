@@ -23,28 +23,37 @@ namespace ETHotfix
         }
     }
 
-
+    
     internal class PopMessageViewComponent : FUIBase
     {
 
-        private class EmitTip
+        private class EmitTip : IPoolAllocatedObject<EmitTip>
         {
-            public GComponent m_Comp;
+            public GComponent m_comp;
+
+            private PopMessageType m_type;
+
             public EmitTip()
             {
-                m_Comp = FUIFactory.Create<PopMessageViewComponent>(FUIType.PopMessage).Result.GObject.asCom;
+                this.m_comp = UIPackage.CreateObject(FUIType.PopMessage, FUIType.PopMessage).asCom;
             }
-            public void Init()
+            public void Init(PopMessageType type)
             {
-                m_Comp.touchable = false;
+                this.m_comp.touchable = false;
+
+                this.m_type = type;
             }
             public Transition GetAnim()
             {
-                if (m_Comp == null)
+                if (this.m_comp == null)
                 {
                     return null;
                 }
-                Transition anim = m_Comp.GetTransition("t0");
+
+                Transition anim = null;
+
+                anim = this.m_comp.GetTransition(this.m_type == PopMessageType.Float? "t0" : "t1");
+
                 return anim;
             }
             public bool IsFinish()
@@ -56,6 +65,12 @@ namespace ETHotfix
                 }
                 return !anim.playing;
             }
+
+            public void InitPool(ObjectPool<EmitTip> pool)
+            {
+                
+            }
+
             public EmitTip Downcast()
             {
                 return this;
@@ -64,8 +79,9 @@ namespace ETHotfix
 
         private GGroup m_TipGrp;
 
+        private ObjectPool<EmitTip> m_EmitTipPool = new ObjectPool<EmitTip>();
 
-        private Queue<EmitTip> m_emitTipItems;
+        private List<EmitTip> m_EmitTipItems = new List<EmitTip>();
 
 
         public void Awake()
@@ -76,14 +92,76 @@ namespace ETHotfix
 
         protected override void StartFUI()
         {
-            m_TipGrp = this.FUIComponent.Get("n3").GObject.asGroup;
+            m_TipGrp = this.FUIComponent.Get("n6").GObject.asGroup;
 
             m_TipGrp.visible = false;
         }
 
+        public void AddEmitTip(string text,PopMessageType type)
+        {
+            EmitTip item = m_EmitTipPool.Alloc(NewEmitTip);
+
+            item.Init(type);
+
+            m_EmitTipItems.Add(item);
+
+            this.FUIComponent.GObject.asCom.AddChild(item.m_comp);
+
+            GRichTextField textContent = item.m_comp.GetChild("n7").asRichTextField;
+
+            textContent.text = text;
+
+            SetTextContent(item.m_comp);
+
+            Transition anim = item.GetAnim();
+
+            if (anim != null)
+            {
+                anim.Play();
+            }
+        }
+
+        private void SetTextContent(GComponent comp)
+        {
+            GImage TextBkg1 = comp.GetChild("n3").asImage;
+
+            GImage TextBkg2 = comp.GetChild("n4").asImage;
+
+            GRichTextField TextContent = comp.GetChild("n7").asRichTextField;
+
+            TextBkg1.width = TextContent.textWidth + 50;
+
+            TextBkg2.width = TextBkg1.width;
+
+            TextContent.x = GRoot.inst.width / 2 - TextContent.textWidth / 2;
+
+            TextBkg1.x = GRoot.inst.width / 2 - TextBkg1.width / 2;
+
+            TextBkg2.x = GRoot.inst.width / 2 - TextBkg2.width / 2;
+        }
+
+        EmitTip NewEmitTip()
+        {
+            return new EmitTip();
+        }
+
         public void Update()
         {
+            for (int i = 0; i < m_EmitTipItems.Count; i++)
+            {
+                if (m_EmitTipItems[i].IsFinish())
+                {
+                    EmitTip tipitem = m_EmitTipItems[i];
 
+                    this.FUIComponent.GObject.asCom.RemoveChild(tipitem.m_comp);
+
+                    m_EmitTipItems.RemoveAt(i);
+
+                    m_EmitTipPool.Recycle(tipitem);
+
+                    --i;
+                }
+            }
         }
     }
 }

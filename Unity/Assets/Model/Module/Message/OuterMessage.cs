@@ -21,6 +21,18 @@ namespace ETModel {
     English = 2,
   }
 
+  public enum PopMessageType {
+    Pnone = 0,
+    /// <summary>
+    /// 从下往上飘动
+    /// </summary>
+    Float = 1,
+    /// <summary>
+    /// 滚动
+    /// </summary>
+    Scroll = 2,
+  }
+
   #endregion
 
   #region Messages
@@ -5166,6 +5178,70 @@ namespace ETModel {
           }
           case 744: {
             ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class A2C_PopMessage : pb::IMessage {
+    private static readonly pb::MessageParser<A2C_PopMessage> _parser = new pb::MessageParser<A2C_PopMessage>(() => (A2C_PopMessage)MessagePool.Instance.Fetch(typeof(A2C_PopMessage)));
+    public static pb::MessageParser<A2C_PopMessage> Parser { get { return _parser; } }
+
+    private global::ETModel.PopMessageType type_ = 0;
+    public global::ETModel.PopMessageType Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    private string text_ = "";
+    public string Text {
+      get { return text_; }
+      set {
+        text_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Type != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Type);
+      }
+      if (Text.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Text);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (Type != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      if (Text.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Text);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      text_ = "";
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            type_ = (global::ETModel.PopMessageType) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            Text = input.ReadString();
             break;
           }
         }

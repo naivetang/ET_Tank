@@ -145,7 +145,7 @@
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\IStartSystem.cs" Link="Base\Base\IStartSystem.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\IUpdateSystem.cs" Link="Base\Base\IUpdateSystem.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\Object.cs" Link="Base\Base\Object.cs" />
-    <Compile Include="..\..\Unity\Assets\Model\Base\Object\ObjectPool.cs" Link="Base\Base\ObjectPool.cs" />
+    <Compile Include="..\..\Unity\Assets\Model\Base\Object\ComObjectPool.cs" Link="Base\Base\ComObjectPool.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Object\ObjectSystemAttribute.cs" Link="Base\Base\ObjectSystemAttribute.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\OneThreadSynchronizationContext.cs" Link="Base\OneThreadSynchronizationContext.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\QueueDictionary.cs" Link="Base\QueueDictionary.cs" />

@@ -80,7 +80,7 @@ namespace ETHotfix
 
 			if (this.IsFromPool)
 			{
-				Game.ObjectPool.Recycle(this);
+				Game.ComObjectPool.Recycle(this);
 			}
 		}
 

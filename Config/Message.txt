@@ -26,3 +26,10 @@
 {"_id":1026,"Chinese":"确认","English":"Confirm"}
 {"_id":1027,"Chinese":"返回","English":"Cancel"}
 {"_id":1028,"Chinese":"请输入房间名","English":"Input RoomName"}
+{"_id":1029,"Chinese":"游戏ID：","English":"GameID："}
+{"_id":1030,"Chinese":"语言","English":"Lanaguage"}
+{"_id":1031,"Chinese":"音效","English":"Sound"}
+{"_id":1032,"Chinese":"头顶名字显示","English":"Top Name Display"}
+{"_id":1033,"Chinese":"头顶血条显示","English":"Blood Strip Display"}
+{"_id":1034,"Chinese":"旋转速度","English":"Spinning Speed"}
+{"_id":1044,"Chinese":"房间名字符3~5","English":"Room name characters 3~5"}

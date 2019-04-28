@@ -29,6 +29,14 @@ namespace ETHotfix
 
                     reply(response);
 
+                    A2C_PopMessage msg = new A2C_PopMessage();
+
+                    msg.Text = response.Message;
+
+                    msg.Type = PopMessageType.Float;
+
+                    session.Send(msg);
+
                     return;
                 }
 

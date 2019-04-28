@@ -80,7 +80,7 @@ namespace ETModel
 
 			if (this.IsFromPool)
 			{
-				Game.ObjectPool.Recycle(this);
+				Game.ComObjectPool.Recycle(this);
 			}
 		}
 

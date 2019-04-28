@@ -71,7 +71,10 @@ namespace ETModel
 #endif
 		}
 
-
+        /// <summary>
+        /// 创建基本常驻FUI包
+        /// </summary>
+        /// <returns></returns>
         public async ETTask CreateConstPackage()
         {
             await this.AddPackageAsync(UIType.Common);
