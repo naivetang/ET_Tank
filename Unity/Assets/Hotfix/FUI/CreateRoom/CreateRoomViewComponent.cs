@@ -36,17 +36,50 @@ namespace ETHotfix
 
         private List<string> m_mapId = new List<string>();
 
-        private string[] m_models = new string[] { "回合制","时间制" };
+        private string[] m_modelsC = new string[] { "回合制", "时间制" };
 
-        private string[] m_rounds = new[] {"1 回合" ,"5 回合", "10 回合", "12 回合" };
+        private string[] m_modelsE = new string[] { "Turn-Based", "Time-Based" };
 
-        private string[] m_times = new[] { "1 min","5 min", "10 min", "12 min" };
+        private string[] m_roundsC = new[] { "1 回合", "5 回合", "10 回合", "12 回合" };
+        private string[] m_roundsE = new[] { "1 Round", "5 Round", "10 Round", "12 Round" };
+
+        private string[] m_timesC = new[] { "1 分钟", "5 分钟", "10 分钟", "12 分钟" };
+        private string[] m_timesE = new[] { "1 Min", "5 Min", "10 Min", "12 Min" };
+
+        private string[] m_models;
+
+        private string[] m_rounds;
+
+        private string[] m_times;
 
 
         public void Awake()
         {
             this.FUIComponent = this.GetParent<FUI>();
+
+            ChooseString();
+
             this.StartFUI();
+        }
+
+        private void ChooseString()
+        {
+            if (GameSettingsViewComponent.GetLanguage() == Language.Chinese)
+            {
+                this.m_models = this.m_modelsC;
+
+                this.m_rounds = this.m_roundsC;
+
+                this.m_times = this.m_timesC;
+            }
+            else
+            {
+                this.m_models = this.m_modelsE;
+
+                this.m_rounds = this.m_roundsE;
+
+                this.m_times = this.m_timesE;
+            }
         }
 
         protected override void StartFUI()
@@ -77,8 +110,10 @@ namespace ETHotfix
             {
                 Map map = conf as Map;
 
-                this.m_mapNames.Add(map.ChineseMapName);
-
+                if(GameSettingsViewComponent.GetLanguage() == Language.Chinese)
+                    this.m_mapNames.Add(map.ChineseMapName);
+                else
+                    this.m_mapNames.Add(map.EnglishMapName);
                 this.m_mapId.Add(map.Id.ToString());
             }
 
@@ -205,6 +240,15 @@ namespace ETHotfix
 
 
             //await FUIFactory.Create<RoomViewComponent, G2C_RoomDetailInfo>(FUIType.Room,response);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            m_mapNames.Clear();
+
+            m_mapId.Clear();
         }
     }
 }

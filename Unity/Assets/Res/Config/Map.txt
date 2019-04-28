@@ -1,2 +1,2 @@
-{"Id":1001,"ChineseMapName":"B222","EnglishMapName":"B222"}
-{"Id":1002,"ChineseMapName":"B111","EnglishMapName":"B111"}
+{"Id":1001,"ChineseMapName":"东六B222","EnglishMapName":"EastSixB222"}
+{"Id":1002,"ChineseMapName":"东六B111","EnglishMapName":"EastSixB111"}

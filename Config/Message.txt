@@ -1,5 +1,28 @@
-{"_id":1,"Chinese":"开始游戏","English":"Start Game"}
-{"_id":2,"Chinese":"准备","English":"Ready"}
-{"_id":3,"Chinese":"测试","English":"Test"}
-{"_id":4,"Chinese":"准备中","English":"Reading"}
-{"_id":5,"Chinese":"游戏中","English":"Playing"}
+{"_id":1001,"Chinese":"开始游戏","English":"Start Game"}
+{"_id":1002,"Chinese":"准备","English":"Ready"}
+{"_id":1003,"Chinese":"测试","English":"Test"}
+{"_id":1004,"Chinese":"准备中","English":"Reading"}
+{"_id":1005,"Chinese":"游戏中","English":"Playing"}
+{"_id":1006,"Chinese":"坦克大战","English":"TankGame"}
+{"_id":1007,"Chinese":"创建游戏","English":"CreateGame"}
+{"_id":1008,"Chinese":"商城","English":"Mall"}
+{"_id":1009,"Chinese":"仓库","English":"Warehouse"}
+{"_id":1010,"Chinese":"好友","English":"Friend"}
+{"_id":1011,"Chinese":"设置","English":"Setting"}
+{"_id":1012,"Chinese":"退出","English":"Exit"}
+{"_id":1013,"Chinese":"号码","English":"Num"}
+{"_id":1014,"Chinese":"房间名","English":"Room"}
+{"_id":1015,"Chinese":"地图","English":"Map"}
+{"_id":1016,"Chinese":"玩家","English":"Players"}
+{"_id":1017,"Chinese":"状态","English":"State"}
+{"_id":1018,"Chinese":"西南科技大学虚拟现实实验室","English":"Southwest University of Science and Technology Virtual Reality Lab"}
+{"_id":1019,"Chinese":"注册","English":"Regist"}
+{"_id":1020,"Chinese":"登陆","English":"Login"}
+{"_id":1021,"Chinese":"关于","English":"About"}
+{"_id":1022,"Chinese":"请输入账号","English":"Username"}
+{"_id":1023,"Chinese":"请输入密码","English":"Password"}
+{"_id":1024,"Chinese":"退出房间","English":"Exit Room"}
+{"_id":1025,"Chinese":"加载中","English":"Loading"}
+{"_id":1026,"Chinese":"确认","English":"Confirm"}
+{"_id":1027,"Chinese":"返回","English":"Cancel"}
+{"_id":1028,"Chinese":"请输入房间名","English":"Input RoomName"}
