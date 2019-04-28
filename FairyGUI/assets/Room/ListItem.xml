@@ -26,7 +26,7 @@
       <gearDisplay controller="state" pages="2"/>
       <Button title=" "/>
     </component>
-    <graph id="n15_m9xx" name="n15" xy="0,0" size="850,100" type="rect" fillColor="#ff333333">
+    <graph id="n15_m9xx" name="n15" xy="0,0" size="850,100" visible="false" type="rect" fillColor="#ff333333">
       <gearDisplay controller="state" pages="3"/>
     </graph>
   </displayList>

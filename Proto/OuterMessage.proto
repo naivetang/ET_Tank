@@ -542,3 +542,24 @@ message A2C_PopMessage // IMessage
 	
 	string Text = 2;
 }
+
+message C2G_ChangeCamp // IMessage
+{
+	int64 RoomId = 1;
+
+	int32 TargetCamp = 2;
+}
+
+enum Ready_OPT
+{
+	RNone = 0;
+	Ready = 1;
+	CancleReady = 2;
+}
+
+message C2G_Ready // IMessage
+{
+	int64 RoomId = 1;
+
+	Ready_OPT Opt = 2;
+}

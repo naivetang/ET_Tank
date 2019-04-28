@@ -126,6 +126,44 @@ namespace ETModel
             return null;
         }
 
+        public bool ChangeCamp(long id, int targetCamp)
+        {
+            if (this.LeftCamp.TryGetValue(id, out RoomOnePeople left))
+            {
+                if (targetCamp == 1)
+                    return false;
+
+                if (this.RightCamp.Count >= this.PeopleNum)
+                    return false;
+
+                this.LeftCamp.Remove(id);
+
+                left.Camp = 2;
+
+                this.RightCamp.Add(id, left);
+            }
+            else if (this.RightCamp.TryGetValue(id, out RoomOnePeople right))
+            {
+                if (targetCamp == 2)
+                    return false;
+
+                if (this.LeftCamp.Count >= this.PeopleNum)
+                    return false;
+
+                this.RightCamp.Remove(id);
+
+                right.Camp = 1;
+
+                this.LeftCamp.Add(id, right);
+            }
+            else
+            {
+                Log.Error($"不存在玩家 {id}");
+                return false;
+            }
+            return true;
+        }
+
         public void Remove(long id)
         {
             this.idPlayers.Remove(id);
@@ -147,9 +185,6 @@ namespace ETModel
             }
 
             this.m_latestPlayerId = id;
-
-            if(this.idPlayers.Count > 0)
-                this.BroadcastRoomDetailInfo();
         }
 
         private long GetOwnerId()
@@ -185,6 +220,35 @@ namespace ETModel
         public RoomOnePeople[] GetRightCamp()
         {
             return this.RightCamp.Values.ToArray();
+        }
+
+        public bool CanStartGame(ref int errCode)
+        {
+            if (this.LeftCamp.Count + this.RightCamp.Count != this.PeopleNum * 2)
+            {
+                errCode = 1045;
+                return false;
+            }
+
+            foreach (RoomOnePeople roomOnePeople in this.LeftCamp.Values)
+            {
+                if (!roomOnePeople.State && roomOnePeople.Id != this.OwnerId)
+                {
+                    errCode = 1046;
+                    return false;
+                }
+            }
+
+            foreach (RoomOnePeople roomOnePeople in this.RightCamp.Values)
+            {
+                if (!roomOnePeople.State && roomOnePeople.Id != this.OwnerId)
+                {
+                    errCode = 1046;
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public override void Dispose()

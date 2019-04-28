@@ -114,6 +114,28 @@ namespace ETModel
             //msg.Language = this.UserDB;
         }
 
+        public void Send_PopMessage(string str, PopMessageType type = PopMessageType.Float)
+        {
+            A2C_PopMessage msg = new A2C_PopMessage();
+
+            msg.Text = str;
+
+            msg.Type = type;
+
+            this.Session.Send(msg);
+        }
+
+        public void Send_PopMessage(int messageID, PopMessageType type = PopMessageType.Float)
+        {
+            A2C_PopMessage msg = new A2C_PopMessage();
+
+            msg.Text = Message.Get(this, messageID);
+
+            msg.Type = type;
+
+            this.Session.Send(msg);
+        }
+
         private void Send_G2C_Rooms()
         {
             G2C_Rooms msg = new G2C_Rooms();

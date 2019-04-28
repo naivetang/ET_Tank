@@ -21,6 +21,17 @@ namespace ETHotfix
 
             Room room = Game.Scene.GetComponent<RoomComponent>().Get(roomId);
 
+            int errCode = 0;
+
+            if (!room.CanStartGame(ref errCode))
+            {
+                Player player = session.GetComponent<SessionPlayerComponent>().Player;
+
+                player.Send_PopMessage(errCode);
+
+                return;
+            }
+
             room.State = 2;
 
             IPEndPoint mapAddress = StartConfigComponent.Instance.MapConfigs[0].GetComponent<InnerConfig>().IPEndPoint;

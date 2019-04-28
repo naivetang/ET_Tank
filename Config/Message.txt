@@ -33,3 +33,6 @@
 {"_id":1033,"Chinese":"头顶血条显示","English":"Blood Strip Display"}
 {"_id":1034,"Chinese":"旋转速度","English":"Spinning Speed"}
 {"_id":1044,"Chinese":"房间名字符3~5","English":"Room name characters 3~5"}
+{"_id":1045,"Chinese":"暂未达到开局人数","English":"Player Num Too Less"}
+{"_id":1046,"Chinese":"等待所有玩家准备","English":"Wait All Player Reading"}
+{"_id":1047,"Chinese":"取消","English":"Cancel"}

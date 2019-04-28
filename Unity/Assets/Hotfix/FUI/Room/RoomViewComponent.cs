@@ -35,7 +35,7 @@ namespace ETHotfix
 
         private GList m_rightList;
 
-        private long id;
+        private long roomId;
 
         public void Awake(G2C_RoomDetailInfo msg)
         {
@@ -45,7 +45,7 @@ namespace ETHotfix
             this.m_eftvPeopleNum = msg.RoomSimpleInfo.PeopleNum;
             this.m_roomOwnerId = msg.RoomSimpleInfo.RoomOwnerId;
             this.m_isOwners = this.m_roomOwnerId == PlayerComponent.Instance.MyPlayer.Id;
-            this.id = msg.RoomId;
+            this.roomId = msg.RoomId;
             this.StartFUI();
         }
 
@@ -95,11 +95,30 @@ namespace ETHotfix
             this.UI();
         }
 
+        private RoomOnePeople OwnInfo()
+        {
+            foreach (RoomOnePeople roomOnePeople in this.m_leftItems)
+            {
+                if (roomOnePeople.Id == PlayerComponent.Instance.MyPlayer.Id)
+                    return roomOnePeople;
+            }
+            foreach (RoomOnePeople roomOnePeople in this.m_rightItems)
+            {
+                if (roomOnePeople.Id == PlayerComponent.Instance.MyPlayer.Id)
+                    return roomOnePeople;
+            }
+
+            return null;
+        }
+
         private void UI()
         {
-            UpdateList(this.m_leftItems, this.m_leftList);
 
-            UpdateList(this.m_rightItems, this.m_rightList);
+
+
+            UpdateList(this.m_leftItems, this.m_leftList, true);
+
+            UpdateList(this.m_rightItems, this.m_rightList, false);
 
             this.Lanaguage();
 
@@ -118,7 +137,17 @@ namespace ETHotfix
             if(this.m_isOwners)
                 this.m_startGame.text = Message.Get(1001);
             else
-                this.m_startGame.text = Message.Get(1002);
+            {
+                if (this.OwnInfo().State)
+                {
+                    this.m_startGame.text = Message.Get(1047);
+                }
+                else
+                {
+                    this.m_startGame.text = Message.Get(1002);
+                }
+            }
+                
             this.m_exit.text = Message.Get(1024);
         }
 
@@ -131,17 +160,28 @@ namespace ETHotfix
         {
             C2G_StartGame msg = new C2G_StartGame();
 
-            msg.RoomId = this.id;
+            msg.RoomId = this.roomId;
 
             ETModel.SessionComponent.Instance.Session.Send(msg);
         }
 
         private void Ready()
         {
-
+            Send();
         }
 
-        private void UpdateList(List<RoomOnePeople> items, GList list)
+        private void Send()
+        {
+            C2G_Ready msg = new C2G_Ready();
+
+            msg.RoomId = this.roomId;
+
+            msg.Opt = this.OwnInfo().State? Ready_OPT.CancleReady : Ready_OPT.Ready;
+
+            ETModel.SessionComponent.Instance.Session.Send(msg);
+        }
+
+        private void UpdateList(List<RoomOnePeople> items, GList list, bool left)
         {
             if (items.Count > this.m_eftvPeopleNum)
             {
@@ -155,8 +195,13 @@ namespace ETHotfix
             for (; i < items.Count; i++)
             {
                 RoomOnePeople item = items[i];
+
                 GComponent com = list.GetChildAt(i).asCom;
+
+                com.onClick.Set(()=>{});
+
                 Controller ctl = com.GetController("state");
+
                 ctl.selectedIndex = i % 2 == 1? 0 : 1;
 
                 com.GetChild("touxian").asLoader.url = $"ui://Common/{item.Level}";
@@ -173,7 +218,19 @@ namespace ETHotfix
             for (; i < this.m_eftvPeopleNum; i++)
             {
                 GComponent com = list.GetChildAt(i).asCom;
+
                 Controller ctl = com.GetController("state");
+
+
+                if (left)
+                {
+                    com.onClick.Set(this.ChangeToLeftCamp);
+                }
+                else
+                {
+                    com.onClick.Set(this.ChangeToRightCamp);
+                }
+
                 ctl.selectedIndex = 2;
             }
 
@@ -181,9 +238,35 @@ namespace ETHotfix
             for (;i < list.numItems; i++)
             {
                 GComponent com = list.GetChildAt(i).asCom;
+
+                com.onClick.Set(() => { });
+
                 Controller ctl = com.GetController("state");
+
                 ctl.selectedIndex = 3;
             }
+        }
+
+        private void ChangeToLeftCamp()
+        {
+            C2G_ChangeCamp msg = new C2G_ChangeCamp();
+
+            msg.RoomId = this.roomId;
+
+            msg.TargetCamp = 1;
+
+            ETModel.SessionComponent.Instance.Session.Send(msg);
+        }
+
+        private void ChangeToRightCamp()
+        {
+            C2G_ChangeCamp msg = new C2G_ChangeCamp();
+
+            msg.RoomId = this.roomId;
+
+            msg.TargetCamp = 2;
+
+            ETModel.SessionComponent.Instance.Session.Send(msg);
         }
 
         private void ExitBtn_OnClick()
@@ -196,7 +279,7 @@ namespace ETHotfix
         {
             C2G_ExitRoom msg = new C2G_ExitRoom();
 
-            msg.Id = this.id;
+            msg.Id = this.roomId;
 
             G2C_ExitRoom response = (G2C_ExitRoom) await ETModel.SessionComponent.Instance.Session.Call(msg);
 
@@ -207,5 +290,16 @@ namespace ETHotfix
 
         }
 
+        public override void Dispose()
+        {
+            if (this.IsDisposed)
+                return;
+
+            base.Dispose();
+
+            
+
+            Log.Warning("RoomView Dispose");
+        }
     }
 }

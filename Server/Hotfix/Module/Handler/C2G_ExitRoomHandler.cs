@@ -25,8 +25,12 @@ namespace ETHotfix
                 {
                     Game.Scene.GetComponent<RoomComponent>().Remove(roomId);
 
-                    BroadcastMessage.Send_G2C_Rooms();
                 }
+                else
+                {
+                    room.BroadcastRoomDetailInfo();
+                }
+
 
                 reply(response);
 

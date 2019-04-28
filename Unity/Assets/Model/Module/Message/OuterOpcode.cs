@@ -209,6 +209,12 @@ namespace ETModel
 	[Message(OuterOpcode.A2C_PopMessage)]
 	public partial class A2C_PopMessage : IMessage {}
 
+	[Message(OuterOpcode.C2G_ChangeCamp)]
+	public partial class C2G_ChangeCamp : IMessage {}
+
+	[Message(OuterOpcode.C2G_Ready)]
+	public partial class C2G_Ready : IMessage {}
+
 }
 namespace ETModel
 {
@@ -263,5 +269,7 @@ namespace ETModel
 		 public const ushort B2C_TankReset = 147;
 		 public const ushort B2C_BattleEnd = 148;
 		 public const ushort A2C_PopMessage = 149;
+		 public const ushort C2G_ChangeCamp = 150;
+		 public const ushort C2G_Ready = 151;
 	}
 }
