@@ -76,6 +76,7 @@ namespace ETModel
         {
             await this.AddPackageAsync(UIType.Common);
             await this.AddPackageAsync(UIType.RootLayer);
+            await this.AddPackageAsync(UIType.PopMessage);
         }
 
         

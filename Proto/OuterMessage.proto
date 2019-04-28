@@ -310,6 +310,13 @@ message C2G_CreateRoom // IRequest
 	string RoomNam = 5;
 }
 
+message G2C_CreateRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
 message C2G_ExitRoom // IRequest
 {
 	int32 RpcId = 90;

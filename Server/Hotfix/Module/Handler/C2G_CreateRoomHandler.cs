@@ -6,20 +6,34 @@ using Google.Protobuf.Collections;
 namespace ETHotfix
 {
     [MessageHandler(AppType.Gate)]
-    public class C2G_CreateRoomHandler : AMHandler<C2G_CreateRoom>
+    public class C2G_CreateRoomHandler : AMRpcHandler<C2G_CreateRoom,G2C_CreateRoom>
     {
-        protected override void Run(Session session, C2G_CreateRoom message)
+        protected override void Run(Session session, C2G_CreateRoom message, Action<G2C_CreateRoom> reply)
         {
-            RunAsync(session,message).NoAwait();
+            RunAsync(session, message, reply).NoAwait();
         }
 
-        protected async ETVoid RunAsync(Session session, C2G_CreateRoom message)
+        protected async ETVoid RunAsync(Session session, C2G_CreateRoom message, Action<G2C_CreateRoom> reply)
         {
+            G2C_CreateRoom response = new G2C_CreateRoom();
             try
             {
-                RoomComponent roomComponent = Game.Scene.GetComponent<RoomComponent>();
 
                 Player player = session.GetComponent<SessionPlayerComponent>().Player;
+
+                if (!this.CheckRoomName(message.RoomNam))
+                {
+                    response.Error = ErrorCode.ERR_RpcFail;
+
+                    response.Message = Message.Get(player, 1044);
+
+                    reply(response);
+
+                    return;
+                }
+
+                RoomComponent roomComponent = Game.Scene.GetComponent<RoomComponent>();
+                
 
                 Room room = ComponentFactory.CreateWithId<Room>(IdGenerater.GenerateId());
 
@@ -43,6 +57,8 @@ namespace ETHotfix
 
                 roomComponent.Add(room);
 
+                reply(response);
+
                 BroadcastMessage.Send_G2C_Rooms();
 
                 await ETTask.CompletedTask;
@@ -50,8 +66,19 @@ namespace ETHotfix
             catch (Exception e)
             {
                 Log.Error(e);
+                ReplyError(response, e, reply);
             }
         }
-        
+
+        private bool CheckRoomName(string roomName)
+        {
+            if (string.IsNullOrWhiteSpace(roomName))
+                return false;
+
+            if (roomName.Length < 3 || roomName.Length > 7)
+                return false;
+
+            return true;
+        }
     }
 }

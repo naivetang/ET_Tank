@@ -22,5 +22,7 @@
         public const string CombatSettlement = "CombatSettlement";
 
         public const string GameSettings = "GameSettings";
+
+        public const string PopMessage = "PopMessage";
     }
 }

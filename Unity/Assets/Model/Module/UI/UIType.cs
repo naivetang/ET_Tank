@@ -7,6 +7,7 @@
 
 	    public const string Common = "Common";
 	    public const string RootLayer = "RootLayer";
+	    public const string PopMessage = "PopMessage";
 	}
 
 }

@@ -202,7 +202,6 @@ namespace ETHotfix
         {
             this.Send_C2G_CreateRoom().NoAwait();
 
-            this.OnClose();
         }
         private async ETVoid Send_C2G_CreateRoom()
         {
@@ -218,28 +217,12 @@ namespace ETHotfix
 
             msg.RoomNam = this.GetRoomName();
 
-            ETModel.SessionComponent.Instance.Session.Send(msg);
+            G2C_CreateRoom response = (G2C_CreateRoom) await ETModel.SessionComponent.Instance.Session.Call(msg);
 
-            await ETTask.CompletedTask;
-
-            //G2C_RoomDetailInfo response = (G2C_RoomDetailInfo) await ETModel.SessionComponent.Instance.Session.Call(msg);
-
-            // response.LeftCamp
-            //
-            // List<RoomViewComponent.RoomOnePeople> leftList =new List<RoomViewComponent.RoomOnePeople>();
-            //
-            // RoomViewComponent.RoomOnePeople item = new RoomViewComponent.RoomOnePeople();
-            //
-            // item.m_level = 1;
-            //
-            // item.m_isOver = true;
-            //
-            // item.m_name = PlayerComponent.Instance.MyPlayer.Name;
-            //
-            // leftList.Add(item);
-
-
-            //await FUIFactory.Create<RoomViewComponent, G2C_RoomDetailInfo>(FUIType.Room,response);
+            if (response.Error == ErrorCode.ERR_Success)
+            {
+                this.OnClose();
+            }
         }
 
         public override void Dispose()

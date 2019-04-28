@@ -110,6 +110,9 @@ namespace ETModel
 // 模式 1回合制，2时间制
 // 回合制：多少个回合  时间制：多少分钟
 // 房间名
+	[Message(OuterOpcode.G2C_CreateRoom)]
+	public partial class G2C_CreateRoom : IResponse {}
+
 	[Message(OuterOpcode.C2G_ExitRoom)]
 	public partial class C2G_ExitRoom : IRequest {}
 
@@ -235,23 +238,24 @@ namespace ETModel
 		 public const ushort B2C_AttackTankResponse = 127;
 		 public const ushort B2C_AttackTank = 128;
 		 public const ushort C2G_CreateRoom = 129;
-		 public const ushort C2G_ExitRoom = 130;
-		 public const ushort G2C_ExitRoom = 131;
-		 public const ushort C2G_EnterRoom = 132;
-		 public const ushort RoomOnePeople = 133;
-		 public const ushort RoomSimpleInfo = 134;
-		 public const ushort G2C_RoomDetailInfo = 135;
-		 public const ushort G2C_UserBaseInfo = 136;
-		 public const ushort G2C_SettingInfo = 137;
-		 public const ushort C2G_SettingInfo = 138;
-		 public const ushort G2C_Rooms = 139;
-		 public const ushort C2G_StartGame = 140;
-		 public const ushort G2C_StartGame = 141;
-		 public const ushort C2B_LoadAssetFinish = 142;
-		 public const ushort B2C_RoundEnd = 143;
-		 public const ushort B2C_StartNextRound = 144;
-		 public const ushort PersonBattleData = 145;
-		 public const ushort B2C_TankReset = 146;
-		 public const ushort B2C_BattleEnd = 147;
+		 public const ushort G2C_CreateRoom = 130;
+		 public const ushort C2G_ExitRoom = 131;
+		 public const ushort G2C_ExitRoom = 132;
+		 public const ushort C2G_EnterRoom = 133;
+		 public const ushort RoomOnePeople = 134;
+		 public const ushort RoomSimpleInfo = 135;
+		 public const ushort G2C_RoomDetailInfo = 136;
+		 public const ushort G2C_UserBaseInfo = 137;
+		 public const ushort G2C_SettingInfo = 138;
+		 public const ushort C2G_SettingInfo = 139;
+		 public const ushort G2C_Rooms = 140;
+		 public const ushort C2G_StartGame = 141;
+		 public const ushort G2C_StartGame = 142;
+		 public const ushort C2B_LoadAssetFinish = 143;
+		 public const ushort B2C_RoundEnd = 144;
+		 public const ushort B2C_StartNextRound = 145;
+		 public const ushort PersonBattleData = 146;
+		 public const ushort B2C_TankReset = 147;
+		 public const ushort B2C_BattleEnd = 148;
 	}
 }

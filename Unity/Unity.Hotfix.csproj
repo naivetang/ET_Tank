@@ -112,6 +112,7 @@
     <Compile Include="Assets\Hotfix\FUI\GM\FUIGMFactory.cs" />
     <Compile Include="Assets\Hotfix\FUI\Hall\HallViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\Loading\LoadingViewComponent.cs" />
+    <Compile Include="Assets\Hotfix\FUI\PopMessage\PopMessageViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\Room\RoomViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILobby\Component\UILobbyComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\UILobby\Factory\UILobbyFactory.cs" />
