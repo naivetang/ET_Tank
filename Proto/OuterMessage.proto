@@ -337,6 +337,12 @@ message C2G_EnterRoom // IRequest
 
 	int64 RoomId = 1;
 }
+message G2C_EnterRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
 
 message RoomOnePeople
 {
@@ -562,4 +568,9 @@ message C2G_Ready // IMessage
 	int64 RoomId = 1;
 
 	Ready_OPT Opt = 2;
+}
+
+message C2G_AgainGame // IMessage
+{
+	int64 RoomId = 1;
 }

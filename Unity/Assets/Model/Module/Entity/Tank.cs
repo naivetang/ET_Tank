@@ -74,6 +74,10 @@ namespace ETModel
             set
             {
                 this.m_gameObject = value;
+
+                if(value == null)
+                    return;
+
                 this.m_gun = this.m_gameObject.FindChildObjectByPath("turret/gun");
 
                 this.m_turret = this.m_gameObject.FindChildObjectByPath("turret");
@@ -229,7 +233,32 @@ namespace ETModel
 
             base.Dispose();
 
+            Name = "";
+
+            m_died = false;
+
             m_backups = TankType.None;
+
+            ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
+
+            if (this.m_boomEffectGO != null)
+            {
+
+                resourcesComponent.RecycleObj(PrefabType.TankBoom, m_boomEffectGO);
+
+                m_boomEffectGO = null;
+            }
+
+            m_tankType =  TankType.None;
+
+            m_tankCamp = TankCamp.None;
+
+            if (this.GameObject != null)
+            {
+                resourcesComponent.RecycleObj(PrefabType.Tank, this.GameObject);
+
+                this.GameObject = null;
+            }
         }
     }
 }

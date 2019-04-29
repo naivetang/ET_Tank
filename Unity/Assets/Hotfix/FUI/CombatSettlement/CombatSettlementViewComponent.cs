@@ -30,6 +30,10 @@ namespace ETHotfix
 
         private GRichTextField m_rightCampName;
 
+        private GComponent m_leftTopTitle;
+
+        private GComponent m_rightTopTitle;
+
         private B2C_BattleEnd BattleInfo;
 
         public void Awake(B2C_BattleEnd msg)
@@ -52,6 +56,11 @@ namespace ETHotfix
             m_leftCampName = this.FUIComponent.Get("n24").GObject.asRichTextField;
             m_rightCampName = this.FUIComponent.Get("n25").GObject.asRichTextField;
 
+            m_leftTopTitle = this.FUIComponent.Get("n32").GObject.asCom.GetChild("n2").asCom;
+
+            m_rightTopTitle = this.FUIComponent.Get("n33").GObject.asCom.GetChild("n2").asCom;
+
+            m_againBtn.onClick.Set(this.AgainBtn_OnClick);
 
             this.m_leftList.itemRenderer = ItemRendererLeft;
             this.m_rightList.itemRenderer = ItemRendererRight;
@@ -71,8 +80,42 @@ namespace ETHotfix
                 this.m_rightSucOrFail.url = "ui://CombatSettlement/sheng";
             }
 
-            this.m_leftCampName.text = $"潜伏者   {this.BattleInfo.LeftCamp.count}";
-            this.m_rightCampName.text = $"保卫者   {this.BattleInfo.RightCamp.count}";
+            {
+                GComponent com = this.m_leftTopTitle;
+
+                com.GetChild("ping").asTextField.text = Message.Get(1050);
+
+                com.GetChild("name").asTextField.text = Message.Get(1051);
+
+                com.GetChild("rank").asTextField.text = Message.Get(1052);
+
+                com.GetChild("kills").asTextField.text = Message.Get(1053);
+
+                com.GetChild("damage").asTextField.text = Message.Get(1054);
+
+                com.GetChild("death").asTextField.text = Message.Get(1055);
+            }
+
+            {
+                GComponent com = this.m_rightTopTitle;
+
+                com.GetChild("ping").asTextField.text = Message.Get(1050);
+
+                com.GetChild("name").asTextField.text = Message.Get(1051);
+
+                com.GetChild("rank").asTextField.text = Message.Get(1052);
+
+                com.GetChild("kills").asTextField.text = Message.Get(1053);
+
+                com.GetChild("damage").asTextField.text = Message.Get(1054);
+
+                com.GetChild("death").asTextField.text = Message.Get(1055);
+            }
+
+            m_againBtn.text = Message.Get(1056);
+
+            this.m_leftCampName.text = $"{Message.Get(1048)}   {this.BattleInfo.LeftCamp.count}";
+            this.m_rightCampName.text = $"{Message.Get(1049)}   {this.BattleInfo.RightCamp.count}";
 
             this.m_leftList.numItems = this.BattleInfo.LeftCamp.count;
 
@@ -116,6 +159,24 @@ namespace ETHotfix
             com.GetChild("damage").asTextField.text = personBattleData.Damage.ToString();
 
             com.GetChild("death").asTextField.text = personBattleData.Deaths.ToString();
+        }
+
+        private void AgainBtn_OnClick()
+        {
+            FUIFactory.Create<RoomViewComponent>(FUIType.Room).NoAwait();
+
+            this.OnClose();
+        }
+
+        private void Send_C2G_AgainGame()
+        {
+
+
+            C2G_AgainGame msg = new C2G_AgainGame();
+
+            msg.RoomId = this.BattleInfo.BattleId;
+
+            ETModel.SessionComponent.Instance.Session.Send(msg);
         }
     }
 }

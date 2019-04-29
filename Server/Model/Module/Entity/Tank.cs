@@ -87,6 +87,8 @@ namespace ETModel
 
         public void Awake( )
         {
+            this.m_died = false;
+
         }
 
         public void Reset()
@@ -104,6 +106,19 @@ namespace ETModel
             }
 
             base.Dispose();
+
+            this.PlayerId = 0;
+            this.Battle = null;
+            this.Died = false;
+            this.Level = 0;
+            this.Name = "";
+            this.TankCamp = TankCamp.None;
+            this.PX = this.PY = this.PZ = 0;
+            this.RX = this.RY = this.RZ = 0;
+
+            this.TurretRY = 0;
+
+            this.GunRX = 0;
         }
     }
 }

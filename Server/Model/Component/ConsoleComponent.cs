@@ -148,16 +148,51 @@ namespace ETModel
                                 Console.WriteLine(e);
                             }
                             break;
-
+                        case "room num":
+                            try
+                            {
+                                Console.WriteLine(Game.Scene.GetComponent<RoomComponent>().GetAll.Length);
+                            }
+                            catch (Exception e)
+                            {
+                                hasExp = true;
+                                Console.WriteLine(e);
+                                throw;
+                            }
+                            break;
+                        case "battle num":
+                            try
+                            {
+                                Console.WriteLine(Game.Scene.GetComponent<BattleComponent>().Count);
+                            }
+                            catch (Exception e)
+                            {
+                                hasExp = true;
+                                Console.WriteLine(e);
+                                throw;
+                            }
+                            break;
+                        case "player num":
+                            try
+                            {
+                                Console.WriteLine(Game.Scene.GetComponent<PlayerComponent>().Count);
+                            }
+                            catch (Exception e)
+                            {
+                                hasExp = true;
+                                Console.WriteLine(e);
+                                throw;
+                            }
+                            break;
                         default:
                             Console.WriteLine($"no such command: {line}");
                             break;
                     }
 
-                    if (!hasExp)
-                    {
-                        Console.WriteLine("Finish");
-                    }
+                    // if (!hasExp)
+                    // {
+                    //     Console.WriteLine("Finish");
+                    // }
 
                 }
                 catch (Exception e)

@@ -17,8 +17,8 @@
     <image id="n20_wuiu" name="n20" src="wuiu2" fileName="picture/Blue Light.png" xy="964,45" size="314,97" group="n7_wuiu"/>
     <image id="n21_wuiu" name="n21" src="wuiu1" fileName="picture/Blue Left.png" xy="1516,50" size="330,92" group="n7_wuiu"/>
     <image id="n22_wuiu" name="n22" src="wuiu5" fileName="picture/Faction Crest.png" xy="1744,51" size="96,89" group="n7_wuiu" aspect="true"/>
-    <richtext id="n24_wuiu" name="n24" xy="628,68" size="232,56" group="n7_wuiu" fontSize="46" color="#ffffff" strokeColor="#6b3232" strokeSize="3" text="潜伏者   [5]"/>
-    <richtext id="n25_wuiu" name="n25" xy="1034,69" size="232,56" group="n7_wuiu" fontSize="46" color="#ffffff" strokeColor="#1e547d" strokeSize="3" text="[5]   保卫者"/>
+    <richtext id="n24_wuiu" name="n24" xy="628,68" size="234,56" group="n7_wuiu" fontSize="46" color="#ffffff" strokeColor="#6b3232" strokeSize="3" text="潜伏者   [5]"/>
+    <richtext id="n25_wuiu" name="n25" xy="1034,69" size="234,56" group="n7_wuiu" fontSize="46" color="#ffffff" strokeColor="#1e547d" strokeSize="3" text="[5]   保卫者"/>
     <loader id="n28_dbt8" name="n28" xy="213,53" size="70,86" group="n7_wuiu" aspect="true" url="ui://wf4sazq3dbt8f"/>
     <loader id="n29_dbt8" name="n29" xy="1649,54" size="70,86" group="n7_wuiu" aspect="true" url="ui://wf4sazq3dbt8g"/>
     <group id="n7_wuiu" name="n7" xy="59,36" size="1798,930"/>

@@ -221,8 +221,13 @@ namespace ETHotfix
 
             if (response.Error == ErrorCode.ERR_Success)
             {
+                await FUIFactory.Create<RoomViewComponent>(FUIType.Room);
+
                 this.OnClose();
             }
+
+           
+
         }
 
         public override void Dispose()

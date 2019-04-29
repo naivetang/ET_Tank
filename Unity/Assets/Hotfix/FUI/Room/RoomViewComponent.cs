@@ -6,11 +6,11 @@ using Google.Protobuf.Collections;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class RoomViewAwakeComponent : AwakeSystem<RoomViewComponent, G2C_RoomDetailInfo>
+    public class RoomViewAwakeComponent : AwakeSystem<RoomViewComponent>
     {
-        public override void Awake(RoomViewComponent self, G2C_RoomDetailInfo msg)
+        public override void Awake(RoomViewComponent self)
         {
-            self.Awake(msg);
+            self.Awake();
         }
     }
 
@@ -37,16 +37,61 @@ namespace ETHotfix
 
         private long roomId;
 
-        public void Awake(G2C_RoomDetailInfo msg)
+        private static G2C_RoomDetailInfo m_data = null;
+
+        public static G2C_RoomDetailInfo Data
+        {
+            get => m_data;
+            set
+            {
+                m_data = value;
+
+                if (m_data == null)
+                    return;
+
+                FUI fui = Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Room);
+
+                if(fui != null)
+                    fui.GetComponent<RoomViewComponent>().RefreshData(m_data);
+            }
+        }
+
+
+        public void Awake()
         {
             this.FUIComponent = this.GetParent<FUI>();
-            this.RepeatedFieldToList(msg.LeftCamp,this.m_leftItems);
-            this.RepeatedFieldToList(msg.RightCamp,this.m_rightItems);
-            this.m_eftvPeopleNum = msg.RoomSimpleInfo.PeopleNum;
-            this.m_roomOwnerId = msg.RoomSimpleInfo.RoomOwnerId;
+
+            if (Data == null)
+            {
+                Log.Error("数据出错");
+                return;
+            }
+
+            this.RepeatedFieldToList(Data.LeftCamp, this.m_leftItems);
+            this.RepeatedFieldToList(Data.RightCamp, this.m_rightItems);
+            this.m_eftvPeopleNum = Data.RoomSimpleInfo.PeopleNum;
+            this.m_roomOwnerId = Data.RoomSimpleInfo.RoomOwnerId;
             this.m_isOwners = this.m_roomOwnerId == PlayerComponent.Instance.MyPlayer.Id;
-            this.roomId = msg.RoomId;
+            this.roomId = Data.RoomId;
             this.StartFUI();
+        }
+        protected override void StartFUI()
+        {
+            this.m_startGame = this.FUIComponent.Get("n1").GObject.asButton;
+
+            this.m_exit = this.FUIComponent.Get("n2").GObject.asButton;
+
+            this.m_exit.onClick.Set(this.ExitBtn_OnClick);
+
+            this.m_leftList = this.FUIComponent.Get("n9").GObject.asCom.GetChild("n0").asList;
+
+            this.m_rightList = this.FUIComponent.Get("n10").GObject.asCom.GetChild("n0").asList;
+
+            this.m_leftList.numItems = 5;
+
+            this.m_rightList.numItems = 5;
+
+            this.UI();
         }
 
         public void RefreshData(G2C_RoomDetailInfo msg)
@@ -76,24 +121,7 @@ namespace ETHotfix
         }
 
 
-        protected override void StartFUI()
-        {
-            this.m_startGame = this.FUIComponent.Get("n1").GObject.asButton;
 
-            this.m_exit = this.FUIComponent.Get("n2").GObject.asButton;
-
-            this.m_exit.onClick.Set(this.ExitBtn_OnClick);
-
-            this.m_leftList = this.FUIComponent.Get("n9").GObject.asCom.GetChild("n0").asList;
-
-            this.m_rightList = this.FUIComponent.Get("n10").GObject.asCom.GetChild("n0").asList;
-
-            this.m_leftList.numItems = 5;
-            
-            this.m_rightList.numItems = 5;
-
-            this.UI();
-        }
 
         private RoomOnePeople OwnInfo()
         {
@@ -272,7 +300,6 @@ namespace ETHotfix
         private void ExitBtn_OnClick()
         {
             this.Send_C2G_ExitRoom().NoAwait();
-
         }
 
         private async ETVoid Send_C2G_ExitRoom()
@@ -285,6 +312,11 @@ namespace ETHotfix
 
             if (response.Error == ErrorCode.ERR_Success)
             {
+                if (Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Hall) == null)
+                {
+                    await FUIFactory.Create<HallViewComponent>(FUIType.Hall);
+                }
+
                 this.OnClose();
             }
 
@@ -297,9 +329,8 @@ namespace ETHotfix
 
             base.Dispose();
 
-            
+            m_data = null;
 
-            Log.Warning("RoomView Dispose");
         }
     }
 }

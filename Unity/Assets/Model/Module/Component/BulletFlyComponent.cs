@@ -30,13 +30,22 @@ namespace ETModel
         }
     }
 
+    [ObjectSystem]
+    public class BulletFlyFixUpdateSystem : FixedUpdateSystem<BulletFlyComponent>
+    {
+        public override void FixedUpdate(BulletFlyComponent self)
+        {
+            self.FixUpdate();
+        }
+    }
+
     public class BulletFlyComponent : Component
     {
         private Bullet m_bullet;
 
-        private float speed = 40f;
+        private float speed = 500f;
 
-        private float maxLiftTime = 2f;
+        private float maxLiftTime = 5f;
 
         private float instantiateTime = 0f;
 
@@ -60,7 +69,17 @@ namespace ETModel
 
         public void Update()
         {
+            //this.m_bullet.GameObject.transform.position += this.m_bullet.GameObject.transform.forward * this.speed * Time.deltaTime;
+
+
+
+            
+        }
+
+        public void FixUpdate()
+        {
             this.m_bullet.GameObject.transform.position += this.m_bullet.GameObject.transform.forward * this.speed * Time.deltaTime;
+            //this.m_bullet.GameObject.GetComponent<Rigidbody>().AddForce(this.m_bullet.GameObject.transform.forward * 100000);
 
             if (Time.time - this.instantiateTime > this.maxLiftTime)
                 this.m_bullet.Dispose();

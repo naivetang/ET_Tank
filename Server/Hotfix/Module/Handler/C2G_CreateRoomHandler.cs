@@ -63,6 +63,10 @@ namespace ETHotfix
 
                 room.Add(player);
 
+                room.BroadcastRoomDetailInfo();
+
+                //player.RoomId = room.Id;
+
                 roomComponent.Add(room);
 
                 reply(response);

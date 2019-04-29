@@ -122,6 +122,9 @@ namespace ETModel
 	[Message(OuterOpcode.C2G_EnterRoom)]
 	public partial class C2G_EnterRoom : IRequest {}
 
+	[Message(OuterOpcode.G2C_EnterRoom)]
+	public partial class G2C_EnterRoom : IResponse {}
+
 	[Message(OuterOpcode.RoomOnePeople)]
 	public partial class RoomOnePeople {}
 
@@ -215,6 +218,9 @@ namespace ETModel
 	[Message(OuterOpcode.C2G_Ready)]
 	public partial class C2G_Ready : IMessage {}
 
+	[Message(OuterOpcode.C2G_AgainGame)]
+	public partial class C2G_AgainGame : IMessage {}
+
 }
 namespace ETModel
 {
@@ -253,23 +259,25 @@ namespace ETModel
 		 public const ushort C2G_ExitRoom = 131;
 		 public const ushort G2C_ExitRoom = 132;
 		 public const ushort C2G_EnterRoom = 133;
-		 public const ushort RoomOnePeople = 134;
-		 public const ushort RoomSimpleInfo = 135;
-		 public const ushort G2C_RoomDetailInfo = 136;
-		 public const ushort G2C_UserBaseInfo = 137;
-		 public const ushort G2C_SettingInfo = 138;
-		 public const ushort C2G_SettingInfo = 139;
-		 public const ushort G2C_Rooms = 140;
-		 public const ushort C2G_StartGame = 141;
-		 public const ushort G2C_StartGame = 142;
-		 public const ushort C2B_LoadAssetFinish = 143;
-		 public const ushort B2C_RoundEnd = 144;
-		 public const ushort B2C_StartNextRound = 145;
-		 public const ushort PersonBattleData = 146;
-		 public const ushort B2C_TankReset = 147;
-		 public const ushort B2C_BattleEnd = 148;
-		 public const ushort A2C_PopMessage = 149;
-		 public const ushort C2G_ChangeCamp = 150;
-		 public const ushort C2G_Ready = 151;
+		 public const ushort G2C_EnterRoom = 134;
+		 public const ushort RoomOnePeople = 135;
+		 public const ushort RoomSimpleInfo = 136;
+		 public const ushort G2C_RoomDetailInfo = 137;
+		 public const ushort G2C_UserBaseInfo = 138;
+		 public const ushort G2C_SettingInfo = 139;
+		 public const ushort C2G_SettingInfo = 140;
+		 public const ushort G2C_Rooms = 141;
+		 public const ushort C2G_StartGame = 142;
+		 public const ushort G2C_StartGame = 143;
+		 public const ushort C2B_LoadAssetFinish = 144;
+		 public const ushort B2C_RoundEnd = 145;
+		 public const ushort B2C_StartNextRound = 146;
+		 public const ushort PersonBattleData = 147;
+		 public const ushort B2C_TankReset = 148;
+		 public const ushort B2C_BattleEnd = 149;
+		 public const ushort A2C_PopMessage = 150;
+		 public const ushort C2G_ChangeCamp = 151;
+		 public const ushort C2G_Ready = 152;
+		 public const ushort C2G_AgainGame = 153;
 	}
 }

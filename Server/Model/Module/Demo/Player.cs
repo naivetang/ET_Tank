@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using Google.Protobuf.Collections;
 
 namespace ETModel
@@ -38,6 +39,13 @@ namespace ETModel
         }
     }
 
+    public enum PlayerState
+    {
+        Free,
+        InRoom,
+        InBattle,
+    }
+
     public sealed class Player : Entity
     {
         public string Account { get; private set; }
@@ -47,6 +55,20 @@ namespace ETModel
         public long TankId { get; set; } = 0L;
 
         public long UnitId { get; set; } = 0L;
+
+        private long m_roomId = 0L;
+
+        public long RoomId
+        {
+            get => this.m_roomId;
+            set
+            {
+                this.m_roomId = value;
+                this.PlayerState = this.m_roomId == 0? PlayerState.Free : PlayerState.InRoom;
+            }
+        } 
+
+        public PlayerState PlayerState { get; set; } = PlayerState.Free;
 
         public Session Session { get; set; }
 
@@ -187,6 +209,43 @@ namespace ETModel
 
             await this.UpdateUserDB();
 
+
+            // 在房间中，未开始游戏，就退出房间
+            if (this.PlayerState == PlayerState.InRoom || this.PlayerState == PlayerState.InBattle)
+            {
+                Room room = Game.Scene.GetComponent<RoomComponent>().Get(this.m_roomId);
+
+                if (room.Remove(this.Id))
+                {
+                    if (room.Count == 0)
+                    {
+                        Game.Scene.GetComponent<RoomComponent>().Remove(room.Id);
+
+                    }
+                    else
+                    {
+                        room.BroadcastRoomDetailInfo();
+                    }
+
+                    BroadcastMessage.Send_G2C_Rooms();
+                }
+            }
+
+            if (this.PlayerState == PlayerState.InBattle)
+            {
+                IPEndPoint mapAddress = StartConfigComponent.Instance.MapConfigs[0].GetComponent<InnerConfig>().IPEndPoint;
+
+                Session mapSession = Game.Scene.GetComponent<NetInnerComponent>().Get(mapAddress);
+
+                G2B_Disconnect msg = new G2B_Disconnect();
+
+                msg.PlayerId = this.Id;
+
+                msg.BattleId = this.RoomId;
+
+                mapSession.Send(msg);
+            }
+
             base.Dispose();
 
             this.Account = string.Empty;
@@ -196,6 +255,10 @@ namespace ETModel
             this.TankId = 0L;
 
             this.UnitId = 0L;
+
+            this.RoomId = 0L;
+
+            this.PlayerState = PlayerState.Free;
 
             this.Session = null;
         }

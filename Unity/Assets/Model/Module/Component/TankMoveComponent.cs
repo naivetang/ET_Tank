@@ -77,7 +77,15 @@ namespace ETModel
 
             tracks = m_tank.GameObject.FindComponentInChildren<Transform>("tracks");
 
-            motorAudioSource = m_tank.GameObject.AddComponent<AudioSource>();
+            motorAudioSource = m_tank.GameObject.GetComponent<AudioSource>();
+
+            if (this.motorAudioSource == null)
+            {
+                motorAudioSource = m_tank.GameObject.AddComponent<AudioSource>();
+            }
+
+            motorAudioSource.playOnAwake = false;
+
             motorAudioSource.spatialBlend = 1;
 
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
@@ -143,6 +151,8 @@ namespace ETModel
                 }
 
             }
+
+            breakTorque = 1000000;
         }
 
         /// <summary>

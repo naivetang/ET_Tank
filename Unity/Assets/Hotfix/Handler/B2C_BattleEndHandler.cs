@@ -14,14 +14,7 @@ namespace ETHotfix
 
         protected async ETVoid RunAsync(ETModel.Session session, B2C_BattleEnd message)
         {
-            Tank[] tanks =ETModel.Game.Scene.GetComponent<TankComponent>().GetAll();
-            foreach (Tank tank in tanks)
-            {
-                tank.Dispose();
-
-
-                ETModel.Game.Scene.GetComponent<ResourcesComponent>().RecycleObj(PrefabType.Tank,tank.GameObject);
-            }
+            ETModel.Game.Scene.GetComponent<TankComponent>().RemoveAll();
 
             // 加载Unit资源
             ResourcesComponent resourcesComponent = ETModel.Game.Scene.GetComponent<ResourcesComponent>();

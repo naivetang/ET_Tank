@@ -489,6 +489,9 @@ namespace ETModel
 
         public void RecycleObj(PrefabType type, GameObject prefab, Action<GameObject> callBack = null)
         {
+            if (prefab == null)
+                return;
+
             if (!this.m_prefabs.TryGetValue(type, out Queue<GameObject> gameObjects))
             {
                 this.m_prefabs.Add(type,new Queue<GameObject>());

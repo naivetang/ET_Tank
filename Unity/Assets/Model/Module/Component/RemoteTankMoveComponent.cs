@@ -87,7 +87,14 @@ namespace ETModel
 
             tracks = m_tank.FindComponentInChildren<Transform>("tracks");
 
-            motorAudioSource = m_tank.AddComponent<AudioSource>();
+
+            motorAudioSource = m_tank.GetComponent<AudioSource>();
+            if (motorAudioSource == null)
+            {
+                motorAudioSource = m_tank.AddComponent<AudioSource>();
+            }
+
+            
             motorAudioSource.spatialBlend = 1;
 
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();

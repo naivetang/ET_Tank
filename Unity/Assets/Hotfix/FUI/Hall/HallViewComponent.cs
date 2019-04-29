@@ -193,7 +193,10 @@ namespace ETHotfix
 
             msg.RoomId = roomInfo.RoomId;
 
-           await ETModel.SessionComponent.Instance.Session.Call(msg);
+            G2C_EnterRoom response = (G2C_EnterRoom) await ETModel.SessionComponent.Instance.Session.Call(msg);
+
+            if(response.Error == ErrorCode.ERR_Success)
+                FUIFactory.Create<RoomViewComponent>(FUIType.Room).NoAwait();
 
             // if (Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Room) != null)
             //     return;

@@ -92,7 +92,15 @@ namespace App
 						Game.Scene.AddComponent<ActorMessageDispatcherComponent>();
 						Game.Scene.AddComponent<PathfindingComponent>();
 						break;
-					case AppType.AllServer:
+                    case AppType.Battle:
+                        Game.Scene.AddComponent<NetInnerComponent, string>(innerConfig.Address);
+                        Game.Scene.AddComponent<LocationProxyComponent>();
+                        Game.Scene.AddComponent<ActorMessageSenderComponent>();
+                        Game.Scene.AddComponent<ActorLocationSenderComponent>();
+                        Game.Scene.AddComponent<MailboxDispatcherComponent>();
+                        Game.Scene.AddComponent<ActorMessageDispatcherComponent>();
+                        break;
+                    case AppType.AllServer:
 						// 发送普通actor消息
 						Game.Scene.AddComponent<ActorMessageSenderComponent>();
 						

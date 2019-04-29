@@ -306,3 +306,15 @@ message B2G_CreateBattle // IResponse
     int32 Error = 91;
     string Message = 92;
 }
+
+message B2G_BattleEnd // IMessage
+{
+    int64 RoomId = 1;
+}
+
+message G2B_Disconnect // IMessage
+{
+    int64 PlayerId = 1;
+
+    int64 BattleId = 2;
+}

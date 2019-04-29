@@ -34,8 +34,42 @@ namespace ETModel
         // 房主
         public long OwnerId { get; set; }
 
-        //当前状态 1:准备中 2:游戏中
-        public int State { get; set; } = 1;
+        private int m_state = 1;
+
+        /// <summary>
+        /// 当前状态 1:准备中 2:游戏中
+        /// </summary>
+        public int State
+        {
+            get => this.m_state;
+            set
+            {
+                this.m_state = value;
+
+                if(value == 2)
+                    foreach (Player player in this.idPlayers.Values)
+                    {
+                        player.PlayerState = PlayerState.InBattle;
+                    }
+                else if (value == 1)
+                {
+                    foreach (RoomOnePeople leftCampValue in this.LeftCamp.Values)
+                    {
+                        leftCampValue.State = false;
+                    }
+                    foreach (RoomOnePeople rightCampValue in this.RightCamp.Values)
+                    {
+                        rightCampValue.State = false;
+                    }
+
+                    foreach (Player player in this.idPlayers.Values)
+                    {
+                        player.PlayerState = PlayerState.InRoom;
+                    }
+                }
+                    
+            }
+        }
 
         // 房间的序列号 1 开始
         public int SerialNumber { get; set; }
@@ -99,7 +133,9 @@ namespace ETModel
 
             RoomOnePeople ret = this.LeftCount <= this.RightCount? this.AddLeftCamp(player) : this.AddRightCamp(player);
 
-            this.BroadcastRoomDetailInfo();
+            player.RoomId = this.Id;
+
+
 
             return ret;
         }
@@ -164,8 +200,15 @@ namespace ETModel
             return true;
         }
 
-        public void Remove(long id)
+        public bool Remove(long id)
         {
+            if (!this.idPlayers.TryGetValue(id, out Player player))
+            {
+                return false;
+            }
+
+            player.RoomId = 0;
+
             this.idPlayers.Remove(id);
 
             if (this.LeftCamp.ContainsKey(id))
@@ -185,6 +228,8 @@ namespace ETModel
             }
 
             this.m_latestPlayerId = id;
+
+            return true;
         }
 
         private long GetOwnerId()
@@ -250,6 +295,7 @@ namespace ETModel
 
             return true;
         }
+
 
         public override void Dispose()
         {

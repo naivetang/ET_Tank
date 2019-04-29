@@ -49,6 +49,24 @@ namespace ETModel
             Instance = null;
         }
 
+        public void RemoveAll()
+        {
+            foreach (Tank tank in this.m_idTanks.Values)
+            {
+                tank.Dispose();
+
+                ETModel.Game.Scene.GetComponent<ResourcesComponent>().RecycleObj(PrefabType.Tank, tank.GameObject);
+
+                tank.GameObject = null;
+            }
+
+            m_instaceid2ID.Clear();
+
+            m_idTanks.Clear();
+
+            this.MyTank = null;
+        }
+
         public void Add(Tank Tank)
         {
             

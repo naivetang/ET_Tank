@@ -20,6 +20,7 @@ namespace ETHotfix
                 Player player = session.GetComponent<SessionPlayerComponent>().Player;
                 // 在Battle服务器创建战斗
                 IPEndPoint mapAddress = StartConfigComponent.Instance.MapConfigs[0].GetComponent<InnerConfig>().IPEndPoint;
+
                 Session battleSession = Game.Scene.GetComponent<NetInnerComponent>().Get(mapAddress);
 
                 Room room = Game.Scene.GetComponent<RoomComponent>().Get(message.BattleId);
@@ -41,54 +42,13 @@ namespace ETHotfix
                 msg.Level = player.UserDB.GetComponent<UserBaseComponent>().Level;
 
                 B2G_CreateTank createTank = (B2G_CreateTank)await battleSession.Call(msg);
+
                 player.TankId = createTank.TankId;
+
                 response.TankId = createTank.TankId;
+
                 reply(response);
 
-                // 广播创建的Tank
-
-                // B2C_CreateTanks createTanks = new B2C_CreateTanks();
-                //
-                // Tank[] tanks = Game.Scene.GetComponent<TankComponent>().GetAll();
-                //
-                // foreach (Tank t in tanks)
-                // {
-                //     Player p = t.Player;
-                //
-                //     TankFrameInfo tankFrameInfo = new TankFrameInfo();
-                //
-                //     tankFrameInfo.TankId = t.Id;
-                //     tankFrameInfo.PX = t.PX;
-                //     tankFrameInfo.PY = t.PY;
-                //     tankFrameInfo.PZ = t.PZ;
-                //     tankFrameInfo.RX = t.RX;
-                //     tankFrameInfo.RY = t.RY;
-                //     tankFrameInfo.RZ = t.RZ;
-                //     tankFrameInfo.TurretRY = t.TurretRY;
-                //     tankFrameInfo.GunRX = t.GunRX;
-                //
-                //     TankInfoFirstEnter tankInfoFirstEnter = new TankInfoFirstEnter();
-                //     tankInfoFirstEnter.TankFrameInfo = tankFrameInfo;
-                //
-                //     tankInfoFirstEnter.TankCamp = t.TankCamp;
-                //
-                //     tankInfoFirstEnter.MaxHpBase = t.GetComponent<NumericComponent>()[NumericType.MaxHpBase];
-                //
-                //     tankInfoFirstEnter.HpBase = t.GetComponent<NumericComponent>()[NumericType.HpBase];
-                //
-                //     tankInfoFirstEnter.AtkBase = t.GetComponent<NumericComponent>()[NumericType.AtkBase];
-                //
-                //     tankInfoFirstEnter.Name = p.UserDB.Name;
-                //
-                //
-                //     createTanks.Tanks.Add(tankInfoFirstEnter);
-                // }
-
-                //Log.Info("广播坦克");
-                //MessageHelper.BroadcastBattle(createTanks);
-
-                // if (Game.Scene.GetComponent<BattleComponent>() == null)
-                //     Game.Scene.AddComponent<BattleComponent>();
             }
             catch (Exception e)
             {

@@ -40,5 +40,7 @@ namespace ETModel
 		 public const ushort G2B_SessionDisconnect = 1036;
 		 public const ushort G2B_CreateBattle = 1037;
 		 public const ushort B2G_CreateBattle = 1038;
+		 public const ushort B2G_BattleEnd = 1039;
+		 public const ushort G2B_Disconnect = 1040;
 	}
 }

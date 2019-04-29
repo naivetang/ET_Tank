@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using ETModel;
 using Google.Protobuf.Collections;
@@ -162,6 +163,20 @@ namespace ETModel
             }
         }
 
+        private void Clear()
+        {
+            m_peopleNum = 0;
+            this.m_hasLoadSceneFinishNum = 0;
+            this.m_bigModel = BigModel.None;
+            m_smallModel = 0;
+            TimeLeftDiedNum = 0;
+            TimeRightDiedNum = 0;
+            m_roundLeftDiedNum = 0;
+            m_roundRightDiedNum = 0;
+            m_roundLeftWinNum = 0;
+            m_roundRightWinNum = 0;
+        }
+
         private readonly Dictionary<long,BattleOnePeople> m_LeftCamp = new Dictionary<long, BattleOnePeople>();
         private readonly Dictionary<long,BattleOnePeople> m_RightCamp = new Dictionary<long, BattleOnePeople>();
 
@@ -280,7 +295,7 @@ namespace ETModel
             this.CancellationTokenSource?.Dispose();
 
             // 结算
-            Send_B2C_BattleEnd();
+           this.GameOver();
         }
 
         public async ETVoid TimeResetTank(Tank tank)
@@ -327,6 +342,17 @@ namespace ETModel
 
             this.Broadcast(msg);
 
+        }
+
+        private void GameOver()
+        {
+            this.Send_B2G_BattleEnd();
+
+            Send_B2C_BattleEnd();
+
+            Game.Scene.GetComponent<BattleComponent>().Remove(this.Id);
+
+            this.Dispose();
         }
 
         private void Send_B2C_BattleEnd()
@@ -406,6 +432,22 @@ namespace ETModel
 
             this.Broadcast(msg);
         }
+
+
+        private void Send_B2G_BattleEnd()
+        {
+            IPEndPoint gateAddress = StartConfigComponent.Instance.GateConfigs[0].GetComponent<InnerConfig>().IPEndPoint;
+
+            Session gateSession = Game.Scene.GetComponent<NetInnerComponent>().Get(gateAddress);
+
+            B2G_BattleEnd msg =  new B2G_BattleEnd();
+
+            msg.RoomId = this.Id;
+
+            gateSession.Send(msg);
+
+        }
+
 
         private void InitTanks()
         {
@@ -536,7 +578,7 @@ namespace ETModel
 
             CancellationTokenSource?.Dispose();
 
-            this.Send_B2C_BattleEnd();
+            this.GameOver();
         }
 
 
@@ -670,12 +712,18 @@ namespace ETModel
 
             base.Dispose();
 
+            this.Clear();
+
             foreach (Tank tank in this.idTanks.Values)
             {
                 tank.Dispose();
             }
 
             this.idTanks.Clear();
+
+            this.m_LeftCamp.Clear();
+
+            this.m_RightCamp.Clear();
 
             this.CancellationTokenSource?.Dispose();
         }

@@ -32,8 +32,6 @@ namespace ETHotfix
                 return;
             }
 
-            room.State = 2;
-
             IPEndPoint mapAddress = StartConfigComponent.Instance.MapConfigs[0].GetComponent<InnerConfig>().IPEndPoint;
 
             Session mapSession = Game.Scene.GetComponent<NetInnerComponent>().Get(mapAddress);
@@ -86,6 +84,10 @@ namespace ETHotfix
             }
             
             await mapSession.Call(msg);
+
+            room.State = 2;
+
+            room.GetAll();
 
             room.BroadCastStartGame();
 

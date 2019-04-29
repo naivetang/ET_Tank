@@ -120,5 +120,17 @@ namespace ETModel
 			this.NumericDic[final] = ((this.GetByKey(bas) + this.GetByKey(add)) * (100 + this.GetByKey(pct)) / 100 + this.GetByKey(finalAdd)) * (100 + this.GetByKey(finalPct)) / 100;
 			Game.EventSystem.Run(EventIdType.NumbericChange, (NumericType)final, (this.Entity as Tank).Battle.Id, this.Entity.Id, numericType);
 		}
-	}
+
+        public override void Dispose()
+        {
+            if (this.IsDisposed)
+            {
+                return;
+            }
+
+            base.Dispose();
+
+            NumericDic.Clear();
+        }
+    }
 }

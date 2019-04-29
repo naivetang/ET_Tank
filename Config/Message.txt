@@ -36,3 +36,12 @@
 {"_id":1045,"Chinese":"暂未达到开局人数","English":"Player Num Too Less"}
 {"_id":1046,"Chinese":"等待所有玩家准备","English":"Wait All Player Reading"}
 {"_id":1047,"Chinese":"取消","English":"Cancel"}
+{"_id":1048,"Chinese":"潜伏者","English":"Lurker"}
+{"_id":1049,"Chinese":"保卫者","English":"Defender"}
+{"_id":1050,"Chinese":"网络","English":"PING"}
+{"_id":1051,"Chinese":"玩家","English":"Player"}
+{"_id":1052,"Chinese":"军衔","English":"Level"}
+{"_id":1053,"Chinese":"杀敌","English":"Kills"}
+{"_id":1054,"Chinese":"伤害","English":"Damage"}
+{"_id":1055,"Chinese":"死亡","English":"Deaths"}
+{"_id":1056,"Chinese":"再来一局","English":"NextGame"}

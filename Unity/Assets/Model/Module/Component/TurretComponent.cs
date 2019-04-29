@@ -107,7 +107,7 @@ namespace ETModel
 
             Ray ray = new Ray(pos,this.gunTransform.forward);
 
-            hitPoint = Physics.Raycast(ray, out raycastHit, 100f)? raycastHit.point : ray.GetPoint(100f);
+            hitPoint = Physics.Raycast(ray, out raycastHit, 3000f)? raycastHit.point : ray.GetPoint(3000f);
 
             Debug.DrawLine(ray.origin, hitPoint,Color.red);//划出射线，在scene视图中能看到由摄像机发射出的射线
 

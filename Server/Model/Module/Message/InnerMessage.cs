@@ -461,4 +461,20 @@ namespace ETModel
 
 	}
 
+	[Message(InnerOpcode.B2G_BattleEnd)]
+	public partial class B2G_BattleEnd: IMessage
+	{
+		public long RoomId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.G2B_Disconnect)]
+	public partial class G2B_Disconnect: IMessage
+	{
+		public long PlayerId { get; set; }
+
+		public long BattleId { get; set; }
+
+	}
+
 }

@@ -64,6 +64,10 @@ namespace ETModel
 		public void RemovePackage(string type)
 		{
 			this.packages.TryGetValue(type, out UIPackage package);
+
+            if (package == null)
+                return;
+
 			UIPackage.RemovePackage(package.name);
 			this.packages.Remove(package.name);
 #if !UNITY_EDITOR
