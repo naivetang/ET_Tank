@@ -133,6 +133,8 @@ namespace ETHotfix
             
             Log.Info("服务器下发的网关地址 ： " + r2CLogin.Address);
             Log.Info("服务器下发的网关验证码 ： " + r2CLogin.Key);
+
+            r2CLogin.Address = "47.106.151.176:10002";
             // 创建一个ETModel层的Session,并且保存到ETModel.SessionComponent中
             ETModel.Session gateSession = ETModel.Game.Scene.GetComponent<NetOuterComponent>().Create(r2CLogin.Address);
             ETModel.Game.Scene.AddComponent<ETModel.SessionComponent>().Session = gateSession;
