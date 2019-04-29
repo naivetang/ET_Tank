@@ -14,10 +14,10 @@
       <Label titleFontSize="30" prompt="请输入密码" password="true"/>
     </component>
     <text id="n11_ifcc" name="ErrorPrompt" xy="898,612" size="199,47" hideByEditor="true" visible="false" fontSize="30" color="#ff0000" align="center" vAlign="middle" autoSize="none" autoClearText="true" text="密码错误"/>
-    <component id="n1_lvs1" name="RegistBtn" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="886,704" size="238,48">
+    <component id="n1_lvs1" name="RegistBtn" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="1506,698" size="202,48">
       <Button title="注册" titleFontSize="30"/>
     </component>
-    <component id="n9_n3ew" name="LoginBtn" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="886,799" size="239,48">
+    <component id="n9_n3ew" name="LoginBtn" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="873,726" size="239,48">
       <Button title="登录" titleFontSize="30"/>
     </component>
     <component id="n14_gnr4" name="ExitBtn" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="1507,896">
@@ -38,5 +38,22 @@
     <component id="n26_ou9f" name="n26" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="185,872" hideByEditor="true" visible="false">
       <Button title="设置"/>
     </component>
+    <component id="n27_b79r" name="n27" src="tg571u" fileName="CheckBox/CheckBox.xml" pkg="imnv6csb" xy="870,616"/>
+    <text id="n28_b79r" name="n28" xy="941,618" size="161,33" fontSize="30" color="#ffffff" autoSize="none" text="记住密码"/>
+    <image id="n31_b79r" name="n31" src="b79rg" fileName="BBG.png" xy="0,0" size="1920,1080" group="n32_b79r"/>
+    <component id="n29_b79r" name="n29" src="b79rf" fileName="bg.xml" xy="599,234" group="n32_b79r"/>
+    <component id="n33_b79r" name="n33" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="825,368" size="269,50" group="n32_b79r">
+      <Label prompt="请输入电话" maxLength="11" restrict="[0-9]"/>
+    </component>
+    <component id="n34_b79r" name="n34" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="825,468" size="269,50" group="n32_b79r">
+      <Label prompt="请输入昵称"/>
+    </component>
+    <component id="n35_b79r" name="n35" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="825,570" size="269,50" group="n32_b79r">
+      <Label prompt="请输入密码" password="true"/>
+    </component>
+    <component id="n36_b79r" name="n36" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="857,699" group="n32_b79r">
+      <Button title="确认"/>
+    </component>
+    <group id="n32_b79r" name="n32" xy="0,0" size="1920,1080" hideByEditor="true" visible="false" advanced="true"/>
   </displayList>
 </component>

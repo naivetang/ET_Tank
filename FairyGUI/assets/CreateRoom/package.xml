@@ -5,6 +5,7 @@
     <image id="s4di1" name="Ornamental.png" path="/" exported="true"/>
     <image id="s4di2" name="Text BG.png" path="/" exported="true"/>
     <image id="s4di3" name="BBG.png" path="/" exported="true"/>
+    <component id="b79r4" name="bg.xml" path="/" exported="true"/>
   </resources>
   <publish name="CreateRoom"/>
 </packageDescription>

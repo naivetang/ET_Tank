@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
   <displayList>
+    <component id="n3_s4di" name="n3" src="b79r4" fileName="bg.xml" xy="549,195"/>
     <component id="n0_s4di" name="n0" src="s4di1d" fileName="Bg_Null.xml" pkg="imnv6csb" xy="0,0"/>
-    <image id="n3_s4di" name="n3" src="s4di1" fileName="Ornamental.png" xy="549,195"/>
-    <image id="n4_s4di" name="n4" src="s4di2" fileName="Text BG.png" xy="550,204"/>
-    <image id="n5_s4di" name="n5" src="s4di3" fileName="BBG.png" xy="551,249"/>
     <component id="n2_s4di" name="n2" src="s4di1i" fileName="DropDown/ComboBox.xml" pkg="imnv6csb" xy="628,347" size="256,49">
       <ComboBox title="人数" titleColor="#cccccc" visibleItemCount="10"/>
     </component>

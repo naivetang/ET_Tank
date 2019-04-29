@@ -23,6 +23,12 @@ namespace ETHotfix
 
         public GButton m_exitBtn;
 
+        public GButton m_rememberBtn;
+
+        public GTextField m_rememberText;
+
+        public GGroup m_registGoup;
+
         public void Awake()
         {
             this.StartFUI();
@@ -91,6 +97,12 @@ namespace ETHotfix
             self.LoginBtn.GObject.asButton.onClick.Set(() => { LoginBtnOnClick(self); });
 
             self.RegistBtn.GObject.asButton.onClick.Set(() => { RigistBtnOnClick(self); });
+
+            self.m_rememberBtn = self.FUIComponent.Get("n27").GObject.asButton;
+
+            self.m_rememberText = self.FUIComponent.Get("n28").GObject.asTextField;
+
+            self.m_registGoup = self.FUIComponent.Get("n32").GObject.asGroup;
 
             self.Awake();
 
@@ -182,12 +194,12 @@ namespace ETHotfix
 
         public static void RigistBtnOnClick(LoginViewComponent self)
         {
-            string account = self.AccountInput.Get("title").GObject.asTextInput.text;
-
-            string password = self.PasswordInput.Get("title").GObject.asTextInput.text;
-
-
-            Rigist(self, account, password).NoAwait();
+            // string account = self.AccountInput.Get("title").GObject.asTextInput.text;
+            //
+            // string password = self.PasswordInput.Get("title").GObject.asTextInput.text;
+            //
+            //
+            // Rigist(self, account, password).NoAwait();
         }
 
         public static async ETVoid Rigist(LoginViewComponent self, string account, string password)
