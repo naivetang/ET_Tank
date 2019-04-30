@@ -87,7 +87,7 @@ namespace ETHotfix
             if (string.IsNullOrWhiteSpace(roomName))
                 return false;
 
-            if (roomName.Length < 3 || roomName.Length > 7)
+            if (roomName.Length < 3 || roomName.Length > 14)
                 return false;
 
             return true;

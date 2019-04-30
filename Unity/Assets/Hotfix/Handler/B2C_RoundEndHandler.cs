@@ -10,6 +10,8 @@ namespace ETHotfix
         protected override void Run(ETModel.Session session, B2C_RoundEnd message)
         {
             Log.Warning($"胜利方{message.WinCamp}");
+
+            //ETModel.Game.Scene.GetComponent<TankComponent>().MyTank.GetComponent<LocalTankComponent>().StopMove = true;
         }
     }
 }

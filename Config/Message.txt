@@ -32,7 +32,7 @@
 {"_id":1032,"Chinese":"头顶名字显示","English":"Top Name Display"}
 {"_id":1033,"Chinese":"头顶血条显示","English":"Blood Strip Display"}
 {"_id":1034,"Chinese":"旋转速度","English":"Spinning Speed"}
-{"_id":1044,"Chinese":"房间名字符3~5","English":"Room name characters 3~5"}
+{"_id":1044,"Chinese":"房间名字符3~14","English":"Room name characters 3~14"}
 {"_id":1045,"Chinese":"暂未达到开局人数","English":"Player Num Too Less"}
 {"_id":1046,"Chinese":"等待所有玩家准备","English":"Wait All Player Reading"}
 {"_id":1047,"Chinese":"取消","English":"Cancel"}
@@ -45,3 +45,14 @@
 {"_id":1054,"Chinese":"伤害","English":"Damage"}
 {"_id":1055,"Chinese":"死亡","English":"Deaths"}
 {"_id":1056,"Chinese":"再来一局","English":"NextGame"}
+{"_id":1057,"Chinese":"记住密码","English":"Remember Me"}
+{"_id":1058,"Chinese":"电话号码","English":"Phone Num"}
+{"_id":1059,"Chinese":"用户名(4~9个字符)","English":"Username(4~9character)"}
+{"_id":1060,"Chinese":"密码(6~11个字符)","English":"Password(6~11character)"}
+{"_id":1061,"Chinese":"电话号码不符合规范","English":"Phone number does not meet specifications"}
+{"_id":1062,"Chinese":"用户名不符合规范","English":"Username does not meet specifications"}
+{"_id":1063,"Chinese":"密码不符合规范","English":"Password does not meet specifications"}
+{"_id":1064,"Chinese":"不存在的账号","English":"Non-existent account"}
+{"_id":1065,"Chinese":"密码错误","English":"wrong password"}
+{"_id":1066,"Chinese":"账号已存在","English":"Account already exists"}
+{"_id":1067,"Chinese":"的房间","English":"’s room"}

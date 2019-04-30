@@ -136,6 +136,8 @@ namespace ETHotfix
         {
             this.Send_C2G_SettingInfo();
 
+            this.StorageSet();
+
             this.OnClose();
         }
 
@@ -166,6 +168,11 @@ namespace ETHotfix
             this.m_lastVolume = this.m_volume.value < 0.1f ? this.m_lastVolume : this.m_volume.value;
         }
 
+        private void StorageSet()
+        {
+            PlayerPrefs.SetInt(PlayerPrefsKey.Language, (int)Data.Language);
+        }
+
         private void Send_C2G_SettingInfo()
         {
             C2G_SettingInfo msg = new C2G_SettingInfo();
@@ -176,7 +183,7 @@ namespace ETHotfix
             {
                 Data.Language = msg.Language;
 
-                PlayerPrefs.SetInt(PlayerPrefsKey.Language, (int)Data.Language);
+                
 
                 Game.EventSystem.Run(EventIdType.LanguageChange);
             }
@@ -220,5 +227,7 @@ namespace ETHotfix
                 return Data.Language;
             }
         }
+
+        
     }
 }

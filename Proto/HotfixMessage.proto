@@ -4,14 +4,18 @@ package ETHotfix;
 message C2R_Regist // IRequest
 {
 	int32 RpcId = 90;
-	string Account = 1;
-	string Password = 2;
+
+	string PhoneNum = 1;
+	string UserName = 2;
+	string Password = 3;
 }
 message R2C_Regist // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
+
+	int32 ErrorMessagId = 1;
 }
 
 
@@ -27,10 +31,13 @@ message R2C_Login // IResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
+	
 	// 网关地址 因为网关服务器跟游戏服务器在同一台服务器，所以地址一样
 	string Address = 1;
 	// 网关验证
 	int64 Key	    = 2;
+
+	int32 ErrorMessageId = 3;
 }
 
 message C2G_LoginGate // IRequest

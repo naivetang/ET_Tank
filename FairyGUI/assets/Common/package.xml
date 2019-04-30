@@ -64,6 +64,10 @@
     <image id="m9xx1s" name="sbutton_n.png" path="/Button2/" exported="true" scale="9grid" scale9grid="20,7,40,14"/>
     <component id="m9xx1t" name="Button.xml" path="/Button2/" exported="true"/>
     <component id="tg571u" name="CheckBox.xml" path="/CheckBox/" exported="true"/>
+    <image id="8gmu1v" name="close_a.png" path="/CloseBtn/" exported="true"/>
+    <image id="8gmu1w" name="close_h.png" path="/CloseBtn/" exported="true"/>
+    <image id="8gmu1x" name="close_n.png" path="/CloseBtn/" exported="true"/>
+    <component id="8gmu1y" name="ClostBtn.xml" path="/CloseBtn/" exported="true"/>
   </resources>
   <publish name="Common"/>
 </packageDescription>

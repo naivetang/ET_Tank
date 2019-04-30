@@ -62,7 +62,7 @@ namespace ETHotfix
 
                 int curtHp = targetNumeric.Change(NumericType.HpBase, -damage);
 
-                if (curtHp == 0)
+                if (damage != 0 && curtHp == 0)
                 {
                     sourceNumeric.Change(NumericType.KillsBase, sourceNumeric.GetAsInt(NumericType.Kills) + 1);
 

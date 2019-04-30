@@ -21,11 +21,19 @@ namespace ETHotfix {
       }
     }
 
-    private string account_ = "";
-    public string Account {
-      get { return account_; }
+    private string phoneNum_ = "";
+    public string PhoneNum {
+      get { return phoneNum_; }
       set {
-        account_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        phoneNum_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private string userName_ = "";
+    public string UserName {
+      get { return userName_; }
+      set {
+        userName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -38,12 +46,16 @@ namespace ETHotfix {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Account.Length != 0) {
+      if (PhoneNum.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Account);
+        output.WriteString(PhoneNum);
+      }
+      if (UserName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(UserName);
       }
       if (Password.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteString(Password);
       }
       if (RpcId != 0) {
@@ -57,8 +69,11 @@ namespace ETHotfix {
       if (RpcId != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
       }
-      if (Account.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Account);
+      if (PhoneNum.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PhoneNum);
+      }
+      if (UserName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(UserName);
       }
       if (Password.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
@@ -67,7 +82,8 @@ namespace ETHotfix {
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
-      account_ = "";
+      phoneNum_ = "";
+      userName_ = "";
       password_ = "";
       rpcId_ = 0;
       uint tag;
@@ -77,10 +93,14 @@ namespace ETHotfix {
             input.SkipLastField();
             break;
           case 10: {
-            Account = input.ReadString();
+            PhoneNum = input.ReadString();
             break;
           }
           case 18: {
+            UserName = input.ReadString();
+            break;
+          }
+          case 26: {
             Password = input.ReadString();
             break;
           }
@@ -122,7 +142,19 @@ namespace ETHotfix {
       }
     }
 
+    private int errorMessagId_;
+    public int ErrorMessagId {
+      get { return errorMessagId_; }
+      set {
+        errorMessagId_ = value;
+      }
+    }
+
     public void WriteTo(pb::CodedOutputStream output) {
+      if (ErrorMessagId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(ErrorMessagId);
+      }
       if (RpcId != 0) {
         output.WriteRawTag(208, 5);
         output.WriteInt32(RpcId);
@@ -148,10 +180,14 @@ namespace ETHotfix {
       if (Message.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(Message);
       }
+      if (ErrorMessagId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ErrorMessagId);
+      }
       return size;
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
+      errorMessagId_ = 0;
       rpcId_ = 0;
       error_ = 0;
       message_ = "";
@@ -161,6 +197,10 @@ namespace ETHotfix {
           default:
             input.SkipLastField();
             break;
+          case 8: {
+            ErrorMessagId = input.ReadInt32();
+            break;
+          }
           case 720: {
             RpcId = input.ReadInt32();
             break;
@@ -320,6 +360,14 @@ namespace ETHotfix {
       }
     }
 
+    private int errorMessageId_;
+    public int ErrorMessageId {
+      get { return errorMessageId_; }
+      set {
+        errorMessageId_ = value;
+      }
+    }
+
     public void WriteTo(pb::CodedOutputStream output) {
       if (Address.Length != 0) {
         output.WriteRawTag(10);
@@ -328,6 +376,10 @@ namespace ETHotfix {
       if (Key != 0L) {
         output.WriteRawTag(16);
         output.WriteInt64(Key);
+      }
+      if (ErrorMessageId != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(ErrorMessageId);
       }
       if (RpcId != 0) {
         output.WriteRawTag(208, 5);
@@ -360,12 +412,16 @@ namespace ETHotfix {
       if (Key != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Key);
       }
+      if (ErrorMessageId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ErrorMessageId);
+      }
       return size;
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
       address_ = "";
       key_ = 0;
+      errorMessageId_ = 0;
       rpcId_ = 0;
       error_ = 0;
       message_ = "";
@@ -381,6 +437,10 @@ namespace ETHotfix {
           }
           case 16: {
             Key = input.ReadInt64();
+            break;
+          }
+          case 24: {
+            ErrorMessageId = input.ReadInt32();
             break;
           }
           case 720: {

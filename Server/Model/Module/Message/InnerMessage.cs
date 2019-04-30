@@ -322,7 +322,7 @@ namespace ETModel
 	{
 		public int RpcId { get; set; }
 
-		public string Account { get; set; }
+		public ulong PhoneNum { get; set; }
 
 	}
 

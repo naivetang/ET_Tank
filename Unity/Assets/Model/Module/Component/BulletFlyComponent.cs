@@ -80,7 +80,7 @@ namespace ETModel
         {
             this.m_bullet.GameObject.transform.position += this.m_bullet.GameObject.transform.forward * this.speed * Time.deltaTime;
             //this.m_bullet.GameObject.GetComponent<Rigidbody>().AddForce(this.m_bullet.GameObject.transform.forward * 100000);
-
+            //this.m_bullet.GameObject.transform.Translate(this.m_bullet.GameObject.transform.position + this.m_bullet.GameObject.transform.forward * this.speed * Time.deltaTime);
             if (Time.time - this.instantiateTime > this.maxLiftTime)
                 this.m_bullet.Dispose();
         }

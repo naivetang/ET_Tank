@@ -110,7 +110,7 @@ namespace ETModel
 
             msg.Experience = userBase.Experience;
 
-            msg.Name = this.UserDB.Name;
+            msg.Name = this.UserDB.GetComponent<UserBaseComponent>().UserName;
 
             msg.UserDBID = this.UserDB.Id;
 

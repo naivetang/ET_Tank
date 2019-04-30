@@ -96,7 +96,7 @@ namespace ETModel
             RoomOnePeople one = new RoomOnePeople();
             one.Id = player.Id;
             one.Level = player.UserDB.GetComponent<UserBaseComponent>().Level;
-            one.Name = player.UserDB.Name;
+            one.Name = player.UserDB.GetComponent<UserBaseComponent>().UserName;
             one.State = false;
             one.Camp = 1;
             this.LeftCamp.Add(player.Id, one);
@@ -110,7 +110,7 @@ namespace ETModel
             RoomOnePeople one = new RoomOnePeople();
             one.Id = player.Id;
             one.Level = player.UserDB.GetComponent<UserBaseComponent>().Level;
-            one.Name = player.UserDB.Name;
+            one.Name = player.UserDB.GetComponent<UserBaseComponent>().UserName;
             one.State = false;
             one.Camp = 2;
             this.RightCamp.Add(player.Id, one);

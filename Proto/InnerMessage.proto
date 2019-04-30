@@ -213,7 +213,8 @@ message ObjectGetResponse // IResponse
 message R2G_GetLoginKey // IRequest
 {
     int32 RpcId = 90;
-    string Account = 1;
+
+    uint64 PhoneNum = 1;
 }
 
 message G2R_GetLoginKey // IResponse

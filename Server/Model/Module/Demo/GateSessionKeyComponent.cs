@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ETModel
 {
 	public class GateSessionKeyComponent : Component
 	{
-		private readonly Dictionary<long, string> sessionKey = new Dictionary<long, string>();
+		private readonly Dictionary<long, UInt64> sessionKey = new Dictionary<long, UInt64>();
 		
-		public void Add(long key, string account)
+		public void Add(long key, UInt64 phoneNum)
 		{
-			this.sessionKey.Add(key, account);
+			this.sessionKey.Add(key, phoneNum);
 			this.TimeoutRemoveKey(key).NoAwait();
 		}
 
-		public string Get(long key)
+		public UInt64 Get(long key)
 		{
-			string account = null;
+            UInt64 account = 0;
 			this.sessionKey.TryGetValue(key, out account);
 			return account;
 		}

@@ -9,7 +9,7 @@
     <component id="n6_s4di" name="n6" src="s4di1i" fileName="DropDown/ComboBox.xml" pkg="imnv6csb" xy="979,347" size="245,51">
       <ComboBox title="地图" visibleItemCount="10"/>
     </component>
-    <component id="n7_s4di" name="n7" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="812,575" size="294,50">
+    <component id="n7_s4di" name="n7" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="626,569" size="598,50">
       <Label prompt="房间名"/>
     </component>
     <component id="n8_s4di" name="Close" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="635,713">

@@ -16,6 +16,10 @@
     <component id="b79re" name="CheckBox.xml" path="/CheckBox/" exported="true"/>
     <component id="b79rf" name="bg.xml" path="/" exported="true"/>
     <image id="b79rg" name="BBG.png" path="/" exported="true"/>
+    <component id="8gmuh" name="Regist.xml" path="/" exported="true"/>
+    <image id="8gmui" name="BBG.png" path="/Pictures/" exported="true"/>
+    <image id="8gmuj" name="Ornamental.png" path="/Pictures/" exported="true"/>
+    <image id="8gmuk" name="Text BG.png" path="/Pictures/" exported="true"/>
   </resources>
   <publish name="Login"/>
 </packageDescription>

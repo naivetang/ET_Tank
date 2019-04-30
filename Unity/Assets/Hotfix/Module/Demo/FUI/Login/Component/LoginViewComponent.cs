@@ -1,11 +1,116 @@
 ﻿using System;
 using ETModel;
 using FairyGUI;
+using UnityEngine;
 
 namespace ETHotfix
 {
     public class LoginViewComponent: FUIBase
 	{
+        private class RegisterView
+        {
+            private GComponent FUIComponent;
+
+            private GLabel m_phoneNum;
+            private GLabel m_name;
+            private GLabel m_passWord;
+            private GButton m_registerBtn;
+
+            private GButton m_closeBtn;
+
+            public void Awake(GComponent com)
+            {
+                this.FUIComponent = com;
+
+                this.FUIComponent.visible = false;
+
+                this.StartUp();
+            }
+
+            private void StartUp()
+            {
+                this.m_phoneNum = this.FUIComponent.GetChild("n33").asLabel;
+                this.m_name = this.FUIComponent.GetChild("n34").asLabel;
+                this.m_passWord = this.FUIComponent.GetChild("n35").asLabel;
+                this.m_registerBtn = this.FUIComponent.GetChild("n36").asButton;
+                this.m_closeBtn = this.FUIComponent.GetChild("n37").asButton;
+
+                this.m_registerBtn.onClick.Set(RegistBtn_OnClick);
+
+                this.m_closeBtn.onClick.Set(this.OnClose);
+
+                this.UI();
+            }
+
+            private void UI()
+            {
+                this.Lanaguage();
+            }
+
+            private void Lanaguage()
+            {
+                this.m_phoneNum.GetTextField().asTextInput.promptText = Message.Get(1058);
+                this.m_name.GetTextField().asTextInput.promptText = Message.Get(1059);
+                this.m_passWord.GetTextField().asTextInput.promptText = Message.Get(1060);
+                this.m_registerBtn.text = Message.Get(1019);
+
+
+            }
+
+            private void RegistBtn_OnClick()
+            {
+                this.Register(this.m_phoneNum.text, this.m_name.text, this.m_passWord.text).NoAwait();
+            }
+
+            
+
+            private async ETVoid Register(string phoneNum, string userName, string password)
+            {
+
+                // 创建一个ETModel层的Session
+                ETModel.Session session = ETModel.Game.Scene.GetComponent<NetOuterComponent>().Create(GlobalConfigComponent.Instance.GlobalProto.Address);
+
+                //Log.Info("服务器地址 : " + GlobalConfigComponent.Instance.GlobalProto.Address);
+                // 创建一个ETHotfix层的Session, ETHotfix的Session会通过ETModel层的Session发送消息
+                Session realmSession = ComponentFactory.Create<Session, ETModel.Session>(session);
+
+                var r2cRegist = (R2C_Regist)await realmSession.Call(new C2R_Regist()
+                {
+                        PhoneNum = phoneNum,
+                        UserName = userName,
+                        Password = password
+                });
+
+                if (r2cRegist.ErrorMessagId == 0)
+                {
+                    Log.Info("注册成功");
+
+                    this.OnClose();
+                }
+                else
+                {
+                    Game.EventSystem.Run(EventIdType.ShowPopMessage, Message.Get(r2cRegist.ErrorMessagId), PopMessageType.Float);
+                }
+
+            }
+            
+
+            public bool visible
+            {
+                get => this.FUIComponent.visible;
+                set => this.FUIComponent.visible = value;
+            }
+
+            private void OnClose()
+            {
+                m_phoneNum.text = "";
+                m_name.text = "";
+                m_passWord.text = "";
+                this.FUIComponent.visible = false;
+            }
+
+        }
+
 		// 缓存只需要缓存FUI类型即可
 		public FUI AccountInput;
 
@@ -27,11 +132,15 @@ namespace ETHotfix
 
         public GTextField m_rememberText;
 
-        public GGroup m_registGoup;
+        public GComponent m_registGoup;
+
+        private RegisterView m_registerView = new RegisterView();
 
         public void Awake()
         {
             this.StartFUI();
+
+            m_registerView.Awake(this.m_registGoup);
         }
 
         protected override void StartFUI()
@@ -41,10 +150,31 @@ namespace ETHotfix
 
         public void UI()
         {
+            RegistBtn.GObject.asButton.onClick.Set(RegistBtn_OnClick);
+
+            string account = PlayerPrefs.GetString("Account");
+
+            if (!string.IsNullOrWhiteSpace(account))
+            {
+                AccountInput.GObject.asLabel.text = account;
+            }
+
+            string password = PlayerPrefs.GetString("Password");
+
+            if (!string.IsNullOrWhiteSpace(password))
+            {
+                PasswordInput.GObject.asLabel.text = password;
+            }
+
             this.Lanaguage();
         }
 
-        public  void Lanaguage( )
+        private void RegistBtn_OnClick()
+        {
+            m_registerView.visible = true;
+        }
+
+        private  void Lanaguage( )
         {
             this.m_title.text = Message.Get(1006);
 
@@ -60,10 +190,14 @@ namespace ETHotfix
 
             this.AccountInput.GObject.asLabel.GetTextField().asTextInput.promptText = Message.Get(1022);
             this.PasswordInput.GObject.asLabel.GetTextField().asTextInput.promptText = Message.Get(1023);
+
+            this.m_rememberText.text = Message.Get(1057);
+
         }
 
         public  void RefreshData()
         {
+
         }
     }
 
@@ -96,13 +230,16 @@ namespace ETHotfix
 
             self.LoginBtn.GObject.asButton.onClick.Set(() => { LoginBtnOnClick(self); });
 
-            self.RegistBtn.GObject.asButton.onClick.Set(() => { RigistBtnOnClick(self); });
 
             self.m_rememberBtn = self.FUIComponent.Get("n27").GObject.asButton;
 
+            self.m_rememberBtn.selected = !string.IsNullOrWhiteSpace(PlayerPrefs.GetString("Remember"));
+
             self.m_rememberText = self.FUIComponent.Get("n28").GObject.asTextField;
 
-            self.m_registGoup = self.FUIComponent.Get("n32").GObject.asGroup;
+            self.m_registGoup = self.FUIComponent.Get("n31").GObject.asCom;
+
+            self.m_registGoup.visible = false;
 
             self.Awake();
 
@@ -111,12 +248,27 @@ namespace ETHotfix
 
         public static void LoginBtnOnClick(LoginViewComponent self)
         {
-            string account = self.AccountInput.Get("title").GObject.asTextInput.text;  
-            
+            string account = self.AccountInput.Get("title").GObject.asTextInput.text;
+
             string password = self.PasswordInput.Get("title").GObject.asTextInput.text;
+
+            StorageSet(self);
 
             Login(self, account, password).NoAwait();
             
+        }
+
+        private static void StorageSet(LoginViewComponent self)
+        {
+            string account = self.AccountInput.Get("title").GObject.asTextInput.text;
+
+            string password = self.PasswordInput.Get("title").GObject.asTextInput.text;
+
+            PlayerPrefs.SetString("Account", account);
+
+            PlayerPrefs.SetString("Password", self.m_rememberBtn.selected ? password : "");
+
+            PlayerPrefs.SetString("Remember", self.m_rememberBtn.selected ? "Remember" : "");
         }
 
         public static async ETVoid Login(LoginViewComponent self, string account, string password)
@@ -136,7 +288,7 @@ namespace ETHotfix
 
             if (r2CLogin.Error != ErrorCode.ERR_Success)
             {
-                SetErrorPrompt(self,r2CLogin.Message);
+                SetErrorPrompt(self,Message.Get(r2CLogin.ErrorMessageId));
                 return;
             }
             
@@ -192,46 +344,8 @@ namespace ETHotfix
             Game.EventSystem.Run(EventIdType.LoginHasFinish);
         }
 
-        public static void RigistBtnOnClick(LoginViewComponent self)
-        {
-            // string account = self.AccountInput.Get("title").GObject.asTextInput.text;
-            //
-            // string password = self.PasswordInput.Get("title").GObject.asTextInput.text;
-            //
-            //
-            // Rigist(self, account, password).NoAwait();
-        }
 
-        public static async ETVoid Rigist(LoginViewComponent self, string account, string password)
-        {
-
-            // 创建一个ETModel层的Session
-            ETModel.Session session = ETModel.Game.Scene.GetComponent<NetOuterComponent>().Create(GlobalConfigComponent.Instance.GlobalProto.Address);
-
-            //Log.Info("服务器地址 : " + GlobalConfigComponent.Instance.GlobalProto.Address);
-            // 创建一个ETHotfix层的Session, ETHotfix的Session会通过ETModel层的Session发送消息
-            Session realmSession = ComponentFactory.Create<Session, ETModel.Session>(session);
-
-             var r2cRegist = (R2C_Regist) await realmSession.Call(new C2R_Regist()
-            {
-                    Account = account,
-                    Password = password
-            });
-
-            if (r2cRegist.Error == ErrorCode.ERR_Success)
-            {
-                Log.Info("注册成功");
-
-                Game.EventSystem.Run(EventIdType.LoginFinish);
-            }
-            else
-            {
-                Log.Info(r2cRegist.Message);
-
-                SetErrorPrompt(self, r2cRegist.Message);
-            }
-            
-        }
+        
 
         private static void SetErrorPrompt(LoginViewComponent self, string Prompt)
         {

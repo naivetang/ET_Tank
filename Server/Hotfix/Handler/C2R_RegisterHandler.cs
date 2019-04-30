@@ -20,11 +20,11 @@ namespace ETHotfix
             R2C_Regist response = new R2C_Regist();
             try
             {
-                bool ret = await this.hasAccount(message, response);
+                bool canCreate = await this.CheckAccount(message, response);
 
-                if (!ret)
+                if (canCreate)
                 {
-                    await CreateAccount(message.Account, message.Password);
+                    await CreateAccount(message.PhoneNum, message.UserName, message.Password);
                 }
 
                 reply(response);
@@ -35,32 +35,72 @@ namespace ETHotfix
                 ReplyError(response, e, reply);
             }
         }
-
-        private async ETTask<bool> hasAccount(C2R_Regist message,R2C_Regist responce)
+        /// <summary>
+        /// 返回true说明可添加，返回false不可添加
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        private async ETTask<bool> CheckAccount(C2R_Regist message,R2C_Regist response)
         {
-            DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
-
-            List<ComponentWithId> accounts = await db.Query<Account>(t => t.Name == message.Account);
-
-            if (accounts.Count >= 1)
+            if (!message.PhoneNum.IsPhoneNum())
             {
-                responce.Error = ErrorCode.ERR_RpcFail;
-
-                responce.Message = "此账号已注册";
-
-                return true;
+                response.ErrorMessagId = 1061;
+                return false;
             }
 
-            return false;
+            if (!message.UserName.IsUserName())
+            {
+                response.ErrorMessagId = 1062;
+                return false;
+            }
+            if (!message.Password.IsPassword())
+            {
+                response.ErrorMessagId = 1063;
+                return false;
+            }
+
+
+            DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
+
+            List<ComponentWithId> accounts = await db.Query<Account>(t => t.PhoneNum == message.PhoneNum.ToNum());
+
+            if (accounts.Count != 0)
+            {
+                response.Error = ErrorCode.ERR_RpcFail;
+
+                response.Message = "此账号已注册";
+
+                response.ErrorMessagId = 1066;
+
+                return false;
+            }
+
+            accounts = await db.Query<Account>(t => t.UserName == message.UserName);
+
+            if (accounts.Count != 0)
+            {
+                response.Error = ErrorCode.ERR_RpcFail;
+
+                response.Message = "此账号已注册";
+
+                response.ErrorMessagId = 1066;
+
+                return false;
+            }
+
+            return true;
         }
 
-        private async ETTask CreateAccount(string Name, string Password)
+        private async ETTask CreateAccount(string PhoneNum, string UserName, string Password)
         {
             DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
 
             Account account = ComponentFactory.Create<Account>();
 
-            account.Name = Name;
+            account.PhoneNum = PhoneNum.ToNum();
+
+            account.UserName = UserName;
 
             account.Password = Password;
 
@@ -68,9 +108,9 @@ namespace ETHotfix
 
             UserDB userDb = ComponentFactory.Create<UserDB>();
 
-            userDb.Name = Name;
+            userDb.PhoneNum = PhoneNum.ToNum();
 
-            userDb.AddComponent<UserBaseComponent>();
+            userDb.AddComponent<UserBaseComponent>().UserName = UserName;
 
             userDb.AddComponent<SettingInfoComponent>();
 

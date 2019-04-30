@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using ETModel;
+using NLog.Targets;
 
 namespace ETHotfix
 {
@@ -25,8 +26,6 @@ namespace ETHotfix
 			    {
 			        reply(response);
 
-
-
                     return;
 			    }
 
@@ -37,7 +36,7 @@ namespace ETHotfix
 				Session gateSession = Game.Scene.GetComponent<NetInnerComponent>().Get(innerAddress);
 
                 // 向gate请求一个key,客户端可以拿着这个key连接gate
-                G2R_GetLoginKey g2RGetLoginKey = (G2R_GetLoginKey)await gateSession.Call(new R2G_GetLoginKey() {Account = message.Account});
+                G2R_GetLoginKey g2RGetLoginKey = (G2R_GetLoginKey)await gateSession.Call(new R2G_GetLoginKey() {PhoneNum = ret.PhoneNum});
 
 				string outerAddress = config.GetComponent<OuterConfig>().Address2;
 
@@ -55,7 +54,26 @@ namespace ETHotfix
 	    {
 	        DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
 
-	        List<ComponentWithId> accounts = await db.Query<Account>(account => account.Name == message.Account);
+            List<ComponentWithId> accounts;
+
+            if (message.Account.IsPhoneNum())
+            {
+                accounts = await db.Query<Account>(account => account.PhoneNum == message.Account.ToNum());
+            }
+            else if (message.Account.IsUserName())
+            {
+                accounts = await db.Query<Account>(account => account.UserName == message.Account);
+            }
+            else
+            {
+                response.Error = ErrorCode.ERR_RpcFail;
+
+                response.ErrorMessageId = 1064;
+
+                return null;
+            }
+
+	        
 	        //var accounts = await db.Query<Account>($"{{\'Name\':\'{message.Account}\'}}");
 
 	        if (accounts.Count == 0)
@@ -64,7 +82,9 @@ namespace ETHotfix
 
 	            response.Message = "不存在此账号";
 
-	            return null;
+                response.ErrorMessageId = 1064;
+
+                return null;
 	        }
             else
 	        {
@@ -79,7 +99,9 @@ namespace ETHotfix
 
 	                response.Message = "密码错误";
 
-	                return null;
+                    response.ErrorMessageId = 1065;
+
+                    return null;
                 }
 	        }
 	    }

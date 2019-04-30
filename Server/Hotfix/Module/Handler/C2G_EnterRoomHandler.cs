@@ -34,7 +34,7 @@ namespace ETHotfix
 
                 if (room.Add(player) == null)
                 {
-                    Log.Error($"房间已满，或者玩家{player.UserDB.Name}已经存在房间{room.RoomName}中");
+                    Log.Error($"房间已满，或者玩家{player.UserDB.GetComponent<UserBaseComponent>().UserName}已经存在房间{room.RoomName}中");
 
                     response.Error = ErrorCode.ERR_RpcFail;
                 }

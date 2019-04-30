@@ -9,7 +9,8 @@ namespace ETHotfix
     {
         protected override void Run(Tank tank, C2B_TankFrameInfo message)
         {
-
+            if (tank.Battle.StopGetPosInfo)
+                return;
             TankFrameInfo tankFrameInfo = message.TankFrameInfo;
             //tank.Position = new Vector3(tankFrameInfo.PX,tankFrameInfo.PY,tankFrameInfo.PZ);
             //tank.Rotation = new Vector3(tankFrameInfo.RX,tankFrameInfo.RY,tankFrameInfo.RZ);

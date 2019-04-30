@@ -40,20 +40,6 @@
     </component>
     <component id="n27_b79r" name="n27" src="tg571u" fileName="CheckBox/CheckBox.xml" pkg="imnv6csb" xy="870,616"/>
     <text id="n28_b79r" name="n28" xy="941,618" size="161,33" fontSize="30" color="#ffffff" autoSize="none" text="记住密码"/>
-    <image id="n31_b79r" name="n31" src="b79rg" fileName="BBG.png" xy="0,0" size="1920,1080" group="n32_b79r"/>
-    <component id="n29_b79r" name="n29" src="b79rf" fileName="bg.xml" xy="599,234" group="n32_b79r"/>
-    <component id="n33_b79r" name="n33" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="825,368" size="269,50" group="n32_b79r">
-      <Label prompt="请输入电话" maxLength="11" restrict="[0-9]"/>
-    </component>
-    <component id="n34_b79r" name="n34" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="825,468" size="269,50" group="n32_b79r">
-      <Label prompt="请输入昵称"/>
-    </component>
-    <component id="n35_b79r" name="n35" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="825,570" size="269,50" group="n32_b79r">
-      <Label prompt="请输入密码" password="true"/>
-    </component>
-    <component id="n36_b79r" name="n36" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="857,699" group="n32_b79r">
-      <Button title="确认"/>
-    </component>
-    <group id="n32_b79r" name="n32" xy="0,0" size="1920,1080" hideByEditor="true" visible="false" advanced="true"/>
+    <component id="n31_b79r" name="n31" src="8gmuh" fileName="Regist.xml" xy="0,0" hideByEditor="true"/>
   </displayList>
 </component>

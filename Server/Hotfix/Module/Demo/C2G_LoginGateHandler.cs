@@ -19,8 +19,8 @@ namespace ETHotfix
             G2C_LoginGate response = new G2C_LoginGate();
             try
             {
-                string account = Game.Scene.GetComponent<GateSessionKeyComponent>().Get(message.Key);
-                if (account == null)
+                UInt64 account = Game.Scene.GetComponent<GateSessionKeyComponent>().Get(message.Key);
+                if (account == 0)
                 {
                     response.Error = ErrorCode.ERR_ConnectGateKeyError;
                     response.Message = "Gate key验证失败!";
@@ -56,12 +56,11 @@ namespace ETHotfix
 
         
 
-        private async Task<UserDB> GetUserDB(string name)
+        private async Task<UserDB> GetUserDB(UInt64 phoneNum)
         {
             DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
 
-            List<ComponentWithId> accounts = await db.Query<UserDB>(account => account.Name == name);
-
+            List<ComponentWithId> accounts = await db.Query<UserDB>(account => account.PhoneNum == phoneNum);
             if (accounts.Count == 0)
             {
                 Log.Error("AccountDB登陆成功，但UserDB不存在数据");

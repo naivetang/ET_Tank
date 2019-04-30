@@ -11,7 +11,9 @@ namespace ETModel
     [BsonIgnoreExtraElements]
     public class Account:ETModel.Entity
     {
-        public string Name;
+        public UInt64 PhoneNum;
+
+        public string UserName;
 
         public string Password;
     }
@@ -22,11 +24,13 @@ namespace ETModel
     [BsonIgnoreExtraElements]
     public class UserDB : ETModel.Entity
     {
-        public string Name;
+        public UInt64 PhoneNum;
     }
 
     public class UserBaseComponent : Component, ISerializeToEntity
     {
+        public string UserName;
+
         public int Level = 1;
 
         public int Experience = 0;

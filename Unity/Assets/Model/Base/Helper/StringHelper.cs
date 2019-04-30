@@ -58,5 +58,79 @@ namespace ETModel
 			}
 			return sb.ToString();
 		}
+
+        public static bool IsPhoneNum(this string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
+
+            if (str.Length != 11)
+                return false;
+
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
+        public static bool IsUserName(this string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
+
+            if (str.Contains(" "))
+            {
+                return false;
+            }
+                
+
+
+            if (str.Length < 4 || str.Length > 9)
+                return false;
+
+            return true;
+        }
+
+        public static bool IsPassword(this string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return false;
+            }
+
+            if (str.Contains(" "))
+            {
+                return false;
+            }
+
+            if (str.Length < 6 || str.Length > 11)
+                return false;
+
+
+            return true;
+        }
+
+        public static UInt64 ToNum(this string str)
+        {
+            UInt64 num = 0;
+
+            if (string.IsNullOrWhiteSpace(str))
+                return num;
+
+            foreach (char c in str)
+            {
+                num = num * 10 + (UInt64)(c - '0');
+            }
+
+            return num;
+        }
+
+
 	}
 }

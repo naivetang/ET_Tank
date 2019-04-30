@@ -40,6 +40,8 @@ namespace ETModel
 
         private int m_hasLoadSceneFinishNum;
 
+        public bool StopGetPosInfo { get; set; } = false;
+
         public BigModel BigMode
         {
             get => this.m_bigModel;
@@ -175,6 +177,7 @@ namespace ETModel
             m_roundRightDiedNum = 0;
             m_roundLeftWinNum = 0;
             m_roundRightWinNum = 0;
+            StopGetPosInfo = false;
         }
 
         private readonly Dictionary<long,BattleOnePeople> m_LeftCamp = new Dictionary<long, BattleOnePeople>();
@@ -232,9 +235,15 @@ namespace ETModel
 
             await timerComponent.WaitAsync(40);
 
+            this.StopGetPosInfo = true;
+
             this.InitTanks();
 
-            this.B2C_StartNextRound();
+            this.Send_B2C_StartNextRound();
+
+            m_roundLeftDiedNum = 0;
+
+            m_roundRightDiedNum = 0;
 
             foreach (Tank tank in this.idTanks.Values)
             {
@@ -244,9 +253,11 @@ namespace ETModel
             CancellationTokenSource = new CancellationTokenSource();
 
             this.HeartBeat30ms().NoAwait();
+
+            this.StopGetPosInfo = false;
         }
 
-        private void B2C_StartNextRound()
+        private void Send_B2C_StartNextRound()
         {
             B2C_StartNextRound msg = new B2C_StartNextRound();
 

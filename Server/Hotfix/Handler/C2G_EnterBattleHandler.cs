@@ -37,7 +37,7 @@ namespace ETHotfix
 
                 msg.Camp = info.Camp;
 
-                msg.Name = player.UserDB.Name;
+                msg.Name = player.UserDB.GetComponent<UserBaseComponent>().UserName;
 
                 msg.Level = player.UserDB.GetComponent<UserBaseComponent>().Level;
 

@@ -96,6 +96,8 @@ namespace ETHotfix
 
             this.m_roomName = this.FUIComponent.Get("n7").GObject.asLabel;
 
+            this.m_roomName.text = $"{PlayerComponent.Instance.MyPlayer.Name}{Message.Get(1067)}";
+
             this.m_peopleNum = this.FUIComponent.Get("n2").GObject.asComboBox;
 
             this.m_peopleNum.items = m_nums;

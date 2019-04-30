@@ -21,6 +21,8 @@ namespace ETModel
 
         private CancellationTokenSource CancellationTokenSource;
 
+        public bool StopMove;
+
         public void Awake()
         {
             m_tank = this.GetParent<Tank>();
