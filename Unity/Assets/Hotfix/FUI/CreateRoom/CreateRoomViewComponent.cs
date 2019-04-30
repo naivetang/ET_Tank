@@ -40,11 +40,11 @@ namespace ETHotfix
 
         private string[] m_modelsE = new string[] { "Turn-Based", "Time-Based" };
 
-        private string[] m_roundsC = new[] { "1 回合", "5 回合", "10 回合", "12 回合" };
-        private string[] m_roundsE = new[] { "1 Round", "5 Round", "10 Round", "12 Round" };
+        private string[] m_roundsC = new[] { "1 回合", "3 回合","5 回合", "10 回合", "12 回合" };
+        private string[] m_roundsE = new[] { "1 Round", "3 Round","5 Round", "10 Round", "12 Round" };
 
-        private string[] m_timesC = new[] { "1 分钟", "5 分钟", "10 分钟", "12 分钟" };
-        private string[] m_timesE = new[] { "1 Min", "5 Min", "10 Min", "12 Min" };
+        private string[] m_timesC = new[] { "1 分钟","3 分钟", "5 分钟", "10 分钟", "12 分钟" };
+        private string[] m_timesE = new[] { "1 Min","3 Min", "5 Min", "10 Min", "12 Min" };
 
         private string[] m_models;
 

@@ -51,3 +51,4 @@ Server/.DS_Store
 .objs/
 /Config/md5.txt
 /Unity/Assets/Res/Config/md5.txt
+/Release.rar
