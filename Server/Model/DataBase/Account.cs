@@ -43,7 +43,7 @@ namespace ETModel
 
         public int Volume = 100;
 
-        public int BinarySwitch = 0x0001;
+        public int BinarySwitch = 0x0003;
 
         public int RotSpeed = 50;
     }

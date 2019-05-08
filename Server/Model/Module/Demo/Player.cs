@@ -112,7 +112,7 @@ namespace ETModel
 
             msg.Name = this.UserDB.GetComponent<UserBaseComponent>().UserName;
 
-            msg.UserDBID = this.UserDB.Id;
+            msg.UserDBID = (long)this.UserDB.PhoneNum;
 
             this.Session.Send(msg);
         }

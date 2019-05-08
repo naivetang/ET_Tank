@@ -88,6 +88,8 @@ namespace ETModel
 
             motorAudioSource.spatialBlend = 1;
 
+            motorAudioSource.volume = GameSettingInfo.AudioVolume();
+
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 
             Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");

@@ -71,6 +71,15 @@ namespace ETModel
             {
                 this.m_name.color = Color.red;
             }
+
+            this.GameSetting();
+        }
+
+        private void GameSetting()
+        {
+            this.m_name.visible = GameSettingInfo.NameVisible();
+
+            this.m_uiPanel.ui.GetChild("bloodGroup").visible = GameSettingInfo.HpVisible();
         }
 
         public void HpChange(int maxHp,int nowHp)

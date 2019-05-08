@@ -2,6 +2,7 @@
 using ETModel;
 using FairyGUI;
 using Google.Protobuf.Collections;
+using Unity.Collections;
 using UnityEngine;
 
 namespace ETHotfix
@@ -50,8 +51,6 @@ namespace ETHotfix
         private List<string> m_lanageList = new List<string>{"中文","English"};
 
         private double m_lastVolume;
-
-
 
         public void Awake()
         {
@@ -137,6 +136,8 @@ namespace ETHotfix
             this.Send_C2G_SettingInfo();
 
             this.StorageSet();
+
+            GameSettingInfo.Data = Data;
 
             this.OnClose();
         }
@@ -228,6 +229,13 @@ namespace ETHotfix
             }
         }
 
+        public static int GetRotSpeed()
+        {
+            if (Data == null)
+                return 0;
+            
+            return Data.RotSpeed;
+        }
         
     }
 }

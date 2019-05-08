@@ -35,7 +35,7 @@
         AtkBase = Atk * 10 + 1,
         AtkAdd = Atk * 10 + 2,
 
-        // 造成伤害
+        // 杀敌数
         Kills = 1004,
         KillsBase = Kills * 10 + 1,
 

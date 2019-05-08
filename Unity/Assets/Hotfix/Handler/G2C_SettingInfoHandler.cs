@@ -10,6 +10,8 @@ namespace ETHotfix
         protected override void Run(ETModel.Session session, G2C_SettingInfo message)
         {
             GameSettingsViewComponent.Data = message;
+
+            GameSettingInfo.Data = message;
         }
     }
 }

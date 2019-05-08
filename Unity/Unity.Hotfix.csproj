@@ -104,6 +104,7 @@
     <Compile Include="Assets\Hotfix\Event\SceneChange.cs" />
     <Compile Include="Assets\Hotfix\Event\SceneChangeFinish.cs" />
     <Compile Include="Assets\Hotfix\Event\ShowPopMessage.cs" />
+    <Compile Include="Assets\Hotfix\FUI\About\AboutViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\CombatSettlement\CombatSettlementViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\CreateRoom\CreateRoomViewComponent.cs" />
     <Compile Include="Assets\Hotfix\FUI\FUIBase.cs" />

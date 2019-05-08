@@ -145,6 +145,7 @@
     <Compile Include="Assets\Model\Component\Config\OuterConfig.cs" />
     <Compile Include="Assets\Model\Component\Config\RunServerConfig.cs" />
     <Compile Include="Assets\Model\Component\Config\StartConfig.cs" />
+    <Compile Include="Assets\Model\Component\GameSettingInfo.cs" />
     <Compile Include="Assets\Model\Component\GlobalConfigComponent.cs" />
     <Compile Include="Assets\Model\Component\SceneChangeComponent.cs" />
     <Compile Include="Assets\Model\Component\TimerComponent.cs" />

@@ -88,6 +88,8 @@ namespace ETHotfix
             m_settingBtn = this.FUIComponent.Get("n15").GObject.asButton;
             this.m_exitButton = this.FUIComponent.Get("n16").GObject.asButton;
 
+            m_exitButton.onClick.Set(this.ExitBtn_OnClick);
+
             m_list = this.FUIComponent.Get("n41").GObject.asCom.GetChild("n0").asList;
 
             m_listTitle = this.FUIComponent.Get("n41").GObject.asCom.GetChild("n3").asCom;
@@ -135,6 +137,11 @@ namespace ETHotfix
         private void SettingBtn_OnClick()
         {
             this.CreateSetAsync().NoAwait();
+        }
+
+        private void ExitBtn_OnClick()
+        {
+            Application.Quit();
         }
 
         private async ETVoid CreateSetAsync()

@@ -64,9 +64,9 @@ namespace ETHotfix
 
                 if (damage != 0 && curtHp == 0)
                 {
-                    sourceNumeric.Change(NumericType.KillsBase, sourceNumeric.GetAsInt(NumericType.Kills) + 1);
+                    sourceNumeric.Change(NumericType.KillsBase,  + 1);
 
-                    targetNumeric.Change(NumericType.DeathsBase, sourceNumeric.GetAsInt(NumericType.Deaths) + 1);
+                    targetNumeric.Change(NumericType.DeathsBase,  + 1);
 
                 }
 

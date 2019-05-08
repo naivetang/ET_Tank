@@ -43,6 +43,7 @@ namespace ETModel
                 audioSource.loop = false;
                 audioSource.clip = audio;
                 audioSource.playOnAwake = true;
+                audioSource.volume = GameSettingInfo.AudioVolume();
             }
 
 

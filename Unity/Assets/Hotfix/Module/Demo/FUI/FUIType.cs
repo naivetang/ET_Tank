@@ -24,5 +24,7 @@
         public const string GameSettings = "GameSettings";
 
         public const string PopMessage = "PopMessage";
+
+        public const string About = "About";
     }
 }

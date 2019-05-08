@@ -41,6 +41,12 @@ namespace ETModel
 #endif
         }
 
+        /// <summary>
+        /// 增加或者减少changeValue
+        /// </summary>
+        /// <param name="numericType"></param>
+        /// <param name="changeValue">大于0增加，小于0减少</param>
+        /// <returns></returns>
         public int Change(NumericType numericType, int changeValue)
         {
             int res = GetAsInt(numericType) + changeValue;

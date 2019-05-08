@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <image id="n0_p1tq" name="n0" src="p1tq1" fileName="Pictures/BBG.png" xy="0,0" size="1920,1080" group="n7_p1tq"/>
+    <component id="n1_p1tq" name="n1" src="p1tq4" fileName="bg.xml" xy="599,234" group="n7_p1tq"/>
+    <component id="n5_p1tq" name="n5" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="857,708" group="n7_p1tq">
+      <Button title="确认"/>
+    </component>
+    <component id="n6_p1tq" name="n6" src="8gmu1y" fileName="CloseBtn/ClostBtn.xml" pkg="imnv6csb" xy="1273,243" size="44,44" group="n7_p1tq" hideByEditor="true" aspect="true" visible="false"/>
+    <text id="n8_p1tq" name="n8" xy="855,360" size="209,40" group="n7_p1tq" fontSize="30" color="#ffffff" text="Tank By Naive">
+      <relation target="" sidePair="center-center"/>
+    </text>
+    <text id="n9_p1tq" name="n9" xy="959,443" pivot="0.5,0" anchor="true" size="173,40" group="n7_p1tq" fontSize="30" color="#ffffff" text="版本：1.0.0">
+      <relation target="" sidePair="center-center"/>
+    </text>
+    <text id="n10_p1tq" name="n10" xy="959,526" pivot="0.5,0" anchor="true" size="255,40" group="n7_p1tq" fontSize="30" color="#ffffff" text="交流：1095068286">
+      <relation target="" sidePair="center-center"/>
+    </text>
+    <text id="n11_p1tq" name="n11" xy="960,624" pivot="0.5,0" anchor="true" size="562,40" group="n7_p1tq" fontSize="30" color="#ffffff" text="鸣谢：西南科技大学虚拟现实与可视化团队">
+      <relation target="" sidePair="center-center"/>
+    </text>
+    <group id="n7_p1tq" name="n7" xy="0,0" size="1920,1080" advanced="true"/>
+  </displayList>
+</component>

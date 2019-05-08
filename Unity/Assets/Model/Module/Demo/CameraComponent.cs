@@ -43,8 +43,9 @@ namespace ETModel
         //纵向角度
         private float roll = 0f * Mathf.PI * 2 / 360;
 
+        private const float m_defalutRotSpeed = 0.2f;
         //横向旋转角度
-        private float rotSpeed = 0.2f;
+        private float rotSpeed;
 
         // 距离范围
         private float maxDistance = 20f;
@@ -64,7 +65,10 @@ namespace ETModel
 		public void Awake()
 		{
 			this.mainCamera = Camera.main;
+
             this.tank = this.GetParent<Tank>();
+
+            rotSpeed = m_defalutRotSpeed * (((float)GameSettingInfo.Data.RotSpeed / 100) + 0.5f);
 
             rot = PF.Mathf.Deg2Rad(this.tank.GameObject.transform.eulerAngles.y + 180);
         }
@@ -105,12 +109,6 @@ namespace ETModel
 
             return;
 
-			//Vector3 cameraPos = this.mainCamera.transform.position;
-			this.mainCamera.transform.position = new Vector3(this.tank.Position.x , this.tank.Position.y + 5, this.tank.Position.z - 6);
-            this.mainCamera.transform.LookAt(this.tank.Position);
-			
-			//this.mainCamera.transform.eulerAngles = new Vector3(30,0,0);
-            
         }
 
         /// <summary>

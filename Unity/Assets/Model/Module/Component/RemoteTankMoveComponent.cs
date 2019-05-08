@@ -76,6 +76,7 @@ namespace ETModel
             this.m_lPos = this.m_fPos = this.m_tank.transform.position;
             this.m_lRot = this.m_fRot = this.m_tank.transform.eulerAngles;
 
+
             //Rigidbody rg = this.m_tank.GetComponent<Rigidbody>();
 
             //rg.constraints = RigidbodyConstraints.FreezeAll;
@@ -96,6 +97,8 @@ namespace ETModel
 
             
             motorAudioSource.spatialBlend = 1;
+
+            motorAudioSource.volume = GameSettingInfo.AudioVolume();
 
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 

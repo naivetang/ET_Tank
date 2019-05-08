@@ -152,6 +152,10 @@ namespace ETHotfix
         {
             RegistBtn.GObject.asButton.onClick.Set(RegistBtn_OnClick);
 
+            this.m_exitBtn.onClick.Set(this.ExitBtn_OnClick);
+
+            this.m_aboutBtn.onClick.Set(this.AboutBtn_OnClick);
+
             string account = PlayerPrefs.GetString("Account");
 
             if (!string.IsNullOrWhiteSpace(account))
@@ -199,6 +203,16 @@ namespace ETHotfix
         {
 
         }
+
+        private void AboutBtn_OnClick()
+        {
+            FUIFactory.Create<AboutViewComponent>(FUIType.About).NoAwait();
+        }
+
+        private void ExitBtn_OnClick()
+        {
+            Application.Quit();
+        }
     }
 
 
@@ -208,6 +222,7 @@ namespace ETHotfix
     {
         public override void Awake(LoginViewComponent self)
         {
+            
             self.FUIComponent = self.GetParent<FUI>();
 
             self.AccountInput = self.FUIComponent.Get("AccountInput");
