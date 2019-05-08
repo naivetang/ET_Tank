@@ -52,7 +52,7 @@ namespace ETEditor
 		public static void Build(PlatformType type, BuildAssetBundleOptions buildAssetBundleOptions, BuildOptions buildOptions, bool isBuildExe, bool isContainAB)
 		{
 			BuildTarget buildTarget = BuildTarget.StandaloneWindows;
-			string exeName = "ET";
+			string exeName = "Tank";
 			switch (type)
 			{
 				case PlatformType.PC:

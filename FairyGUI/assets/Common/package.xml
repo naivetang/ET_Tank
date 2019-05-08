@@ -68,6 +68,8 @@
     <image id="8gmu1w" name="close_h.png" path="/CloseBtn/" exported="true"/>
     <image id="8gmu1x" name="close_n.png" path="/CloseBtn/" exported="true"/>
     <component id="8gmu1y" name="ClostBtn.xml" path="/CloseBtn/" exported="true"/>
+    <image id="pazt1z" name="anniu_0001.png" path="/Button3/" exported="true"/>
+    <component id="pazt20" name="Button3.xml" path="/Button3/" exported="true"/>
   </resources>
   <publish name="Common"/>
 </packageDescription>

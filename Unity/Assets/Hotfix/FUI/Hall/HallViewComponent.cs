@@ -132,6 +132,7 @@ namespace ETHotfix
             m_listTitle.GetChild("n5").asRichTextField.text = Message.Get(1016);
             m_listTitle.GetChild("n6").asRichTextField.text = Message.Get(1017);
             m_listTitle.GetChild("n7").asRichTextField.text = Message.Get(1015);
+            m_listTitle.GetChild("n13").asRichTextField.text = Message.Get(1072);
         }
 
         private void SettingBtn_OnClick()
@@ -149,6 +150,25 @@ namespace ETHotfix
             FUI fui = await FUIFactory.Create<GameSettingsViewComponent>(FUIType.GameSettings);
         }
 
+        private string ModelName(RoomSimpleInfo roomSimple)
+        {
+            string str;
+
+            // 回合制
+            if (roomSimple.BigModel == 1)
+            {
+                str = $"{roomSimple.SmallModel} {Message.Get(1074)}";
+            }
+
+            //时间制
+            else
+            {
+                str = $"{roomSimple.SmallModel} {Message.Get(1073)}";
+            }
+
+            return str;
+        }
+
         private void ItemRenderer(int i, GObject go)
         {
             RoomSimpleInfo roomSimpleInfo = this.m_rooms[i];
@@ -164,6 +184,8 @@ namespace ETHotfix
 
             go.asCom.GetChild("n7").asRichTextField.text = Map.Get(roomSimpleInfo.MapId);
 
+            go.asCom.GetChild("n13").asRichTextField.text = ModelName(roomSimpleInfo);
+
 
 
             if (roomSimpleInfo.State == 1)
@@ -173,6 +195,7 @@ namespace ETHotfix
                 go.asCom.GetChild("n5").asRichTextField.color = Color.white;
                 go.asCom.GetChild("n6").asRichTextField.color = Color.white;
                 go.asCom.GetChild("n7").asRichTextField.color = Color.white;
+                go.asCom.GetChild("n13").asRichTextField.color = Color.white;
             }
             else
             {
@@ -181,6 +204,7 @@ namespace ETHotfix
                 go.asCom.GetChild("n5").asRichTextField.color = Color.red;
                 go.asCom.GetChild("n6").asRichTextField.color = Color.red;
                 go.asCom.GetChild("n7").asRichTextField.color = Color.red;
+                go.asCom.GetChild("n13").asRichTextField.color = Color.red;
             }
 
             go.data = roomSimpleInfo;

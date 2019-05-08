@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1250,61" extention="Button">
-  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="2"/>
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
   <displayList>
     <image id="n21_s4di" name="n0" src="gnr43" fileName="Button/button_normal.png" pkg="imnv6csb" xy="0,0" size="1250,61">
       <gearDisplay controller="button" pages="0"/>
@@ -12,7 +12,7 @@
       <gearDisplay controller="button" pages="2"/>
     </image>
     <richtext id="n3_s4di" name="n3" xy="0,-1" size="102,62" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="1"/>
-    <richtext id="n4_s4di" name="n4" xy="113,1" size="642,59" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="你的名字"/>
+    <richtext id="n4_s4di" name="n4" xy="113,1" size="420,59" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="你的名字"/>
     <richtext id="n5_s4di" name="n5" xy="953,2" size="147,56" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="5v5"/>
     <richtext id="n6_s4di" name="n6" xy="1115,1" size="132,57" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="游戏中"/>
     <richtext id="n7_s4di" name="n7" xy="765,2" size="180,56" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="沙漠一灰"/>
@@ -20,10 +20,12 @@
     <image id="n9_s4di" name="n9" src="w243b" fileName="List/VBorder.png" xy="760,0" size="2,61"/>
     <image id="n10_s4di" name="n10" src="w243b" fileName="List/VBorder.png" xy="948,0" size="2,61"/>
     <image id="n11_s4di" name="n11" src="w243b" fileName="List/VBorder.png" xy="1107,0" size="2,61"/>
-    <image id="n13_s4di" name="n13" src="w243b" fileName="List/VBorder.png" xy="0,0" size="2,61"/>
+    <image id="n13_s4di" name="n20" src="w243b" fileName="List/VBorder.png" xy="0,0" size="2,61"/>
     <image id="n14_s4di" name="n14" src="w243b" fileName="List/VBorder.png" xy="1250,0" size="2,61"/>
     <image id="n17_s4di" name="n17" src="s4diq" fileName="List/heng.png" xy="0,0" size="1250,1"/>
     <image id="n18_s4di" name="n18" src="s4diq" fileName="List/heng.png" xy="0,61" size="1250,1"/>
+    <richtext id="n22_i6gi" name="n13" xy="549,0" size="201,58" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="12分钟"/>
+    <image id="n23_i6gi" name="n23" src="w243b" fileName="List/VBorder.png" xy="539,0" size="2,61"/>
   </displayList>
   <Button/>
 </component>

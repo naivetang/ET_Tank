@@ -60,3 +60,6 @@
 {"Id":1069,"Chinese":"版本：1.0.0","English":"VISION：1.0.0"}
 {"Id":1070,"Chinese":"交流：1095068286","English":"CONTACT：1095068286"}
 {"Id":1071,"Chinese":"鸣谢：西南科技大学虚拟现实与可视化团队","English":"THANKS：Virtual Reality and Visualization Team"}
+{"Id":1072,"Chinese":"模式","English":"Model"}
+{"Id":1073,"Chinese":"分钟","English":"Min"}
+{"Id":1074,"Chinese":"回合","English":"Round"}
