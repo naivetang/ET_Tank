@@ -1,4 +1,5 @@
 ﻿using ETModel;
+using UnityEngine;
 
 namespace ETHotfix
 {
@@ -11,9 +12,17 @@ namespace ETHotfix
             {
                 case SceneType.Battle:
                     Game.EventSystem.Run(EventIdType.EnterBattleFinish);
+
+                    Cursor.visible = false;//隐藏指针
+
+                    Cursor.lockState = CursorLockMode.Confined;
                     break;
                 default:
                     Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Loading).GetComponent<LoadingViewComponent>().CanClose = true;
+
+                    Cursor.visible = true;//隐藏指针
+
+                    Cursor.lockState = CursorLockMode.None;
                     break;
             }
         }
