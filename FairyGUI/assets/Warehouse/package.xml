@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="bcngh30k" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="jgrf1" name="Warehouse.xml" path="/" exported="true"/>
+    <image id="jgrf2" name="1.png" path="/" exported="true"/>
+    <image id="jgrf3" name="anniu_0003.png" path="/" exported="true"/>
+    <image id="jgrf4" name="btn.png" path="/" exported="true"/>
+    <image id="jgrf5" name="bullet.png" path="/picture/" exported="true"/>
+    <component id="jgrf6" name="Button1.xml" path="/" exported="true"/>
+    <image id="jgrf7" name="heng.png" path="/" exported="true"/>
+    <component id="jgrf8" name="ListItem.xml" path="/" exported="true"/>
+    <image id="jgrf9" name="Overlay.png" path="/" exported="true"/>
+    <image id="jgrfa" name="prophet.png" path="/picture/" exported="true"/>
+    <image id="jgrfb" name="silver_coin.png" path="/" exported="true"/>
+    <image id="jgrfc" name="silver_coin2.png" path="/" exported="true"/>
+    <image id="jgrfd" name="tank.png" path="/picture/" exported="true"/>
+    <image id="jgrfe" name="zhuangshi_0001.png" path="/" exported="true"/>
+    <image id="jgrff" name="sbutton_n.png" path="/" exported="true" scale="9grid" scale9grid="20,7,40,14"/>
+  </resources>
+  <publish name="Warehouse"/>
+</packageDescription>

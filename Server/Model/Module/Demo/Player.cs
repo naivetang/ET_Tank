@@ -114,6 +114,8 @@ namespace ETModel
 
             msg.UserDBID = (long)this.UserDB.PhoneNum;
 
+            msg.Gold = userBase.Gold;
+
             this.Session.Send(msg);
         }
 

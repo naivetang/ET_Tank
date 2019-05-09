@@ -96,14 +96,20 @@ namespace ETHotfix
 
             m_settingBtn.onClick.Set(this.SettingBtn_OnClick);
 
+            this.m_mallButton.onClick.Set(this.MallBtn_OnClick);
+
             m_list.itemRenderer = ItemRenderer;
 
             m_list.onClickItem.Add(this.ListItemClick);
 
             this.m_createButton.onClick.Set(this.CreateBtn_OnClick);
 
+            this.m_cangKuButton.onClick.Set(this.Warehouse_OnClick);
+
             if(m_data != null)
                 RepeatedFieldToList(m_data.RoomSimpleInfo, m_rooms);
+
+            Lanaguage();
 
             this.UI();
         }
@@ -112,7 +118,7 @@ namespace ETHotfix
         {
             this.m_list.numItems = this.m_rooms.Count;
 
-            Lanaguage();
+            
         }
 
         private void Lanaguage()
@@ -143,6 +149,27 @@ namespace ETHotfix
         private void ExitBtn_OnClick()
         {
             Application.Quit();
+        }
+
+        private void MallBtn_OnClick()
+        {
+            FUIFactory.Create<MallViewComponent>(FUIType.Mall).NoAwait();
+        }
+
+        private void Warehouse_OnClick()
+        {
+            this.Send_C2G_Warehouse().NoAwait();
+        }
+
+        private async ETVoid Send_C2G_Warehouse()
+        {
+            C2G_Warehouse msg = new C2G_Warehouse();
+
+            G2C_Warehouse response = (G2C_Warehouse) await ETModel.SessionComponent.Instance.Session.Call(msg);
+
+            WarehouseViewComponent.Data = response;
+
+            FUIFactory.Create<WarehouseViewComponent>(FUIType.Warehouse).NoAwait();
         }
 
         private async ETVoid CreateSetAsync()

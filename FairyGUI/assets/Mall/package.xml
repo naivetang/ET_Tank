@@ -12,9 +12,9 @@
     <image id="pazt8" name="zhuangshi_0001.png" path="/" exported="true"/>
     <image id="pazta" name="anniu_0003.png" path="/" exported="true"/>
     <component id="paztb" name="Button1.xml" path="/" exported="true"/>
-    <image id="paztc" name="tank.png" path="/"/>
-    <image id="paztd" name="bullet.png" path="/"/>
-    <image id="pazte" name="prophet.png" path="/"/>
+    <image id="paztc" name="tank.png" path="/picture/" exported="true"/>
+    <image id="paztd" name="bullet.png" path="/picture/" exported="true"/>
+    <image id="pazte" name="prophet.png" path="/picture/" exported="true"/>
   </resources>
   <publish name="Mall"/>
 </packageDescription>

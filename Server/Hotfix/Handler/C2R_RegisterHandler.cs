@@ -114,6 +114,8 @@ namespace ETHotfix
 
             userDb.AddComponent<SettingInfoComponent>();
 
+            userDb.AddComponent<WarehouseComponent>();
+
             await db.Save(userDb);
 
         }

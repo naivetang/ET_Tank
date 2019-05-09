@@ -17,6 +17,8 @@ namespace ETHotfix
             player.Experience = message.Experience;
 
             player.DbID = message.UserDBID;
+
+            player.Gold = message.Gold;
         }
     }
 }

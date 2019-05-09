@@ -14,6 +14,8 @@
 
         public long DbID { get; set; }
 
+        public int Gold { get; set; }
+
 
         public override void Dispose()
 		{

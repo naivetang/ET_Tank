@@ -157,6 +157,7 @@ namespace ETModel
 // 经验
 // 名字
 // 游戏id
+// 金币
 	[Message(OuterOpcode.G2C_SettingInfo)]
 	public partial class G2C_SettingInfo : IMessage {}
 
@@ -221,6 +222,26 @@ namespace ETModel
 	[Message(OuterOpcode.C2G_AgainGame)]
 	public partial class C2G_AgainGame : IMessage {}
 
+	[Message(OuterOpcode.PropInfo)]
+	public partial class PropInfo {}
+
+// PropState = WaitUse有效
+	[Message(OuterOpcode.C2G_Warehouse)]
+	public partial class C2G_Warehouse : IRequest {}
+
+// 仓库数据
+	[Message(OuterOpcode.G2C_Warehouse)]
+	public partial class G2C_Warehouse : IResponse {}
+
+	[Message(OuterOpcode.C2G_OptGood)]
+	public partial class C2G_OptGood : IMessage {}
+
+	[Message(OuterOpcode.C2G_AddGold)]
+	public partial class C2G_AddGold : IMessage {}
+
+	[Message(OuterOpcode.G2C_Gold)]
+	public partial class G2C_Gold : IMessage {}
+
 }
 namespace ETModel
 {
@@ -279,5 +300,11 @@ namespace ETModel
 		 public const ushort C2G_ChangeCamp = 151;
 		 public const ushort C2G_Ready = 152;
 		 public const ushort C2G_AgainGame = 153;
+		 public const ushort PropInfo = 154;
+		 public const ushort C2G_Warehouse = 155;
+		 public const ushort G2C_Warehouse = 156;
+		 public const ushort C2G_OptGood = 157;
+		 public const ushort C2G_AddGold = 158;
+		 public const ushort G2C_Gold = 159;
 	}
 }

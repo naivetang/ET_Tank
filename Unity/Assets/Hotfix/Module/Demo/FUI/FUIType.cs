@@ -26,5 +26,10 @@
         public const string PopMessage = "PopMessage";
 
         public const string About = "About";
+
+        public const string Mall = "Mall";
+
+        public const string Warehouse = "Warehouse";
+
     }
 }

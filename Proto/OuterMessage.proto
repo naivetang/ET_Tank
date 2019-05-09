@@ -414,6 +414,9 @@ message G2C_UserBaseInfo // IMessage
 
 	// 游戏id
 	int64 UserDBID = 4;
+
+	// 金币
+	int32 Gold = 5;
 }
 
 message G2C_SettingInfo // IMessage
@@ -573,4 +576,83 @@ message C2G_Ready // IMessage
 message C2G_AgainGame // IMessage
 {
 	int64 RoomId = 1;
+}
+
+enum PropState
+{
+	PSNone = 0;
+	WaitUse = 1;
+	InUser = 2;
+
+}
+
+message PropInfo
+{
+	int32 TableId = 1;
+
+	PropState PropState = 2;
+
+	int32 TotalTimes = 3;
+
+	int32 UseTimes = 4;
+
+	// PropState = WaitUse有效
+	int32 Num = 5;
+}
+
+message C2G_Warehouse // IRequest
+{
+	int32 RpcId = 90;
+}
+
+// 仓库数据
+message G2C_Warehouse // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+
+	repeated int32 Tanks = 1;
+
+	int32 TankId = 2;
+
+	repeated int32 Bullets = 3;
+
+	int32 BulletId = 4;
+
+	repeated PropInfo Props = 5;
+}
+
+enum GoodType
+{
+	GTNone = 0;
+	Tank = 1;
+	Bullet = 2;
+	Prop = 3;
+}
+
+enum GoodOpt
+{
+	GONone = 0;
+	Use = 1;
+	Buy = 2;
+}
+
+message C2G_OptGood // IMessage
+{
+	GoodType GoodType = 1;
+
+	int32 TableId = 2;
+
+	GoodOpt GoodOpt = 3;
+}
+
+message C2G_AddGold // IMessage
+{
+	int32 add = 1;
+}
+
+message G2C_Gold // IMessage
+{
+	int32 Gold = 1;
 }

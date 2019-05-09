@@ -61,6 +61,8 @@ namespace ETHotfix
             DBProxyComponent db = Game.Scene.GetComponent<DBProxyComponent>();
 
             List<ComponentWithId> accounts = await db.Query<UserDB>(account => account.PhoneNum == phoneNum);
+
+
             if (accounts.Count == 0)
             {
                 Log.Error("AccountDB登陆成功，但UserDB不存在数据");

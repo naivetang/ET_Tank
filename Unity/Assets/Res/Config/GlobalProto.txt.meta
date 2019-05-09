@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: 78f3a209a7b81ec46a196b52eea7e541
-timeCreated: 1510807346
-licenseType: Free
 TextScriptImporter:
+  externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: config.unity3d
   assetBundleVariant: 

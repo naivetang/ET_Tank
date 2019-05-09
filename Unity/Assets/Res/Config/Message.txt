@@ -63,3 +63,16 @@
 {"Id":1072,"Chinese":"模式","English":"Model"}
 {"Id":1073,"Chinese":"分钟","English":"Min"}
 {"Id":1074,"Chinese":"回合","English":"Round"}
+{"Id":1075,"Chinese":"购买","English":"Buy"}
+{"Id":1076,"Chinese":"坦克","English":"Tank"}
+{"Id":1077,"Chinese":"炮弹","English":"Bullet"}
+{"Id":1078,"Chinese":"道具","English":"Prop"}
+{"Id":1079,"Chinese":"出战","English":"Fighting"}
+{"Id":1080,"Chinese":"装备","English":"Equip"}
+{"Id":1081,"Chinese":"使用","English":"Use"}
+{"Id":1082,"Chinese":"使用中","English":"InUse"}
+{"Id":1083,"Chinese":"成功出战","English":"Successfully Played"}
+{"Id":1084,"Chinese":"已拥有不必重复购买","English":"Already have no need to repeat purchases"}
+{"Id":1085,"Chinese":"使用成功","English":"Successfully Use"}
+{"Id":1086,"Chinese":"金币不足","English":"Gold inadequate"}
+{"Id":1087,"Chinese":"购买成功","English":"Purchase success"}

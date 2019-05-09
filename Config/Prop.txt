@@ -1,0 +1,2 @@
+{"_id":30001,"Price":500,"Icon":" ","Chinese":"经验加成卡","English":"prop1","Experience":20,"Gold":0,"TotleTimes":5}
+{"_id":30002,"Price":500,"Icon":" ","Chinese":"金币加成卡","English":"prop2","Experience":0,"Gold":20,"TotleTimes":5}

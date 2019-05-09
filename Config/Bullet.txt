@@ -1,0 +1,2 @@
+{"_id":20001,"Price":300,"Chinese":"炮弹1号","English":"paodan1","Attack":20,"SunderArmor":3,"LoadingSpeed":2}
+{"_id":20002,"Price":500,"Chinese":"炮弹2号","English":"paodan2","Attack":30,"SunderArmor":6,"LoadingSpeed":3}

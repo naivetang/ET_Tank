@@ -149,8 +149,11 @@
     <Compile Include="Assets\Model\Component\GlobalConfigComponent.cs" />
     <Compile Include="Assets\Model\Component\SceneChangeComponent.cs" />
     <Compile Include="Assets\Model\Component\TimerComponent.cs" />
+    <Compile Include="Assets\Model\Entity\Config\BulletCfg.cs" />
     <Compile Include="Assets\Model\Entity\Config\Map.cs" />
     <Compile Include="Assets\Model\Entity\Config\Message.cs" />
+    <Compile Include="Assets\Model\Entity\Config\Prop.cs" />
+    <Compile Include="Assets\Model\Entity\Config\TankCfg.cs" />
     <Compile Include="Assets\Model\Entity\Config\UnitConfig.cs" />
     <Compile Include="Assets\Model\Entity\Game.cs" />
     <Compile Include="Assets\Model\Entity\Hotfix.cs" />

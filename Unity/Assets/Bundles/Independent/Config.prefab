@@ -52,3 +52,9 @@ MonoBehaviour:
     gameObject: {fileID: 4900000, guid: 9b07d10c3e283c347b1e336bc693dcc8, type: 3}
   - key: Map
     gameObject: {fileID: 4900000, guid: e04642db99aebee4ebbeee6336910240, type: 3}
+  - key: BulletCfg
+    gameObject: {fileID: 4900000, guid: 04df986b31be8ab4d9aeaa1beab1cb93, type: 3}
+  - key: Prop
+    gameObject: {fileID: 4900000, guid: b49899a0145df0947a2cdd64cc30f206, type: 3}
+  - key: TankCfg
+    gameObject: {fileID: 4900000, guid: a13e3940e5f12f340a24d29297b72226, type: 3}

@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="205,41" extention="Button">
   <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <controller name="c1" pages="0,btn,1,disable" selected="1"/>
   <displayList>
-    <image id="n0_gnr4" name="n0" src="gnr43" fileName="Button/button_normal.png" xy="0,0">
+    <image id="n0_gnr4" name="n0" src="gnr43" fileName="Button/button_normal.png" xy="0,0" group="n8_jgrf">
       <gearDisplay controller="button" pages="0"/>
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <image id="n1_gnr4" name="n1" src="gnr44" fileName="Button/button_active.png" xy="0,0">
+    <image id="n1_gnr4" name="n1" src="gnr44" fileName="Button/button_active.png" xy="0,0" group="n8_jgrf">
       <gearDisplay controller="button" pages="1"/>
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <image id="n2_gnr4" name="n2" src="gnr45" fileName="Button/button_hover.png" xy="0,0">
+    <image id="n2_gnr4" name="n2" src="gnr45" fileName="Button/button_hover.png" xy="0,0" group="n8_jgrf">
       <gearDisplay controller="button" pages="2"/>
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <image id="n3_gnr4" name="n3" src="gnr44" fileName="Button/button_active.png" xy="0,0">
+    <image id="n3_gnr4" name="n3" src="gnr44" fileName="Button/button_active.png" xy="0,0" group="n8_jgrf">
       <gearDisplay controller="button" pages="3"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <group id="n8_jgrf" name="n8" xy="0,0" size="205,41" advanced="true">
+      <gearDisplay controller="c1" pages="0"/>
+    </group>
+    <image id="n6_jgrf" name="n6" src="jgrff" fileName="sbutton_n.png" pkg="bcngh30k" xy="0,0" size="204,41">
+      <gearDisplay controller="c1" pages="1"/>
       <relation target="" sidePair="width-width,height-height"/>
     </image>
     <text id="n4_gnr4" name="title" xy="0,0" size="205,41" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#000000" autoClearText="true" text="Login">

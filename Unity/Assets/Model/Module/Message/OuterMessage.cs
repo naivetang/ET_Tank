@@ -39,6 +39,25 @@ namespace ETModel {
     CancleReady = 2,
   }
 
+  public enum PropState {
+    Psnone = 0,
+    WaitUse = 1,
+    InUser = 2,
+  }
+
+  public enum GoodType {
+    Gtnone = 0,
+    Tank = 1,
+    Bullet = 2,
+    Prop = 3,
+  }
+
+  public enum GoodOpt {
+    Gonone = 0,
+    Use = 1,
+    Buy = 2,
+  }
+
   #endregion
 
   #region Messages
@@ -4197,6 +4216,17 @@ namespace ETModel {
       }
     }
 
+    private int gold_;
+    /// <summary>
+    /// 金币
+    /// </summary>
+    public int Gold {
+      get { return gold_; }
+      set {
+        gold_ = value;
+      }
+    }
+
     public void WriteTo(pb::CodedOutputStream output) {
       if (Level != 0) {
         output.WriteRawTag(8);
@@ -4214,6 +4244,10 @@ namespace ETModel {
         output.WriteRawTag(32);
         output.WriteInt64(UserDBID);
       }
+      if (Gold != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Gold);
+      }
     }
 
     public int CalculateSize() {
@@ -4230,6 +4264,9 @@ namespace ETModel {
       if (UserDBID != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(UserDBID);
       }
+      if (Gold != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Gold);
+      }
       return size;
     }
 
@@ -4238,6 +4275,7 @@ namespace ETModel {
       experience_ = 0;
       name_ = "";
       userDBID_ = 0;
+      gold_ = 0;
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4258,6 +4296,10 @@ namespace ETModel {
           }
           case 32: {
             UserDBID = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            Gold = input.ReadInt32();
             break;
           }
         }
@@ -5507,6 +5549,527 @@ namespace ETModel {
             break;
           case 8: {
             RoomId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class PropInfo : pb::IMessage {
+    private static readonly pb::MessageParser<PropInfo> _parser = new pb::MessageParser<PropInfo>(() => (PropInfo)MessagePool.Instance.Fetch(typeof(PropInfo)));
+    public static pb::MessageParser<PropInfo> Parser { get { return _parser; } }
+
+    private int tableId_;
+    public int TableId {
+      get { return tableId_; }
+      set {
+        tableId_ = value;
+      }
+    }
+
+    private global::ETModel.PropState propState_ = 0;
+    public global::ETModel.PropState PropState {
+      get { return propState_; }
+      set {
+        propState_ = value;
+      }
+    }
+
+    private int totalTimes_;
+    public int TotalTimes {
+      get { return totalTimes_; }
+      set {
+        totalTimes_ = value;
+      }
+    }
+
+    private int useTimes_;
+    public int UseTimes {
+      get { return useTimes_; }
+      set {
+        useTimes_ = value;
+      }
+    }
+
+    private int num_;
+    /// <summary>
+    /// PropState = WaitUse有效
+    /// </summary>
+    public int Num {
+      get { return num_; }
+      set {
+        num_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (TableId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(TableId);
+      }
+      if (PropState != 0) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) PropState);
+      }
+      if (TotalTimes != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(TotalTimes);
+      }
+      if (UseTimes != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(UseTimes);
+      }
+      if (Num != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Num);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (TableId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TableId);
+      }
+      if (PropState != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PropState);
+      }
+      if (TotalTimes != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TotalTimes);
+      }
+      if (UseTimes != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UseTimes);
+      }
+      if (Num != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Num);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      tableId_ = 0;
+      totalTimes_ = 0;
+      useTimes_ = 0;
+      num_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            TableId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            propState_ = (global::ETModel.PropState) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            TotalTimes = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            UseTimes = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            Num = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class C2G_Warehouse : pb::IMessage {
+    private static readonly pb::MessageParser<C2G_Warehouse> _parser = new pb::MessageParser<C2G_Warehouse>(() => (C2G_Warehouse)MessagePool.Instance.Fetch(typeof(C2G_Warehouse)));
+    public static pb::MessageParser<C2G_Warehouse> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      rpcId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// 仓库数据
+  /// </summary>
+  public partial class G2C_Warehouse : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_Warehouse> _parser = new pb::MessageParser<G2C_Warehouse>(() => (G2C_Warehouse)MessagePool.Instance.Fetch(typeof(G2C_Warehouse)));
+    public static pb::MessageParser<G2C_Warehouse> Parser { get { return _parser; } }
+
+    private int rpcId_;
+    public int RpcId {
+      get { return rpcId_; }
+      set {
+        rpcId_ = value;
+      }
+    }
+
+    private int error_;
+    public int Error {
+      get { return error_; }
+      set {
+        error_ = value;
+      }
+    }
+
+    private string message_ = "";
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private static readonly pb::FieldCodec<int> _repeated_tanks_codec
+        = pb::FieldCodec.ForInt32(10);
+    private pbc::RepeatedField<int> tanks_ = new pbc::RepeatedField<int>();
+    public pbc::RepeatedField<int> Tanks {
+      get { return tanks_; }
+      set { tanks_ = value; }
+    }
+
+    private int tankId_;
+    public int TankId {
+      get { return tankId_; }
+      set {
+        tankId_ = value;
+      }
+    }
+
+    private static readonly pb::FieldCodec<int> _repeated_bullets_codec
+        = pb::FieldCodec.ForInt32(26);
+    private pbc::RepeatedField<int> bullets_ = new pbc::RepeatedField<int>();
+    public pbc::RepeatedField<int> Bullets {
+      get { return bullets_; }
+      set { bullets_ = value; }
+    }
+
+    private int bulletId_;
+    public int BulletId {
+      get { return bulletId_; }
+      set {
+        bulletId_ = value;
+      }
+    }
+
+    private static readonly pb::FieldCodec<global::ETModel.PropInfo> _repeated_props_codec
+        = pb::FieldCodec.ForMessage(42, global::ETModel.PropInfo.Parser);
+    private pbc::RepeatedField<global::ETModel.PropInfo> props_ = new pbc::RepeatedField<global::ETModel.PropInfo>();
+    public pbc::RepeatedField<global::ETModel.PropInfo> Props {
+      get { return props_; }
+      set { props_ = value; }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      tanks_.WriteTo(output, _repeated_tanks_codec);
+      if (TankId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(TankId);
+      }
+      bullets_.WriteTo(output, _repeated_bullets_codec);
+      if (BulletId != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(BulletId);
+      }
+      props_.WriteTo(output, _repeated_props_codec);
+      if (RpcId != 0) {
+        output.WriteRawTag(208, 5);
+        output.WriteInt32(RpcId);
+      }
+      if (Error != 0) {
+        output.WriteRawTag(216, 5);
+        output.WriteInt32(Error);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(226, 5);
+        output.WriteString(Message);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (RpcId != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(RpcId);
+      }
+      if (Error != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Error);
+      }
+      if (Message.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
+      size += tanks_.CalculateSize(_repeated_tanks_codec);
+      if (TankId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TankId);
+      }
+      size += bullets_.CalculateSize(_repeated_bullets_codec);
+      if (BulletId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BulletId);
+      }
+      size += props_.CalculateSize(_repeated_props_codec);
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      tanks_.Clear();
+      tankId_ = 0;
+      bullets_.Clear();
+      bulletId_ = 0;
+      for (int i = 0; i < props_.Count; i++) { MessagePool.Instance.Recycle(props_[i]); }
+      props_.Clear();
+      rpcId_ = 0;
+      error_ = 0;
+      message_ = "";
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10:
+          case 8: {
+            tanks_.AddEntriesFrom(input, _repeated_tanks_codec);
+            break;
+          }
+          case 16: {
+            TankId = input.ReadInt32();
+            break;
+          }
+          case 26:
+          case 24: {
+            bullets_.AddEntriesFrom(input, _repeated_bullets_codec);
+            break;
+          }
+          case 32: {
+            BulletId = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            props_.AddEntriesFrom(input, _repeated_props_codec);
+            break;
+          }
+          case 720: {
+            RpcId = input.ReadInt32();
+            break;
+          }
+          case 728: {
+            Error = input.ReadInt32();
+            break;
+          }
+          case 738: {
+            Message = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class C2G_OptGood : pb::IMessage {
+    private static readonly pb::MessageParser<C2G_OptGood> _parser = new pb::MessageParser<C2G_OptGood>(() => (C2G_OptGood)MessagePool.Instance.Fetch(typeof(C2G_OptGood)));
+    public static pb::MessageParser<C2G_OptGood> Parser { get { return _parser; } }
+
+    private global::ETModel.GoodType goodType_ = 0;
+    public global::ETModel.GoodType GoodType {
+      get { return goodType_; }
+      set {
+        goodType_ = value;
+      }
+    }
+
+    private int tableId_;
+    public int TableId {
+      get { return tableId_; }
+      set {
+        tableId_ = value;
+      }
+    }
+
+    private global::ETModel.GoodOpt goodOpt_ = 0;
+    public global::ETModel.GoodOpt GoodOpt {
+      get { return goodOpt_; }
+      set {
+        goodOpt_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (GoodType != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) GoodType);
+      }
+      if (TableId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(TableId);
+      }
+      if (GoodOpt != 0) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) GoodOpt);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (GoodType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GoodType);
+      }
+      if (TableId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TableId);
+      }
+      if (GoodOpt != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GoodOpt);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      tableId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            goodType_ = (global::ETModel.GoodType) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            TableId = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            goodOpt_ = (global::ETModel.GoodOpt) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class C2G_AddGold : pb::IMessage {
+    private static readonly pb::MessageParser<C2G_AddGold> _parser = new pb::MessageParser<C2G_AddGold>(() => (C2G_AddGold)MessagePool.Instance.Fetch(typeof(C2G_AddGold)));
+    public static pb::MessageParser<C2G_AddGold> Parser { get { return _parser; } }
+
+    private int add_;
+    public int Add {
+      get { return add_; }
+      set {
+        add_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Add != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Add);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (Add != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Add);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      add_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Add = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class G2C_Gold : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_Gold> _parser = new pb::MessageParser<G2C_Gold>(() => (G2C_Gold)MessagePool.Instance.Fetch(typeof(G2C_Gold)));
+    public static pb::MessageParser<G2C_Gold> Parser { get { return _parser; } }
+
+    private int gold_;
+    public int Gold {
+      get { return gold_; }
+      set {
+        gold_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Gold != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Gold);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (Gold != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Gold);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      gold_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            Gold = input.ReadInt32();
             break;
           }
         }

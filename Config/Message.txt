@@ -56,3 +56,23 @@
 {"_id":1065,"Chinese":"密码错误","English":"wrong password"}
 {"_id":1066,"Chinese":"账号已存在","English":"Account already exists"}
 {"_id":1067,"Chinese":"的房间","English":"’s room"}
+{"_id":1068,"Chinese":"Tank By Naive","English":"Tank By Naïve"}
+{"_id":1069,"Chinese":"版本：1.0.0","English":"VISION：1.0.0"}
+{"_id":1070,"Chinese":"交流：1095068286","English":"CONTACT：1095068286"}
+{"_id":1071,"Chinese":"鸣谢：西南科技大学虚拟现实与可视化团队","English":"THANKS：Virtual Reality and Visualization Team"}
+{"_id":1072,"Chinese":"模式","English":"Model"}
+{"_id":1073,"Chinese":"分钟","English":"Min"}
+{"_id":1074,"Chinese":"回合","English":"Round"}
+{"_id":1075,"Chinese":"购买","English":"Buy"}
+{"_id":1076,"Chinese":"坦克","English":"Tank"}
+{"_id":1077,"Chinese":"炮弹","English":"Bullet"}
+{"_id":1078,"Chinese":"道具","English":"Prop"}
+{"_id":1079,"Chinese":"出战","English":"Fighting"}
+{"_id":1080,"Chinese":"装备","English":"Equip"}
+{"_id":1081,"Chinese":"使用","English":"Use"}
+{"_id":1082,"Chinese":"使用中","English":"InUse"}
+{"_id":1083,"Chinese":"成功出战","English":"Successfully Played"}
+{"_id":1084,"Chinese":"已拥有不必重复购买","English":"Already have no need to repeat purchases"}
+{"_id":1085,"Chinese":"使用成功","English":"Successfully Use"}
+{"_id":1086,"Chinese":"金币不足","English":"Gold inadequate"}
+{"_id":1087,"Chinese":"购买成功","English":"Purchase success"}
