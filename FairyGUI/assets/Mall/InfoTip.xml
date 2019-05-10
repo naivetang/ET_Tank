@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <graph id="n2_idpq" name="bg" xy="0,0" size="1920,1080" type="rect" fillColor="#00ffffff"/>
+    <component id="n1_idpq" name="InfoTip" src="idpq23" fileName="InfoTip/InfoTip.xml" pkg="imnv6csb" xy="600,287"/>
+  </displayList>
+</component>

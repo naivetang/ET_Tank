@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="350,35">
+  <displayList>
+    <text id="n0_idpq" name="n0" xy="0,0" size="350,40" fontSize="30" color="#ffffff" autoSize="none" text="攻击力 +20"/>
+  </displayList>
+</component>

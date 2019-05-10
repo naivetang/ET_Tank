@@ -70,6 +70,14 @@
     <component id="8gmu1y" name="ClostBtn.xml" path="/CloseBtn/" exported="true"/>
     <image id="pazt1z" name="anniu_0001.png" path="/Button3/" exported="true"/>
     <component id="pazt20" name="Button3.xml" path="/Button3/" exported="true"/>
+    <image id="idpq21" name="mianban_0008.png" path="/Rank/"/>
+    <image id="idpq22" name="mianban_0008.png" path="/InfoTip/" exported="true" scale="9grid" scale9grid="30,30,60,60"/>
+    <component id="idpq23" name="InfoTip.xml" path="/InfoTip/" exported="true"/>
+    <image id="idpq24" name="1.png" path="/InfoTip/" exported="true"/>
+    <image id="idpq25" name="ditiao_0015.png" path="/InfoTip/" exported="true"/>
+    <component id="idpq26" name="text.xml" path="/InfoTip/" exported="true"/>
+    <image id="idpq27" name="xian_0002.png" path="/InfoTip/" exported="true"/>
+    <component id="idpq28" name="NullBtn.xml" path="/NullBtn/" exported="true"/>
   </resources>
   <publish name="Common"/>
 </packageDescription>

@@ -41,6 +41,8 @@ namespace ETHotfix
 
         private Controller m_controller;
 
+        private GComponent m_infoTip;
+
         public void Awake()
         {
             this.FUIComponent = this.GetParent<FUI>();
@@ -56,6 +58,8 @@ namespace ETHotfix
             this.m_gold = this.FUIComponent.Get("n10").GObject.asTextField;
             this.m_itemList = this.FUIComponent.Get("n15").GObject.asList;
             this.m_controller = this.FUIComponent.GObject.asCom.GetController("c1");
+
+            this.m_infoTip = this.FUIComponent.Get("InfoTip").GObject.asCom;
 
 
             this.m_closeBtn.onClick.Set(this.OnClose);
@@ -116,6 +120,8 @@ namespace ETHotfix
 
                 com.GetChild("n15").asLoader.url = tankInfo.Icon;
 
+                com.GetChild("n15").asLoader.onClick.Set(this.TankIcon_OnClick);
+
                 com.GetChild("n12").text = Message.Get(1075);
 
                 com.GetChild("n12").asButton.onClick.Set(() =>
@@ -125,6 +131,41 @@ namespace ETHotfix
 
                 com.data = tankInfo;
             }
+        }
+
+        private void TankIcon_OnClick(EventContext context)
+        {
+            this.m_infoTip.visible = true;
+
+            this.m_infoTip.GetChild("bg").onClick.Set(() => { this.m_infoTip.visible = false; });
+
+            GComponent tip = this.m_infoTip.GetChild("InfoTip").asCom;
+
+            tip.x = context.inputEvent.x;
+
+            tip.y = context.inputEvent.y;
+
+            TankCfg tankInfo = ((context.sender as GLoader).parent.data) as TankCfg;
+
+            tip.GetChild("n2").asLoader.url = tankInfo.Icon;
+
+            tip.GetChild("n4").asTextField.text = tankInfo.Name();
+
+            tip.GetChild("n6").asTextField.text = tankInfo.Type();
+
+            tip.GetChild("n8").asTextField.text = Message.Get(1088);
+
+            GList attrList = tip.GetChild("n7").asList;
+
+            attrList.numItems = 3;
+
+            attrList.GetChildAt(0).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1089)}   +{tankInfo.Attack}";
+
+            attrList.GetChildAt(1).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1090)}   +{tankInfo.Defence}";
+
+            attrList.GetChildAt(2).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1091)}  +{tankInfo.SunderArmor}";
+
+            attrList.ResizeToFit(3);
         }
 
         private void BulletItemRender()
@@ -148,6 +189,8 @@ namespace ETHotfix
 
                 com.GetChild("n15").asLoader.url = bulletInfo.Icon;
 
+                com.GetChild("n15").asLoader.onClick.Set(this.BulletIcon_OnClick);
+
                 com.GetChild("n12").text = Message.Get(1075);
 
                 com.GetChild("n12").asButton.onClick.Set(() =>
@@ -157,6 +200,41 @@ namespace ETHotfix
 
                 com.data = bulletInfo;
             }
+        }
+
+        private void BulletIcon_OnClick(EventContext context)
+        {
+            this.m_infoTip.visible = true;
+
+            this.m_infoTip.GetChild("bg").onClick.Set(() => { this.m_infoTip.visible = false; });
+
+            GComponent tip = this.m_infoTip.GetChild("InfoTip").asCom;
+
+            tip.x = context.inputEvent.x;
+
+            tip.y = context.inputEvent.y;
+
+            BulletCfg bulletInfo = ((context.sender as GLoader).parent.data) as BulletCfg;
+
+            tip.GetChild("n2").asLoader.url = bulletInfo.Icon;
+
+            tip.GetChild("n4").asTextField.text = bulletInfo.Name();
+
+            tip.GetChild("n6").asTextField.text = bulletInfo.Type();
+
+            tip.GetChild("n8").asTextField.text = Message.Get(1088);
+
+            GList attrList = tip.GetChild("n7").asList;
+
+            attrList.numItems = 3;
+
+            attrList.GetChildAt(0).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1089)}   +{bulletInfo.Attack}";
+
+            attrList.GetChildAt(1).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1091)}  +{bulletInfo.SunderArmor}";
+
+            attrList.GetChildAt(2).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1092)}  {bulletInfo.LoadingSpeed}";
+
+            attrList.ResizeToFit(3);
         }
 
         private void PropItemRender()
@@ -177,6 +255,8 @@ namespace ETHotfix
 
                 com.GetChild("n15").asLoader.url = propInfo.Icon;
 
+                com.GetChild("n15").asLoader.onClick.Set(this.PropIcon_OnClick);
+
                 com.GetChild("n12").text = Message.Get(1075);
 
                 com.GetChild("n12").asButton.onClick.Set(() =>
@@ -186,6 +266,58 @@ namespace ETHotfix
 
                 com.data = propInfo;
             }
+        }
+
+        private void PropIcon_OnClick(EventContext context)
+        {
+            this.m_infoTip.visible = true;
+
+            this.m_infoTip.GetChild("bg").onClick.Set(() => { this.m_infoTip.visible = false; });
+
+            GComponent tip = this.m_infoTip.GetChild("InfoTip").asCom;
+
+            tip.x = context.inputEvent.x;
+
+            tip.y = context.inputEvent.y;
+
+            Prop propInfo = ((context.sender as GLoader).parent.data) as Prop;
+
+            tip.GetChild("n2").asLoader.url = propInfo.Icon;
+
+            tip.GetChild("n4").asTextField.text = propInfo.Name();
+
+            tip.GetChild("n6").asTextField.text = propInfo.Type();
+
+            tip.GetChild("n8").asTextField.text = Message.Get(1088);
+
+            GList attrList = tip.GetChild("n7").asList;
+
+            attrList.numItems = 2;
+
+            // 经验加成卡
+            if (propInfo.Class == 1)
+            {
+                attrList.GetChildAt(0).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1093)}   +{propInfo.Experience}%";
+
+                attrList.GetChildAt(1).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1095)}  +{propInfo.TotleTimes}";
+            }
+            // 金币加成卡
+            else if (propInfo.Class == 2)
+            {
+                attrList.GetChildAt(0).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1094)}   +{propInfo.Gold}%";
+
+                attrList.GetChildAt(1).asCom.GetChild("n0").asTextField.text = $"{Message.Get(1095)}  +{propInfo.TotleTimes}";
+            }
+            else
+            {
+                Log.Error($"不存在的类别{propInfo.Class}");
+            }
+
+
+            attrList.ResizeToFit(2);
+            //attrList.GetChildAt(1)
+
+
         }
 
         private void Lanaguage()

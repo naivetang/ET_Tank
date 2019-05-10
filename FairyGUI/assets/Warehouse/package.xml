@@ -16,6 +16,7 @@
     <image id="jgrfd" name="tank.png" path="/picture/" exported="true"/>
     <image id="jgrfe" name="zhuangshi_0001.png" path="/" exported="true"/>
     <image id="jgrff" name="sbutton_n.png" path="/" exported="true" scale="9grid" scale9grid="20,7,40,14"/>
+    <component id="idpqg" name="InfoTip.xml" path="/" exported="true"/>
   </resources>
   <publish name="Warehouse"/>
 </packageDescription>

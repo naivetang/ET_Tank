@@ -26,5 +26,6 @@
     <component id="n20_pazt" name="n20" src="jgrf6" fileName="Button1.xml" xy="1626,608" size="169,172">
       <Button title="道具" icon="ui://u080cpqypazte" controller="c1" page="2"/>
     </component>
+    <component id="n23_idpq" name="InfoTip" src="idpqg" fileName="InfoTip.xml" xy="0,0" hideByEditor="true" visible="false"/>
   </displayList>
 </component>

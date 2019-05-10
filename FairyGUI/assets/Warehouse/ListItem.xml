@@ -10,5 +10,8 @@
       <Button title="购买"/>
     </component>
     <loader id="n15_pazt" name="n15" xy="20,22" size="150,149"/>
+    <component id="n16_idpq" name="NullBtn" src="idpq28" fileName="NullBtn/NullBtn.xml" pkg="imnv6csb" xy="96,94" pivot="0.5,0.5" anchor="true" size="150,149">
+      <relation target="n15_pazt" sidePair="width-width,height-height"/>
+    </component>
   </displayList>
 </component>

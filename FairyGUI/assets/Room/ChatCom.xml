@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1378,279">
   <displayList>
-    <image id="n29_s4di" name="n29" src="s4dik" fileName="Chat/Shape 1 copy 10.png" xy="38,50" size="656,221" group="n36_s4di" pkg="f77fjnya"/>
-    <image id="n30_s4di" name="n30" src="s4dii" fileName="Chat/Line zuo xian.png" xy="30,66" size="7,199" group="n36_s4di" pkg="f77fjnya"/>
-    <image id="n31_s4di" name="n31" src="s4dih" fileName="Chat/Line xiaxian.png" xy="50,272" size="1327,7" group="n36_s4di" pkg="f77fjnya"/>
-    <image id="n32_s4di" name="n32" src="s4dig" fileName="Chat/Line shangxian.png" xy="0,42" size="1329,7" group="n36_s4di" pkg="f77fjnya"/>
-    <image id="n33_s4di" name="n33" src="s4dif" fileName="Chat/Corner 2zuoshang.png" xy="30,42" group="n36_s4di" pkg="f77fjnya"/>
-    <image id="n34_s4di" name="n34" src="s4did" fileName="Chat/Corner 2 zuoxia.png" xy="30,259" group="n36_s4di" pkg="f77fjnya"/>
-    <image id="n35_s4di" name="n35" src="s4dik" fileName="Chat/Shape 1 copy 10.png" xy="693,50" size="656,221" group="n36_s4di" pkg="f77fjnya"/>
+    <image id="n29_s4di" name="n29" src="s4dik" fileName="Chat/Shape 1 copy 10.png" pkg="f77fjnya" xy="38,50" size="656,221" group="n36_s4di"/>
+    <image id="n30_s4di" name="n30" src="s4dii" fileName="Chat/Line zuo xian.png" pkg="f77fjnya" xy="30,66" size="7,199" group="n36_s4di"/>
+    <image id="n31_s4di" name="n31" src="s4dih" fileName="Chat/Line xiaxian.png" pkg="f77fjnya" xy="50,272" size="1327,7" group="n36_s4di"/>
+    <image id="n32_s4di" name="n32" src="s4dig" fileName="Chat/Line shangxian.png" pkg="f77fjnya" xy="0,42" size="1329,7" group="n36_s4di"/>
+    <image id="n33_s4di" name="n33" src="s4dif" fileName="Chat/Corner 2zuoshang.png" pkg="f77fjnya" xy="30,42" group="n36_s4di"/>
+    <image id="n34_s4di" name="n34" src="s4did" fileName="Chat/Corner 2 zuoxia.png" pkg="f77fjnya" xy="30,259" group="n36_s4di"/>
+    <image id="n35_s4di" name="n35" src="s4dik" fileName="Chat/Shape 1 copy 10.png" pkg="f77fjnya" xy="693,50" size="656,221" group="n36_s4di"/>
     <component id="n38_s4di" name="n38" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="115,0" size="1228,32" group="n36_s4di">
       <Label title="  " titleFontSize="22"/>
     </component>
-    <text id="n37_s4di" name="n37" xy="35,1" size="63,31" group="n36_s4di" font="STFangsong" fontSize="25" color="#c8fbff" text="Say："/>
-    <group id="n36_s4di" name="bottom" xy="0,0" size="1378,279" collapsed="true"/>
+    <text id="n37_s4di" name="n37" xy="35,1" size="62,31" group="n36_s4di" font="STFangsong" fontSize="25" color="#c8fbff" text="Say："/>
+    <group id="n36_s4di" name="bottom" xy="0,0" size="1378,279"/>
+    <list id="n39_idpq" name="n39" xy="36,47" size="1310,225" overflow="scroll"/>
   </displayList>
 </component>

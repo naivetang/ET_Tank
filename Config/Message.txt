@@ -76,3 +76,7 @@
 {"_id":1085,"Chinese":"使用成功","English":"Successfully Use"}
 {"_id":1086,"Chinese":"金币不足","English":"Gold inadequate"}
 {"_id":1087,"Chinese":"购买成功","English":"Purchase success"}
+{"_id":1088,"Chinese":"基本属性","English":"Basic Attribute"}
+{"_id":1089,"Chinese":"攻击力","English":"Attack"}
+{"_id":1090,"Chinese":"防御力","English":"Defensive"}
+{"_id":1091,"Chinese":"破甲","English":"Sunder"}

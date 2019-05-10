@@ -15,6 +15,7 @@
     <image id="paztc" name="tank.png" path="/picture/" exported="true"/>
     <image id="paztd" name="bullet.png" path="/picture/" exported="true"/>
     <image id="pazte" name="prophet.png" path="/picture/" exported="true"/>
+    <component id="idpqf" name="InfoTip.xml" path="/" exported="true"/>
   </resources>
   <publish name="Mall"/>
 </packageDescription>

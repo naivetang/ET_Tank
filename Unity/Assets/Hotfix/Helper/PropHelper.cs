@@ -15,5 +15,17 @@ namespace ETHotfix
                 return this.English;
             }
         }
+
+        public string Type()
+        {
+            if (GameSettingsViewComponent.GetLanguage() == Language.Chinese)
+            {
+                return "道具";
+            }
+            else
+            {
+                return "Prop";
+            }
+        }
     }
 }

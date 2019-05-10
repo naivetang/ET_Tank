@@ -24,7 +24,7 @@ namespace FairyGUI
 		/// </summary>
 		public EventListener onChanged { get; private set; }
 
-		internal GComponent parent;
+		public GComponent parent;
 		internal bool autoRadioGroupDepth;
 		internal bool changing;
 

@@ -76,3 +76,13 @@
 {"Id":1085,"Chinese":"使用成功","English":"Successfully Use"}
 {"Id":1086,"Chinese":"金币不足","English":"Gold inadequate"}
 {"Id":1087,"Chinese":"购买成功","English":"Purchase success"}
+{"Id":1088,"Chinese":"基本属性","English":"Basic Attribute"}
+{"Id":1089,"Chinese":"攻击力","English":"Attack"}
+{"Id":1090,"Chinese":"防御力","English":"Defensive"}
+{"Id":1091,"Chinese":"破甲","English":"Sunder"}
+{"Id":1092,"Chinese":"装弹速度","English":"Loading Speed"}
+{"Id":1093,"Chinese":"经验加成","English":"Experience Bonus"}
+{"Id":1094,"Chinese":"金币加成","English":"Gold Bonus"}
+{"Id":1095,"Chinese":"每张可加成次数","English":"Available Times"}
+{"Id":1096,"Chinese":"拥有数量","English":"Number"}
+{"Id":1097,"Chinese":"剩余次数","English":"Left Times"}

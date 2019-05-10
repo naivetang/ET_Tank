@@ -15,6 +15,31 @@ namespace ETHotfix
         }
     }
 
+    public class ChatView
+    {
+        private GComponent FUIComponent;
+
+        private GTextInput m_input;
+        public ChatView(GComponent com)
+        {
+            this.FUIComponent = com;
+            this.Awake();
+        }
+
+        private void Awake()
+        {
+            this.m_input = this.FUIComponent.GetChild("n38").asLabel.GetChild("title").asTextInput;
+
+            this.m_input.onSubmit.Set(this.OnSubmit);
+        }
+
+        private void OnSubmit()
+        {
+            Log.Warning(this.m_input.text);
+            this.m_input.text = "";
+        }
+    }
+
     public class HallViewComponent : FUIBase
     {
         private GTextField m_title;
@@ -29,6 +54,8 @@ namespace ETHotfix
         private GList m_list;
 
         private GComponent m_listTitle;
+
+        private ChatView m_chatView;
 
 
         private List<RoomSimpleInfo> m_rooms = new List<RoomSimpleInfo>();
@@ -61,6 +88,7 @@ namespace ETHotfix
         {
             RepeatedFieldToList(m_data.RoomSimpleInfo, m_rooms);
             this.UI();
+            Lanaguage();
         }
 
         private void RepeatedFieldToList(RepeatedField<RoomSimpleInfo> a, List<RoomSimpleInfo> b)
@@ -108,6 +136,8 @@ namespace ETHotfix
 
             if(m_data != null)
                 RepeatedFieldToList(m_data.RoomSimpleInfo, m_rooms);
+
+            m_chatView = new ChatView(this.FUIComponent.Get("n29").GObject.asCom);
 
             Lanaguage();
 
