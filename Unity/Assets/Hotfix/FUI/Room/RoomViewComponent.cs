@@ -37,6 +37,8 @@ namespace ETHotfix
 
         private long roomId;
 
+        private ChatView m_chatView;
+
         private static G2C_RoomDetailInfo m_data = null;
 
         public static G2C_RoomDetailInfo Data
@@ -73,6 +75,9 @@ namespace ETHotfix
             this.m_roomOwnerId = Data.RoomSimpleInfo.RoomOwnerId;
             this.m_isOwners = this.m_roomOwnerId == PlayerComponent.Instance.MyPlayer.Id;
             this.roomId = Data.RoomId;
+
+            this.m_chatView = new ChatView(this.FUIComponent.Get("n3").GObject.asCom,ChatType.Room);
+
             this.StartFUI();
         }
         protected override void StartFUI()
@@ -322,6 +327,12 @@ namespace ETHotfix
 
         }
 
+        public override void OnClose()
+        {
+            base.OnClose();
+            Game.EventSystem.Run(EventIdType.RoomViewClose);
+        }
+
         public override void Dispose()
         {
             if (this.IsDisposed)
@@ -331,6 +342,12 @@ namespace ETHotfix
 
             m_data = null;
 
+        }
+
+        public void UpdateChatInfo(G2C_ChatMessage message)
+        {
+            if(this.m_chatView!=null)
+                this.m_chatView.UpdateChatInfo(message);
         }
     }
 }

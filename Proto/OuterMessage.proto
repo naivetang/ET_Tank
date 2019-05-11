@@ -656,3 +656,30 @@ message G2C_Gold // IMessage
 {
 	int32 Gold = 1;
 }
+
+enum ChatType
+{
+	CTNone = 0;
+	Hall = 1;
+	Room = 2;
+}
+
+message C2G_ChatMessage // IMessage
+{
+	string ChatStr = 1;
+
+	ChatType ChatType = 2;
+}
+
+message G2C_ChatMessage // IMessage
+{
+	int64 SourceId = 1;
+
+	string SourceName = 2;
+
+	string ChatStr = 3;
+
+	ChatType ChatType = 4;
+
+	TankCamp TankCamp = 5;
+}

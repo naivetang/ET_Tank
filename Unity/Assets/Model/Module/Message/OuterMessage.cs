@@ -58,6 +58,12 @@ namespace ETModel {
     Buy = 2,
   }
 
+  public enum ChatType {
+    Ctnone = 0,
+    Hall = 1,
+    Room = 2,
+  }
+
   #endregion
 
   #region Messages
@@ -6070,6 +6076,193 @@ namespace ETModel {
             break;
           case 8: {
             Gold = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class C2G_ChatMessage : pb::IMessage {
+    private static readonly pb::MessageParser<C2G_ChatMessage> _parser = new pb::MessageParser<C2G_ChatMessage>(() => (C2G_ChatMessage)MessagePool.Instance.Fetch(typeof(C2G_ChatMessage)));
+    public static pb::MessageParser<C2G_ChatMessage> Parser { get { return _parser; } }
+
+    private string chatStr_ = "";
+    public string ChatStr {
+      get { return chatStr_; }
+      set {
+        chatStr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private global::ETModel.ChatType chatType_ = 0;
+    public global::ETModel.ChatType ChatType {
+      get { return chatType_; }
+      set {
+        chatType_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ChatStr.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ChatStr);
+      }
+      if (ChatType != 0) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) ChatType);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (ChatStr.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ChatStr);
+      }
+      if (ChatType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ChatType);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      chatStr_ = "";
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            ChatStr = input.ReadString();
+            break;
+          }
+          case 16: {
+            chatType_ = (global::ETModel.ChatType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public partial class G2C_ChatMessage : pb::IMessage {
+    private static readonly pb::MessageParser<G2C_ChatMessage> _parser = new pb::MessageParser<G2C_ChatMessage>(() => (G2C_ChatMessage)MessagePool.Instance.Fetch(typeof(G2C_ChatMessage)));
+    public static pb::MessageParser<G2C_ChatMessage> Parser { get { return _parser; } }
+
+    private long sourceId_;
+    public long SourceId {
+      get { return sourceId_; }
+      set {
+        sourceId_ = value;
+      }
+    }
+
+    private string sourceName_ = "";
+    public string SourceName {
+      get { return sourceName_; }
+      set {
+        sourceName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private string chatStr_ = "";
+    public string ChatStr {
+      get { return chatStr_; }
+      set {
+        chatStr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    private global::ETModel.ChatType chatType_ = 0;
+    public global::ETModel.ChatType ChatType {
+      get { return chatType_; }
+      set {
+        chatType_ = value;
+      }
+    }
+
+    private global::ETModel.TankCamp tankCamp_ = 0;
+    public global::ETModel.TankCamp TankCamp {
+      get { return tankCamp_; }
+      set {
+        tankCamp_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (SourceId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(SourceId);
+      }
+      if (SourceName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(SourceName);
+      }
+      if (ChatStr.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ChatStr);
+      }
+      if (ChatType != 0) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) ChatType);
+      }
+      if (TankCamp != 0) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) TankCamp);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (SourceId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(SourceId);
+      }
+      if (SourceName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SourceName);
+      }
+      if (ChatStr.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ChatStr);
+      }
+      if (ChatType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ChatType);
+      }
+      if (TankCamp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TankCamp);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      sourceId_ = 0;
+      sourceName_ = "";
+      chatStr_ = "";
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            SourceId = input.ReadInt64();
+            break;
+          }
+          case 18: {
+            SourceName = input.ReadString();
+            break;
+          }
+          case 26: {
+            ChatStr = input.ReadString();
+            break;
+          }
+          case 32: {
+            chatType_ = (global::ETModel.ChatType) input.ReadEnum();
+            break;
+          }
+          case 40: {
+            tankCamp_ = (global::ETModel.TankCamp) input.ReadEnum();
             break;
           }
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ETModel;
 using FairyGUI;
 using Google.Protobuf.Collections;
@@ -6,6 +7,20 @@ using UnityEngine;
 
 namespace ETHotfix
 {
+    [Event(EventIdType.RoomViewClose)]
+    class RoomViewClose_ClearChat:AEvent
+    {
+        public override void Run()
+        {
+            FUI fui = Game.Scene.GetComponent<FUIComponent>().Get(FUIType.Hall);
+
+            if (fui != null)
+            {
+                fui.GetComponent<HallViewComponent>().ClearChat();
+            }
+        }
+    }
+
     [ObjectSystem]
     public class HallViewAwakeComponent : AwakeSystem<HallViewComponent>
     {
@@ -17,26 +32,73 @@ namespace ETHotfix
 
     public class ChatView
     {
+        private ChatType m_chatType;
+
         private GComponent FUIComponent;
 
         private GTextInput m_input;
-        public ChatView(GComponent com)
+
+        private GList m_chatList;
+
+        public ChatView(GComponent com, ChatType chatType)
         {
             this.FUIComponent = com;
-            this.Awake();
+            this.m_chatType = chatType;
+            this.StartUp();
         }
 
-        private void Awake()
+        private void StartUp()
         {
             this.m_input = this.FUIComponent.GetChild("n38").asLabel.GetChild("title").asTextInput;
 
             this.m_input.onSubmit.Set(this.OnSubmit);
+
+            this.m_chatList = this.FUIComponent.GetChild("n40").asList;
+
+            this.m_chatList.numItems = 0;
         }
 
         private void OnSubmit()
         {
-            Log.Warning(this.m_input.text);
+            // 自己的黄色
+            //AddChatData($"[color=#FFCC00]{PlayerComponent.Instance.MyPlayer.Name}[/color]:{this.m_input.text}");
+
+            this.Send_C2G_ChatMessage(this.m_input.text);
+
             this.m_input.text = "";
+
+        }
+
+        public void UpdateChatInfo(G2C_ChatMessage msg)
+        {
+            AddChatData($"[color=#FFCC00]{msg.SourceName}[/color]:{msg.ChatStr}");
+        }
+
+        public void ClearChat()
+        {
+            this.m_chatList.numItems = 0;
+        }
+
+        private void AddChatData(string chatStr)
+        {
+             GComponent textCom = this.m_chatList.GetFromPool(String.Empty).asCom;
+
+             textCom.GetChild("title").text = chatStr;
+
+             this.m_chatList.AddChildAt(textCom, this.m_chatList.numItems);
+
+             this.m_chatList.ScrollToView(this.m_chatList.numItems - 1);
+        }
+
+        private void Send_C2G_ChatMessage(string chatStr)
+        {
+            C2G_ChatMessage msg = new C2G_ChatMessage();
+
+            msg.ChatStr = chatStr;
+
+            msg.ChatType = this.m_chatType;
+
+            ETModel.SessionComponent.Instance.Session.Send(msg);
         }
     }
 
@@ -105,6 +167,12 @@ namespace ETHotfix
             }
         }
 
+        public void UpdateChatInfo(G2C_ChatMessage msg)
+        {
+            if(this.m_chatView != null)
+                this.m_chatView.UpdateChatInfo(msg);
+        }
+
         protected override void StartFUI()
         {
             m_title = this.FUIComponent.Get("n9").GObject.asTextField;
@@ -137,7 +205,7 @@ namespace ETHotfix
             if(m_data != null)
                 RepeatedFieldToList(m_data.RoomSimpleInfo, m_rooms);
 
-            m_chatView = new ChatView(this.FUIComponent.Get("n29").GObject.asCom);
+            m_chatView = new ChatView(this.FUIComponent.Get("n29").GObject.asCom,ChatType.Hall);
 
             Lanaguage();
 
@@ -301,6 +369,13 @@ namespace ETHotfix
         {
             FUI fui = await FUIFactory.Create<CreateRoomViewComponent>(FUIType.CreateRoom);
         }
+
+        public void ClearChat()
+        {
+            if(this.m_chatView != null)
+                this.m_chatView.ClearChat();
+        }
+        
 
         public override void Dispose()
         {

@@ -12,7 +12,15 @@
       <Label title="  " titleFontSize="22"/>
     </component>
     <text id="n37_s4di" name="n37" xy="35,1" size="62,31" group="n36_s4di" font="STFangsong" fontSize="25" color="#c8fbff" text="Say："/>
-    <group id="n36_s4di" name="bottom" xy="0,0" size="1378,279"/>
-    <list id="n39_idpq" name="n39" xy="36,47" size="1310,225" overflow="scroll"/>
+    <list id="n39_idpq" name="n40" xy="36,47" size="1310,225" group="n36_s4di" overflow="scroll" defaultItem="ui://1ojks5pukw2j6">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <group id="n36_s4di" name="bottom" xy="0,0" size="1377,279"/>
   </displayList>
 </component>

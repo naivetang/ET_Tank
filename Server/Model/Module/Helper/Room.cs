@@ -88,5 +88,15 @@ namespace ETModel
                 player.Session.Send(message);
             }
         }
+
+        public void BroadCast(IMessage msg)
+        {
+            Player[] players = this.GetAll();
+
+            foreach (Player player in players)
+            {
+                player.Session.Send(msg);
+            }
+        }
     }
 }

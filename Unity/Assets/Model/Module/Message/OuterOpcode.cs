@@ -242,6 +242,12 @@ namespace ETModel
 	[Message(OuterOpcode.G2C_Gold)]
 	public partial class G2C_Gold : IMessage {}
 
+	[Message(OuterOpcode.C2G_ChatMessage)]
+	public partial class C2G_ChatMessage : IMessage {}
+
+	[Message(OuterOpcode.G2C_ChatMessage)]
+	public partial class G2C_ChatMessage : IMessage {}
+
 }
 namespace ETModel
 {
@@ -306,5 +312,7 @@ namespace ETModel
 		 public const ushort C2G_OptGood = 157;
 		 public const ushort C2G_AddGold = 158;
 		 public const ushort G2C_Gold = 159;
+		 public const ushort C2G_ChatMessage = 160;
+		 public const ushort G2C_ChatMessage = 161;
 	}
 }

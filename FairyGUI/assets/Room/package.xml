@@ -7,6 +7,7 @@
     <component id="s4di3" name="List.xml" path="/" exported="true"/>
     <image id="m9xx4" name="wode (1).png" path="/" exported="true"/>
     <image id="m9xx5" name="ready.png" path="/" exported="true"/>
+    <component id="kw2j6" name="text.xml" path="/" exported="true"/>
   </resources>
   <publish name="Room"/>
 </packageDescription>

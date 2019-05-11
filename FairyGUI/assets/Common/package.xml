@@ -73,11 +73,34 @@
     <image id="idpq21" name="mianban_0008.png" path="/Rank/"/>
     <image id="idpq22" name="mianban_0008.png" path="/InfoTip/" exported="true" scale="9grid" scale9grid="30,30,60,60"/>
     <component id="idpq23" name="InfoTip.xml" path="/InfoTip/" exported="true"/>
-    <image id="idpq24" name="1.png" path="/InfoTip/" exported="true"/>
+    <image id="idpq24" name="bg.png" path="/InfoTip/" exported="true"/>
     <image id="idpq25" name="ditiao_0015.png" path="/InfoTip/" exported="true"/>
     <component id="idpq26" name="text.xml" path="/InfoTip/" exported="true"/>
     <image id="idpq27" name="xian_0002.png" path="/InfoTip/" exported="true"/>
     <component id="idpq28" name="NullBtn.xml" path="/NullBtn/" exported="true"/>
+    <image id="kw2j2a" name="tank_17.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2b" name="tank_18.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2c" name="tank_19.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2d" name="tank_20.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2e" name="tank_21.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2f" name="tank_22.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2g" name="tank_01.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2h" name="tank_02.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2i" name="tank_03.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2j" name="tank_04.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2k" name="tank_05.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2l" name="tank_06.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2m" name="tank_07.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2n" name="tank_08.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2o" name="tank_09.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2p" name="tank_10.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2q" name="tank_11.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2r" name="tank_12.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2s" name="tank_13.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2t" name="tank_14.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2u" name="tank_15.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2v" name="tank_16.png" path="/Tanks/" exported="true"/>
+    <image id="kw2j2w" name="tank.png" path="/Tanks/" exported="true"/>
   </resources>
   <publish name="Common"/>
 </packageDescription>

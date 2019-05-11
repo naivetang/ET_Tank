@@ -41,6 +41,8 @@
 
         public const string GoldChange = "GoldChange";
 
+        public const string RoomViewClose = "RoomViewClose";
+
 
 
     }

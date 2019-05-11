@@ -138,6 +138,7 @@
     <Compile Include="Assets\Hotfix\Handler\B2C_StartNextRoundHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_TankFrameInfosHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_TankResetHandler.cs" />
+    <Compile Include="Assets\Hotfix\Handler\G2C_ChatMessageHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_GoldHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_RoomDetailInfoHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_RoomsHandler.cs" />

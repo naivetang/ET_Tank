@@ -27,6 +27,7 @@
     <component id="s4dip" name="RoomItem.xml" path="/List/" exported="true"/>
     <image id="s4diq" name="heng.png" path="/List/" exported="true"/>
     <component id="s4dir" name="ChatCom.xml" path="/" exported="true"/>
+    <component id="kw2js" name="text.xml" path="/" exported="true"/>
   </resources>
   <publish name="Hall"/>
 </packageDescription>

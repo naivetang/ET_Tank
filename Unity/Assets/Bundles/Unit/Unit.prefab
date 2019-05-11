@@ -64,3 +64,5 @@ MonoBehaviour:
     gameObject: {fileID: 100006, guid: 54d072b2daabb384c9bf3bfe9739ca63, type: 3}
   - key: shoot
     gameObject: {fileID: 8300000, guid: ef899ad4baa3b2b4eb9d74831fac7ddb, type: 3}
+  - key: LaunchEffect
+    gameObject: {fileID: 183908, guid: fa6d29df930056640bf15fb9b6a54e4a, type: 3}
