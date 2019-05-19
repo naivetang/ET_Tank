@@ -47,6 +47,7 @@ namespace ETHotfix
 
         private GTextField m_rightCampName;
 
+
         public void Awake()
         {
             this.FUIComponent = this.GetParent<FUI>();

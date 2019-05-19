@@ -20,6 +20,8 @@ namespace ETHotfix
     {
         public static G2C_SettingInfo Data { get; set; } = null;
 
+        private GTextField m_title;
+
         private GTextField m_lanaguageText;
 
         private GTextField m_soundText;
@@ -61,6 +63,8 @@ namespace ETHotfix
 
         protected override void StartFUI()
         {
+            this.m_title = this.FUIComponent.Get("n4").GObject.asTextField;
+
             this.m_lanaguageText = this.FUIComponent.Get("n12").GObject.asTextField;
             this.m_soundText = this.FUIComponent.Get("n8").GObject.asTextField;
             this.m_headNameText = this.FUIComponent.Get("n18").GObject.asTextField;
@@ -120,6 +124,8 @@ namespace ETHotfix
 
         private void Lanaguage()
         {
+            this.m_title.text = Message.Get(1011);
+
             this.m_dbID.text = Message.Get(1029);
 
             this.m_lanaguageText.text = Message.Get(1030);
