@@ -107,8 +107,11 @@ namespace ETModel
 
             Ray ray = new Ray(pos,this.gunTransform.forward);
 
-            hitPoint = Physics.Raycast(ray, out raycastHit, 3000f)? raycastHit.point : ray.GetPoint(3000f);
+            LayerMask layerMask = ~(1 << 9);
 
+            hitPoint = Physics.Raycast(ray, out raycastHit, 3000f, layerMask) ? raycastHit.point : ray.GetPoint(3000f);
+
+            // 红色是坦克炮管发出的射线
             Debug.DrawLine(ray.origin, hitPoint,Color.red);//划出射线，在scene视图中能看到由摄像机发射出的射线
 
             Vector3 screenPoint = Camera.main.WorldToScreenPoint(hitPoint);
@@ -139,8 +142,10 @@ namespace ETModel
             LayerMask layerMask = ~(1 << 9);
 
 
-            hitPoint = Physics.Raycast(ray, out raycastHit, 100f, layerMask)? raycastHit.point : ray.GetPoint(100f);
+            hitPoint = Physics.Raycast(ray, out raycastHit, 3000f, layerMask)? raycastHit.point : ray.GetPoint(3000f);
 
+
+            // 绿色是摄像机发出的射线
             Debug.DrawLine(ray.origin, hitPoint, Color.green);//划出射线，在scene视图中能看到由摄像机发射出的射线
 
             Vector3 dir = hitPoint - this.gunTransform.position;

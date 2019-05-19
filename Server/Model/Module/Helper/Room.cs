@@ -81,6 +81,10 @@ namespace ETModel
 
             message.RoomId = this.Id;
 
+            message.BigModel = (int)this.BigModel;
+
+            message.SmallModel = this.SmallMode;
+
             Player[] players = this.GetAll();
 
             foreach (Player player in players)

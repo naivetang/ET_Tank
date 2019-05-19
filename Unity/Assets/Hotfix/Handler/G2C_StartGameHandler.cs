@@ -12,6 +12,8 @@ namespace ETHotfix
 
         protected async ETVoid RunAsync(ETModel.Session session, G2C_StartGame message)
         {
+            MainItfViewComponent.BattleInfo = message;
+
             C2G_EnterBattle msg = new C2G_EnterBattle();
 
             msg.BattleId = message.RoomId;

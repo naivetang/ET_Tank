@@ -7,13 +7,6 @@ namespace ETModel
     {
         private readonly Dictionary<long, Bullet> idBullets = new Dictionary<long, Bullet>();
 
-        public Bullet Bullet
-        {
-            get
-            {
-                return this.GetParent<Bullet>();
-            }
-        }
 
         public override void Dispose()
         {

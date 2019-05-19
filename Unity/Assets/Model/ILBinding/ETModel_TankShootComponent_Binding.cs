@@ -48,7 +48,7 @@ namespace ILRuntime.Runtime.Generated
             ETModel.TankShootComponent instance_of_this_method = (ETModel.TankShootComponent)typeof(ETModel.TankShootComponent).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            instance_of_this_method.NetShoot(@intPos, @intAngles);
+            //instance_of_this_method.NetShoot(@intPos, @intAngles);
 
             return __ret;
         }

@@ -30,6 +30,8 @@ namespace ETModel
 
         private GameObject m_boomEffectGO;
 
+        public GameObject m_shootEffect;
+
         // 坦克类型：本地还是其他
         private TankType m_tankType;
 
@@ -81,6 +83,8 @@ namespace ETModel
                 this.m_gun = this.m_gameObject.FindChildObjectByPath("turret/gun");
 
                 this.m_turret = this.m_gameObject.FindChildObjectByPath("turret");
+
+                this.m_shootEffect = this.m_gameObject.FindChildObjectByPath("turret/gun/shootEffect/LaunchEffect");
             }
             get
             {

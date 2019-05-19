@@ -166,6 +166,7 @@
     <Compile Include="Assets\Model\Helper\PathHelper.cs" />
     <Compile Include="Assets\Model\Helper\PositionHelper.cs" />
     <Compile Include="Assets\Model\Helper\ResourcesHelper.cs" />
+    <Compile Include="Assets\Model\Helper\Utility.cs" />
     <Compile Include="Assets\Model\ILBinding\CLRBindings.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ActionHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_Actor_Test_Binding.cs" />
@@ -174,7 +175,6 @@
     <Compile Include="Assets\Model\ILBinding\ETModel_AsyncETVoidMethodBuilder_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_AttackTank_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_CreateTanks_Binding.cs" />
-    <Compile Include="Assets\Model\ILBinding\ETModel_B2C_Shoot_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_B2C_TankFrameInfos_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_ByteHelper_Binding.cs" />
     <Compile Include="Assets\Model\ILBinding\ETModel_C2G_CreateRoom_Binding.cs" />
@@ -369,7 +369,6 @@
     <Compile Include="Assets\Model\Module\Component\BattleComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\BulletComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\BulletFlyComponent.cs" />
-    <Compile Include="Assets\Model\Module\Component\ExplosionEffectComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\LocalTankComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\OverHeadComponent.cs" />
     <Compile Include="Assets\Model\Module\Component\RemoteTankMoveComponent.cs" />

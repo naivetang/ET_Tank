@@ -81,9 +81,21 @@ namespace ETModel
 	[Message(OuterOpcode.C2B_Shoot)]
 	public partial class C2B_Shoot : IActorLocationMessage {}
 
+//int32 PX = 1;
+//int32 PY = 2;
+//int32 PZ = 3;
+//int32 RX = 4;
+//int32 RY = 5;
+//int32 RZ = 6;
 	[Message(OuterOpcode.B2C_Shoot)]
 	public partial class B2C_Shoot : IActorMessage {}
 
+//int32 PX = 2;
+//int32 PY = 3;
+//int32 PZ = 4;
+//int32 RX = 5;
+//int32 RY = 6;
+//int32 RZ = 7;
 	[Message(OuterOpcode.C2B_AttackTankRequest)]
 	public partial class C2B_AttackTankRequest : IActorLocationRequest {}
 
@@ -181,6 +193,7 @@ namespace ETModel
 	[Message(OuterOpcode.G2C_StartGame)]
 	public partial class G2C_StartGame : IMessage {}
 
+// 1:Round   2:Time
 	[Message(OuterOpcode.C2B_LoadAssetFinish)]
 	public partial class C2B_LoadAssetFinish : IActorLocationMessage {}
 
@@ -248,6 +261,18 @@ namespace ETModel
 	[Message(OuterOpcode.G2C_ChatMessage)]
 	public partial class G2C_ChatMessage : IMessage {}
 
+	[Message(OuterOpcode.C2B_BoomEffect)]
+	public partial class C2B_BoomEffect : IActorLocationMessage {}
+
+//int32 RX = 4;
+//int32 RY = 5;
+//int32 RZ = 6;
+	[Message(OuterOpcode.B2C_BoomEffect)]
+	public partial class B2C_BoomEffect : IActorMessage {}
+
+	[Message(OuterOpcode.B2C_TankDie)]
+	public partial class B2C_TankDie : IActorMessage {}
+
 }
 namespace ETModel
 {
@@ -314,5 +339,8 @@ namespace ETModel
 		 public const ushort G2C_Gold = 159;
 		 public const ushort C2G_ChatMessage = 160;
 		 public const ushort G2C_ChatMessage = 161;
+		 public const ushort C2B_BoomEffect = 162;
+		 public const ushort B2C_BoomEffect = 163;
+		 public const ushort B2C_TankDie = 164;
 	}
 }

@@ -48,6 +48,7 @@
             if (nowHp == 0)
             {
                 tank.Died = true;
+
                 tank.GetComponent<TankMoveComponent>()?.Stop();
             }
 

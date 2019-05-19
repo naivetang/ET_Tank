@@ -132,10 +132,12 @@
     <Compile Include="Assets\Hotfix\Handler\A2C_PopMessageHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_AttackTankHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_BattleEndHandler.cs" />
+    <Compile Include="Assets\Hotfix\Handler\B2C_BoomEffectHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_CreateTanksHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_RoundEndHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_ShootHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_StartNextRoundHandler.cs" />
+    <Compile Include="Assets\Hotfix\Handler\B2C_TankDieHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_TankFrameInfosHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\B2C_TankResetHandler.cs" />
     <Compile Include="Assets\Hotfix\Handler\G2C_ChatMessageHandler.cs" />
@@ -168,7 +170,7 @@
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\System\CreateLobbyUIFinish_RemoveLoginUI.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Login\System\InitSceneStart_CreateLoginFUI.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\MainInterface\CreateMainIntView.cs" />
-    <Compile Include="Assets\Hotfix\Module\Demo\FUI\MainInterface\FUIMainItfComponent.cs" />
+    <Compile Include="Assets\Hotfix\Module\Demo\FUI\MainInterface\MainItfViewComponent.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Shop\Component\FUIShopComponent.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Shop\System\FUIShopComponentSystem.cs" />
     <Compile Include="Assets\Hotfix\Module\Demo\FUI\Shop\System\FUIShopFactory.cs" />

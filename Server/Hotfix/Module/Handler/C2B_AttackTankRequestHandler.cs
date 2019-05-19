@@ -32,6 +32,9 @@ namespace ETHotfix
 
         protected override async ETTask Run(Tank entity, C2B_AttackTankRequest message, Action<B2C_AttackTankResponse> reply)
         {
+
+            Console.WriteLine($"{entity.Name} 攻击伤害 {message.Damage}");
+
             try
             {
                 if (entity.Id != message.SourceTankId)
@@ -43,10 +46,17 @@ namespace ETHotfix
                 Tank targetTank = entity.Battle.Get(message.TargetTankId);
 
                 if (entity.TankCamp == targetTank.TankCamp)
+                {
+                    Console.WriteLine($"{entity.Name}攻击{targetTank.Name}无效，双方同阵营");
                     return;
+                }
 
                 if (targetTank.Died)
+                {
+                    Console.WriteLine($"{entity.Name}攻击{targetTank.Name}无效，{targetTank.Name}已死亡");
                     return;
+                }
+                    
 
                 B2C_AttackTankResponse response = new B2C_AttackTankResponse();
 
@@ -69,6 +79,8 @@ namespace ETHotfix
                     targetNumeric.Change(NumericType.DeathsBase,  + 1);
 
                 }
+
+                Console.WriteLine($"目标坦克{targetTank.Name} 剩余血量 {curtHp}");
 
                 response.SourceTankId = entity.Id;
 

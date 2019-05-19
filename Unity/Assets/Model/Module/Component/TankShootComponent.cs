@@ -54,16 +54,15 @@ namespace ETModel
             }
         }
 
-        public void NetShoot(IntVector3 intPos, IntVector3 intAngles)
+        public void NetShoot()
         {
 
-            Vector3 pos = new Vector3(intPos.x * 1f / Tank.m_coefficient, intPos.y * 1f / Tank.m_coefficient, intPos.z * 1f / Tank.m_coefficient);
-
-            Vector3 eulerAngles = new Vector3(intAngles.x*1f/Tank.m_coefficient, intAngles.y * 1f / Tank.m_coefficient,intAngles.z * 1f / Tank.m_coefficient);
-
-            RemoteShoot(pos,eulerAngles);
+           this.ShowShootEffect();
         }
 
+        /// <summary>
+        /// 本地坦克发射炮弹
+        /// </summary>
         private void LocalShoot()
         {
             if (this.m_tank.TankType != TankType.Local)
@@ -77,34 +76,171 @@ namespace ETModel
             Vector3 pos = this.m_tank.Gun.transform.position + this.m_tank.Gun.transform.forward * 2;
 
             //
-            Bullet bullet = BulletFactory.Create(this.m_tank);
+            //Bullet bullet = BulletFactory.Create(this.m_tank);
 
-            bullet.GameObject.transform.position = pos;
+            //bullet.GameObject.transform.position = pos;
 
-            bullet.GameObject.transform.rotation = this.m_tank.Gun.transform.rotation;
-
-            //UnityEditor.EditorApplication.isPaused = true;
-
+            //bullet.GameObject.transform.rotation = this.m_tank.Gun.transform.rotation;
 
             //UnityEditor.EditorApplication.isPaused = true;
 
-            Send_C2B_Shoot(pos, bullet.GameObject.transform.eulerAngles);
+
+            //UnityEditor.EditorApplication.isPaused = true;
+
+            this.ShowShootEffect();
+
+            Send_C2B_Shoot();
+
+            this.RayDetection();
+            
+
+            this.ShootAudio();
 
             this.lastShootTime = Time.time;
         }
 
-        private void Send_C2B_Shoot(Vector3 pos, Vector3 eulerAngles)
+        /// <summary>
+        /// 显示发射特效
+        /// </summary>
+        private void ShowShootEffect()
+        {
+            this.m_tank.m_shootEffect.SetActive(false);
+            this.m_tank.m_shootEffect.SetActive(true);
+        }
+
+        /// <summary>
+        /// 射线监测
+        /// </summary>
+        public void RayDetection()
+        {
+            Vector3 pos = this.m_tank.Gun.transform.position;
+
+            Ray ray = new Ray(pos, this.m_tank.Gun.transform.forward);
+
+            RaycastHit raycastHit;
+
+            Vector3 hitPoint = Vector3.zero;
+
+            LayerMask layerMask = ~(1 << 9);
+
+            // 过滤自己
+            hitPoint = Physics.Raycast(ray, out raycastHit, 3000f, layerMask) ? raycastHit.point : ray.GetPoint(3000f);
+
+            //this.m_bullet.Position = hitPoint;
+
+            if (raycastHit.collider != null)
+            {
+                OnTriggerEnter(raycastHit.collider, hitPoint);
+            }
+
+            else
+            {
+
+            }
+        }
+
+
+        /// <summary>
+        /// 创建爆炸特效
+        /// </summary>
+        /// <param name="boomPos"></param>
+        public static void CreateBoomEffect(Vector3 boomPos)
+        {
+            ExplosionEffectFactory.Create(boomPos);
+        }
+
+        /// <summary>
+        /// 爆炸效果、伤害上传
+        /// </summary>
+        /// <param name="other"></param>
+        /// <param name="boomPos"></param>
+        public void OnTriggerEnter(Collider other,Vector3 boomPos)
+        {
+            // Log.Info("OnTriggerEnter");
+
+            // layer = 9 是自己
+            if (other.gameObject != null && other.gameObject.layer == 9)
+            {
+                return;
+            }
+
+            // 创建爆炸效果
+
+            CreateBoomEffect(boomPos);
+
+            Send_C2B_BoomEffect(boomPos);
+
+
+            if (other.attachedRigidbody != null && other.attachedRigidbody.tag == Tag.Tank)
+            {
+                // 给坦克造成伤害
+
+                TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
+
+                long objInstanceId = other.attachedRigidbody.gameObject.GetInstanceID();
+
+                Tank beAttackTank = tankComponent.Get(objInstanceId);
+
+                // 如果自己阵营，不造成伤害
+                //if (beAttackTank.TankCamp == this.Tank.TankCamp)
+                //    return;
+
+
+                // 暂时只计算坦克自己造成的伤害，不计算炮弹造成的伤害
+                int damage = this.m_tank.GetComponent<NumericComponent>()[NumericType.Atk];
+
+                // beAttackTank.BeAttacked(this.Tank, damage);
+
+                // 发送炮弹的玩家才向服务器通知
+                if (this.m_tank.TankType == TankType.Local)
+                    Send_C2B_AttackTank(beAttackTank.Id, damage).NoAwait();
+            }
+
+            //this.m_bullet.Dispose();
+        }
+
+        private void Send_C2B_BoomEffect(Vector3 boomPos)
+        {
+            C2B_BoomEffect msg = new C2B_BoomEffect();
+
+            msg.PX = (int)(boomPos.x * Tank.m_coefficient);
+            msg.PY = (int)(boomPos.y * Tank.m_coefficient);
+            msg.PZ = (int)(boomPos.z * Tank.m_coefficient);
+
+            ETModel.SessionComponent.Instance.Session.Send(msg);
+        }
+
+        private async ETVoid Send_C2B_AttackTank(long targetId, int damage)
+        {
+            C2B_AttackTankRequest msg = new C2B_AttackTankRequest();
+
+            msg.SourceTankId = PlayerComponent.Instance.MyPlayer.TankId;
+
+            msg.TargetTankId = targetId;
+
+            msg.Damage = damage;
+
+            B2C_AttackTankResponse response = (B2C_AttackTankResponse)await SessionComponent.Instance.Session.Call(msg);
+
+            if (response.SourceTankId != msg.SourceTankId || response.TargetTankId != msg.TargetTankId)
+                Log.Error("回包错误");
+
+            ETModel.Tank tank = Game.Scene.GetComponent<TankComponent>().Get(targetId);
+
+            tank.GetComponent<NumericComponent>().Set(NumericType.HpBase, response.CurrentHp);
+        }
+
+        /// <summary>
+        /// 发射炮弹音效
+        /// </summary>
+        private void ShootAudio()
+        {
+
+        }
+
+        private void Send_C2B_Shoot()
         {
             C2B_Shoot c2BShoot = new C2B_Shoot();
-
-            c2BShoot.PX = Convert.ToInt32(pos.x * Tank.m_coefficient);
-            c2BShoot.PY = Convert.ToInt32(pos.y * Tank.m_coefficient);
-            c2BShoot.PZ = Convert.ToInt32(pos.z * Tank.m_coefficient);
-
-            c2BShoot.RX = Convert.ToInt32(eulerAngles.x * Tank.m_coefficient);
-            c2BShoot.RY = Convert.ToInt32(eulerAngles.y * Tank.m_coefficient);
-            c2BShoot.RZ = Convert.ToInt32(eulerAngles.z * Tank.m_coefficient);
-
             SessionComponent.Instance.Session.Send(c2BShoot);
         }
 
@@ -113,11 +249,16 @@ namespace ETModel
             if (this.m_tank.TankType != TankType.Remote)
                 return;
 
-            Bullet bullet = BulletFactory.Create(this.m_tank);
+            this.m_tank.m_shootEffect.SetActive(false);
+            this.m_tank.m_shootEffect.SetActive(true);
 
-            bullet.GameObject.transform.position = pos;
+            //Bullet bullet = BulletFactory.Create(this.m_tank);
 
-            bullet.GameObject.transform.eulerAngles = eulerAngles;
+            //bullet.GameObject.transform.position = pos;
+
+            //bullet.GameObject.transform.eulerAngles = eulerAngles;
+
+            this.ShootAudio();
 
         }
 

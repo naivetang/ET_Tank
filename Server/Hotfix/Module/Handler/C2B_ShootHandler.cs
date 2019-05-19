@@ -13,14 +13,6 @@ namespace ETHotfix
 
             b2CShoot.TankId = entity.Id;
 
-            b2CShoot.PX = message.PX;
-            b2CShoot.PY = message.PY;
-            b2CShoot.PZ = message.PZ;
-
-            b2CShoot.RX = message.RX;
-            b2CShoot.RY = message.RY;
-            b2CShoot.RZ = message.RZ;
-
             entity.BroadcastExceptSelf(b2CShoot);
 
         }

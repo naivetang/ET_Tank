@@ -222,13 +222,13 @@ message C2B_Shoot // IActorLocationMessage
 	int32 RpcId = 90;
 	int64 ActorId = 93;
 
-	int32 PX = 1;
-	int32 PY = 2;
-	int32 PZ = 3;
+	//int32 PX = 1;
+	//int32 PY = 2;
+	//int32 PZ = 3;
 
-	int32 RX = 4;
-	int32 RY = 5;
-	int32 RZ = 6;
+	//int32 RX = 4;
+	//int32 RY = 5;
+	//int32 RZ = 6;
 }
 
 message B2C_Shoot // IActorMessage
@@ -238,13 +238,13 @@ message B2C_Shoot // IActorMessage
 
 	int64 TankId = 1;
 
-	int32 PX = 2;
-	int32 PY = 3;
-	int32 PZ = 4;
+	//int32 PX = 2;
+	//int32 PY = 3;
+	//int32 PZ = 4;
 
-	int32 RX = 5;
-	int32 RY = 6;
-	int32 RZ = 7;
+	//int32 RX = 5;
+	//int32 RY = 6;
+	//int32 RZ = 7;
 }
 
 message C2B_AttackTankRequest // IActorLocationRequest
@@ -464,6 +464,11 @@ message G2C_StartGame // IMessage
 {
 
 	int64 RoomId = 1;
+
+	// 1:Round   2:Time
+	int32 BigModel = 2;
+
+	int32 SmallModel = 3;
 }
 
 message C2B_LoadAssetFinish // IActorLocationMessage
@@ -682,4 +687,36 @@ message G2C_ChatMessage // IMessage
 	ChatType ChatType = 4;
 
 	TankCamp TankCamp = 5;
+}
+
+message C2B_BoomEffect // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int32 PX = 1;
+	int32 PY = 2;
+	int32 PZ = 3;
+
+	//int32 RX = 4;
+	//int32 RY = 5;
+	//int32 RZ = 6;
+}
+
+message B2C_BoomEffect // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int32 PX = 1;
+	int32 PY = 2;
+	int32 PZ = 3;
+}
+
+message B2C_TankDie // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int64 DieTandkId = 1;
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace ETModel
 {
@@ -24,6 +25,11 @@ namespace ETModel
 		/// </summary>
 		public const string DEFAULT = "Default";
 
+        /// <summary>
+        /// 自己坦克
+        /// </summary>
+        public const string OwnTank = "OwnTank";
+
 		/// <summary>
 		/// 通过Layers名字得到对应层
 		/// </summary>
@@ -31,12 +37,22 @@ namespace ETModel
 		/// <returns></returns>
 		public static int GetLayerInt(string name)
 		{
+            if (LayerMask.NameToLayer(name) == -1)
+            {
+                Log.Error($"不存在Layer{name}");
+            }
+
 			return LayerMask.NameToLayer(name);
 		}
 
 		public static string GetLayerStr(int name)
 		{
-			return LayerMask.LayerToName(name);
+            if (LayerMask.LayerToName(name) == String.Empty)
+            {
+                Log.Error($"不存在Layer{name}");
+            }
+
+            return LayerMask.LayerToName(name);
 		}
 	}
 }

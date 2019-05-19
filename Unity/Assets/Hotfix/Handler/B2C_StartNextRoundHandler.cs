@@ -9,7 +9,11 @@ namespace ETHotfix
     {
         protected override void Run(ETModel.Session session, B2C_StartNextRound message)
         {
-            
+            FUI fui = Game.Scene.GetComponent<FUIComponent>().Get(FUIType.MainInterface);
+            if (fui != null)
+            {
+                fui.GetComponent<MainItfViewComponent>().AddTotalRound();
+            }
 
             foreach (TankFrameInfo tankInfo in message.TankFrameInfos)
             {

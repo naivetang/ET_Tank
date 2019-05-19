@@ -25,14 +25,14 @@ namespace ETModel
 
                 int nowHp = numericComponent[NumericType.Hp];
 
-                if (nowHp <= 0)
+                if (nowHp <= 0 && !tank.Died)
                 {
                     tank.Died = true;
 
-
-
                     if (tank.Battle.BigMode == BigModel.Time)
                     {
+                        Send_B2C_TankDie(tank);
+
                         tank.Battle.TimeResetTank(tank).NoAwait();
                     }
                 }
@@ -44,5 +44,15 @@ namespace ETModel
             
         }
 
+        private void Send_B2C_TankDie(Tank tank)
+        {
+            B2C_TankDie msg = new B2C_TankDie();
+
+            msg.DieTandkId = tank.Id;
+
+            tank.Broadcast(msg);
+        }
     }
+
+    
 }

@@ -28,10 +28,12 @@ namespace ETModel
 
             bulletComponent.Add(bullet);
 
-            BulletCollision bulletCollision = bullet.GameObject.AddComponent<BulletCollision>();
+            //BulletCollision bulletCollision = bullet.GameObject.AddComponent<BulletCollision>();
 
             // 子弹添加飞行
-            bulletCollision.BulletFly = bullet.AddComponent<BulletFlyComponent>();
+            //bulletCollision.BulletFly = bullet.AddComponent<BulletFlyComponent>();
+
+            bullet.AddComponent<BulletFlyComponent>();
 
 
             return bullet;

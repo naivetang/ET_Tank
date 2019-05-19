@@ -54,6 +54,9 @@ namespace ETModel
                 tankComponent.MyTank = tank;
 
                 // 如果是自己设置层级为9，为了让坦克不打中自己
+
+                Utility.ChangeLayer(tank.GameObject, LayerNames.OwnTank);
+
                 tank.GameObject.layer = 9;
             }
             else

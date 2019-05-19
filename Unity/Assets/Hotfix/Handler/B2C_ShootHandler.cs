@@ -18,8 +18,7 @@ namespace ETHotfix
 
             TankShootComponent tankShoot = tank.GetComponent<TankShootComponent>();
 
-            tankShoot.NetShoot(new IntVector3(message.PX, message.PY, message.PZ),
-                    new IntVector3(message.RX, message.RY, message.RZ));
+            tankShoot.NetShoot();
 
         }
     }

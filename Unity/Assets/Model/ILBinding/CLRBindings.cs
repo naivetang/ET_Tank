@@ -128,7 +128,7 @@ namespace ILRuntime.Runtime.Generated
             ETModel_TankFactory_Binding.Register(app);
             ETModel_Tank_Binding.Register(app);
             UnityEngine_Vector3_Binding.Register(app);
-            ETModel_B2C_Shoot_Binding.Register(app);
+            //ETModel_B2C_Shoot_Binding.Register(app);
             PF_IntVector3_Binding.Register(app);
             ETModel_TankShootComponent_Binding.Register(app);
             ETModel_B2C_TankFrameInfos_Binding.Register(app);

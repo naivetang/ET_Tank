@@ -12,6 +12,9 @@
     <image id="ou9f8" name="hp_ender_right.png" path="/Health/" exported="true"/>
     <image id="ou9f9" name="health_empty.png" path="/Health/" exported="true"/>
     <image id="ou9fa" name="health_filling.png" path="/Health/" exported="true"/>
+    <image id="qx79b" name="Faction Crest.png" path="/" exported="true"/>
+    <image id="qx79c" name="Faction Crest 2.png" path="/" exported="true"/>
+    <image id="qx79d" name="Bitmap.png" path="/Health/"/>
   </resources>
   <publish name="MainInterface"/>
 </packageDescription>

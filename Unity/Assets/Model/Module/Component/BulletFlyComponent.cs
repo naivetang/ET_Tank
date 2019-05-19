@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ETModel
 {
@@ -54,6 +53,8 @@ namespace ETModel
 
         public void Awake()
         {
+            Log.Warning($"Awake时间:{TimeHelper.NowMilliSecond()}");
+
             this.m_bullet = this.GetParent<Bullet>();
             this.instantiateTime = Time.time;
             this.m_collider = this.m_bullet.GameObject.GetComponent<SphereCollider>();
@@ -62,6 +63,9 @@ namespace ETModel
         public void Start()
         {
 
+            Log.Warning($"Start时间:{TimeHelper.NowMilliSecond()}");
+
+            OnTrigger();
 
         }
 
@@ -78,7 +82,7 @@ namespace ETModel
 
         public void FixUpdate()
         {
-            this.m_bullet.GameObject.transform.position += this.m_bullet.GameObject.transform.forward * this.speed * Time.deltaTime;
+            //this.m_bullet.GameObject.transform.position += this.m_bullet.GameObject.transform.forward * this.speed * Time.deltaTime;
             //this.m_bullet.GameObject.GetComponent<Rigidbody>().AddForce(this.m_bullet.GameObject.transform.forward * 100000);
             //this.m_bullet.GameObject.transform.Translate(this.m_bullet.GameObject.transform.position + this.m_bullet.GameObject.transform.forward * this.speed * Time.deltaTime);
             if (Time.time - this.instantiateTime > this.maxLiftTime)
@@ -109,6 +113,35 @@ namespace ETModel
         //
         //     this.m_bullet.Dispose();
         // }
+
+
+        public void OnTrigger()
+        {
+            Vector3 pos = this.Tank.Gun.transform.position;
+
+            Ray ray = new Ray(pos, this.Tank.Gun.transform.forward);
+
+            RaycastHit raycastHit;
+
+            Vector3 hitPoint = Vector3.zero;
+
+            LayerMask layerMask = ~(1 << 9);
+
+            // 过滤自己
+            hitPoint = Physics.Raycast(ray, out raycastHit, 3000f, layerMask) ? raycastHit.point : ray.GetPoint(3000f);
+
+            this.m_bullet.Position = hitPoint;
+
+            if (raycastHit.collider != null)
+            {
+                OnTriggerEnter(raycastHit.collider);
+            }
+
+            else
+            {
+                
+            }
+        }
 
         public void OnTriggerEnter(Collider other)
         {
