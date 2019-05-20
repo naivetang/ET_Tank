@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <component id="n3_s4di" name="n3" src="b79r4" fileName="bg.xml" xy="549,195"/>
+    <component id="n0_s4di" name="n0" src="s4di1d" fileName="Bg_Null.xml" pkg="imnv6csb" xy="0,0"/>
+    <component id="n2_s4di" name="n2" src="s4di1i" fileName="DropDown/ComboBox.xml" pkg="imnv6csb" xy="628,347" size="256,49">
+      <ComboBox title="人数" titleColor="#cccccc" visibleItemCount="10"/>
+    </component>
+    <component id="n6_s4di" name="n6" src="s4di1i" fileName="DropDown/ComboBox.xml" pkg="imnv6csb" xy="979,347" size="245,51">
+      <ComboBox title="地图" visibleItemCount="10"/>
+    </component>
+    <component id="n7_s4di" name="n7" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="626,569" size="598,50">
+      <Label prompt="房间名"/>
+    </component>
+    <component id="n8_s4di" name="Close" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="635,713">
+      <Button title="返回"/>
+    </component>
+    <component id="n9_s4di" name="Enter" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="1006,717">
+      <Button title="确认"/>
+    </component>
+    <component id="n10_s4di" name="n10" src="s4di1i" fileName="DropDown/ComboBox.xml" pkg="imnv6csb" xy="628,457" size="253,50">
+      <ComboBox title="模式" titleColor="#cccccc" visibleItemCount="10"/>
+    </component>
+    <component id="n11_s4di" name="n11" src="s4di1i" fileName="DropDown/ComboBox.xml" pkg="imnv6csb" xy="979,455" size="246,55">
+      <ComboBox title="模式" visibleItemCount="10"/>
+    </component>
+  </displayList>
+</component>

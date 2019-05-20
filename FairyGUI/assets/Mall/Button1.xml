@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="210,174" extention="Button">
+  <controller name="button" pages="0,up,1,down" selected="1"/>
+  <displayList>
+    <image id="n3_pazt" name="n3" src="pazta" fileName="anniu_0003.png" xy="0,0">
+      <gearDisplay controller="button" pages="1"/>
+    </image>
+    <text id="n4_pazt" name="title" xy="45,125" size="135,54" fontSize="42" color="#f4dca7" autoSize="none" text="坦克">
+      <gearDisplay controller="button" pages="0,1"/>
+      <gearColor controller="button" pages="1" values="#f4dca7,#000000" default="#75726a,#000000"/>
+    </text>
+    <loader id="n5_pazt" name="icon" xy="15,-3" size="184,134" url="ui://u080cpqypaztc" fill="scaleFree" color="#f4dca7">
+      <gearColor controller="button" pages="0,1" values="#75726a|#f4dca7"/>
+    </loader>
+  </displayList>
+  <Button mode="Radio"/>
+</component>

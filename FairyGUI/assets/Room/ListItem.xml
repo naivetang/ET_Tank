@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="850,100" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <controller name="state" pages="0,ji,1,ou,2,kong,3,forbid" selected="0"/>
+  <displayList>
+    <image id="n9_m9xx" name="n9" src="m9xx1m" fileName="kb_table_bg.png" pkg="imnv6csb" xy="0,0" size="850,100">
+      <gearDisplay controller="state" pages="1"/>
+    </image>
+    <image id="n8_m9xx" name="n8" src="m9xx1l" fileName="bg_content_transp.png" pkg="imnv6csb" xy="0,0" size="850,100">
+      <gearDisplay controller="state" pages="0"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n5_s4di" name="touxian" xy="13,22" size="74,54" url="ui://imnv6csbgnr4m" fill="scale">
+      <gearDisplay controller="state" pages="0,1"/>
+    </loader>
+    <image id="n16_m9xx" name="n12" src="m9xx4" fileName="wode (1).png" xy="736,22" size="62,62" aspect="true">
+      <gearDisplay controller="state" pages="0,1"/>
+    </image>
+    <text id="n6_s4di" name="n6" xy="135,22" size="301,56" fontSize="30" color="#ffffff" vAlign="middle" autoSize="none" text="你的名字">
+      <gearDisplay controller="state" pages="0,1"/>
+    </text>
+    <image id="n7_s4di" name="n7" src="m9xx5" fileName="ready.png" xy="704,-2" size="124,117">
+      <gearDisplay controller="state" pages="0,1"/>
+    </image>
+    <component id="n11_m9xx" name="n11" src="m9xx1t" fileName="Button2/Button.xml" pkg="imnv6csb" xy="0,0" size="850,100">
+      <gearDisplay controller="state" pages="2"/>
+      <Button title=" "/>
+    </component>
+    <graph id="n15_m9xx" name="n15" xy="0,0" size="850,100" visible="false" type="rect" fillColor="#ff333333">
+      <gearDisplay controller="state" pages="3"/>
+    </graph>
+  </displayList>
+  <Button/>
+</component>

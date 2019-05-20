@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <component id="n0_s4di" name="n0" src="ou9f1b" fileName="Bg_Dark.xml" pkg="imnv6csb" xy="0,0"/>
+    <component id="n1_s4di" name="n1" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="1534,760" size="271,87">
+      <Button title="开始游戏"/>
+    </component>
+    <component id="n2_s4di" name="n2" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="1539,923" size="271,87">
+      <Button title="退出房间"/>
+    </component>
+    <component id="n3_s4di" name="n3" src="s4di1" fileName="ChatCom.xml" xy="35,765" size="1378,279"/>
+    <component id="n9_s4di" name="n9" src="s4di3" fileName="List.xml" xy="104,145" size="850,500"/>
+    <component id="n10_s4di" name="n10" src="s4di3" fileName="List.xml" xy="955,145" size="850,500"/>
+  </displayList>
+</component>

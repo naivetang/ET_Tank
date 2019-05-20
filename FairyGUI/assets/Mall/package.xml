@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="u080cpqy" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="i6gi0" name="Mall.xml" path="/" exported="true"/>
+    <image id="i6gi1" name="btn.png" path="/" exported="true"/>
+    <image id="i6gi2" name="1.png" path="/" exported="true"/>
+    <image id="i6gi3" name="Overlay.png" path="/" exported="true"/>
+    <image id="i6gi4" name="silver_coin2.png" path="/" exported="true"/>
+    <image id="i6gi5" name="silver_coin.png" path="/" exported="true"/>
+    <image id="i6gi6" name="heng.png" path="/" exported="true"/>
+    <component id="pazt7" name="ListItem.xml" path="/" exported="true"/>
+    <image id="pazt8" name="zhuangshi_0001.png" path="/" exported="true"/>
+    <image id="pazta" name="anniu_0003.png" path="/" exported="true"/>
+    <component id="paztb" name="Button1.xml" path="/" exported="true"/>
+    <image id="paztc" name="tank.png" path="/picture/" exported="true"/>
+    <image id="paztd" name="bullet.png" path="/picture/" exported="true"/>
+    <image id="pazte" name="prophet.png" path="/picture/" exported="true"/>
+    <component id="idpqf" name="InfoTip.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="Mall"/>
+</packageDescription>

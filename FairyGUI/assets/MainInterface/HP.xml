@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="393,72" extention="ProgressBar">
+  <displayList>
+    <image id="n0_fh44" name="n0" src="fh443" fileName="hp.png" xy="0,0" size="393,72">
+      <relation target="" sidePair="width-width%,height-height%"/>
+    </image>
+    <image id="n1_fh44" name="n1" src="fh444" fileName="hp2.png" xy="10,49" size="102,6" hideByEditor="true" visible="false" color="#ff0000"/>
+    <graph id="n2_fh44" name="bar" xy="82,33" size="300,24" type="rect" lineSize="0" fillColor="#ffff0000">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="" sidePair="bottom-bottom%,right-right%"/>
+    </graph>
+  </displayList>
+  <ProgressBar/>
+</component>

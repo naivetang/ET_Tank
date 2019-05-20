@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <image id="n31_b79r" name="n31" src="b79rg" fileName="BBG.png" xy="0,0" size="1920,1080" group="n32_b79r"/>
+    <component id="n38_8gmu" name="n38" src="b79rf" fileName="bg.xml" xy="599,234" group="n32_b79r"/>
+    <component id="n33_b79r" name="n33" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="765,368" size="390,50" group="n32_b79r">
+      <Label prompt="请输入电话" maxLength="11" restrict="[0-9]"/>
+    </component>
+    <component id="n34_b79r" name="n34" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="765,468" size="390,50" group="n32_b79r">
+      <Label prompt="请输入昵称"/>
+    </component>
+    <component id="n35_b79r" name="n35" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="764,570" size="390,50" group="n32_b79r">
+      <Label prompt="请输入密码" password="true"/>
+    </component>
+    <component id="n36_b79r" name="n36" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="857,699" group="n32_b79r">
+      <Button title="确认"/>
+    </component>
+    <component id="n37_8gmu" name="n37" src="8gmu1y" fileName="CloseBtn/ClostBtn.xml" pkg="imnv6csb" xy="1273,243" size="44,44" group="n32_b79r" aspect="true"/>
+    <group id="n32_b79r" name="n32" xy="0,0" size="1920,1080" advanced="true"/>
+  </displayList>
+</component>

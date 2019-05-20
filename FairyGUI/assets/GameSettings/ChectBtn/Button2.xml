@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="90,42" extention="Button">
+  <controller name="button" pages="0,up,1,down" selected="1"/>
+  <displayList>
+    <image id="n3_tg57" name="n3" src="tg57d" fileName="ChectBtn/ditiao_0528.png" xy="0,0" size="87,42"/>
+    <image id="n4_tg57" name="n4" src="tg57e" fileName="ChectBtn/anniu_0052.png" xy="0,2" size="87,38" color="#4f6889">
+      <gearDisplay controller="button" pages="1"/>
+    </image>
+    <image id="n5_tg57" name="n5" src="tg57f" fileName="ChectBtn/anniu_0010.png" xy="49,0" size="40,40" color="#a9bfd9">
+      <gearDisplay controller="button" pages="0,1"/>
+      <gearXY controller="button" pages="0" values="1,0" default="49,0"/>
+    </image>
+  </displayList>
+  <Button mode="Check"/>
+</component>

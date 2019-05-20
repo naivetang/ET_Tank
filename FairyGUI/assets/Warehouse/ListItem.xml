@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="405,191">
+  <displayList>
+    <image id="n1_i6gi" name="n1" src="jgrf4" fileName="btn.png" xy="4,0" size="400,186"/>
+    <image id="n2_i6gi" name="n2" src="jgrf2" fileName="1.png" xy="0,1" size="190,189" aspect="true"/>
+    <image id="n6_i6gi" name="n6" src="jgrfb" fileName="silver_coin.png" xy="196,70" size="47,50" hideByEditor="true" aspect="true" visible="false"/>
+    <text id="n7_i6gi" name="n7" xy="254,68" size="71,51" hideByEditor="true" visible="false" fontSize="40" color="#ffffff" text="100"/>
+    <text id="n11_i6gi" name="n11" xy="188,14" size="205,51" fontSize="40" color="#ffffff" text="无敌大砍刀"/>
+    <component id="n12_pazt" name="n12" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="201,106" size="152,53">
+      <Button title="购买"/>
+    </component>
+    <loader id="n15_pazt" name="n15" xy="20,22" size="150,149"/>
+    <component id="n16_idpq" name="NullBtn" src="idpq28" fileName="NullBtn/NullBtn.xml" pkg="imnv6csb" xy="96,94" pivot="0.5,0.5" anchor="true" size="150,149">
+      <relation target="n15_pazt" sidePair="width-width,height-height"/>
+    </component>
+  </displayList>
+</component>

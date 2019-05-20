@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="f77fjnya" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="gnr40" name="Hall.xml" path="/" exported="true"/>
+    <image id="ou9f1" name="Sniny.png" path="/" exported="true"/>
+    <image id="ou9f2" name="Downborder.png" path="/" exported="true"/>
+    <image id="ou9f3" name="Frame.png" path="/" exported="true"/>
+    <image id="ou9f4" name="Glowy Thing.png" path="/" exported="true"/>
+    <image id="ou9f5" name="Lighter.png" path="/" exported="true"/>
+    <image id="ou9f6" name="Left Side BG.png" path="/" exported="true"/>
+    <image id="ou9f7" name="BG Big.png" path="/" exported="true"/>
+    <image id="ou9f8" name="Ornament.png" path="/" exported="true"/>
+    <image id="ou9f9" name="Ornamentb.png" path="/" exported="true"/>
+    <image id="ou9fa" name="OrnamentR.png" path="/" exported="true"/>
+    <image id="w243b" name="VBorder.png" path="/List/" exported="true"/>
+    <component id="s4dic" name="RoomItemTop.xml" path="/List/" exported="true"/>
+    <image id="s4did" name="Corner 2 zuoxia.png" path="/Chat/" exported="true"/>
+    <image id="s4die" name="Corner 2.png" path="/Chat/" exported="true"/>
+    <image id="s4dif" name="Corner 2zuoshang.png" path="/Chat/" exported="true"/>
+    <image id="s4dig" name="Line shangxian.png" path="/Chat/" exported="true"/>
+    <image id="s4dih" name="Line xiaxian.png" path="/Chat/" exported="true"/>
+    <image id="s4dii" name="Line zuo xian.png" path="/Chat/" exported="true"/>
+    <image id="s4dij" name="Shape 1 copy 3.png" path="/Chat/" exported="true"/>
+    <image id="s4dik" name="Shape 1 copy 10.png" path="/Chat/" exported="true"/>
+    <image id="s4dil" name="Categories Line.png" path="/List/" exported="true"/>
+    <component id="s4din" name="List.xml" path="/List/" exported="true"/>
+    <component id="s4dip" name="RoomItem.xml" path="/List/" exported="true"/>
+    <image id="s4diq" name="heng.png" path="/List/" exported="true"/>
+    <component id="s4dir" name="ChatCom.xml" path="/" exported="true"/>
+    <component id="kw2js" name="text.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="Hall"/>
+</packageDescription>

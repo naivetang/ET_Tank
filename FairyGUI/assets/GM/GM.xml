@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" bgColor="#000000">
+  <displayList>
+    <component id="n5_oo60" name="n5" src="oo600" fileName="BG.xml" pkg="imnv6csb" xy="0,0" size="1920,1080"/>
+    <component id="n1_oo60" name="Input" src="oo601" fileName="Input.xml" xy="603,389" size="396,76"/>
+    <component id="n4_oo60" name="Execute" src="oo602" fileName="Button.xml" pkg="imnv6csb" xy="1057,392" size="109,72">
+      <Button title="执行"/>
+    </component>
+  </displayList>
+</component>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="j54k19pc" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="lvs10" name="Login.xml" path="/" exported="true"/>
+    <component id="lvs12" name="Button.xml" path="/" exported="true"/>
+    <component id="lvs13" name="Label.xml" path="/" exported="true"/>
+    <component id="w4q24" name="Account.xml" path="/" exported="true"/>
+    <image id="ou9f6" name="Sniny.png" path="/LoginUI/" exported="true"/>
+    <image id="ou9f7" name="Downborder.png" path="/LoginUI/" exported="true"/>
+    <image id="ou9f8" name="Frame.png" path="/LoginUI/" exported="true"/>
+    <image id="ou9f9" name="Lighter.png" path="/LoginUI/" exported="true"/>
+    <image id="b79ra" name="check_normal.png" path="/CheckBox/" exported="true"/>
+    <image id="b79rb" name="chec_hovered.png" path="/CheckBox/" exported="true"/>
+    <image id="b79rc" name="check.png" path="/CheckBox/" exported="true"/>
+    <image id="b79rd" name="check_combined.png" path="/CheckBox/" exported="true"/>
+    <component id="b79re" name="CheckBox.xml" path="/CheckBox/" exported="true"/>
+    <component id="b79rf" name="bg.xml" path="/" exported="true"/>
+    <image id="b79rg" name="BBG.png" path="/" exported="true"/>
+    <component id="8gmuh" name="Regist.xml" path="/" exported="true"/>
+    <image id="8gmui" name="BBG.png" path="/Pictures/" exported="true"/>
+    <image id="8gmuj" name="Ornamental.png" path="/Pictures/" exported="true"/>
+    <image id="8gmuk" name="Text BG.png" path="/Pictures/" exported="true"/>
+  </resources>
+  <publish name="Login"/>
+</packageDescription>

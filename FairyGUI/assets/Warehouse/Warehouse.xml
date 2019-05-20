@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <controller name="c1" pages="0,tank,1,bullet,2,props" selected="0"/>
+  <displayList>
+    <component id="n0_i6gi" name="n0" src="ou9f1b" fileName="Bg_Dark.xml" pkg="imnv6csb" xy="0,0"/>
+    <image id="n8_i6gi" name="n8" src="jgrf7" fileName="heng.png" xy="6,84" size="1889,8"/>
+    <image id="n9_i6gi" name="n9" src="jgrfb" fileName="silver_coin.png" xy="137,20" size="50,50"/>
+    <text id="n10_i6gi" name="n10" xy="196,18" size="171,51" fontSize="40" color="#ffffff" autoSize="none" text="10000"/>
+    <list id="n15_pazt" name="n15" xy="208,182" size="1267,782" layout="pagination" overflow="scroll" lineGap="3" colGap="10" lineItemCount2="4" defaultItem="ui://bcngh30kjgrf8">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n16_pazt" name="n16" src="pazt20" fileName="Button3/Button3.xml" pkg="imnv6csb" xy="1809,20"/>
+    <image id="n17_pazt" name="n17" src="jgrfe" fileName="zhuangshi_0001.png" xy="1708,775"/>
+    <component id="n18_pazt" name="n18" src="jgrf6" fileName="Button1.xml" xy="1626,220" size="214,133">
+      <Button checked="true" title="坦克" icon="ui://u080cpqypaztc" controller="c1" page="0"/>
+    </component>
+    <component id="n19_pazt" name="n19" src="jgrf6" fileName="Button1.xml" xy="1626,413" size="169,172">
+      <Button title="炮弹" icon="ui://u080cpqypaztd" controller="c1" page="1"/>
+    </component>
+    <component id="n20_pazt" name="n20" src="jgrf6" fileName="Button1.xml" xy="1626,608" size="169,172">
+      <Button title="道具" icon="ui://u080cpqypazte" controller="c1" page="2"/>
+    </component>
+    <component id="n23_idpq" name="InfoTip" src="idpqg" fileName="InfoTip.xml" xy="0,0" hideByEditor="true" visible="false"/>
+  </displayList>
+</component>

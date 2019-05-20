@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="870,600">
+  <displayList>
+    <list id="n1_dbt8" name="n1" xy="0,100" size="870,500" overflow="scroll" defaultItem="ui://wf4sazq3dbt8w">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n2_dbt8" name="n2" src="dbt8n" fileName="List/ListItemTop.xml" xy="0,0"/>
+  </displayList>
+</component>

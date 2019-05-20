@@ -1,0 +1,722 @@
+syntax = "proto3";
+package ETModel;
+
+message Actor_Test // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string Info = 1;
+}
+
+message C2M_TestRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	string request = 1;
+}
+
+message M2C_TestResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+
+	string response = 1;
+}
+
+message Actor_TransferRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int32 MapIndex = 1;
+}
+
+message Actor_TransferResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+
+}
+
+message C2G_EnterMap // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_EnterMap // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	// 自己的unit id
+	int64 UnitId = 1;
+	// 所有的unit
+	repeated UnitInfo Units = 2;
+}
+
+message C2G_EnterBattle // IRequest
+{
+	int32 RpcId = 90;
+
+	int64 BattleId = 1;
+}
+
+message G2C_EnterBattle // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	// 自己的Tank id
+	int64 TankId = 1;
+	// 所有的Tank
+	repeated TankFrameInfo Tanks = 2;
+}
+
+message UnitInfo
+{
+	int64 UnitId  = 1;
+
+	float X = 2;
+	float Y = 3;
+	float Z = 4;
+}
+
+enum TankCamp
+{
+	None = 0;
+	Left = 1;
+	Right = 2;
+}
+
+message TankFrameInfo
+{
+	int64 TankId = 1;
+
+	// 位置
+	int32 PX = 2;
+	int32 PY = 3;
+	int32 PZ = 4;
+
+	// 朝向
+	int32 RX = 5;
+	int32 RY = 6;
+	int32 RZ = 7;
+
+	int32 TurretRY = 8;
+	int32 GunRX = 9;
+
+	
+}
+
+message M2C_CreateUnits // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	// 所有的unit
+    repeated UnitInfo Units = 1;
+}
+
+message TankInfoFirstEnter
+{
+	TankFrameInfo TankFrameInfo = 1;
+
+	TankCamp TankCamp = 2;
+
+	string Name = 3;
+
+	int32 MaxHpBase = 4;
+
+	int32 HpBase = 5;
+
+	int32 AtkBase = 6;
+}
+
+message B2C_CreateTanks // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	// 所有的unit
+    repeated TankInfoFirstEnter Tanks = 1;
+}
+
+message Frame_ClickMap // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Id = 94;
+	
+	
+	float X = 1;
+	float Y = 2;
+	float Z = 3;
+}
+
+message C2B_TankFrameInfo // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	TankFrameInfo TankFrameInfo = 1;
+}
+
+message B2C_TankFrameInfos // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	repeated TankFrameInfo TankFrameInfos = 1;
+}
+
+message M2C_PathfindingResult // IActorMessage
+{
+	int64 ActorId = 93;
+	
+	int64 Id = 1;
+
+	float X = 2;
+	float Y = 3;
+	float Z = 4;
+	
+	repeated float Xs = 5;
+	repeated float Ys = 6;
+	repeated float Zs = 7;
+}
+
+
+message C2R_Ping // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message R2C_Ping // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message G2C_Test // IMessage
+{
+}
+
+message C2M_Reload // IRequest
+{
+	int32 RpcId = 90;
+	string Account = 1;
+
+	string Password = 2;
+}
+
+message M2C_Reload // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2B_Shoot // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	//int32 PX = 1;
+	//int32 PY = 2;
+	//int32 PZ = 3;
+
+	//int32 RX = 4;
+	//int32 RY = 5;
+	//int32 RZ = 6;
+}
+
+message B2C_Shoot // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int64 TankId = 1;
+
+	//int32 PX = 2;
+	//int32 PY = 3;
+	//int32 PZ = 4;
+
+	//int32 RX = 5;
+	//int32 RY = 6;
+	//int32 RZ = 7;
+}
+
+message C2B_AttackTankRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	// 源坦克id
+	int64 SourceTankId = 1;
+	// 目标坦克id
+	int64 TargetTankId = 2;
+
+	// 攻击力
+	int32 Damage = 4;
+
+
+}
+
+message B2C_AttackTankResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+
+	// 攻击者
+	int64 SourceTankId = 1;
+
+	// 目标坦克id
+	int64 TargetTankId = 2;
+
+	// 当前血量
+	int32 CurrentHp = 3;
+
+}
+
+message B2C_AttackTank // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	// 源坦克id
+	int64 SourceTankId = 1;
+	// 目标坦克id
+	int64 TargetTankId = 2;
+
+	// 当前血量
+	int32 CurrentHp = 3;
+}
+
+message C2G_CreateRoom // IRequest
+{
+	int32 RpcId = 90;
+
+	// 人数
+	int32 PeopleNum = 1;
+	// 地图
+	int32 MapId = 2;
+	// 模式 1回合制，2时间制
+	int32 BigModel = 3;
+	// 回合制：多少个回合  时间制：多少分钟
+	int32 SmallModel = 4;
+	// 房间名
+	string RoomNam = 5;
+}
+
+message G2C_CreateRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2G_ExitRoom // IRequest
+{
+	int32 RpcId = 90;
+
+	int64 id = 1;
+}
+
+message G2C_ExitRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2G_EnterRoom // IRequest
+{
+	int32 RpcId = 90;
+
+	int64 RoomId = 1;
+}
+message G2C_EnterRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message RoomOnePeople
+{
+	// 等级
+	int32 Level = 1;
+	// 名字
+	string Name = 2;
+	// false：未准备  true：准备
+	bool State = 3;
+	// 玩家id
+	int64 id = 4;
+	// 阵营 1:左边 2：右边
+	int32 Camp = 5;
+}
+
+message RoomSimpleInfo
+{
+	//房间Id
+	int64 RoomId = 1;
+	//人数
+	int32 PeopleNum = 2;
+	//地图
+	int32 MapId = 3;
+	//模式 1回合制，2时间制
+	int32 BigModel = 4;
+	//回合制：多少个回合  时间制：多少分钟
+	int32 SmallModel = 5;
+	//房间名
+	string RoomName = 6;
+	//当前状态 1:准备中 2:游戏中
+	int32 State = 7;
+	//房间序号
+	int32 SerialNumber = 8;
+	// 房主id
+	int64 RoomOwnerId = 9;
+	// 当前房间已有人数
+	int32 ExistNum = 10;
+}
+
+// 房间内的详细信息
+message G2C_RoomDetailInfo // IMessage
+{
+	int64 RoomId = 1;
+
+	repeated RoomOnePeople LeftCamp = 2;
+
+	repeated RoomOnePeople RightCamp = 3;
+
+	RoomSimpleInfo RoomSimpleInfo = 4;
+}
+
+enum Language
+{
+	LNone = 0;
+	Chinese = 1;
+	English = 2;
+}
+
+message G2C_UserBaseInfo // IMessage
+{
+	// 等级
+	int32 Level = 1;
+
+	// 经验
+	int32 Experience = 2;
+	
+	// 名字
+	string Name = 3;
+
+	// 游戏id
+	int64 UserDBID = 4;
+
+	// 金币
+	int32 Gold = 5;
+}
+
+message G2C_SettingInfo // IMessage
+{
+	// 选择的语言
+	Language Language = 1;
+
+	// 音量
+	int32 Volume = 2;
+
+	// 二进制开关：头顶名字显示、血量显示
+	int32 BinarySwitch = 3;
+
+	// 旋转速度
+	int32 RotSpeed = 4;
+}
+
+message C2G_SettingInfo // IMessage
+{
+	// 选择的语言
+	Language Language = 1;
+
+	// 音量
+	int32 Volume = 2;
+
+	// 二进制开关：头顶名字显示、血量显示
+	int32 BinarySwitch = 3;
+
+	// 旋转速度
+	int32 RotSpeed = 4;
+}
+
+message G2C_Rooms // IMessage
+{
+	repeated RoomSimpleInfo RoomSimpleInfo = 1;
+}
+
+message C2G_StartGame // IMessage
+{
+
+	int64 RoomId = 1;
+}
+
+message G2C_StartGame // IMessage
+{
+
+	int64 RoomId = 1;
+
+	// 1:Round   2:Time
+	int32 BigModel = 2;
+
+	int32 SmallModel = 3;
+}
+
+message C2B_LoadAssetFinish // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+}
+
+// 当前回合结束
+message B2C_RoundEnd // IActorMessage
+{
+	int64 ActorId = 93;
+
+	// 赢得阵营 1:左边 2：右边
+	int32 WinCamp = 1;
+}
+
+// 开始下一回合
+message B2C_StartNextRound // IActorMessage
+{
+	int64 ActorId = 93;
+
+	repeated TankFrameInfo TankFrameInfos = 1;
+}
+
+message PersonBattleData
+{
+	int64 playerId = 1;
+	// 杀敌数
+	int32 kills = 2;
+	// 输出伤害
+	int32 Damage = 3;
+	// 死亡数
+	int32 Deaths = 4;
+	// 
+	string Name = 5;
+
+	int32 Ping = 6;
+
+	int32 Level = 7;
+}
+
+message B2C_TankReset // IActorMessage
+{
+	int64 ActorId = 93;
+
+	TankFrameInfo TankFrameInfo = 1;
+}
+
+// 游戏结束
+message B2C_BattleEnd // IActorMessage
+{
+	int64 ActorId = 93;
+
+	int64 BattleId = 1;
+
+	// 1:左方胜 2：右方胜
+	int32 WinCamp = 2;
+
+	int32 BigModel = 3;
+
+	int32 SmallModel = 4;
+
+	int32 LeftCampWinNum = 5;
+
+	int32 RightCampWinNum = 6;
+
+	repeated PersonBattleData LeftCamp = 7;
+
+	repeated PersonBattleData RightCamp = 8;
+}
+
+enum PopMessageType
+{
+	PNone = 0;
+	// 从下往上飘动
+	Float = 1;
+	// 滚动
+	Scroll = 2;
+}
+
+message A2C_PopMessage // IMessage
+{
+	PopMessageType Type = 1;
+	
+	string Text = 2;
+}
+
+message C2G_ChangeCamp // IMessage
+{
+	int64 RoomId = 1;
+
+	int32 TargetCamp = 2;
+}
+
+enum Ready_OPT
+{
+	RNone = 0;
+	Ready = 1;
+	CancleReady = 2;
+}
+
+message C2G_Ready // IMessage
+{
+	int64 RoomId = 1;
+
+	Ready_OPT Opt = 2;
+}
+
+message C2G_AgainGame // IMessage
+{
+	int64 RoomId = 1;
+}
+
+enum PropState
+{
+	PSNone = 0;
+	WaitUse = 1;
+	InUser = 2;
+
+}
+
+message PropInfo
+{
+	int32 TableId = 1;
+
+	PropState PropState = 2;
+
+	int32 TotalTimes = 3;
+
+	int32 UseTimes = 4;
+
+	// PropState = WaitUse有效
+	int32 Num = 5;
+}
+
+message C2G_Warehouse // IRequest
+{
+	int32 RpcId = 90;
+}
+
+// 仓库数据
+message G2C_Warehouse // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+
+	repeated int32 Tanks = 1;
+
+	int32 TankId = 2;
+
+	repeated int32 Bullets = 3;
+
+	int32 BulletId = 4;
+
+	repeated PropInfo Props = 5;
+}
+
+enum GoodType
+{
+	GTNone = 0;
+	Tank = 1;
+	Bullet = 2;
+	Prop = 3;
+}
+
+enum GoodOpt
+{
+	GONone = 0;
+	Use = 1;
+	Buy = 2;
+}
+
+message C2G_OptGood // IMessage
+{
+	GoodType GoodType = 1;
+
+	int32 TableId = 2;
+
+	GoodOpt GoodOpt = 3;
+}
+
+message C2G_AddGold // IMessage
+{
+	int32 add = 1;
+}
+
+message G2C_Gold // IMessage
+{
+	int32 Gold = 1;
+}
+
+enum ChatType
+{
+	CTNone = 0;
+	Hall = 1;
+	Room = 2;
+}
+
+message C2G_ChatMessage // IMessage
+{
+	string ChatStr = 1;
+
+	ChatType ChatType = 2;
+}
+
+message G2C_ChatMessage // IMessage
+{
+	int64 SourceId = 1;
+
+	string SourceName = 2;
+
+	string ChatStr = 3;
+
+	ChatType ChatType = 4;
+
+	TankCamp TankCamp = 5;
+}
+
+message C2B_BoomEffect // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int32 PX = 1;
+	int32 PY = 2;
+	int32 PZ = 3;
+
+	//int32 RX = 4;
+	//int32 RY = 5;
+	//int32 RZ = 6;
+}
+
+message B2C_BoomEffect // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int32 PX = 1;
+	int32 PY = 2;
+	int32 PZ = 3;
+}
+
+message B2C_TankDie // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+
+	int64 DieTandkId = 1;
+}

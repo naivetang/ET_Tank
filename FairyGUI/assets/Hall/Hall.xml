@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <component id="n11_ou9f" name="n11" src="ou9f1b" fileName="Bg_Dark.xml" pkg="imnv6csb" xy="0,0"/>
+    <image id="n2_ou9f" name="n2" src="ou9f6" fileName="Left Side BG.png" xy="0,0" size="450,1080" group="n3_ou9f"/>
+    <image id="n4_ou9f" name="n4" src="ou9f3" fileName="Frame.png" xy="64,39" size="306,128" group="n3_ou9f"/>
+    <image id="n5_ou9f" name="n5" src="ou9f4" fileName="Glowy Thing.png" xy="83,28" group="n3_ou9f"/>
+    <image id="n6_ou9f" name="n6" src="ou9f5" fileName="Lighter.png" xy="155,114" group="n3_ou9f"/>
+    <image id="n7_ou9f" name="n7" src="ou9f1" fileName="Sniny.png" xy="188,160" group="n3_ou9f"/>
+    <image id="n8_ou9f" name="n8" src="ou9f2" fileName="Downborder.png" xy="201,169" group="n3_ou9f"/>
+    <text id="n9_ou9f" name="n9" xy="131,72" size="185,55" group="n3_ou9f" font="STFangsong" fontSize="45" color="#ffffff" text="坦克大战"/>
+    <component id="n10_ou9f" name="CreateRoom" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,293" size="241,55" group="n3_ou9f">
+      <Button title="创建游戏"/>
+    </component>
+    <component id="n12_ou9f" name="n12" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,398" size="241,55" group="n3_ou9f">
+      <Button title="商城"/>
+    </component>
+    <component id="n13_ou9f" name="n13" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,501" size="241,55" group="n3_ou9f">
+      <Button title="仓库"/>
+    </component>
+    <component id="n14_ou9f" name="n14" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,608" size="241,55" group="n3_ou9f">
+      <Button title="好友"/>
+    </component>
+    <component id="n15_ou9f" name="n15" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,705" size="241,44" group="n3_ou9f">
+      <Button title="设置"/>
+    </component>
+    <component id="n16_ou9f" name="n16" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,792" size="241,55" group="n3_ou9f">
+      <Button title="退出"/>
+    </component>
+    <group id="n3_ou9f" name="left" xy="0,0" size="450,1080" advanced="true">
+      <relation target="" sidePair="left-left,height-height"/>
+    </group>
+    <image id="n17_ou9f" name="n17" src="ou9f7" fileName="BG Big.png" xy="494,67" size="1390,668" group="n24_ou9f">
+      <relation target="n24_ou9f" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n20_ou9f" name="n20" src="ou9fa" fileName="OrnamentR.png" xy="1873,192" size="10,422" group="n24_ou9f">
+      <relation target="n17_ou9f" sidePair="middle-middle,right-left"/>
+    </image>
+    <image id="n21_ou9f" name="n21" src="ou9f9" fileName="Ornamentb.png" xy="496,193" size="10,422" group="n24_ou9f">
+      <relation target="n17_ou9f" sidePair="middle-middle,left-right"/>
+    </image>
+    <image id="n22_ou9f" name="n22" src="ou9f8" fileName="Ornament.png" xy="1327,83" size="348,48" group="n24_ou9f" rotation="180"/>
+    <component id="n41_s4di" name="n41" src="s4din" fileName="List/List.xml" xy="549,113" size="1288,576" group="n24_ou9f"/>
+    <group id="n24_ou9f" name="BG" xy="494,67" size="1390,669" group="n23_ou9f"/>
+    <group id="n23_ou9f" name="right" xy="494,67" size="1390,669" advanced="true"/>
+    <component id="n29_s4di" name="n29" src="s4dir" fileName="ChatCom.xml" xy="486,763"/>
+  </displayList>
+</component>

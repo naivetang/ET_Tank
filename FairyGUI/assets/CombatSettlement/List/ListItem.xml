@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="870,100">
+  <displayList>
+    <loader id="n1_dbt8" name="ping" xy="3,16" size="91,75" url="ui://wf4sazq3dbt8v" align="center" vAlign="middle"/>
+    <text id="n2_dbt8" name="name" xy="109,15" size="241,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="你的名字"/>
+    <loader id="n3_dbt8" name="rank" xy="363,15" size="95,75" url="ui://imnv6csbgnr4r" align="center" vAlign="middle"/>
+    <text id="n4_dbt8" name="kills" xy="473,15" size="91,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="20&#xA;"/>
+    <text id="n5_dbt8" name="damage" xy="578,15" size="140,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="30000&#xA;"/>
+    <text id="n6_dbt8" name="death" xy="731,15" size="132,75" font="Consolas" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="5"/>
+    <image id="n7_dbt8" name="n7" src="dbt8j" fileName="List/VBorder.png" xy="100,0" size="2,100"/>
+    <image id="n8_dbt8" name="n8" src="dbt8j" fileName="List/VBorder.png" xy="356,0" size="2,100"/>
+    <image id="n9_dbt8" name="n9" src="dbt8j" fileName="List/VBorder.png" xy="464,0" size="2,100"/>
+    <image id="n10_dbt8" name="n10" src="dbt8j" fileName="List/VBorder.png" xy="570,0" size="2,100"/>
+    <image id="n11_dbt8" name="n11" src="dbt8j" fileName="List/VBorder.png" xy="723,0" size="2,100"/>
+  </displayList>
+</component>

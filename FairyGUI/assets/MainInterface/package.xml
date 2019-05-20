@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="npcrlb69" jpegQuality="80" compressPNG="true">
+  <resources>
+    <image id="mqb60" name="sight1.png" path="/" exported="true"/>
+    <component id="mqb61" name="MainInterface.xml" path="/" exported="true"/>
+    <image id="mqb62" name="sight2.png" path="/" exported="true"/>
+    <image id="fh443" name="hp.png" path="/" exported="true"/>
+    <image id="fh444" name="hp2.png" path="/" exported="true"/>
+    <component id="fh445" name="HP.xml" path="/" exported="true"/>
+    <image id="ou9f6" name="health_glass_effect.png" path="/Health/" exported="true"/>
+    <image id="ou9f7" name="hp_ender_left.png" path="/Health/" exported="true"/>
+    <image id="ou9f8" name="hp_ender_right.png" path="/Health/" exported="true"/>
+    <image id="ou9f9" name="health_empty.png" path="/Health/" exported="true"/>
+    <image id="ou9fa" name="health_filling.png" path="/Health/" exported="true"/>
+    <image id="qx79b" name="Faction Crest.png" path="/" exported="true"/>
+    <image id="qx79c" name="Faction Crest 2.png" path="/" exported="true"/>
+    <image id="qx79d" name="Bitmap.png" path="/Health/"/>
+  </resources>
+  <publish name="MainInterface"/>
+</packageDescription>

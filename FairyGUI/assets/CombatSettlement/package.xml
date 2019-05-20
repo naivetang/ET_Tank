@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="wf4sazq3" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="wuiu0" name="CombatSettlement.xml" path="/" exported="true"/>
+    <image id="wuiu1" name="Blue Left.png" path="/picture/" exported="true"/>
+    <image id="wuiu2" name="Blue Light.png" path="/picture/" exported="true"/>
+    <image id="wuiu3" name="Blue Light2.png" path="/picture/" exported="true"/>
+    <image id="wuiu4" name="Faction Crest 2.png" path="/picture/" exported="true"/>
+    <image id="wuiu5" name="Faction Crest.png" path="/picture/" exported="true"/>
+    <image id="wuiu6" name="Heading.png" path="/picture/" exported="true"/>
+    <image id="wuiu7" name="Red Left.png" path="/picture/" exported="true"/>
+    <image id="wuiu8" name="Red Light.png" path="/picture/" exported="true"/>
+    <image id="wuiu9" name="Red Light2.png" path="/picture/" exported="true"/>
+    <image id="wuiua" name="Triangle.png" path="/picture/" exported="true"/>
+    <image id="wuiub" name="V.png" path="/picture/" exported="true"/>
+    <image id="wuiuc" name="Ornament.png" path="/picture/" exported="true"/>
+    <image id="wuiud" name="Ornamentb.png" path="/picture/" exported="true"/>
+    <image id="wuiue" name="BG Big.png" path="/picture/" exported="true"/>
+    <image id="dbt8f" name="sheng.png" path="/picture/" exported="true"/>
+    <image id="dbt8g" name="bai.png" path="/picture/" exported="true"/>
+    <image id="dbt8h" name="Categories Line.png" path="/List/" exported="true"/>
+    <image id="dbt8i" name="Mid Separation Border.png" path="/List/" exported="true"/>
+    <image id="dbt8j" name="VBorder.png" path="/List/" exported="true"/>
+    <image id="dbt8k" name="Your Highlight.png" path="/List/" exported="true"/>
+    <image id="dbt8l" name="Your Highlight2.png" path="/List/" exported="true"/>
+    <component id="dbt8m" name="List.xml" path="/List/" exported="true"/>
+    <component id="dbt8n" name="ListItemTop.xml" path="/List/" exported="true"/>
+    <image id="dbt8t" name="1.png" path="/List/" exported="true"/>
+    <image id="dbt8u" name="2.png" path="/List/" exported="true"/>
+    <image id="dbt8v" name="3.png" path="/List/" exported="true"/>
+    <component id="dbt8w" name="ListItem.xml" path="/List/" exported="true"/>
+  </resources>
+  <publish name="CombatSettlement"/>
+</packageDescription>

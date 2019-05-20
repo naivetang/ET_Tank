@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="1ojks5pu" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="s4di0" name="Room.xml" path="/" exported="true"/>
+    <component id="s4di1" name="ChatCom.xml" path="/" exported="true"/>
+    <component id="s4di2" name="ListItem.xml" path="/" exported="true"/>
+    <component id="s4di3" name="List.xml" path="/" exported="true"/>
+    <image id="m9xx4" name="wode (1).png" path="/" exported="true"/>
+    <image id="m9xx5" name="ready.png" path="/" exported="true"/>
+    <component id="kw2j6" name="text.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="Room"/>
+</packageDescription>

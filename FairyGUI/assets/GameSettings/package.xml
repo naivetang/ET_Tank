@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="b9rznui1" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="tg570" name="GameSettings.xml" path="/" exported="true"/>
+    <image id="tg571" name="BBG.png" path="/" exported="true"/>
+    <image id="tg572" name="Ornamental.png" path="/" exported="true"/>
+    <image id="tg573" name="Text BG.png" path="/" exported="true"/>
+    <image id="tg574" name="xian_0012.png" path="/" exported="true"/>
+    <image id="tg575" name="anniu_0012.png" path="/" exported="true"/>
+    <component id="tg576" name="Button1.xml" path="/" exported="true"/>
+    <image id="tg577" name="ditiao_0529.png" path="/" exported="true" scale="9grid" scale9grid="16,7,32,14"/>
+    <image id="tg578" name="ditiao_0530.png" path="/" exported="true" scale="9grid" scale9grid="12,6,18,12"/>
+    <component id="tg57c" name="Slider1.xml" path="/" exported="true"/>
+    <image id="tg57d" name="ditiao_0528.png" path="/ChectBtn/" exported="true"/>
+    <image id="tg57e" name="anniu_0052.png" path="/ChectBtn/" exported="true"/>
+    <image id="tg57f" name="anniu_0010.png" path="/ChectBtn/" exported="true"/>
+    <component id="tg57g" name="Button2.xml" path="/ChectBtn/" exported="true"/>
+    <component id="tg57h" name="Slider2_grip.xml" path="/Slider/" exported="true"/>
+    <component id="tg57i" name="Slider2.xml" path="/Slider/" exported="true"/>
+  </resources>
+  <publish name="GameSettings"/>
+</packageDescription>

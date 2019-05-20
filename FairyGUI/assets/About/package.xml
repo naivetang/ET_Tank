@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="y793z0pi" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="p1tq0" name="About.xml" path="/" exported="true"/>
+    <image id="p1tq1" name="BBG.png" path="/Pictures/" exported="true"/>
+    <image id="p1tq2" name="Ornamental.png" path="/Pictures/" exported="true"/>
+    <image id="p1tq3" name="Text BG.png" path="/Pictures/" exported="true"/>
+    <component id="p1tq4" name="bg.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="About"/>
+</packageDescription>

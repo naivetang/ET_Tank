@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="f6h7tf13" jpegQuality="80" compressPNG="true">
+  <resources>
+    <image id="gnr40" name="mm_metallic_ring.png" path="/"/>
+    <image id="gnr41" name="compass_sides.png" path="/"/>
+    <image id="gnr42" name="flat_bg_transparent.png" path="/"/>
+    <image id="gnr43" name="inner_shadow.png" path="/"/>
+    <image id="gnr44" name="map_overlay.png" path="/"/>
+    <image id="gnr45" name="your_los.png" path="/Markers/"/>
+    <image id="gnr46" name="enemy.png" path="/Markers/"/>
+    <image id="gnr47" name="friendly.png" path="/Markers/"/>
+    <image id="gnr48" name="neutralORunaware.png" path="/Markers/"/>
+  </resources>
+  <publish name=""/>
+</packageDescription>

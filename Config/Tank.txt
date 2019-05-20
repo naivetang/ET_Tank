@@ -1,0 +1,2 @@
+{"_id":10001,"Price":1000,"Chinese":"坦克1号","English":"tank1","Icon":" ","Attack":20,"Defence":10,"SunderArmor":3}
+{"_id":10002,"Price":2000,"Chinese":"坦克2号","English":"tank2","Icon":" ","Attack":30,"Defence":15,"SunderArmor":6}

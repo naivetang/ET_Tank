@@ -1,0 +1,89 @@
+﻿using System;
+using ETModel;
+using NPOI.Util;
+using UnityEngine;
+
+namespace ETHotfix
+{
+	public static class Init
+	{
+		public static void Start()
+		{
+			try
+			{
+				Game.Scene.ModelScene = ETModel.Game.Scene;
+
+				// 注册热更层回调
+				ETModel.Game.Hotfix.Update = Update;
+				ETModel.Game.Hotfix.LateUpdate = LateUpdate;
+				ETModel.Game.Hotfix.FixedUpdate = FixedUpdate;
+				ETModel.Game.Hotfix.OnApplicationQuit = OnApplicationQuit;
+				
+				Game.Scene.AddComponent<FUIComponent>();
+				Game.Scene.AddComponent<OpcodeTypeComponent>();
+				Game.Scene.AddComponent<MessageDispatcherComponent>();
+
+				// 加载热更配置
+				ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundle(AssetBundleName.Config);
+                // 加载表格数据
+				Game.Scene.AddComponent<ConfigComponent>();
+				ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(AssetBundleName.Config);
+
+				UnitConfig unitConfig = (UnitConfig)Game.Scene.GetComponent<ConfigComponent>().Get(typeof(UnitConfig), 1001);
+				Log.Debug($"config {JsonHelper.ToJson(unitConfig)}");
+
+                Game.EventSystem.Run(EventIdType.InitSceneStart);
+            }
+			catch (Exception e)
+			{
+				Log.Error(e);
+			}
+        }
+
+		public static void Update()
+		{
+			try
+			{
+				Game.EventSystem.Update();
+
+			    if (Input.GetKeyDown(KeyCode.F2))
+			    {
+			        Game.EventSystem.Run(EventIdType.ClickEnter);
+			    }
+			}
+			catch (Exception e)
+			{
+				Log.Error(e);
+			}
+		}
+
+		public static void LateUpdate()
+		{
+			try
+			{
+				Game.EventSystem.LateUpdate();
+			}
+			catch (Exception e)
+			{
+				Log.Error(e);
+			}
+		}
+
+        public static void FixedUpdate()
+        {
+            try
+            {
+                Game.EventSystem.FixedUpdate();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+            }
+        }
+
+		public static void OnApplicationQuit()
+		{
+			Game.Close();
+		}
+	}
+}

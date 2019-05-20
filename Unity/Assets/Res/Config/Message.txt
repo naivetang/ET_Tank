@@ -1,0 +1,88 @@
+{"Id":1001,"Chinese":"开始游戏","English":"Start Game"}
+{"Id":1002,"Chinese":"准备","English":"Ready"}
+{"Id":1003,"Chinese":"测试","English":"Test"}
+{"Id":1004,"Chinese":"准备中","English":"Reading"}
+{"Id":1005,"Chinese":"游戏中","English":"Playing"}
+{"Id":1006,"Chinese":"坦克大战","English":"TankGame"}
+{"Id":1007,"Chinese":"创建游戏","English":"CreateGame"}
+{"Id":1008,"Chinese":"商城","English":"Mall"}
+{"Id":1009,"Chinese":"仓库","English":"Warehouse"}
+{"Id":1010,"Chinese":"好友","English":"Friend"}
+{"Id":1011,"Chinese":"设置","English":"Setting"}
+{"Id":1012,"Chinese":"退出","English":"Exit"}
+{"Id":1013,"Chinese":"号码","English":"Num"}
+{"Id":1014,"Chinese":"房间名","English":"Room"}
+{"Id":1015,"Chinese":"地图","English":"Map"}
+{"Id":1016,"Chinese":"玩家","English":"Players"}
+{"Id":1017,"Chinese":"状态","English":"State"}
+{"Id":1018,"Chinese":"西南科技大学虚拟现实实验室","English":"Southwest University of Science and Technology Virtual Reality Lab"}
+{"Id":1019,"Chinese":"注册","English":"Regist"}
+{"Id":1020,"Chinese":"登陆","English":"Login"}
+{"Id":1021,"Chinese":"关于","English":"About"}
+{"Id":1022,"Chinese":"请输入账号","English":"Username"}
+{"Id":1023,"Chinese":"请输入密码","English":"Password"}
+{"Id":1024,"Chinese":"退出房间","English":"Exit Room"}
+{"Id":1025,"Chinese":"加载中","English":"Loading"}
+{"Id":1026,"Chinese":"确认","English":"Confirm"}
+{"Id":1027,"Chinese":"返回","English":"Cancel"}
+{"Id":1028,"Chinese":"请输入房间名","English":"Input RoomName"}
+{"Id":1029,"Chinese":"游戏ID：","English":"GameID："}
+{"Id":1030,"Chinese":"语言","English":"Lanaguage"}
+{"Id":1031,"Chinese":"音效","English":"Sound"}
+{"Id":1032,"Chinese":"头顶名字显示","English":"Top Name Display"}
+{"Id":1033,"Chinese":"头顶血条显示","English":"Blood Strip Display"}
+{"Id":1034,"Chinese":"旋转速度","English":"Spinning Speed"}
+{"Id":1044,"Chinese":"房间名字符3~14","English":"Room name characters 3~14"}
+{"Id":1045,"Chinese":"暂未达到开局人数","English":"Player Num Too Less"}
+{"Id":1046,"Chinese":"等待所有玩家准备","English":"Wait All Player Reading"}
+{"Id":1047,"Chinese":"取消","English":"Cancel"}
+{"Id":1048,"Chinese":"潜伏者","English":"Lurker"}
+{"Id":1049,"Chinese":"保卫者","English":"Defender"}
+{"Id":1050,"Chinese":"网络","English":"PING"}
+{"Id":1051,"Chinese":"玩家","English":"Player"}
+{"Id":1052,"Chinese":"军衔","English":"Level"}
+{"Id":1053,"Chinese":"杀敌","English":"Kills"}
+{"Id":1054,"Chinese":"伤害","English":"Damage"}
+{"Id":1055,"Chinese":"死亡","English":"Deaths"}
+{"Id":1056,"Chinese":"再来一局","English":"NextGame"}
+{"Id":1057,"Chinese":"记住密码","English":"Remember Me"}
+{"Id":1058,"Chinese":"电话号码","English":"Phone Num"}
+{"Id":1059,"Chinese":"用户名(4~9个字符)","English":"Username(4~9character)"}
+{"Id":1060,"Chinese":"密码(6~11个字符)","English":"Password(6~11character)"}
+{"Id":1061,"Chinese":"电话号码不符合规范","English":"Phone number does not meet specifications"}
+{"Id":1062,"Chinese":"用户名不符合规范","English":"Username does not meet specifications"}
+{"Id":1063,"Chinese":"密码不符合规范","English":"Password does not meet specifications"}
+{"Id":1064,"Chinese":"不存在的账号","English":"Non-existent account"}
+{"Id":1065,"Chinese":"密码错误","English":"wrong password"}
+{"Id":1066,"Chinese":"账号已存在","English":"Account already exists"}
+{"Id":1067,"Chinese":"的房间","English":"’s room"}
+{"Id":1068,"Chinese":"Tank By Naive","English":"Tank By Naïve"}
+{"Id":1069,"Chinese":"版本：1.0.0","English":"VISION：1.0.0"}
+{"Id":1070,"Chinese":"交流：1095068286","English":"CONTACT：1095068286"}
+{"Id":1071,"Chinese":"鸣谢：西南科技大学虚拟现实与可视化团队","English":"THANKS：Virtual Reality and Visualization Team"}
+{"Id":1072,"Chinese":"模式","English":"Model"}
+{"Id":1073,"Chinese":"分钟","English":"Min"}
+{"Id":1074,"Chinese":"回合","English":"Round"}
+{"Id":1075,"Chinese":"购买","English":"Buy"}
+{"Id":1076,"Chinese":"坦克","English":"Tank"}
+{"Id":1077,"Chinese":"炮弹","English":"Bullet"}
+{"Id":1078,"Chinese":"道具","English":"Prop"}
+{"Id":1079,"Chinese":"出战","English":"Fighting"}
+{"Id":1080,"Chinese":"装备","English":"Equip"}
+{"Id":1081,"Chinese":"使用","English":"Use"}
+{"Id":1082,"Chinese":"使用中","English":"InUse"}
+{"Id":1083,"Chinese":"成功出战","English":"Successfully Played"}
+{"Id":1084,"Chinese":"已拥有不必重复购买","English":"Already have no need to repeat purchases"}
+{"Id":1085,"Chinese":"使用成功","English":"Successfully Use"}
+{"Id":1086,"Chinese":"金币不足","English":"Gold inadequate"}
+{"Id":1087,"Chinese":"购买成功","English":"Purchase success"}
+{"Id":1088,"Chinese":"基本属性","English":"Basic Attribute"}
+{"Id":1089,"Chinese":"攻击力","English":"Attack"}
+{"Id":1090,"Chinese":"防御力","English":"Defensive"}
+{"Id":1091,"Chinese":"破甲","English":"Sunder"}
+{"Id":1092,"Chinese":"装弹速度","English":"Loading Speed"}
+{"Id":1093,"Chinese":"经验加成","English":"Experience Bonus"}
+{"Id":1094,"Chinese":"金币加成","English":"Gold Bonus"}
+{"Id":1095,"Chinese":"每张可加成次数","English":"Available Times"}
+{"Id":1096,"Chinese":"拥有数量","English":"Number"}
+{"Id":1097,"Chinese":"剩余次数","English":"Left Times"}

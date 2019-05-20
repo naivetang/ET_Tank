@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="500,600">
+  <displayList>
+    <image id="n0_idpq" name="n0" src="idpq22" fileName="InfoTip/mianban_0008.png" xy="0,0" size="500,599">
+      <relation target="n7_idpq" sidePair="bottomext-bottom"/>
+    </image>
+    <image id="n3_idpq" name="n3" src="idpq25" fileName="InfoTip/ditiao_0015.png" xy="6,6" size="495,143"/>
+    <image id="n1_idpq" name="n1" src="idpq24" fileName="InfoTip/bg.png" xy="7,1" size="152,153"/>
+    <loader id="n2_idpq" name="n2" xy="-2,15" size="164,122" url="ui://imnv6csbkw2j2k" fill="scaleFree" autoSize="true"/>
+    <text id="n4_idpq" name="n4" xy="175,19" size="85,51" fontSize="40" color="#62c174" text="名称"/>
+    <text id="n6_idpq" name="n6" xy="175,84" size="205,51" fontSize="40" color="#62c174" text="类型：炮弹"/>
+    <list id="n7_idpq" name="n7" xy="29,239" size="453,326" overflow="hidden" scroll="both" lineGap="10" defaultItem="ui://imnv6csbidpq26">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <text id="n8_idpq" name="n8" xy="34,163" size="165,51" fontSize="40" color="#87a0cc" text="基本属性"/>
+    <image id="n9_idpq" name="n9" src="idpq27" fileName="InfoTip/xian_0002.png" xy="27,221" size="450,3"/>
+  </displayList>
+</component>

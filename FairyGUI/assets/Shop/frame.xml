@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="400,400" extention="Label">
+  <displayList>
+    <graph id="n23_rg0p" name="n23" xy="0,1" size="400,400" type="rect">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <text id="n0_rg0p" name="title" xy="0,0" size="400,400" fontSize="12" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+    <graph id="n3_rg0p" name="dragArea" xy="0,0" size="400,34" type="rect" fillColor="#ff9999ff">
+      <relation target="n23_rg0p" sidePair="width-width,top-top"/>
+    </graph>
+    <component id="n1_rg0p" name="closeButton" src="rg0p2" fileName="closeButton.xml" xy="349,2" size="51,31">
+      <relation target="n3_rg0p" sidePair="right-right,top-top"/>
+      <Button title="关闭"/>
+    </component>
+    <graph id="n4_rg0p" name="contentArea" xy="0,33" size="400,367" type="rect" fillColor="#ffccffff">
+      <relation target="n23_rg0p" sidePair="width-width,bottom-bottom"/>
+    </graph>
+    <text id="n5_rg0p" name="n5" xy="40,2" size="291,32" fontSize="22" align="center" vAlign="middle" autoSize="none" text="拖我可以拖动">
+      <relation target="n3_rg0p" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+</component>
