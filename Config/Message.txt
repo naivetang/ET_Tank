@@ -80,3 +80,9 @@
 {"_id":1089,"Chinese":"攻击力","English":"Attack"}
 {"_id":1090,"Chinese":"防御力","English":"Defensive"}
 {"_id":1091,"Chinese":"破甲","English":"Sunder"}
+{"_id":1092,"Chinese":"装弹速度","English":"Loading Speed"}
+{"_id":1093,"Chinese":"经验加成","English":"Experience Bonus"}
+{"_id":1094,"Chinese":"金币加成","English":"Gold Bonus"}
+{"_id":1095,"Chinese":"每张可加成次数","English":"Available Times"}
+{"_id":1096,"Chinese":"拥有数量","English":"Number"}
+{"_id":1097,"Chinese":"剩余次数","English":"Left Times"}
