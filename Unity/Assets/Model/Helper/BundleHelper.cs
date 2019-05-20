@@ -8,7 +8,7 @@ namespace ETModel
 	{
 		public static async ETTask DownloadBundle()
 		{
-			if (true)
+			if (Define.IsAsync)
 			{
 				try
 				{

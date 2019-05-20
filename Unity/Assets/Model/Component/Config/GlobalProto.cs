@@ -17,7 +17,7 @@
 #elif UNITY_STANDALONE_OSX
 			url += "MacOS/";
 #else
-			url += "PC/";
+			url += "Tank_Data/";
 #endif
 			Log.Debug(url);
 			return url;
