@@ -86,3 +86,4 @@
 {"Id":1095,"Chinese":"每张可加成次数","English":"Available Times"}
 {"Id":1096,"Chinese":"拥有数量","English":"Number"}
 {"Id":1097,"Chinese":"剩余次数","English":"Left Times"}
+{"Id":1098,"Chinese":"敬请期待","English":"Stay Tuned"}

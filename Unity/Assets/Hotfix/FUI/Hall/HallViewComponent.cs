@@ -184,6 +184,8 @@ namespace ETHotfix
             m_settingBtn = this.FUIComponent.Get("n15").GObject.asButton;
             this.m_exitButton = this.FUIComponent.Get("n16").GObject.asButton;
 
+            this.m_friendButton.onClick.Set(this.FriendBtn_OnClick);
+
             m_exitButton.onClick.Set(this.ExitBtn_OnClick);
 
             m_list = this.FUIComponent.Get("n41").GObject.asCom.GetChild("n0").asList;
@@ -252,6 +254,11 @@ namespace ETHotfix
         private void MallBtn_OnClick()
         {
             FUIFactory.Create<MallViewComponent>(FUIType.Mall).NoAwait();
+        }
+
+        private void FriendBtn_OnClick()
+        {
+            Game.EventSystem.Run(EventIdType.ShowPopMessage, Message.Get(1098), PopMessageType.Float);
         }
 
         private void Warehouse_OnClick()

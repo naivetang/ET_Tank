@@ -110,4 +110,4 @@ Material:
     - _ShalowColor: {r: 1, g: 1, b: 1, a: 1}
     - _SurfaceColor: {r: 0.29803923, g: 0.4392157, b: 0.5568628, a: 1}
     - _WaterColor: {r: 0.32515138, g: 0.5365902, b: 0.71323526, a: 0}
-    - _WaveSpeed: {r: -0.05, g: 0.05, b: 0, a: 0}
+    - _WaveSpeed: {r: -0.2, g: 0.2, b: 0, a: 0}
