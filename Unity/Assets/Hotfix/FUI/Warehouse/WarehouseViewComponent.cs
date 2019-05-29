@@ -166,8 +166,8 @@ namespace ETHotfix
 
                 com.GetChild("n15").asLoader.url = tankInfo.Icon;
 
+                com.GetChild("n15").asLoader.onClick.Set(this.TankIcon_OnClick);
 
-                com.GetChild("NullBtn").asButton.GetController("button").onChanged.Set(this.TankIcon_OnClick);
 
                 if (m_data.TankId == tankInfo.Id)
                 {
@@ -190,34 +190,44 @@ namespace ETHotfix
 
         private void TankIcon_OnClick(EventContext context)
         {
-            GButton btn = ((Controller)context.sender).parent as GButton;
-
-            Log.Warning(btn.GetController("button").selectedPage);
-
-            if (btn.GetController("button").selectedPage == "up")
-            {
-                this.m_infoTip.visible = false;
-                return;
-            }
-
-            if (this.m_infoTip.visible)
-            {
-                return;
-            }
-
-            
+            // GButton btn = ((Controller)context.sender).parent as GButton;
+            //
+            // Log.Warning(btn.GetController("button").selectedPage);
+            //
+            // if (btn.GetController("button").selectedPage == "up")
+            // {
+            //     this.m_infoTip.visible = false;
+            //     return;
+            // }
+            //
+            // if (this.m_infoTip.visible)
+            // {
+            //     return;
+            // }
+            //
+            //
+            //
+            // this.m_infoTip.visible = true;
+            //
+            // //this.m_infoTip.GetChild("bg").onClick.Set(() => { this.m_infoTip.visible = false;});
+            //
+            // GComponent tip = this.m_infoTip.GetChild("InfoTip").asCom;
+            //
+            // tip.x = btn.x;//context.inputEvent.x;
+            //
+            // tip.y = btn.y;//context.inputEvent.y;
 
             this.m_infoTip.visible = true;
 
-            //this.m_infoTip.GetChild("bg").onClick.Set(() => { this.m_infoTip.visible = false;});
+            this.m_infoTip.GetChild("bg").onClick.Set(() => { this.m_infoTip.visible = false; });
 
             GComponent tip = this.m_infoTip.GetChild("InfoTip").asCom;
 
-            tip.x = btn.x;//context.inputEvent.x;
+            tip.x = context.inputEvent.x;
 
-            tip.y = btn.y;//context.inputEvent.y;
+            tip.y = context.inputEvent.y;
 
-            TankCfg tankInfo = (btn.parent.data) as TankCfg;
+            TankCfg tankInfo = ((context.sender as GLoader).parent.data) as TankCfg;
 
             tip.GetChild("n2").asLoader.url = tankInfo.Icon;
 

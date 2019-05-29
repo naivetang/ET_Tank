@@ -1,2 +1,2 @@
-{"Id":30001,"Price":500,"Icon":" ","Chinese":"经验加成卡","English":"prop1","Class":1,"Experience":20,"Gold":0,"TotleTimes":5}
-{"Id":30002,"Price":500,"Icon":" ","Chinese":"金币加成卡","English":"prop2","Class":2,"Experience":0,"Gold":20,"TotleTimes":5}
+{"Id":30001,"Price":500,"Icon":" ui://Common/prop1","Chinese":"经验加成卡","English":"prop1","Class":1,"Experience":20,"Gold":0,"TotleTimes":5}
+{"Id":30002,"Price":500,"Icon":" ui://Common/prop2","Chinese":"金币加成卡","English":"prop2","Class":2,"Experience":0,"Gold":20,"TotleTimes":5}

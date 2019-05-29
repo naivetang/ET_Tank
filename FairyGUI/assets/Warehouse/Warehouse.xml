@@ -18,13 +18,13 @@
     <component id="n16_pazt" name="n16" src="pazt20" fileName="Button3/Button3.xml" pkg="imnv6csb" xy="1809,20"/>
     <image id="n17_pazt" name="n17" src="jgrfe" fileName="zhuangshi_0001.png" xy="1708,775"/>
     <component id="n18_pazt" name="n18" src="jgrf6" fileName="Button1.xml" xy="1626,220" size="214,133">
-      <Button checked="true" title="坦克" icon="ui://u080cpqypaztc" controller="c1" page="0"/>
+      <Button checked="true" title="坦克" icon="ui://bcngh30kjgrfd" controller="c1" page="0"/>
     </component>
     <component id="n19_pazt" name="n19" src="jgrf6" fileName="Button1.xml" xy="1626,413" size="169,172">
-      <Button title="炮弹" icon="ui://u080cpqypaztd" controller="c1" page="1"/>
+      <Button title="炮弹" icon="ui://bcngh30kjgrf5" controller="c1" page="1"/>
     </component>
     <component id="n20_pazt" name="n20" src="jgrf6" fileName="Button1.xml" xy="1626,608" size="169,172">
-      <Button title="道具" icon="ui://u080cpqypazte" controller="c1" page="2"/>
+      <Button title="道具" icon="ui://bcngh30kjgrfa" controller="c1" page="2"/>
     </component>
     <component id="n23_idpq" name="InfoTip" src="idpqg" fileName="InfoTip.xml" xy="0,0" hideByEditor="true" visible="false"/>
   </displayList>
