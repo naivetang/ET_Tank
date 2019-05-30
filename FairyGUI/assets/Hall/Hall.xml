@@ -12,19 +12,19 @@
     <component id="n10_ou9f" name="CreateRoom" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,293" size="241,55" group="n3_ou9f">
       <Button title="创建游戏"/>
     </component>
-    <component id="n12_ou9f" name="n12" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,398" size="241,55" group="n3_ou9f">
+    <component id="n12_ou9f" name="n12" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,399" size="241,55" group="n3_ou9f">
       <Button title="商城"/>
     </component>
-    <component id="n13_ou9f" name="n13" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,501" size="241,55" group="n3_ou9f">
+    <component id="n13_ou9f" name="n13" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,502" size="241,55" group="n3_ou9f">
       <Button title="仓库"/>
     </component>
-    <component id="n14_ou9f" name="n14" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,608" size="241,55" group="n3_ou9f">
+    <component id="n14_ou9f" name="n14" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,608" size="241,55" group="n3_ou9f" hideByEditor="true" visible="false" touchable="false">
       <Button title="好友"/>
     </component>
-    <component id="n15_ou9f" name="n15" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,705" size="241,44" group="n3_ou9f">
+    <component id="n15_ou9f" name="n15" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,621" size="241,55" group="n3_ou9f" visible="false" touchable="false">
       <Button title="设置"/>
     </component>
-    <component id="n16_ou9f" name="n16" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="94,792" size="241,55" group="n3_ou9f">
+    <component id="n16_ou9f" name="n16" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="93,731" size="241,55" group="n3_ou9f">
       <Button title="退出"/>
     </component>
     <group id="n3_ou9f" name="left" xy="0,0" size="450,1080" advanced="true">

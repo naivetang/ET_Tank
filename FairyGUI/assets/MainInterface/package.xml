@@ -15,6 +15,11 @@
     <image id="qx79b" name="Faction Crest.png" path="/" exported="true"/>
     <image id="qx79c" name="Faction Crest 2.png" path="/" exported="true"/>
     <image id="qx79d" name="Bitmap.png" path="/Health/"/>
+    <image id="nycwe" name="UnitFrame_Background.png" path="/Role/" exported="true"/>
+    <image id="nycwf" name="UnitFrame_HP_Fill_Red.png" path="/Role/" exported="true" scale="9grid" scale9grid="15,0,440,40"/>
+    <image id="nycwk" name="tank.png" path="/Role/" exported="true"/>
+    <image id="nycwl" name="UnitFrame_MP_Fill_Green.png" path="/Role/" exported="true" scale="9grid" scale9grid="19,0,410,38"/>
+    <component id="nycwm" name="HP2.xml" path="/" exported="true"/>
   </resources>
   <publish name="MainInterface"/>
 </packageDescription>
