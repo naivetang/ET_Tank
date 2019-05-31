@@ -10,7 +10,8 @@ namespace ETModel
 		{
 			if (Define.IsAsync)
 			{
-				try
+#if false
+                try
 				{
 					using (BundleDownloaderComponent bundleDownloaderComponent = Game.Scene.AddComponent<BundleDownloaderComponent>())
 					{
@@ -23,16 +24,23 @@ namespace ETModel
 					
 					Game.EventSystem.Run(EventIdType.LoadingFinish);
 					
-					Game.Scene.GetComponent<ResourcesComponent>().LoadOneBundle("StreamingAssets");
-					ResourcesComponent.AssetBundleManifestObject = (AssetBundleManifest)Game.Scene.GetComponent<ResourcesComponent>().GetAsset("StreamingAssets", "AssetBundleManifest");
 				}
 				catch (Exception e)
 				{
 					Log.Error(e);
 				}
+#endif
 
-			}
-		}
+#if !UNITY_EDITOR
+
+            Game.Scene.GetComponent<ResourcesComponent>().LoadOneBundle("StreamingAssets");
+            ResourcesComponent.AssetBundleManifestObject = (AssetBundleManifest)Game.Scene.GetComponent<ResourcesComponent>().GetAsset("StreamingAssets", "AssetBundleManifest");
+#endif
+
+            }
+
+            await ETTask.CompletedTask;
+        }
 
 		public static string GetBundleMD5(VersionConfig streamingVersionConfig, string bundleName)
 		{

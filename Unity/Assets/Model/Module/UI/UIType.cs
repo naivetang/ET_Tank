@@ -6,6 +6,7 @@
 	    public const string UILoading = "UILoading";
 
 	    public const string Common = "Common";
+	    public const string Images = "Images";
 	    public const string RootLayer = "RootLayer";
 	    public const string PopMessage = "PopMessage";
 	}
