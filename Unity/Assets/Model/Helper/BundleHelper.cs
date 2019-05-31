@@ -10,7 +10,7 @@ namespace ETModel
 		{
 			if (Define.IsAsync)
 			{
-#if false
+#if true
                 try
 				{
 					using (BundleDownloaderComponent bundleDownloaderComponent = Game.Scene.AddComponent<BundleDownloaderComponent>())
