@@ -44,6 +44,7 @@ namespace ETHotfix
                         else
                         {
                             userBase.Gold -= tankInfo.Price;
+                            player.Send_G2C_Gold();
                             player.Send_PopMessage(1087);
                             warehouse.Tanks.Add(message.TableId);
                         }
@@ -72,6 +73,7 @@ namespace ETHotfix
                         else
                         {
                             userBase.Gold -= bulletInfo.Price;
+                            player.Send_G2C_Gold();
                             player.Send_PopMessage(1087);
                             warehouse.Bullets.Add(message.TableId);
                         }
@@ -150,6 +152,8 @@ namespace ETHotfix
                         }
 
                         userBase.Gold -= propInfo.Price;
+
+                        player.Send_G2C_Gold();
 
                         player.Send_PopMessage(1087);
 

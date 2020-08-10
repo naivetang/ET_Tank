@@ -119,6 +119,15 @@ namespace ETModel
             this.Session.Send(msg);
         }
 
+        public void Send_G2C_Gold()
+        {
+            G2C_Gold msg = new G2C_Gold();
+
+            msg.Gold = this.UserDB.GetComponent<UserBaseComponent>().Gold;
+
+            this.Session.Send(msg);
+        }
+
         private void Send_G2C_SettingInfo()
         {
             SettingInfoComponent settingInfo = this.UserDB.GetComponent<SettingInfoComponent>();

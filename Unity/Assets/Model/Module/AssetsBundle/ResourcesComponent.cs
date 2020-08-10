@@ -222,7 +222,12 @@ namespace ETModel
 			this.bundles.Clear();
 			this.resourceCache.Clear();
 		}
-
+        /// <summary>
+        /// 从Bundle中获取某个Prefab，需要实例化
+        /// </summary>
+        /// <param name="bundleName">不区分大小写</param>
+        /// <param name="prefab">区分大小写</param>
+        /// <returns></returns>
 		public UnityEngine.Object GetAsset(string bundleName, string prefab)
 		{
 			Dictionary<string, UnityEngine.Object> dict;

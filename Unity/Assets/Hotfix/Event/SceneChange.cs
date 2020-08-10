@@ -1,4 +1,5 @@
 ﻿using ETModel;
+using UnityEngine.SceneManagement;
 
 namespace ETHotfix
 {
@@ -12,6 +13,11 @@ namespace ETHotfix
 
         public async ETVoid RunAsync()
         {
+            if (SceneManager.GetActiveScene().name.Equals(SceneType.Battle))
+            {
+                ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(AssetBundleName.Unit);
+            }
+
             await FUIFactory.Create<LoadingViewComponent>(FUIType.Loading);
         }
     }

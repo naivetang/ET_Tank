@@ -79,8 +79,15 @@ namespace ETModel
 					{
 						continue;
 					}
-					
-					fileInfo.Delete();
+
+#if UNITY_EDITOR
+                    if (fileInfo.Extension.Equals(".meta"))
+                    {
+                        continue;
+                    }
+#endif
+
+                    fileInfo.Delete();
 				}
 			}
 			else

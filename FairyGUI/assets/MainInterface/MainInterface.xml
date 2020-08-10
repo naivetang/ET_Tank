@@ -5,13 +5,17 @@
       <relation target="" sidePair="middle-middle,center-center"/>
     </image>
     <image id="n1_mqb6" name="BoomPoint" src="mqb62" fileName="sight2.png" xy="961,539" pivot="0.5,0.5" anchor="true"/>
-    <component id="n5_fh44" name="hp" src="fh445" fileName="HP.xml" xy="23,999">
-      <ProgressBar value="12" max="100"/>
+    <component id="n5_fh44" name="hp2" src="fh445" fileName="HP.xml" xy="23,999" hideByEditor="true" visible="false" touchable="false">
+      <ProgressBar value="41" max="100"/>
     </component>
     <graph id="n14_qx79" name="n14" xy="903,8" size="93,73" group="n8_qx79" type="rect" lineSize="0" fillColor="#b32f424e"/>
-    <text id="n15_qx79" name="n15" xy="925,23" size="49,51" group="n8_qx79" fontSize="40" color="#ffffff" text="10"/>
+    <text id="n15_qx79" name="n15" xy="925,23" size="49,51" group="n8_qx79" fontSize="40" color="#ffffff" text="10">
+      <relation target="n14_qx79" sidePair="center-center,middle-middle"/>
+    </text>
     <graph id="n17_qx79" name="n17" xy="865,80" size="161,38" group="n8_qx79" type="rect" lineSize="0" fillColor="#b32f424e"/>
-    <text id="n18_qx79" name="n18" xy="905,82" size="89,40" group="n8_qx79" fontSize="30" color="#ffffff" autoSize="none" text="13:14"/>
+    <text id="n18_qx79" name="n18" xy="905,82" size="89,40" group="n8_qx79" fontSize="30" color="#ffffff" autoSize="none" text="13:14">
+      <relation target="n17_qx79" sidePair="center-center,middle-middle"/>
+    </text>
     <graph id="n9_qx79" name="n9" xy="620,6" size="278,74" group="n21_qx79" type="rect" lineSize="0" lineColor="#ff999900" fillColor="#ff786856"/>
     <image id="n6_qx79" name="n6" src="qx79b" fileName="Faction Crest.png" xy="760,2" size="87,81" group="n21_qx79" aspect="true"/>
     <text id="n12_qx79" name="n12" xy="639,22" size="110,45" group="n21_qx79" fontSize="35" color="#ffffff" text="潜伏者"/>
@@ -23,5 +27,8 @@
     <text id="n20_qx79" name="n20" xy="1010,23" size="24,45" group="n22_qx79" fontSize="35" color="#ffffff" text="3"/>
     <group id="n22_qx79" name="n22" xy="999,5" size="254,75" group="n8_qx79"/>
     <group id="n8_qx79" name="n8" xy="620,2" size="633,120"/>
+    <component id="n31_nycw" name="hp" src="nycwm" fileName="HP2.xml" xy="0,904">
+      <ProgressBar value="100" max="100"/>
+    </component>
   </displayList>
 </component>

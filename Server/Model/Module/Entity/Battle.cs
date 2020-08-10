@@ -359,7 +359,7 @@ namespace ETModel
         {
             this.Send_B2G_BattleEnd();
 
-            Send_B2C_BattleEnd();
+            this.Send_B2C_BattleEnd();
 
             Game.Scene.GetComponent<BattleComponent>().Remove(this.Id);
 

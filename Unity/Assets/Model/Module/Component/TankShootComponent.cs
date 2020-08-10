@@ -32,11 +32,13 @@ namespace ETModel
     {
         private Tank m_tank;
 
+        public static Action<float> ShootNoticeHtf;
+
         // 上一次开炮时间
         private float lastShootTime = 0f;
 
         // 开炮时间间隔
-        private float shootInterval = 0.5f;
+        private float shootInterval = 2f;
 
 
         public void Awake()
@@ -60,6 +62,12 @@ namespace ETModel
            this.ShowShootEffect();
         }
 
+
+        private void ShootNotice()
+        {
+            ShootNoticeHtf?.Invoke(this.shootInterval);
+        }
+
         /// <summary>
         /// 本地坦克发射炮弹
         /// </summary>
@@ -72,6 +80,8 @@ namespace ETModel
                 return;
 
             // this.m_tank.BeAttacked(30f);
+
+            this.ShootNotice();
 
             Vector3 pos = this.m_tank.Gun.transform.position + this.m_tank.Gun.transform.forward * 2;
 

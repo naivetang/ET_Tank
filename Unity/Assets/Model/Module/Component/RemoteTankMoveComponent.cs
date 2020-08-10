@@ -27,6 +27,15 @@ namespace ETModel
         }
     }
 
+    [ObjectSystem]
+    public class RemoteTankFixedUpdateSystem : FixedUpdateSystem<RemoteTankComponent>
+    {
+        public override void FixedUpdate(RemoteTankComponent self)
+        {
+            self.FixedUpdate();
+        }
+    }
+
     public class RemoteTankComponent : Component
     {
         //轮轴
@@ -73,8 +82,8 @@ namespace ETModel
             this.m_tank = this.GetParent<Tank>().GameObject;
             InitPhysical();
 
-            this.m_lPos = this.m_fPos = this.m_tank.transform.position;
-            this.m_lRot = this.m_fRot = this.m_tank.transform.eulerAngles;
+            this.m_lPos = this.m_fPos = this.m_nPos = this.m_tank.transform.position;
+            this.m_lRot = this.m_fRot = this.m_nRot = this.m_tank.transform.eulerAngles;
 
 
             //Rigidbody rg = this.m_tank.GetComponent<Rigidbody>();
@@ -102,9 +111,9 @@ namespace ETModel
 
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 
-            Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
-            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset("Unit.unity3d", "Unit");
-            Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
+            //Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
+            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset(AssetBundleName.Unit, PrefabName.Unit);
+            //Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
             motorClip = bundleGameObject.Get<AudioClip>("motor");
 
             motorAudioSource.loop = true;
@@ -129,31 +138,42 @@ namespace ETModel
             this.axleInfos.Add(axleInfo);
         }
 
-        public void LateUpdate()
+        public void FixedUpdate()
         {
-
             // 时间间隔
             this.m_delta = (TimeHelper.NowMilliSecond() - this.m_lastRecvInfoTime) / 1000f;
+            this.m_lastRecvInfoTime = TimeHelper.NowMilliSecond();
             UpdatePos();
             WheelsRotation();
         }
+
+        public void LateUpdate()
+        {
+
+            
+        }
+
+        //private long castTime;
 
         public void NetForecastInfo(Vector3 nPos, Vector3 nRot)
         {
             this.m_nPos = nPos;
             this.m_nRot = nRot;
 
-            try
+            //Log.Warning($"收到位置信息间隔时间{(TimeHelper.NowMilliSecond() - this.castTime)*1.0f / 1000}s");
+            //castTime = TimeHelper.NowMilliSecond();
+            //try
             {
                 // 预测的位置
                 this.m_fPos = this.m_lPos + (this.m_nPos - this.m_lPos) * 2;
                 this.m_fRot = this.m_lRot + (this.m_nRot - this.m_lRot) * 2;
 
-                if (TimeHelper.NowMilliSecond() - this.m_lastRecvInfoTime > 300f)
+                if (TimeHelper.NowMilliSecond() - this.m_lastRecvInfoTime > 300f)  //大于0.3s
                 {
                     this.m_fPos = this.m_nPos;
                     this.m_fRot = this.m_nRot;
                 }
+               
 
                 // 时间间隔
                 //this.m_delta = (TimeHelper.NowMilliSecond() - this.m_lastRecvInfoTime) / 1000f;
@@ -163,19 +183,19 @@ namespace ETModel
                 // 更新
                 this.m_lPos = this.m_nPos;
                 this.m_lRot = this.m_nRot;
-                this.m_lastRecvInfoTime = TimeHelper.NowMilliSecond();
+                
             }
-            catch (Exception e)
-            {
-                Log.Error("NetForecastInfo" + e);
-            }
+            // catch (Exception e)
+            // {
+            //     Log.Error("NetForecastInfo" + e);
+            // }
 
             //UpdatePos();
         }
 
         private void UpdatePos()
         {
-            try
+            //try
             {
                 Vector3 pos = this.m_tank.transform.position;
 
@@ -184,7 +204,7 @@ namespace ETModel
                 float distance = (pos - this.m_nPos).magnitude;
 
                 // 如果服务器位置与本地位置相差不到0.1f，就不进行移动
-                if (Mathf.Abs(distance) < 0.1f)
+                if (Mathf.Abs(distance) < 0.01f)
                     return;
 
                 // 从当前位置向预测位置移动
@@ -194,10 +214,10 @@ namespace ETModel
                     this.m_tank.transform.rotation = Quaternion.Lerp(Quaternion.Euler(rot), Quaternion.Euler(this.m_fRot), this.m_delta);
                 }
             }
-            catch (Exception e)
-            {
-                Log.Error("Update" + e);
-            }
+            // catch (Exception e)
+            // {
+            //     Log.Error("Update" + e);
+            // }
         }
 
         private void WheelsRotation()

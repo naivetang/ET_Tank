@@ -92,10 +92,10 @@ namespace ETModel
 
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 
-            Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
-            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset("Unit.unity3d", "Unit");
-            Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
-            motorClip = bundleGameObject.Get<AudioClip>("motor");
+            //Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
+            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset(AssetBundleName.Unit, PrefabName.Unit);
+            //Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
+            motorClip = bundleGameObject.Get<AudioClip>(PrefabName.Motor);
 
             this.motorAudioSource.loop = true;
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="fi6ttb84" jpegQuality="80" compressPNG="true">
+  <resources>
+    <image id="gf7h3" name="bullet01.png" path="/Bullet/" exported="true"/>
+    <image id="gf7h4" name="bullet02.png" path="/Bullet/" exported="true"/>
+    <image id="gf7h5" name="bullet03.png" path="/Bullet/" exported="true"/>
+    <image id="gf7h6" name="tank01.png" path="/Tank/" exported="true"/>
+    <image id="gf7h7" name="tank02.png" path="/Tank/" exported="true"/>
+    <image id="gf7h8" name="tank03.png" path="/Tank/" exported="true"/>
+    <image id="gf7h9" name="exp.png" path="/" exported="true"/>
+    <image id="gf7ha" name="gold.png" path="/" exported="true"/>
+  </resources>
+  <publish name="Images"/>
+</packageDescription>

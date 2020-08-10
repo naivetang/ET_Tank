@@ -24,21 +24,21 @@ namespace ETHotfix
 				Game.Scene.AddComponent<MessageDispatcherComponent>();
 
 				// 加载热更配置
-				ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundle("config.unity3d");
+				ETModel.Game.Scene.GetComponent<ResourcesComponent>().LoadBundle(AssetBundleName.Config);
                 // 加载表格数据
 				Game.Scene.AddComponent<ConfigComponent>();
-				ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle("config.unity3d");
+				ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(AssetBundleName.Config);
 
 				UnitConfig unitConfig = (UnitConfig)Game.Scene.GetComponent<ConfigComponent>().Get(typeof(UnitConfig), 1001);
 				Log.Debug($"config {JsonHelper.ToJson(unitConfig)}");
 
-				Game.EventSystem.Run(EventIdType.InitSceneStart);
-			}
+                Game.EventSystem.Run(EventIdType.InitSceneStart);
+            }
 			catch (Exception e)
 			{
 				Log.Error(e);
 			}
-		}
+        }
 
 		public static void Update()
 		{

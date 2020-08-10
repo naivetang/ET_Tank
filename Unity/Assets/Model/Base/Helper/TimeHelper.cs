@@ -14,6 +14,10 @@ namespace ETModel
 			return (DateTime.UtcNow.Ticks - epoch) / 10000;
 		}
 
+        /// <summary>
+        /// 秒
+        /// </summary>
+        /// <returns></returns>
 		public static long ClientNowSeconds()
 		{
 			return (DateTime.UtcNow.Ticks - epoch) / 10000000;

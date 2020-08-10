@@ -241,7 +241,7 @@ namespace ETHotfix
             }
         }
 
-        public void UpdateBoomPoint( float x,float y)
+        public void UpdateBoomPoint(float x,float y)
         {
             m_BoomPoint.GObject.SetXY(x, y);
         }
@@ -253,6 +253,11 @@ namespace ETHotfix
             pb.max = max;
 
             pb.value = current;
+        }
+
+        public void ShootTime(float time)
+        {
+            this.m_HP.GObject.asCom.GetTransition("t0").Play();
         }
 
     }
@@ -275,6 +280,8 @@ namespace ETHotfix
             TurretComponent.UpdatePos += self.UpdateBoomPoint;
 
             Tank.m_hpChange += self.HpChange;
+
+            TankShootComponent.ShootNoticeHtf += self.ShootTime;
 
             self.Awake();
         }

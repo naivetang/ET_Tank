@@ -9,8 +9,8 @@
     <component id="n12_pazt" name="n12" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="201,106" size="152,53">
       <Button title="购买"/>
     </component>
-    <loader id="n15_pazt" name="n15" xy="20,22" size="150,149"/>
-    <component id="n16_idpq" name="NullBtn" src="idpq28" fileName="NullBtn/NullBtn.xml" pkg="imnv6csb" xy="96,94" pivot="0.5,0.5" anchor="true" size="150,149">
+    <loader id="n15_pazt" name="n15" xy="20,22" size="152,151" url="ui://fi6ttb84gf7h6" fill="scale"/>
+    <component id="n16_idpq" name="NullBtn" src="idpq28" fileName="NullBtn/NullBtn.xml" pkg="imnv6csb" xy="96,94" pivot="0.5,0.5" anchor="true" size="152,151" visible="false" touchable="false">
       <relation target="n15_pazt" sidePair="width-width,height-height"/>
     </component>
   </displayList>

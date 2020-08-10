@@ -51,6 +51,7 @@ namespace ETModel
                 // FGUI组件管理
                 Game.Scene.AddComponent<FUIComponent>();
 
+
 				// 下载ab包
 				await BundleHelper.DownloadBundle();
 
@@ -60,11 +61,11 @@ namespace ETModel
                 Game.Hotfix.LoadHotfixAssembly();
 
 				// 加载配置
-				Game.Scene.GetComponent<ResourcesComponent>().LoadBundle("config.unity3d");
+				Game.Scene.GetComponent<ResourcesComponent>().LoadBundle(AssetBundleName.Config);
 
                 //
 				Game.Scene.AddComponent<ConfigComponent>();
-				Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle("config.unity3d");
+				Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(AssetBundleName.Config);
 
                 // 协议类型
 				Game.Scene.AddComponent<OpcodeTypeComponent>();

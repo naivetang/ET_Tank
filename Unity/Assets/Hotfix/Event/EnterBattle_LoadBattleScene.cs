@@ -16,7 +16,13 @@ namespace ETHotfix
             ResourcesComponent resourcesComponent = ETModel.Game.Scene.GetComponent<ResourcesComponent>();
 
             // 加载场景资源
-            await resourcesComponent.LoadBundleAsync("battle.unity3d");
+
+            await resourcesComponent.LoadBundleAsync(AssetBundleName.Unit);
+
+            await resourcesComponent.LoadBundleAsync(AssetBundleName.Battle);
+
+            
+
             // 切换到Battle场景
             using (SceneChangeComponent sceneChangeComponent = Game.Scene.AddComponent<SceneChangeComponent>())
             {

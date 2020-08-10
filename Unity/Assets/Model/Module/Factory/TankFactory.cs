@@ -9,10 +9,10 @@ namespace ETModel
             long id = firstInfo.TankFrameInfo.TankId;
 
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
-            Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
-            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset("Unit.unity3d", "Unit");
-            Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
-            GameObject prefab = bundleGameObject.Get<GameObject>("Tank");
+            //Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
+            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset(AssetBundleName.Unit, PrefabName.Unit);
+            //Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
+            GameObject prefab = bundleGameObject.Get<GameObject>(PrefabName.Tank);
 
             TankComponent tankComponent = Game.Scene.GetComponent<TankComponent>();
 
@@ -92,11 +92,11 @@ namespace ETModel
         {
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 
-            resourcesComponent.LoadBundle(AssetBundleName.Unit);
+            //resourcesComponent.LoadBundle(AssetBundleName.Unit);
 
             GameObject unit = (GameObject)resourcesComponent.GetAsset(AssetBundleName.Unit, PrefabName.Unit);
 
-            resourcesComponent.UnloadBundle(AssetBundleName.Unit);
+            //resourcesComponent.UnloadBundle(AssetBundleName.Unit);
 
             GameObject boomPrefab = unit.Get<GameObject>(PrefabName.TankBoomEffect);
 

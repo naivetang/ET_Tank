@@ -120,6 +120,8 @@ namespace ETHotfix
 
                 com.GetChild("n15").asLoader.url = tankInfo.Icon;
 
+                Log.Warning($"{tankInfo.Icon}");
+
                 com.GetChild("n15").asLoader.onClick.Set(this.TankIcon_OnClick);
 
                 com.GetChild("n12").text = Message.Get(1075);

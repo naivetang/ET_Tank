@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="679,176" extention="ProgressBar">
+  <displayList>
+    <image id="n0_nycw" name="n0" src="nycwe" fileName="Role/UnitFrame_Background.png" xy="0,0" size="679,176">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_nycw" name="bar" src="nycwf" fileName="Role/UnitFrame_HP_Fill_Red.png" xy="172,47"/>
+    <text id="n2_nycw" name="title" xy="-18,237" size="679,176" hideByEditor="true" visible="false" fontSize="30" align="center" vAlign="middle" autoSize="none" text="文字">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+    <image id="n3_nycw" name="bar2" src="nycwl" fileName="Role/UnitFrame_MP_Fill_Green.png" xy="167,96" size="460,38"/>
+    <image id="n4_nycw" name="n4" src="nycwk" fileName="Role/tank.png" xy="47,42" size="111,81" aspect="true"/>
+  </displayList>
+  <ProgressBar/>
+  <transition name="t0">
+    <item time="0" type="Size" target="n3_nycw" tween="true" startValue="50.33,38" endValue="460.49,38" duration="48"/>
+  </transition>
+</component>

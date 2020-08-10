@@ -8,10 +8,10 @@ namespace ETModel
         {
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 
-            Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
-            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset("Unit.unity3d", "Unit");
-            Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
-            GameObject prefab = bundleGameObject.Get<GameObject>("Bullet");
+            //Game.Scene.GetComponent<ResourcesComponent>().LoadBundle($"Unit.unity3d");
+            GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset(AssetBundleName.Unit, PrefabName.Unit);
+            //Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle($"Unit.unity3d");
+            GameObject prefab = bundleGameObject.Get<GameObject>(PrefabName.Bullet);
 
             BulletComponent bulletComponent = tank.GetComponent<BulletComponent>();
 

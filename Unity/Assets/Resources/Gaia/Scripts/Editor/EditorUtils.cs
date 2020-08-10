@@ -126,6 +126,7 @@ namespace Gaia
         /// <param name="url">Make description clickable if supplied</param>
         public void DrawIntro(string name, string description = "", string url = "")
         {
+            return;
             if (!m_initialized)
             {
                 Initialize();

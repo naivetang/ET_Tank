@@ -15,11 +15,11 @@ namespace ETModel
 
             ResourcesComponent resourcesComponent = Game.Scene.GetComponent<ResourcesComponent>();
 
-            resourcesComponent.LoadBundle(AssetBundleName.Unit);
+            //resourcesComponent.LoadBundle(AssetBundleName.Unit);
 
             GameObject bundleGameObject = (GameObject)resourcesComponent.GetAsset(AssetBundleName.Unit, PrefabName.Unit);
 
-            resourcesComponent.UnloadBundle(AssetBundleName.Unit);
+            //resourcesComponent.UnloadBundle(AssetBundleName.Unit);
 
             GameObject explosion = bundleGameObject.Get<GameObject>(PrefabName.BulletBoomEffect);
 

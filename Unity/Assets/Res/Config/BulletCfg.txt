@@ -1,3 +1,3 @@
-{"Id":20001,"Price":300,"Icon":" ","Chinese":"拥有炮弹","English":"拥有炮弹","Attack":18,"SunderArmor":2,"LoadingSpeed":2,"CanBuy":0}
-{"Id":20002,"Price":300,"Icon":" ","Chinese":"炮弹1号","English":"paodan1","Attack":20,"SunderArmor":3,"LoadingSpeed":2,"CanBuy":1}
-{"Id":20003,"Price":500,"Icon":" ","Chinese":"炮弹2号","English":"paodan2","Attack":30,"SunderArmor":6,"LoadingSpeed":3,"CanBuy":1}
+{"Id":20001,"Price":300,"Icon":"ui://Images/bullet01","Chinese":"初始炮弹","English":"拥有炮弹","Attack":18,"SunderArmor":2,"LoadingSpeed":2,"CanBuy":0}
+{"Id":20002,"Price":300,"Icon":"ui://Images/bullet02","Chinese":"炮弹1号","English":"paodan1","Attack":20,"SunderArmor":3,"LoadingSpeed":2,"CanBuy":1}
+{"Id":20003,"Price":500,"Icon":"ui://Images/bullet03","Chinese":"炮弹2号","English":"paodan2","Attack":30,"SunderArmor":6,"LoadingSpeed":3,"CanBuy":1}

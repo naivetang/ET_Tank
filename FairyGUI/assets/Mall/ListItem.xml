@@ -9,6 +9,6 @@
     <component id="n12_pazt" name="n12" src="gnr419" fileName="Button/Button.xml" pkg="imnv6csb" xy="201,119" size="152,53">
       <Button title="购买"/>
     </component>
-    <loader id="n15_pazt" name="n15" xy="20,22" size="150,149"/>
+    <loader id="n15_pazt" name="n15" xy="20,22" size="154,152" url="ui://fi6ttb84gf7h7" fill="scale"/>
   </displayList>
 </component>

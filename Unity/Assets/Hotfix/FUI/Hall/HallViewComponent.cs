@@ -184,6 +184,8 @@ namespace ETHotfix
             m_settingBtn = this.FUIComponent.Get("n15").GObject.asButton;
             this.m_exitButton = this.FUIComponent.Get("n16").GObject.asButton;
 
+            this.m_friendButton.onClick.Set(this.FriendBtn_OnClick);
+
             m_exitButton.onClick.Set(this.ExitBtn_OnClick);
 
             m_list = this.FUIComponent.Get("n41").GObject.asCom.GetChild("n0").asList;
@@ -198,11 +200,17 @@ namespace ETHotfix
 
             m_list.onClickItem.Add(this.ListItemClick);
 
+            // 修复版本
             this.m_createButton.onClick.Set(this.CreateBtn_OnClick);
 
             this.m_cangKuButton.onClick.Set(this.Warehouse_OnClick);
 
-            if(m_data != null)
+            // bug版本
+            //this.m_createButton.onClick.Set(this.Warehouse_OnClick);
+
+           // this.m_cangKuButton.onClick.Set(this.CreateBtn_OnClick);
+
+            if (m_data != null)
                 RepeatedFieldToList(m_data.RoomSimpleInfo, m_rooms);
 
             m_chatView = new ChatView(this.FUIComponent.Get("n29").GObject.asCom,ChatType.Hall);
@@ -252,6 +260,11 @@ namespace ETHotfix
         private void MallBtn_OnClick()
         {
             FUIFactory.Create<MallViewComponent>(FUIType.Mall).NoAwait();
+        }
+
+        private void FriendBtn_OnClick()
+        {
+            Game.EventSystem.Run(EventIdType.ShowPopMessage, Message.Get(1098), PopMessageType.Float);
         }
 
         private void Warehouse_OnClick()
