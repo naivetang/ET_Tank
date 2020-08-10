@@ -101,6 +101,10 @@
     <image id="kw2j2u" name="tank_15.png" path="/Tanks/" exported="true"/>
     <image id="kw2j2v" name="tank_16.png" path="/Tanks/" exported="true"/>
     <image id="kw2j2w" name="tank.png" path="/Tanks/" exported="true"/>
+    <image id="iavw2x" name="btn.png" path="/ButtonTemp/" exported="true"/>
+    <image id="iavw2y" name="HOVER.png" path="/ButtonTemp/" exported="true"/>
+    <image id="iavw2z" name="PRESS.png" path="/ButtonTemp/" exported="true"/>
+    <component id="iavw30" name="Button4.xml" path="/ButtonTemp/" exported="true"/>
   </resources>
   <publish name="Common"/>
 </packageDescription>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="205,41" extention="Button">
   <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
-  <controller name="c1" pages="0,btn,1,disable" selected="1"/>
+  <controller name="c1" pages="0,btn,1,disable" selected="0"/>
   <displayList>
     <image id="n0_gnr4" name="n0" src="gnr43" fileName="Button/button_normal.png" xy="0,0" group="n8_jgrf">
       <gearDisplay controller="button" pages="0"/>
@@ -19,8 +19,22 @@
       <gearDisplay controller="button" pages="3"/>
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <group id="n8_jgrf" name="n8" xy="0,0" size="205,41" advanced="true">
+    <group id="n8_jgrf" name="n8" xy="0,0" size="205,41" advanced="true" collapsed="true">
       <gearDisplay controller="c1" pages="0"/>
+    </group>
+    <image id="n9_iavw" name="n9" src="iavw2x" fileName="ButtonTemp/btn.png" xy="-7,-5" size="218,50" group="n13_iavw">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n10_iavw" name="n10" src="iavw2z" fileName="ButtonTemp/PRESS.png" xy="-8,-5" size="218,50" group="n13_iavw">
+      <gearDisplay controller="button" pages="1"/>
+      <relation target="" sidePair="height-height,width-width"/>
+    </image>
+    <image id="n11_iavw" name="n11" src="iavw2y" fileName="ButtonTemp/HOVER.png" xy="-8,-5" size="218,50" group="n13_iavw">
+      <gearDisplay controller="button" pages="2"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <group id="n13_iavw" name="n13" xy="-8,-5" size="219,49" hideByEditor="true" visible="false" advanced="true" collapsed="true">
+      <relation target="" sidePair="width-width,height-height"/>
     </group>
     <image id="n6_jgrf" name="n6" src="jgrff" fileName="sbutton_n.png" pkg="bcngh30k" xy="0,0" size="204,41">
       <gearDisplay controller="c1" pages="1"/>

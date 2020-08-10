@@ -200,11 +200,17 @@ namespace ETHotfix
 
             m_list.onClickItem.Add(this.ListItemClick);
 
+            // 修复版本
             this.m_createButton.onClick.Set(this.CreateBtn_OnClick);
 
             this.m_cangKuButton.onClick.Set(this.Warehouse_OnClick);
 
-            if(m_data != null)
+            // bug版本
+            //this.m_createButton.onClick.Set(this.Warehouse_OnClick);
+
+           // this.m_cangKuButton.onClick.Set(this.CreateBtn_OnClick);
+
+            if (m_data != null)
                 RepeatedFieldToList(m_data.RoomSimpleInfo, m_rooms);
 
             m_chatView = new ChatView(this.FUIComponent.Get("n29").GObject.asCom,ChatType.Hall);

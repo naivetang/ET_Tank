@@ -9,7 +9,7 @@
     <image id="n34_s4di" name="n34" src="s4did" fileName="Chat/Corner 2 zuoxia.png" pkg="f77fjnya" xy="30,259" group="n36_s4di"/>
     <image id="n35_s4di" name="n35" src="s4dik" fileName="Chat/Shape 1 copy 10.png" pkg="f77fjnya" xy="693,50" size="656,221" group="n36_s4di"/>
     <component id="n38_s4di" name="n38" src="gnr416" fileName="Form/Input.xml" pkg="imnv6csb" xy="115,0" size="1228,32" group="n36_s4di">
-      <Label title="  " titleFontSize="22"/>
+      <Label titleFontSize="22"/>
     </component>
     <text id="n37_s4di" name="n37" xy="35,1" size="62,31" group="n36_s4di" font="STFangsong" fontSize="25" color="#c8fbff" text="Say："/>
     <list id="n39_idpq" name="n40" xy="36,47" size="1310,225" group="n36_s4di" overflow="scroll" defaultItem="ui://1ojks5pukw2j6">

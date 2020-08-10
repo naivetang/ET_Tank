@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="268,94" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="1"/>
+  <displayList>
+    <image id="n0_iavw" name="n0" src="iavw2x" fileName="ButtonTemp/btn.png" xy="0,0" group="n4_iavw">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_iavw" name="n1" src="iavw2z" fileName="ButtonTemp/PRESS.png" xy="11,9" group="n4_iavw">
+      <gearDisplay controller="button" pages="1"/>
+      <relation target="" sidePair="height-height,width-width"/>
+    </image>
+    <image id="n2_iavw" name="n2" src="iavw2y" fileName="ButtonTemp/HOVER.png" xy="9,11" group="n4_iavw">
+      <gearDisplay controller="button" pages="2"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <group id="n4_iavw" name="n4" xy="0,0" size="268,94" collapsed="true"/>
+    <text id="n3_iavw" name="title" xy="27,26" size="205,41" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" strokeColor="#000000" autoClearText="true" text="Login">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <Button/>
+</component>

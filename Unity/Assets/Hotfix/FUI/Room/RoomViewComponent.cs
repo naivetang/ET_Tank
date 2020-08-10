@@ -147,8 +147,6 @@ namespace ETHotfix
         private void UI()
         {
 
-
-
             UpdateList(this.m_leftItems, this.m_leftList, true);
 
             UpdateList(this.m_rightItems, this.m_rightList, false);
@@ -186,7 +184,11 @@ namespace ETHotfix
 
         private void StartGame()
         {
+            Game.EventSystem.Run(EventIdType.ShowPopMessage, "对局已开始，请稍后", PopMessageType.Float);
+
             this.Send_C2G_StartGame();
+
+            this.m_startGame.onClick.Set(() => { });
         }
 
         private void Send_C2G_StartGame()
