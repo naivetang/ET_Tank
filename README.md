@@ -1,6 +1,6 @@
 # 多人在线坦克对战
 是一款 PC 端多人合作对战的 FPS 游戏，玩家通过选择不同类型的坦克、装配不同的炮弹来提升自己的战力和机动性。玩家在游戏前创建游戏房间后，在所有玩家准备之后房主即可开始游戏对局。房间类型分为回合制和时间制两类，回合制对局中，两方阵营中先将对方阵营所有玩家击败的一方获胜，时间制对局中，在规定时间内击败敌军数量多的一方获胜。每辆坦克由以下基础属性组成：火力、防护、机动性。炮弹由以下属性基础组成：破甲、伤害、溅射范围、有效射程。在游戏过程中，玩家可以通过触发和完成特殊事件来获得额外奖励，特殊事件主要包括：时间、伤害、击杀、助攻、胜负。（部分功能未完成，具体完成度可参看[演示视频](https://youtu.be/QMRTo6WiYh4)）
-<br>[![Watch the video](https://i9.ytimg.com/vi/QMRTo6WiYh4/mq2.jpg?sqp=CKTq7_kF&rs=AOn4CLDhVCEVDDjmWBrS3ljYJqK_6MhD0Q)](https://youtu.be/QMRTo6WiYh4)
+<br>[![Watch the video](./Images/演示.png)](https://youtu.be/QMRTo6WiYh4)
 
 # 开发工具
 + FairyGUI：是一款国内独立团队开发并开源Github的UI框架，相比NGUI与UGUI，FairyGUI有自己独立的UI编辑器，美术人员在UI编辑器内开发界面。效率上FairyGUI对DrawCall优化使用了特有的FairyBatching技术，更加高效而且容易控制。
